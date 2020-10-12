@@ -8,6 +8,8 @@ public class Systems {
 		Character hero= new Hero();
 		Character monstre = new Monstre();
 		Combat(hero,monstre);
+		Hero thehero = (Hero)hero;
+		System.out.println(thehero.getInventaire().toString());
 		
 	}
 
