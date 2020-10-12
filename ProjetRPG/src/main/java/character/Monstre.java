@@ -6,9 +6,9 @@ public class Monstre extends Character{
 	
 	public Monstre() {
 		super();
-		this.atk=40;
-		this.def=10;
-		this.pv=100;
+		this.setAtk(40);
+		this.setDef(10);
+		this.setPv(100);
 	}
 
 }
