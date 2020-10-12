@@ -1,0 +1,35 @@
+package character;
+<<<<<<< HEAD
+
+public class Hero extends Character {
+
+	
+	public Hero() {
+		super();
+=======
+import item.Item;
+
+public class Hero extends Character {
+	private Item inventaire[];
+	
+	public Hero() {
+		super();
+		this.setInventaire(new Item[2]);
+>>>>>>> feature_inventaire
+		this.setAtk(30);
+		this.setDef(20);
+		this.setPv(50);
+		
+	}
+<<<<<<< HEAD
+=======
+
+	public Item[] getInventaire() {
+		return inventaire;
+	}
+
+	public void setInventaire(Item inventaire[]) {
+		this.inventaire = inventaire;
+	}
+>>>>>>> feature_inventaire
+}
