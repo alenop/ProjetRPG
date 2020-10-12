@@ -7,8 +7,7 @@ public class Systems {
 	public static void main(String[] args) {
 		Character hero= new Hero();
 		Character monstre = new Monstre();
-		Combat_attaque(hero,monstre);
-		Combat_attaque(monstre,hero);
+		Combat(hero,monstre);
 		
 	}
 
@@ -20,5 +19,10 @@ public class Systems {
 		a.setPv(b.getAtk()-a.getDef());
 		System.out.println(a.getPv());
 		System.out.println(b.getPv());
+	}
+	
+	public static void Combat(Character a,Character b) {
+		Combat_attaque(a,b);
+		Combat_attaque(b,a);
 	}
 }
