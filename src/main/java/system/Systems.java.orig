@@ -7,9 +7,14 @@ public class Systems {
 	public static void main(String[] args) {
 		Character hero= new Hero();
 		Character monstre = new Monstre();
+<<<<<<< HEAD
 		Combat(hero,monstre);
 		Hero thehero = (Hero)hero;
 		System.out.println(thehero.getInventaire().toString());
+=======
+		Combat_attaque(hero,monstre);
+		Combat_attaque(monstre,hero);
+>>>>>>> feature_character
 		
 	}
 
@@ -22,9 +27,12 @@ public class Systems {
 		System.out.println(a.getPv());
 		System.out.println(b.getPv());
 	}
+<<<<<<< HEAD
 	
 	public static void Combat(Character a,Character b) {
 		Combat_attaque(a,b);
 		Combat_attaque(b,a);
 	}
+=======
+>>>>>>> feature_character
 }
