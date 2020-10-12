@@ -21,4 +21,7 @@ public class Systems {
 		System.out.println(a.getPv());
 		System.out.println(b.getPv());
 	}
+	public void test() {
+		
+	}
 }
