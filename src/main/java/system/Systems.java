@@ -1,7 +1,9 @@
 package system;
+
+import character.Character;
 import character.Hero;
 import character.Monstre;
-import character.Character;
+
 public class Systems {
 	
 	public static void main(String[] args) {
