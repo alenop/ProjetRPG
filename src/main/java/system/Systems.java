@@ -15,7 +15,7 @@ public class Systems {
 		
 	}
 
-
+ 
 
 	public static void Combat_attaque(Character a,Character b) {
 		System.out.println(a.getPv());
