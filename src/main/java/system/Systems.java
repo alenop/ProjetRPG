@@ -9,7 +9,7 @@ public class Systems {
 		Character monstre = new Monstre();
 		Combat(hero,monstre);
 		Hero thehero = (Hero)hero;
-		System.out.println(thehero.getInventaire().toString());
+		//System.out.println(thehero.getInventaire().toString());
 		
 	}
 
