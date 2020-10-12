@@ -8,13 +8,13 @@ public class Systems {
 		Character hero= new Hero();
 		Character monstre = new Monstre();
 <<<<<<< HEAD
+		Combat_attaque(hero,monstre);
+		Combat_attaque(monstre,hero);
+=======
 		Combat(hero,monstre);
 		Hero thehero = (Hero)hero;
 		System.out.println(thehero.getInventaire().toString());
-=======
-		Combat_attaque(hero,monstre);
-		Combat_attaque(monstre,hero);
->>>>>>> feature_character
+>>>>>>> Dev
 		
 	}
 
@@ -28,11 +28,11 @@ public class Systems {
 		System.out.println(b.getPv());
 	}
 <<<<<<< HEAD
+=======
 	
 	public static void Combat(Character a,Character b) {
 		Combat_attaque(a,b);
 		Combat_attaque(b,a);
 	}
-=======
->>>>>>> feature_character
+>>>>>>> Dev
 }
