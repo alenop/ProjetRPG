@@ -5,9 +5,9 @@ public class Hero extends Character {
 	
 	public Hero() {
 		super();
-		this.atk=30;
-		this.def=20;
-		this.pv=50;
+		this.setAtk(30);
+		this.setDef(20);
+		this.setPv(50);
 		
 	}
 }
