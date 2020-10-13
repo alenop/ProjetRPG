@@ -8,8 +8,10 @@ public class Monstre extends Character{
 		super(nom);
 		this.setAtk(40);
 		this.setDef(10);
-		this.setPv(100);
+		this.setPv(150);
 		this.monstre=Monstres.Souris;
+		this.setFaiblesses(new String[5]);
+		this.getFaiblesses()[0]="balai de ménagère";
 	}
 
 }
