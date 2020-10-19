@@ -147,6 +147,7 @@ public class PlayerComponent extends Component{
 					hero.getInventaire()[1]=new Armure(0,"Armure");
 					hero.equip();
 					Monstre monstre = MonsterList.MonsterList.get(direction);
+					System.out.println(monstre.getPv());
 					try {
 						try {Systems.Combat(hero,monstre,"attaque");}
 						catch (Exception e) {

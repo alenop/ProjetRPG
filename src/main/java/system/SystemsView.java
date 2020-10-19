@@ -16,8 +16,7 @@ import item.Item;
 public class SystemsView {
 	
 	
-	public static void main(String[] args) { 
-		Item d = new Arme(50,"bol");
+	public static void main(String[] args) {
 		Item a = new Arme(30,"Epée");
 		Item b = new Arme(40,"Hache");
 		Item c = new Arme(15,"balai de ménagère");
