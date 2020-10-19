@@ -55,7 +55,7 @@ public class RPGApp extends GameApplication {
 		getGameWorld().spawn("souris",new Point2D(128,0));
 		Monstre souris = new Monstre("souris",10,20,100);
 		MonsterList.init();
-		MonsterList.MonsterList.put("128:0", souris);
+		MonsterList.MonsterList.put(new Point2D(128,0), souris);
 //		listeMonstres= [];
 //		listeMonstres.append("80:0":souris);
 		

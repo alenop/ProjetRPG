@@ -31,41 +31,42 @@ public class PlayerComponent extends Component{
 	//Les methodes move ne fonctionnent que si "CanMove" est vérifié
 	
 	public void moveRight() {
-		if (canMove(new Point2D(RPGApp.TILE_SIZE,0),EntityType.BLOC) && canMove(new Point2D(RPGApp.TILE_SIZE,0),EntityType.Monstre)) {
-		try {
-			position.translateX(RPGApp.TILE_SIZE);
-		
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }}
-		else if (canMove(new Point2D(RPGApp.TILE_SIZE,0),EntityType.Monstre)==false) {
-			//Monstre monstre = new Monstre("souris");
-				Hero hero = new Hero("ian");
-				Item b = new Arme(40,"Hache");
-				hero.getInventaire()[0]=b;
-				hero.getInventaire()[1]=new Armure(0,"Armure");
-				hero.equip();
-				
-				String a = String.valueOf(Math.round(position.getX()+RPGApp.TILE_SIZE));
-				String g = String.valueOf(Math.round(position.getY()));
-				String tot =a+g;
-				Monstre monstre = MonsterList.MonsterList.get(tot);
-				try {
-					try {Systems.Combat(hero,monstre,"attaque");}
-					catch (Exception e) {
-						
-					}
-				
-		            Thread.sleep(500);
-		        } catch (InterruptedException e) {
-		            e.printStackTrace();
-		        }
-
-			
-			
-			
-		}
+		CheckAction(new Point2D(RPGApp.TILE_SIZE,0));
+//		try {
+//			position.translateX(RPGApp.TILE_SIZE);
+//		
+//            Thread.sleep(200);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }}
+//		else if (canMove(new Point2D(RPGApp.TILE_SIZE,0),EntityType.Monstre)==false) {
+//			//Monstre monstre = new Monstre("souris");
+//				Hero hero = new Hero("ian");
+//				Item b = new Arme(40,"Hache");
+//				hero.getInventaire()[0]=b;
+//				hero.getInventaire()[1]=new Armure(0,"Armure");
+//				hero.equip();
+//				
+//				String a = String.valueOf(Math.round(position.getX()+RPGApp.TILE_SIZE));
+//				String g = String.valueOf(Math.round(position.getY()));
+//				String tot =a+g;
+//				Monstre monstre = MonsterList.MonsterList.get(new Point2D(position.getX()+RPGApp.TILE_SIZE,position.getY()));
+//				System.out.println(monstre.getPv());
+//				try {
+//					try {Systems.Combat(hero,monstre,"attaque");}
+//					catch (Exception e) {
+//						
+//					}
+//				
+//		            Thread.sleep(500);
+//		        } catch (InterruptedException e) {
+//		            e.printStackTrace();
+//		        }
+//
+//			
+//			
+//			
+//		}
 	}
 	
 	public void moveLeft() {
@@ -138,18 +139,14 @@ public class PlayerComponent extends Component{
 	        } catch (InterruptedException e) {
 	            e.printStackTrace();
 	        }}
-			else if (canMove(new Point2D(RPGApp.TILE_SIZE,0),EntityType.Monstre)==false) {
+			else if (canMove(direction,EntityType.Monstre)==false) {
 				//Monstre monstre = new Monstre("souris");
 					Hero hero = new Hero("ian");
 					Item b = new Arme(40,"Hache");
 					hero.getInventaire()[0]=b;
 					hero.getInventaire()[1]=new Armure(0,"Armure");
 					hero.equip();
-					
-					String a = String.valueOf(Math.round(position.getX()+RPGApp.TILE_SIZE));
-					String g = String.valueOf(Math.round(position.getY()));
-					String tot =a+g;
-					Monstre monstre = MonsterList.MonsterList.get(tot);
+					Monstre monstre = MonsterList.MonsterList.get(direction);
 					try {
 						try {Systems.Combat(hero,monstre,"attaque");}
 						catch (Exception e) {
