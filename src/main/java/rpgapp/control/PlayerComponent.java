@@ -90,13 +90,15 @@ public class PlayerComponent extends Component {
 						if (monstre.getEtat() == Etat.mort) {
 							FXGL.getApp().getGameWorld()
 									.removeEntities(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));
+							//position.translate(direction);
 
 						}
 					} catch (Exception e) {
 
 					}
+					if (monstre.getEtat()==Etat.vivant) {
 
-					Thread.sleep(500);
+					Thread.sleep(500);}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

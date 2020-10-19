@@ -56,6 +56,8 @@ public class RPGApp extends GameApplication {
 		getGameWorld().addEntityFactory(new RPGFactory());
 		//Créer la map à partir du fichier Tiled
 		getGameWorld().setLevelFromMap("map5.json");
+		//System.out.println(getGameplay().getStats());
+		//System.out.println(getGameState().getProperties());
 		//paramètres de jeu pour tester
 		Item b = new Arme(40, "Hache");
 		hero.getInventaire()[0] = b;
