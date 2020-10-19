@@ -13,8 +13,12 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.settings.GameSettings;
 
+import character.Hero;
 import character.MonsterList;
 import character.Monstre;
+import item.Arme;
+import item.Armure;
+import item.Item;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -29,6 +33,7 @@ public class RPGApp extends GameApplication {
 	
 	
 	public static final int TILE_SIZE = 64;
+	public static Hero hero=new Hero("ian");
 	private Entity player;
 	private PlayerComponent playerComponent;
 	
@@ -39,6 +44,7 @@ public class RPGApp extends GameApplication {
         settings.setHeight(10 * 64);
         settings.setTitle("Basic Game App");
         settings.setVersion("0.1");
+        settings.setFullScreenAllowed(true);
         // other settings
     }
 
@@ -50,7 +56,11 @@ public class RPGApp extends GameApplication {
 		getGameWorld().addEntityFactory(new RPGFactory());
 		//Créer la map à partir du fichier Tiled
 		getGameWorld().setLevelFromMap("map5.json");
-		
+		//paramètres de jeu pour tester
+		Item b = new Arme(40, "Hache");
+		hero.getInventaire()[0] = b;
+		hero.getInventaire()[1] = new Armure(0, "Armure");
+		hero.equip();
 		getGameWorld().spawn("bloc",new Point2D(-64,0));
 		getGameWorld().spawn("souris",new Point2D(128,0));
 		Monstre souris = new Monstre("souris",10,20,100);
