@@ -1,6 +1,6 @@
-package elements_interactifs;
+package classe_elements_interactifs;
 
-public class Coffre {
+public class Classe_Coffre {
 	private int a;
 	private int b;
 

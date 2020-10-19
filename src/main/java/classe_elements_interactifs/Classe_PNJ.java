@@ -1,4 +1,4 @@
-package elements_interactifs;
+package classe_elements_interactifs;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

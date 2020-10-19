@@ -1,4 +1,4 @@
-package elements_interactifs;
+package classe_elements_interactifs;
 
 public class Cle {
 
