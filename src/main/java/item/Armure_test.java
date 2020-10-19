@@ -1,9 +1,9 @@
 package item;
 
-public class Personne {
+public class Armure_test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
 
 	}
 
