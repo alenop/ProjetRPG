@@ -5,8 +5,28 @@ public class Item {
 	private String nom;
 	
 	
-	public Item() {
-		this.stat=stat;
-		this.nom=nom;
+	public Item(int stat,String nom) {
+		this.setStat(stat);
+		this.setNom(nom);
+	}
+
+
+	public int getStat() {
+		return stat;
+	}
+
+
+	public void setStat(int stat) {
+		this.stat = stat;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 }
