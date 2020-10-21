@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.view.EntityView;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
@@ -63,7 +64,6 @@ public class RPGApp extends GameApplication  {
 		getGameWorld().addEntityFactory(new RPGFactory());
 		//Créer la map à partir du fichier Tiled
 		getGameWorld().setLevelFromMap("map5.json");
-		
 		//getGameWorld().addWorldListener(getPhysicsWorld());
 		//getPhysicsWorld().onEntityRemoved();
 		
@@ -74,16 +74,19 @@ public class RPGApp extends GameApplication  {
 		hero.getInventaire()[0] = b;
 		hero.getInventaire()[1] = new Armure(0, "Armure");
 		hero.equip();
+		MonsterList.init();
 		getGameWorld().spawn("bloc",new Point2D(-64,0));
+		getGameWorld().spawn("portal",new Point2D(0,128));
 		Monstre souris = new Monstre("souris",10,20,100);
+		createMonstre(souris.getNom(),new Monstre("souris",10,20,100),new Point2D(128+64,0));
+		
 		quest = new Quest("kill souris",50000,souris,10);
 		hero.setCurrentquest(quest);
-		MonsterList.init();
-		for (int i=0;i<11;i++) {
-		createMonstre(souris.getNom(),new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
-		}
-		//Thread t = new Thread(new Spawn(souris));
-		//t.start();
+		
+//		for (int i=0;i<11;i++) {
+//		createMonstre(souris.getNom(),new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
+//		}
+		
 		
 		
 		
@@ -104,6 +107,8 @@ public class RPGApp extends GameApplication  {
 	    
 	    //Lie la camera au personnage
 	    getGameScene().getViewport().bindToEntity(player, getWidth()/2 , getHeight()/2 );
+//	    EntityView view = player.getView();
+//	    player.setView(view);
 	    playerComponent = player.getComponent(PlayerComponent.class);
 
 	}
