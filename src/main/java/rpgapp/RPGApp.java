@@ -25,15 +25,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.HashMap;
 import java.util.Map;
 import rpgapp.control.PlayerComponent;
+import system.Quest;
+import system.Spawn;
 
-public class RPGApp extends GameApplication {
+public class RPGApp extends GameApplication  {
 	
 	
 	public static final int TILE_SIZE = 64;
 	public static Hero hero=new Hero("ian");
+	public static Quest quest;
 	private Entity player;
 	private PlayerComponent playerComponent;
 	
@@ -56,6 +63,10 @@ public class RPGApp extends GameApplication {
 		getGameWorld().addEntityFactory(new RPGFactory());
 		//Créer la map à partir du fichier Tiled
 		getGameWorld().setLevelFromMap("map5.json");
+		
+		//getGameWorld().addWorldListener(getPhysicsWorld());
+		//getPhysicsWorld().onEntityRemoved();
+		
 		//System.out.println(getGameplay().getStats());
 		//System.out.println(getGameState().getProperties());
 		//paramètres de jeu pour tester
@@ -64,10 +75,19 @@ public class RPGApp extends GameApplication {
 		hero.getInventaire()[1] = new Armure(0, "Armure");
 		hero.equip();
 		getGameWorld().spawn("bloc",new Point2D(-64,0));
-		getGameWorld().spawn("souris",new Point2D(128,0));
 		Monstre souris = new Monstre("souris",10,20,100);
+		quest = new Quest("kill souris",50000,souris,10);
+		hero.setCurrentquest(quest);
 		MonsterList.init();
-		MonsterList.MonsterList.put(new Point2D(128,0), souris);
+		for (int i=0;i<11;i++) {
+		createMonstre(souris.getNom(),new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
+		}
+		//Thread t = new Thread(new Spawn(souris));
+		//t.start();
+		
+		
+		
+		
 //		listeMonstres= [];
 //		listeMonstres.append("80:0":souris);
 		
@@ -132,6 +152,12 @@ public class RPGApp extends GameApplication {
 			}
 		});
 	}
+	public void createMonstre(String a,Monstre b,Point2D c) {
+		getGameWorld().spawn(a,c);
+		if(MonsterList.MonsterList.put(c, b)!=null) {
+		MonsterList.MonsterList.put(c, b);
+	}}
+
 
     public static void main(String[] args) {
         launch(args);

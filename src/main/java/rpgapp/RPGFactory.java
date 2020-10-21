@@ -29,7 +29,15 @@ public class RPGFactory implements EntityFactory{
 				.type(EntityType.Monstre)
 				.build();
 	}
-
+	@Spawns("portal")
+	public Entity newPortal(SpawnData data ) {
+		//Créer un objet de type bloc 
+		return Entities.builder()
+				.viewFromTexture("mouse_fin.png")
+				.from(data)
+				.type(EntityType.Portal)
+				.build();
+	}
 	
 
 }

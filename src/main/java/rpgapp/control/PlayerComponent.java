@@ -7,6 +7,8 @@ import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.PositionComponent;
 import com.almasb.fxgl.entity.components.TypeComponent;
+import com.almasb.fxgl.entity.view.EntityView;
+import com.almasb.fxgl.io.serialization.Bundle;
 
 import character.Monstre;
 import item.Arme;
@@ -81,17 +83,20 @@ public class PlayerComponent extends Component {
 		} else if (canMove(newPosition, EntityType.Monstre) == false) {
 			Monstre monstre = MonsterList.MonsterList.get(newPosition);
 			if (monstre.getEtat() == Etat.vivant) {
-				// Monstre monstre = new Monstre("souris");
 				try {
 					try {
 						Systems.Combat(RPGApp.hero, monstre, "attaque");
-						System.out.println(monstre.getPv());
-						System.out.println(RPGApp.hero.getPv());
 						if (monstre.getEtat() == Etat.mort) {
 							FXGL.getApp().getGameWorld()
 									.removeEntities(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));
 							//position.translate(direction);
-
+							RPGApp.hero.gainExp(monstre.getGive_experience());
+							
+							RPGApp.hero.getCurrentquest().setKill(RPGApp.hero.getCurrentquest().getKill()+1);
+							if(RPGApp.hero.getCurrentquest().verifQuest()) {
+								System.out.println("quest succeed");
+								RPGApp.hero.gainExp(RPGApp.hero.getCurrentquest().getReward());
+							}System.out.println(RPGApp.hero.getLevel()+"***");
 						}
 					} catch (Exception e) {
 
@@ -105,5 +110,22 @@ public class PlayerComponent extends Component {
 			}
 
 		}
+		if (canMove(newPosition, EntityType.Portal) == false) {
+			System.out.println("yo portal");
+			Bundle a=new Bundle("bundle");
+			System.out.println(a);
+			position.getEntity().save(a);
+			System.out.println(a);
+			FXGL.getApp().getGameWorld().setLevelFromMap("map.json");
+			try {
+				Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+			FXGL.getApp().getGameWorld().setLevelFromMap("map5.json");
+			System.out.println(a);
+			position.getEntity();//.setViewFromTexture("i");
+			}
+		}
 	}
-}
+

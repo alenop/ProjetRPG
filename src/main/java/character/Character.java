@@ -1,27 +1,36 @@
 package character;
 
+import java.util.HashMap;
+
 public abstract class Character {
-	protected String nom;
+	private String nom;
 	//protected Apparence apparence;
 	private int atk;
 	private int def;
-	private int pvmax;
+	protected int Pvmax;
+	protected int atkmax;
+	protected int defmax;
 	private int pv;
 	private Etat etat;
 	private int spd;
 	private Faiblesse faiblesses2[];
 	private String faiblesses[];
+	protected int level=1;
 	
-	public Character(String nom) {
+	public Character(String nom, int atk, int def, int pv) {
 		// comment
-		this.nom=nom;
-		this.pvmax=pvmax;
+		this.setNom(nom);
+		this.Pvmax=pv;
+		this.atkmax=atk;
+		this.defmax=def;
 		this.setAtk(atk);
 		this.setDef(def);
 		this.setPv(pv);
 		this.setSpd(20);
 		this.setEtat(Etat.vivant);
 	}
+	
+	
 
 	public int getDef() {
 		return def;
@@ -76,5 +85,17 @@ public abstract class Character {
 
 	public void setFaiblesses(String faiblesses[]) {
 		this.faiblesses = faiblesses;
+	}
+
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 }
