@@ -20,8 +20,8 @@ public class RPGFactory implements EntityFactory{
 				.build();
 	}
 	
-	@Spawns("souris")
-	public Entity newSouris(SpawnData data ) {
+	@Spawns("monstre")
+	public Entity newMonstre(SpawnData data ) {
 		//Créer un objet de type bloc 
 		return Entities.builder()
 				.viewFromTexture("mouse_fin.png")
@@ -33,7 +33,7 @@ public class RPGFactory implements EntityFactory{
 	public Entity newPortal(SpawnData data ) {
 		//Créer un objet de type bloc 
 		return Entities.builder()
-				.viewFromTexture("mouse_fin.png")
+				.viewFromTexture("Water_Icon.png")
 				.from(data)
 				.type(EntityType.Portal)
 				.build();

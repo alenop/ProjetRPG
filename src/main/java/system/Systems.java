@@ -1,9 +1,12 @@
 package system;
 
+import com.almasb.fxgl.app.FXGL;
+
 import character.Character;
 import character.Etat;
 import character.Hero;
 import character.Monstre;
+import rpgapp.RPGApp;
 
 public abstract class Systems {
 
@@ -20,7 +23,7 @@ public abstract class Systems {
 		
 	}
 
-	public static void Combat(Character a, Character b, String x) throws Exception {
+	public static void Combat(Hero a, Monstre b, String x) throws Exception {
 		if (a.getEtat()==Etat.mort || b.getEtat()==Etat.mort) {
 			throw (new Exception("Erreur l'un des 2 Character est mort"));
 				
@@ -41,9 +44,7 @@ public abstract class Systems {
 			}
 			
 			
-			if (b instanceof Monstre && b.getEtat()==Etat.vivant) {
-					Combat_attaque(b, a);
-			}
+			
 			
 		else if(x.equals("defense")) {
 			int c = a.getDef();
@@ -51,5 +52,17 @@ public abstract class Systems {
 			Combat_attaque(a, b);
 			a.setDef(c);
 		}
+		if (b instanceof Monstre && b.getEtat()==Etat.vivant) {
+			Combat_attaque(b, a);
+	}
+			
+		else if (b.getEtat() == Etat.mort) {
+				RPGApp.hero.gainExp(b.getGive_experience());
+				RPGApp.hero.getCurrentquest().setKill(RPGApp.hero.getCurrentquest().getKill() + 1);
+				if (RPGApp.hero.getCurrentquest().verifQuest()) {
+					System.out.println("quest succeed");
+					RPGApp.hero.gainExp(RPGApp.hero.getCurrentquest().getReward());
+				}
+			}
 	}
 }

@@ -10,6 +10,7 @@ public class Hero extends Character {
 	private int experience;
 	private HashMap<Integer,Integer> niveaux ;
 	private Quest currentquest;
+	private String currentMap;
 	
 	public Hero(String nom) {
 		super(nom,20,20,50);
@@ -72,6 +73,12 @@ public class Hero extends Character {
 	}
 	public void setCurrentquest(Quest currentquest) {
 		this.currentquest = currentquest;
+	}
+	public String getCurrentMap() {
+		return currentMap;
+	}
+	public void setCurrentMap(String currentMap) {
+		this.currentMap = currentMap;
 	}
 	public void rewardQuest() {
 		gainExp(currentquest.getReward());
