@@ -1,10 +1,7 @@
-package classe_elements_interactifs;
+package Test;
 
 public class PNJ_Test {
 
-	public static void main(String[] args) {
-		
 
-	}
 
 }

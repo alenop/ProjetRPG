@@ -1,6 +1,8 @@
-package classe_elements_interactifs;
+package elementsInteractifs;
 
-public class Classe_Coffre {
+import com.sun.org.apache.bcel.internal.classfile.Code;
+
+public class Coffre {
 	private int a;
 	private int b;
 
@@ -20,11 +22,11 @@ public class Classe_Coffre {
 		System.out.println("++ coffre ENTIER " + this + " " + cle.a + " " + Cle.b);
 	}
 
-	public Coffre(Coffre c) {
+	public Coffre(Code c) {
 		cle = new Cle();
 		System.out.println("++ coffre COFFRE " + this + " " + cle.a + " " + Cle.b);
 	}
-
+	
 	public void detruire() {
 		cle.detruire();
 		System.out.println("-- coffre " + this);
@@ -34,12 +36,8 @@ public class Classe_Coffre {
 		Cle cle1 = new Cle();
 		Coffre c1 = new Coffre(cle1);
 		Coffre c2 = new Coffre(3);
-		Coffre c3 = new Coffre(c1);
-		c3.detruire1();
 		c2.detruire1();
 		c1.detruire1();
 		cle1.detruire();
 	}
-
-
 }

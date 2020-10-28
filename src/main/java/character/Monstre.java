@@ -1,5 +1,5 @@
 package character;
-import com.almasb.fxgl.entity.GameWorld;
+
 public class Monstre extends Character{
 	private Monstres monstre;
 	

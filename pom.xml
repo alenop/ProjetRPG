@@ -4,31 +4,19 @@
   <artifactId>myproject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>My Project</name>
-  <description>My first project in java</description>
-  
+  <description>rpg_systemjava</description>
   <dependencies>
-  	
-  	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>slf4j-api</artifactId>
-  		<version>1.7.30</version>
-  	</dependency>
-  	
   	<dependency>
   		<groupId>org.slf4j</groupId>
   		<artifactId>slf4j-log4j12</artifactId>
   		<version>1.7.5</version>
   	</dependency>
-  	
   	<dependency>
     	<groupId>com.github.almasb</groupId>
     	<artifactId>fxgl</artifactId>
     	<version>0.5.4</version>
 	</dependency>
-
-  
   </dependencies>
-  
   <build> 
   	<plugins> 
   		<plugin> 
@@ -55,5 +43,4 @@
   		</plugin> 
   	</plugins> 
   </build>
-  
 </project>

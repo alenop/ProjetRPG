@@ -2,6 +2,6 @@ package rpgapp;
 
 public enum EntityType {
 
-	PLAYER, BLOC, Monstre
+	PLAYER, BLOC, Monstre, PNJ
 	
 }

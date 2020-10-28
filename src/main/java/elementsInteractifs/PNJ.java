@@ -1,48 +1,55 @@
-package classe_elements_interactifs;
-
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+package elementsInteractifs;
 
 public class PNJ {
 
-	private String color;
+	private String name;
+	private int posX;
+	private int posY;
+	private String texte;
+	private String texteQueteOk;
+	private String texteGagne;
+	private String textePerd;
 
-	public void convert(String targetColor) {
-
-		color = targetColor;
-
-		// ajouter le code pour modifier l'élément graphique
+	public String getTexte() {
+		return texte;
+	}
+	
+	public String getTexteGagne() {
+		return texteGagne;
+	}
+	
+	public String getTextePerd() {
+		return textePerd;
+	}
+	
+	public String getTexteQueteOk() {
+		return texteQueteOk;
+	}
+	
+	public PNJ(String name, int x, int y, String message) {
 		
+		this.name = name;
+
+		// on redonne la position du pnj maintenant que l'image est créée
+		this.posX = x;
+		this.posY = y;
+
+		this.texte = message;
+		this.texteQueteOk = "Tu as trouver les fleurs !";
+		this.texteGagne = "Bravo ! Super classe !";
+		this.textePerd = "Dommage... Rejoue !";
 	}
 
-}
+	public int getPosX() {
+		return posX;
+	}
 
-//
-//		public static class ConvertImageFile {
-//
-//		   public static void main(String[]args) {
-//
-//		    BufferedImage bufferedImage;
-//		    try {
-//
-//		     //read image file
-//		      bufferedImage = ImageIO.read(new File("colorImage"));
-//		      BufferedImage newBufferedImage = new BufferedImage(bufferedImage.getWidth(),
-//		            bufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
-//		      newBufferedImage.createGraphics().drawImage(bufferedImage, 0, 0, Color.WHITE, null);
-//
-//		      ImageIO.write(newBufferedImage, "pnj", new File("pnj"));
-//
-//		      System.out.println("Done");
-//
-//		    } catch (IOException e) {
-//
-//		      e.printStackTrace();
-//
-//		    }
-//
-//		   }
-//		}
+	public int getPosY() {
+		return posY;
+	}
+
+	public String getName() {
+		return name;
+	}
+		
+}

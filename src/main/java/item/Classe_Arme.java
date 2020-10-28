@@ -2,10 +2,10 @@ package item;
 
 	import javax.swing.text.html.parser.Entity;
 
-	public class Arme <EnumArmorMaterial> extends Item {
+	public class Classe_Arme <EnumArmorMaterial> extends Item {
 		
-		public Arme(int id, Object armorMaterial, int type, int layer) {
-			super();
+		public Classe_Arme(int id, Object armorMaterial, int type, int layer) {
+			super(layer, nom);
 		}
 		public String getArmorTexture(itemStack stack, Entity entity, int slot, int layer, Object ModTutoriel)
 		{
@@ -25,7 +25,9 @@ package item;
 		    {
 		        return "modtutoriel:textures/models/armor/tutorial2_layer_2.png"; //Armer 2, cask + plastron + bottles
 		    }
+		    
 		}
+		
 	}
 
 

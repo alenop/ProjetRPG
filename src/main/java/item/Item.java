@@ -2,8 +2,7 @@ package item;
 
 public class Item {
 	private int stat;
-	private String nom;
-	
+	protected static String nom;
 	
 	public Item(int stat,String nom) {
 		this.setStat(stat);
@@ -21,7 +20,7 @@ public class Item {
 	}
 
 
-	public String getNom() {
+	public static String getNom() {
 		return nom;
 	}
 

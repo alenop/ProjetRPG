@@ -1,10 +1,7 @@
-package item;
+package Test;
 
 public class Armure_test {
 
-	public static void main(String[] args) {
-	
 
-	}
 
 }

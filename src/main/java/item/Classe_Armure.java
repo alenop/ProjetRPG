@@ -1,8 +1,8 @@
 package item;
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import javafx.scene.shape.Arc;
-import net.minecraft.item.ItemArmor;
- 
-public class Armure extends ItemArmor
+public abstract class Classe_Armure extends Iterator
 {
 	
 	public static void main( String[] args ) {
