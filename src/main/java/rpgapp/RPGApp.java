@@ -18,8 +18,12 @@ import com.almasb.fxgl.settings.GameSettings;
 import character.Hero;
 import character.MonsterList;
 import character.Monstre;
+import character.Monstres;
+import item.PNJ;
+import item.PNJList;
 import item.Arme;
 import item.Armure;
+import item.Coffre;
 import item.Item;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
@@ -49,6 +53,7 @@ public class RPGApp extends GameApplication  {
 	private Entity player;
 	private PlayerComponent playerComponent;
 	public static HashMap<String,ModeleMap> ListeMaps= new HashMap<String,ModeleMap>();
+	private boolean invent=false;
 	
 	@Override
     protected void initSettings(GameSettings settings) {
@@ -63,62 +68,58 @@ public class RPGApp extends GameApplication  {
 
 	@Override
 	protected void initGame() {
-		//Initialise le jeu
 		
+		//Initialise le jeu
+		hero.setCurrentMap("mapMaison.json");
 		//AJoute la Factory
 		getGameWorld().addEntityFactory(new RPGFactory());
+		
 		//Créer la map à partir du fichier Tiled
-		getGameWorld().setLevelFromMap("map5.json");
+		getGameWorld().setLevelFromMap(hero.getCurrentMap());
 		//getGameWorld().addWorldListener(getPhysicsWorld());
 		//getPhysicsWorld().onEntityRemoved();
 		
-		//System.out.println(getGameplay().getStats());
-		//System.out.println(getGameState().getProperties());
 		//paramètres de jeu pour tester
-		Item b = new Arme(40, "Hache");
-		hero.getInventaire()[0] = b;
-		hero.getInventaire()[1] = new Armure(0, "Armure");
-		hero.equip();
-		hero.setCurrentMap("map5.json");
-		MonsterList.init();
-		getGameWorld().spawn("bloc",new Point2D(-64,0));
-		getGameWorld().spawn("portal",new Point2D(0,128));
-		PortalList.init();
-		
-		//PortalList.PortalList.put("map5.json",new HashMap()<new Point2D(0,128),"map5.json">);
-		Monstre souris = new Monstre("souris",10,20,100);
-		
-		//MapListElement.MapListElement.put(key, value)
+		//Item b = new Arme(40, "Hache");
+		//hero.getInventaire()[0] = b;
+		//hero.getInventaire()[1] = new Armure(0, "Armure");
+		Item a=new Armure(0, "Armure","yo");
+		//hero.equip(b);
+		hero.equip(a);
+		hero.addItemInventaire(new Arme(40,"Hache","Hache.jpg"));
+		hero.addItemInventaire(new Arme(40,"Epée","Epée.jpg"));
+		hero.addItemInventaire(new Arme(40,"balai de ménagère","balai.png"));
+		hero.addItemInventaire(new Arme(40,"balai de ménagère","balai.png"));
 		initMap("mapMaison.json",new Point2D(1472,448));
 		initMap("map5.json",new Point2D(0,0));
 		
 		
 		System.out.println(ListeMaps.get(hero.getCurrentMap()));
-		quest = new Quest("kill souris",50000,souris,10);
-		hero.setCurrentquest(quest);
-		createPortal2("map5.json",new Point2D(0,128),"mapMaison.json");
-		createPortal2("map5.json",new Point2D(0,256),"map5.json");
-		createPortal("mapMaison.json",new Point2D(960,1216),"map5.json");
-		createPortal("mapMaison.json",new Point2D(1024,1216),"map5.json");
+		//quest = new Quest("kill souris",50000,Monstres.Souris,1);
+		//hero.setCurrentquest(quest);
+		createPortal("map5.json",new Point2D(0,128),"mapMaison.json");
+		createPortal("map5.json",new Point2D(0,256),"map5.json");
+		createCoffre("map5.json",new Point2D(192,256),new Coffre(new Arme(40,"Hache","Hache.jpg")));
+		createCoffre("map5.json",new Point2D(256,256),new Coffre(new Arme(15,"balai de ménagère","balai.png")));
+		createCoffre("map5.json",new Point2D(320,256),new Coffre(new Arme(30,"Epée","Epée.jpg")));
+		createPortal("mapMaison.json",new Point2D(960,1280),"map5.json");
+		createPortal("mapMaison.json",new Point2D(576,384),"map5.json");
+		createPortal("mapMaison.json",new Point2D(1024,1280),"map5.json");
 		createMonstre("map5.json",new Monstre("souris",10,20,100),new Point2D(128+64,0));
-		//createMonstre(souris.getNom(),new Monstre("souris",10,20,100),new Point2D(128+64,0));
-		
+		getGameWorld().spawn("pnj", new Point2D(1024, 960));
+		PNJ pnj1=new PNJ("pnj1", 192, 128, "Tue la souris");
+		PNJList.init();
+		PNJList.pnjList.put(new Point2D(1024, 960),pnj1);
+		//test pour quête monstre
 //		for (int i=0;i<11;i++) {
-//		createMonstre(souris.getNom(),new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
+//		createMonstre("map5.json",new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
 //		}
-		
-		
-		
-		
-		
-//		listeMonstres= [];
-//		listeMonstres.append("80:0":souris);
 		
 		
 		//Créer le joueur
 		player = Entities.builder()
-	                     .at(0, 0)
-	                     .viewFromTexture("image.png")
+	                     .at(ListeMaps.get(hero.getCurrentMap()).getPositionHero())
+	                     .viewFromTexture("HerosFace.png")
 	                     .with(new PlayerComponent())
 	                     .type(EntityType.PLAYER)
 	                     .buildAndAttach(getGameWorld());
@@ -126,6 +127,7 @@ public class RPGApp extends GameApplication  {
 	    
 	    
 	    //Lie la camera au personnage
+		
 	    getGameScene().getViewport().bindToEntity(player, getWidth()/2 , getHeight()/2 );
 	  
 	    playerComponent = player.getComponent(PlayerComponent.class);
@@ -136,14 +138,13 @@ public class RPGApp extends GameApplication  {
 	protected void initInput() {
 		//Initialise les commandes de l'utilisateur
 	    Input input = getInput();
+	    
 
 	    input.addAction(new UserAction("Move Right") {
 	        @Override
 	        protected void onAction() {
 	        	playerComponent.moveRight();
-	            player.setViewFromTexture("image.png");
-	            //EntityView a =player.getView();
-	            //player.setView(a);
+	            player.setViewFromTexture("HerosDroite.png");
 	        }
 	    }, KeyCode.D);
 
@@ -151,7 +152,7 @@ public class RPGApp extends GameApplication  {
 	        @Override
 	        protected void onAction() {
 	        	playerComponent.moveLeft();
-	            player.setViewFromTexture("image2.png");
+	        	player.setViewFromTexture("HerosGauche.png");
 	        }
 	    }, KeyCode.Q);
 
@@ -159,6 +160,7 @@ public class RPGApp extends GameApplication  {
 	        @Override
 	        protected void onAction() {
 	        	playerComponent.moveUp();
+	        	player.setViewFromTexture("HerosDos.png");
 	        }
 	    }, KeyCode.Z);
 
@@ -166,8 +168,27 @@ public class RPGApp extends GameApplication  {
 	        @Override
 	        protected void onAction() {
 	        	playerComponent.moveDown(); 
+	        	player.setViewFromTexture("HerosFace.png");
 	        }
 	    }, KeyCode.S);
+	    
+	    input.addAction(new UserAction("see Inventory") {
+	        @Override
+	        protected void onAction() {
+	        	try {Thread.sleep(200);}
+	        	catch(Exception e){
+	        		
+	        	}
+	        	if (invent==false) {
+	        		invent=true;
+	        	playerComponent.seeInventaire("on");
+	        	}
+	        	else {
+	        		invent=false;
+	        		playerComponent.seeInventaire("off");
+	        	}
+	        }
+	    }, KeyCode.I);
 	}
 	
 	public void initPhysics() {
@@ -179,7 +200,6 @@ public class RPGApp extends GameApplication  {
 		});
 	}
 	public void createMonstre(String a,Monstre b,Point2D c) {
-		getGameWorld().spawn("monstre",c);
 		
 		if(ListeMaps.get(a).getMonsterList().get(c)==null) {
 			ListeMaps.get(a).getMonsterList().put(c, b);
@@ -188,6 +208,12 @@ public class RPGApp extends GameApplication  {
 		
 		if(ListeMaps.get(a).getPortalList().get(b)==null) {
 			ListeMaps.get(a).getPortalList().put(b, c);
+	}
+	}
+	public void createCoffre(String a,Point2D b, Coffre c) {
+		
+		if(ListeMaps.get(a).getCoffreList().get(b)==null) {
+			ListeMaps.get(a).getCoffreList().put(b, c);
 	}
 	}
 public void createPortal2(String a,Point2D b, String c) {

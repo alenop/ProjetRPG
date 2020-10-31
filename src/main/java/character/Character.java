@@ -35,9 +35,19 @@ public abstract class Character {
 	public int getDef() {
 		return def;
 	}
+	public void fullLife() {
+		this.setPv(Pvmax);
+	}
 
 	public void setDef(int def) {
 		this.def = def;
+	}
+	public int getPvMax() {
+		return Pvmax;
+	}
+
+	public void setPvMax(int pvmax) {
+		this.Pvmax = pvmax;
 	}
 
 	public int getAtk() {

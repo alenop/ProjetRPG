@@ -24,9 +24,18 @@ public class RPGFactory implements EntityFactory{
 	public Entity newMonstre(SpawnData data ) {
 		//Créer un objet de type bloc 
 		return Entities.builder()
-				.viewFromTexture("mouse_fin.png")
+				.viewFromTexture("RatFace.png")
 				.from(data)
 				.type(EntityType.Monstre)
+				.build();
+	}
+	@Spawns("coffre")
+	public Entity newCoffre(SpawnData data ) {
+		//Créer un objet de type bloc 
+		return Entities.builder()
+				.viewFromTexture("Image_coffre_closed.jpg")
+				.from(data)
+				.type(EntityType.Coffre)
 				.build();
 	}
 	@Spawns("portal")
@@ -38,6 +47,15 @@ public class RPGFactory implements EntityFactory{
 				.type(EntityType.Portal)
 				.build();
 	}
-	
+	@Spawns("pnj")
+	public Entity newPNJ(SpawnData data ) {
+		//Créer un objet de type pnj 
+		return Entities.builder()
+				.viewFromTexture("PnjDroite.png") //TODO image à ajouter au projet
+				.from(data)
+				.type(EntityType.PNJ)
+				.build();
+	}
+
 
 }

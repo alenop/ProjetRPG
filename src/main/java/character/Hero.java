@@ -1,5 +1,8 @@
 package character;
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.almasb.fxgl.entity.view.EntityView;
 
 import item.Arme;
 import item.Armure;
@@ -7,18 +10,22 @@ import item.Item;
 import system.Quest;
 public class Hero extends Character {
 	private Item inventaire[];
-	private int experience;
+	//private ArrayList<Item> inventaire = new ArrayList<Item>();
+	private int experience=0;
+	private HashMap<String,Item> equipement = new HashMap<String,Item>();
 	private HashMap<Integer,Integer> niveaux ;
 	private Quest currentquest;
 	private String currentMap;
+	private EntityView view;
 	
 	public Hero(String nom) {
 		super(nom,20,20,50);
-		this.setInventaire(new Item[2]);
+		this.setInventaire(new Item[10]);
 		this.setAtk(20);
 		this.setDef(20);
 		this.setPv(50);
 		this.niveaux=new HashMap<Integer,Integer>();
+		this.setView(view);
 		init();
 		
 	}
@@ -30,7 +37,7 @@ public class Hero extends Character {
 	public void gainLevel(int experience) {
 		if(experience>=this.niveaux.get(this.level)) {
 			this.level+=1;
-			System.out.println(this.getAtk()+"**"+this.getDef()+"**");
+			System.out.println("gain de niveau ! Niveau actuel : "+this.level);
 			this.setAtk(this.atkmax+this.getAtk());
 			this.setDef(this.defmax+this.getDef());
 			this.Pvmax=this.Pvmax*this.level;
@@ -51,14 +58,54 @@ public class Hero extends Character {
 	public void setInventaire(Item inventaire[]) {
 		this.inventaire = inventaire;
 	}
-	public void equip() {
-		this.setAtk(this.getAtk()+this.getInventaire()[0].getStat());
-		this.setDef(this.getDef()+this.getInventaire()[1].getStat());
+	public void equip(Item a) {
+		if (this.equipement.get(a.getType())!=null) {
+			desequip(this.equipement.get(a.getType()));
+		}
+		
+		this.equipement.put(a.getType(), a);
+		
+		if (a.getType()=="Arme") {
+		this.setAtk(this.getAtk()+a.getStat());
+		}
+		else if (a.getType()=="Armure") {
+		this.setDef(this.getDef()+a.getStat());
+		}
+	}
+	public HashMap<String,Item> getEquipement() {
+		return equipement;
 	}
 	
 	public void desequip() {
-		this.setAtk(this.getAtk()-this.getInventaire()[0].getStat());
-		this.setDef(this.getDef()-this.getInventaire()[1].getStat());
+		
+		desequip(this.equipement.get("Arme"));
+		desequip(this.equipement.get("Armure"));
+	}
+	public void desequip(Item a) {
+		if (a.getType()=="Arme") {
+		this.setAtk(this.getAtk()-a.getStat());
+		}
+		else if (a.getType()=="Armure") {
+		this.setDef(this.getDef()-a.getStat());
+		}
+		addItemInventaire(a);
+		this.equipement.remove(a.getType());
+	}
+	public void addItemInventaire(Item a) {
+		for (int i=0;i<this.inventaire.length;i++) {
+			if (inventaire[i]==null) {
+				inventaire[i]=a;
+				break;
+			}
+		}
+	}
+	public void removeItemInventaire(Item a) {
+		for (int i=0;i<this.inventaire.length;i++) {
+			if (inventaire[i]==a) {
+				inventaire[i]=null;
+				break;
+			}
+		}
 	}
 
 	public int getExperience() {
@@ -85,5 +132,11 @@ public class Hero extends Character {
 	}
 	public int getLevel() {
 		return level;
+	}
+	public EntityView getView() {
+		return view;
+	}
+	public void setView(EntityView view) {
+		this.view = view;
 	}
 }

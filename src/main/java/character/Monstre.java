@@ -3,7 +3,7 @@ import com.almasb.fxgl.entity.GameWorld;
 
 import javafx.geometry.Point2D;
 public class Monstre extends Character{
-	private Monstres monstre;
+	private Monstres typeMonstre;
 	private int give_experience=100;
 	
 	
@@ -12,7 +12,7 @@ public class Monstre extends Character{
 		this.setAtk(atk);
 		this.setDef(def);
 		this.setPv(pv);
-		this.monstre=Monstres.Souris;
+		this.setTypeMonstre(Monstres.Souris);
 		this.setFaiblesses(new String[5]);
 		this.getFaiblesses()[0]="balai de ménagère";
 	}
@@ -25,6 +25,16 @@ public class Monstre extends Character{
 
 	public void setGive_experience(int give_experience) {
 		this.give_experience = give_experience;
+	}
+
+
+	public Monstres getTypeMonstre() {
+		return typeMonstre;
+	}
+
+
+	public void setTypeMonstre(Monstres typeMonstre) {
+		this.typeMonstre = typeMonstre;
 	}
 
 
