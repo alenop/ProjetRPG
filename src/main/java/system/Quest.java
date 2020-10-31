@@ -1,6 +1,7 @@
 package system;
 
 import character.Monstre;
+import character.Monstres;
 
 public class Quest {
 	private Conditions conditions[];
@@ -8,14 +9,14 @@ public class Quest {
 	private int reward;
 	private boolean succeed=false;
 	private int nb_kill;
-	private Monstre monstre;
+	private Monstres typeMonstre;
 	private int kill=0;
 	
-	public Quest(String a,int b,Monstre c, int d) {
+	public Quest(String a,int b,Monstres c, int d) {
 		this.nom=a;
 		this.setReward(b);
 		this.nb_kill=d;
-		this.monstre=c;
+		this.setTypeMonstre(c);
 		
 	}
 	public boolean verifQuest() {
@@ -32,9 +33,9 @@ public class Quest {
 		}}
 	
 	public void verif_Quest() {
-		for (Conditions i : conditions) {
-			//i.verif_condition(a, b)
-		}
+//		FOR (CONDITIONS I : CONDITIONS) {
+//			//I.VERIF_CONDITION(A, B)
+//		}
 	}
 	public int getReward() {
 		return reward;
@@ -47,5 +48,11 @@ public class Quest {
 	}
 	public void setKill(int kill) {
 		this.kill = kill;
+	}
+	public Monstres getTypeMonstre() {
+		return typeMonstre;
+	}
+	public void setTypeMonstre(Monstres typeMonstre) {
+		this.typeMonstre = typeMonstre;
 	}
 }
