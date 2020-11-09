@@ -1,13 +1,13 @@
-package system;
+package rpgapp.system;
 
-import com.almasb.fxgl.app.FXGL;
 
-import character.Character;
-import character.Etat;
-import character.Hero;
-import character.Monstre;
+
+import rpgapp.data.character.Character;
+import rpgapp.data.character.Etat;
+import rpgapp.data.character.Hero;
+import rpgapp.data.character.Monstre;
 import rpgapp.RPGApp;
-import sun.security.action.GetBooleanAction;
+
 
 public abstract class Systems {
 
@@ -62,11 +62,8 @@ public abstract class Systems {
 			if (RPGApp.hero.getCurrentquest().getTypeMonstre() == b.getTypeMonstre()) {
 				RPGApp.hero.getCurrentquest().setKill(RPGApp.hero.getCurrentquest().getKill() + 1);
 			}
-			if (RPGApp.hero.getCurrentquest().verifQuest()) {
-				System.out.println("quest succeed");
-				
-				RPGApp.hero.gainExp(RPGApp.hero.getCurrentquest().getReward());
-			}}
+			
+			}
 		}
 	}
 }

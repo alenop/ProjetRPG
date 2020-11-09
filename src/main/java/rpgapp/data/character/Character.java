@@ -1,4 +1,4 @@
-package character;
+package rpgapp.data.character;
 
 public abstract class Character {
 	private String nom;

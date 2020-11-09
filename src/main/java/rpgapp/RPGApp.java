@@ -1,48 +1,29 @@
 package rpgapp;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.HashMap;
 
-import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.view.EntityView;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.CollisionHandler;
-import com.almasb.fxgl.physics.PhysicsComponent;
-import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.settings.GameSettings;
 
-import character.Hero;
-import character.MonsterList;
-import character.Monstre;
-import character.Monstres;
-import item.PNJ;
-import item.PNJList;
-import item.Arme;
-import item.Armure;
-import item.Coffre;
-import item.Item;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import map.MapListElement;
-import map.ModeleMap;
-import map.PortalList;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.util.HashMap;
-import java.util.Map;
 import rpgapp.control.PlayerComponent;
+import rpgapp.data.character.Hero;
+import rpgapp.data.character.Monstre;
+import rpgapp.data.elementInteractifs.Arme;
+import rpgapp.data.elementInteractifs.Armure;
+import rpgapp.data.elementInteractifs.Coffre;
+import rpgapp.data.elementInteractifs.Item;
+import rpgapp.data.elementInteractifs.PNJ;
+import rpgapp.data.elementInteractifs.PNJList;
+import rpgapp.data.map.ModeleMap;
+import rpgapp.view.Display;
 import system.Quest;
-import system.Spawn;
 
 public class RPGApp extends GameApplication  {
 	
@@ -53,7 +34,8 @@ public class RPGApp extends GameApplication  {
 	private Entity player;
 	private PlayerComponent playerComponent;
 	public static HashMap<String,ModeleMap> ListeMaps= new HashMap<String,ModeleMap>();
-	private boolean invent=false;
+	public static boolean invent=false;
+	public static Entity notif=null;
 	
 	@Override
     protected void initSettings(GameSettings settings) {
@@ -139,6 +121,7 @@ public class RPGApp extends GameApplication  {
 		//Initialise les commandes de l'utilisateur
 	    Input input = getInput();
 	    
+	    
 
 	    input.addAction(new UserAction("Move Right") {
 	        @Override
@@ -179,18 +162,24 @@ public class RPGApp extends GameApplication  {
 	        	catch(Exception e){
 	        		
 	        	}
+       	
 	        	if (invent==false) {
+	        		
 	        		invent=true;
-	        	playerComponent.seeInventaire("on");
+	        		Display.seeInventaire();
+	        	
 	        	}
+	        	
 	        	else {
+	        		
 	        		invent=false;
-	        		playerComponent.seeInventaire("off");
+	        		Display.removeInventaire();
 	        	}
 	        }
 	    }, KeyCode.I);
 	}
 	
+	@Override
 	public void initPhysics() {
 		getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER,EntityType.Monstre){
 			@Override
@@ -210,7 +199,7 @@ public class RPGApp extends GameApplication  {
 			ListeMaps.get(a).getPortalList().put(b, c);
 	}
 	}
-	public void createCoffre(String a,Point2D b, Coffre c) {
+	public void createCoffre(String a,Point2D b, rpgapp.data.elementInteractifs.Coffre c) {
 		
 		if(ListeMaps.get(a).getCoffreList().get(b)==null) {
 			ListeMaps.get(a).getCoffreList().put(b, c);
@@ -228,6 +217,9 @@ public void createPortal2(String a,Point2D b, String c) {
 		mapbase.init();
 		mapbase.setPositionHero(b);
 		ListeMaps.put(a, mapbase);
+	}
+	public static void removeNotif()  {
+		
 	}
 
     public static void main(String[] args) {
