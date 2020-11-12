@@ -36,5 +36,14 @@ public class RPGFactory implements EntityFactory{
 				.type(EntityType.PNJ)
 				.build();
 	}
-	
+//	
+//	@Spawns("armure")
+//	public Entity newarmure(SpawnData data ) {
+//		//Créer un objet de type pnj 
+//		return Entities.builder()
+//				.viewFromTexture("épée.png") //TODO image à ajouter au projet
+//				.from(data)
+//				.type(EntityType.PNJ)
+//				.build();
+//	}
 }

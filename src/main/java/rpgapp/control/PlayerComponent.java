@@ -7,18 +7,11 @@ import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.PositionComponent;
 import com.almasb.fxgl.entity.components.TypeComponent;
 
-import character.Hero;
-import character.MonsterList;
-import character.Monstre;
 import elementsInteractifs.PNJ;
 import elementsInteractifs.PNJList;
-import item.Arme;
-import item.Armure;
-import item.Item;
 import javafx.geometry.Point2D;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
-import system.Systems;
 
 public class PlayerComponent extends Component {
 
@@ -40,63 +33,20 @@ public class PlayerComponent extends Component {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		} else if (canMove(new Point2D(RPGApp.TILE_SIZE, 0), EntityType.Monstre) == false) {
-			// Monstre monstre = new Monstre("souris");
-			Hero hero = new Hero("ian");
-			Item b = new Arme(40, "Hache");
-			hero.getInventaire()[0] = b;
-			hero.getInventaire()[1] = new Armure(0, "Armure");
-			hero.equip();
 
-			String a = String.valueOf(Math.round(position.getX() + RPGApp.TILE_SIZE));
-			String g = String.valueOf(Math.round(position.getY()));
-			String tot = a + g;
-			Monstre monstre = MonsterList.MonsterList.get(tot);
-			try {
-				try {
-					Systems.Combat(hero, monstre, "attaque");
-				} catch (Exception e) {
+		} else if (canMove(new Point2D(RPGApp.TILE_SIZE, 0), EntityType.PNJ) == false) {
 
-				}
-
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		else if (canMove(new Point2D(RPGApp.TILE_SIZE, 0), EntityType.PNJ) == false) {
-			
 			double xPNJ = position.getX() + RPGApp.TILE_SIZE;
 			double yPNJ = position.getY();
-			//PNJ p = PNJList.pnjList.get(position);
-			for(Entry<String, PNJ> pnj : PNJList.pnjList.entrySet()) {
-			PNJ p = pnj.getValue();
-				if(p.getPosX() == xPNJ && p.getPosY() == yPNJ) {
-				
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					System.out.println(" Bonjour je suis " + p.getName());
-					System.out.println(p.getTexte());
-					System.out.println(" quete " + p.getName());
-					System.out.println(p.getTexteQueteOk());
-					System.out.println(" gain " + p.getName());
-					System.out.println(p.getTexteGagne());
-					System.out.println(" perdu " + p.getName());
-					System.out.println(p.getTextePerd());
-					FXGL.getApp().getDisplay().showMessageBox(p.getTexte());{
-					}
+			for (Entry<String, PNJ> pnj : PNJList.pnjList.entrySet()) {
+				PNJ p = pnj.getValue();
+				if (p.getPosX() == xPNJ && p.getPosY() == yPNJ) {
+
+					FXGL.getApp().getDisplay().showMessageBox(p.getTextitems());
+
 				}
 			}
 		}
-	}
-
-	private Object create_color(int i, int j, int k) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void moveLeft() {
@@ -145,39 +95,4 @@ public class PlayerComponent extends Component {
 
 	}
 
-//	private void CheckAction(Point2D direction) {
-//		if (canMove(direction, EntityType.BLOC) && canMove(direction, EntityType.Monstre)) {
-//			try {
-//				position.translateX(RPGApp.TILE_SIZE);
-//
-//				Thread.sleep(200);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		} else if (canMove(new Point2D(RPGApp.TILE_SIZE, 0), EntityType.Monstre) == false) {
-//			// Monstre monstre = new Monstre("souris");
-//			Hero hero = new Hero("ian");
-//			Item b = new Arme(40, "Hache");
-//			hero.getInventaire()[0] = b;
-//			hero.getInventaire()[1] = new Armure(0, "Armure");
-//			hero.equip();
-//
-//			String a = String.valueOf(Math.round(position.getX() + RPGApp.TILE_SIZE));
-//			String g = String.valueOf(Math.round(position.getY()));
-//			String tot = a + g;
-//			Monstre monstre = MonsterList.MonsterList.get(tot);
-//			try {
-//				try {
-//					Systems.Combat(hero, monstre, "attaque");
-//				} catch (Exception e) {
-//
-//				}
-//
-//				Thread.sleep(500);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//
-//		}
-//	}
 }

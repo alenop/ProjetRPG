@@ -14,6 +14,7 @@ import character.MonsterList;
 import character.Monstre;
 import elementsInteractifs.PNJ;
 import elementsInteractifs.PNJList;
+import item.Arme;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import rpgapp.control.PlayerComponent;
@@ -23,7 +24,6 @@ public class RPGApp extends GameApplication {
 	public static final int TILE_SIZE = 64;
 	private Entity player;
 	private PlayerComponent playerComponent;
-
 
 	@Override
 	protected void initSettings(GameSettings settings) {
@@ -51,22 +51,14 @@ public class RPGApp extends GameApplication {
 		MonsterList.MonsterList.put("128:0", souris);
 
 		getGameWorld().spawn("pnj", new Point2D(192, 128));
-		PNJ pnj1=new PNJ("pnj1", 192, 128, "Tue la souris");
+		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
+		Arme epee=new Arme(50, "extencure");
+		pnj1.getItems().add(epee);
+		Arme arc=new Arme(50, "arc à poulies");
+		pnj1.getItems().add(arc);
 		PNJList.init();
-		PNJList.pnjList.put("pnj1",pnj1);
-		
-		getGameWorld().spawn("pnj", new Point2D( 192, 128));
-		PNJ pnj2=new PNJ("pnj2", 192, 128, "Ceuille des fleurs");
-		PNJList.pnjList.put("pnj2",pnj2);
-	
-		getGameWorld().spawn("pnj", new Point2D( 192, 128));
-		PNJ pnj4=new PNJ("pnj3", 192, 128, "Bavo!");
-		PNJList.pnjList.put("pnj3",pnj4);
-		
-		getGameWorld().spawn("pnj", new Point2D(  192, 128));
-		PNJ pnj5=new PNJ("pnj4",  192, 128, "Perdu! rejoue");
-		PNJList.pnjList.put("pnj4",pnj5);
-		
+		PNJList.pnjList.put("pnj1", pnj1);
+
 		// Créer le joueur
 		player = Entities.builder().at(0, 0).viewFromTexture("image.png").with(new PlayerComponent())
 				.type(EntityType.PLAYER).buildAndAttach(getGameWorld());
@@ -85,18 +77,9 @@ public class RPGApp extends GameApplication {
 			@Override
 			protected void onAction() {
 				playerComponent.moveRight();
-				player.setViewFromTexture("image.png");
 			}
 		}, KeyCode.D);
-
-		input.addAction(new UserAction("Move Left") {
-			@Override
-			protected void onAction() {
-				playerComponent.moveLeft();
-				player.setViewFromTexture("image2.png");
-			}
-		}, KeyCode.Q);
-
+		
 		input.addAction(new UserAction("Move Up") {
 			@Override
 			protected void onAction() {
@@ -110,6 +93,13 @@ public class RPGApp extends GameApplication {
 				playerComponent.moveDown();
 			}
 		}, KeyCode.S);
+		
+		input.addAction(new UserAction("Move Left") {
+			@Override
+			protected void onAction() {
+				playerComponent.moveLeft();
+			}
+		}, KeyCode.Q);
 	}
 
 	public void initPhysics() {
@@ -119,7 +109,7 @@ public class RPGApp extends GameApplication {
 				int a = 2 * 4;
 			}
 		});
-	}
+	}	
 
 	public static void main(String[] args) {
 		launch(args);
