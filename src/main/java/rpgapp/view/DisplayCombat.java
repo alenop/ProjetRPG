@@ -125,6 +125,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 	public static void mode_combat2(Entity viewcombat, Monstre monstre, Point2D c, int nb_tour) {
 		Button[] av;
 		String text;
+		System.out.println(monstre.getPv()+"/"+RPGApp.hero.getPv());
 		if (nb_tour == 1) {
 			text = "tu as trouve " + monstre.getNom() + " que veut tu faire ?";
 		} else if (nb_tour == 2) {

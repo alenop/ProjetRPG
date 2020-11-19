@@ -36,7 +36,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 	@Override
 	public void handle(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if (choix.equals("défense")|| choix.equals("défense")) {
+		if (choix.equals("défense")|| choix.equals("attaque")) {
 		try {
 			if (nb_tour == 2) {
 				monstre.setAtk(monstre.getAtk() * 2);

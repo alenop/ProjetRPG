@@ -23,7 +23,7 @@ import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.data.map.ModeleMap;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
-import system.Quest;
+import rpgapp.system.Quest;
 
 public class RPGApp extends GameApplication {
 
