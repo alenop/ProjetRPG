@@ -1,7 +1,5 @@
 package rpgapp.data.character;
-import com.almasb.fxgl.entity.GameWorld;
 
-import javafx.geometry.Point2D;
 public class Monstre extends Character{
 	private Monstres typeMonstre;
 	private int give_experience=100;

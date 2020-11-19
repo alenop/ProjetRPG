@@ -32,7 +32,7 @@ public class RPGFactory implements EntityFactory{
 	public Entity newCoffre(SpawnData data ) {
 		//Créer un objet de type bloc 
 		return Entities.builder()
-				.viewFromTexture("Image_coffre_closed.jpg")
+				.viewFromTexture("Coffre_Ferme.png")
 				.from(data)
 				.type(EntityType.Coffre)
 				.build();

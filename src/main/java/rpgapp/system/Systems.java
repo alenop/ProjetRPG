@@ -39,22 +39,29 @@ public abstract class Systems {
 							Combat_attaque(a, b);
 							a.setAtk(g);
 							break;
+						}else {
+							Combat_attaque(a,b);
+							break;
 						}
 					}
+				}else {
+					Combat_attaque(a,b);
 				}
 			}
-			Combat_attaque(a, b);
+			if (b instanceof Monstre && b.getEtat() == Etat.vivant) {
+				Combat_attaque(b, a);
+			}
 		}
 
-		else if (x.equals("defense")) {
+		else if (x.equals("défense")) {
 			int c = a.getDef();
 			a.setDef(a.getDef() * 2);
-			Combat_attaque(a, b);
+			if (b instanceof Monstre && b.getEtat() == Etat.vivant) {
+				Combat_attaque(b, a);
+			}
 			a.setDef(c);
 		}
-		if (b instanceof Monstre && b.getEtat() == Etat.vivant) {
-			Combat_attaque(b, a);
-		}
+		
 
 		else if (b.getEtat() == Etat.mort) {
 			RPGApp.hero.gainExp(b.getGive_experience());

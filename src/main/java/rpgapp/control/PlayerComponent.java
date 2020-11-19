@@ -1,22 +1,26 @@
 package rpgapp.control;
 
 import com.almasb.fxgl.app.FXGL;
-import com.almasb.fxgl.entity.Entities;
+
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.PositionComponent;
 import com.almasb.fxgl.entity.components.TypeComponent;
-import com.almasb.fxgl.entity.view.EntityView;
+
 
 import javafx.geometry.Point2D;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.data.character.Etat;
 import rpgapp.data.character.Monstre;
-import rpgapp.data.elementInteractifs.Coffre;
+
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.view.Display;
+import rpgapp.view.DisplayCoffre;
+import rpgapp.view.DisplayCombat;
+import rpgapp.view.DisplayMap;
+import rpgapp.view.DisplayPNJ;
 
 public class PlayerComponent extends Component {
 
@@ -25,9 +29,6 @@ public class PlayerComponent extends Component {
 
 	@Override
 	public void onUpdate(double tpf) {
-		if (RPGApp.invent==true) {
-        	RPGApp.removeNotif();
-        	}
 	}
 
 	// Les methodes move ne fonctionnent que si "CanMove" est vérifié
@@ -52,7 +53,6 @@ public class PlayerComponent extends Component {
 
 	private boolean checkEntity(Point2D direction, EntityType a) {
 		// Vérifie que la case n'est pas un EntityType a
-		//Point2D newPosition = position.getValue().add(direction);
 
 //		return FXGL.getApp()
 //				.getGameScene()
@@ -94,30 +94,24 @@ public class PlayerComponent extends Component {
 		} else if (checkEntity(newPosition, EntityType.Monstre) == false) {
 			Monstre monstre = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().get(newPosition);
 			if (monstre.getEtat() == Etat.vivant) {
-				Entity monstreview = Entities.builder()
-	                    .viewFromTexture("RatCombatGif.gif")
-						//.viewFrom
-	                    .build();
-				EntityView an = monstreview.getView();
-				Display.mode_combat2(an,monstre,newPosition,1);
-				
-				
+				DisplayCombat.begin(monstre,newPosition);
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			if (monstre.getEtat()==Etat.mort){
 				FXGL.getApp().getGameWorld()
 				.removeEntities(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));
-				//position.translate(direction);
+				
 			}
 		}
 		else if (checkEntity(newPosition, EntityType.PNJ) == false) {
 			
-			//PNJ p = PNJList.pnjList.get(position);
-			int i=0;
-			Entity item = Entities.builder()
-                    .viewFromTexture("PnjFace.png")
-                    .build();
-			EntityView an = item.getView();
-			Display.dialogue(an,i);
+			
+			DisplayPNJ.init(newPosition);
 			PNJ p =PNJList.pnjList.get(newPosition);
 					try {
 						Thread.sleep(200);
@@ -133,29 +127,15 @@ public class PlayerComponent extends Component {
 					System.out.println(p.getTexteGagne());
 					System.out.println(" perdu " + p.getName());
 					System.out.println(p.getTextePerd());
-					//FXGL.getApp().getDisplay().showMessageBox(p.getTexte());
+					
 					
 				}
 		else if (checkEntity(newPosition, EntityType.Coffre) == false) {
-			//EntityView an = FXGL.getApp().getGameWorld().getEntitiesAt(newPosition).get(0).getView();
-			Coffre a = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getCoffreList().get(newPosition);
-			if (a.getContenu()!=null) {
-			Entity item = Entities.builder()
-                    .viewFromTexture(a.getContenu().getImage())
-					//.viewFrom
-                    .build();
-			EntityView an = item.getView();
-                    //.buildAndAttach(getGameWorld());
-			Display.trouveCoffre(an,a,newPosition);
-		}
-			else {
-				FXGL.getApp().getDisplay().showMessageBox("tu as déja ouvert ce coffre");
-				}
+			
+			DisplayCoffre.trouveCoffre(newPosition);
 			}
 		if (checkEntity(newPosition, EntityType.Portal) == false) {
-			// PortalList.PortalList.get(RPGApp.hero.getCurrentMap()+newPosition.toString())!=null)
-			// {
-			Display.changeMap(RPGApp.hero.getCurrentMap(), newPosition);
+			DisplayMap.changeMap(RPGApp.hero.getCurrentMap(), newPosition);
 		}
 	
 
