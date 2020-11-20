@@ -1,5 +1,6 @@
 package rpgapp.view;
 
+import java.util.HashMap;
 import java.util.Map.Entry;
 
 import com.almasb.fxgl.app.FXGL;
@@ -26,24 +27,32 @@ public class DisplayEquipment extends DisplayBasic {
 				PlayerComponent.position.getY() + RPGApp.TILE_SIZE), EntityType.Equipment);
 		return equipment;
 	}
-	public static void updateInventaire(String a, Item b, int i) {
+	public static void updateEquipment(String a, Item b) {
 		if (a.equals("ajout")) {
-			ajoutItem(b, i);
+			ajoutItemEquipment(b);
 		} else if (a.equals("remove")) {
-			removeItem(b, i);
+			removeItemEquipment(b);
 		}
 	}
 
-	public static void removeItem(Item a, int position) {
+	public static void removeItemEquipment(Item a) {
 
-		Node i = getEquipment().getView().getNodes().get(position + 1);
-		i.setVisible(false);
+		for(Node i : getEquipment().getView().getNodes()){
+			if(i.getAccessibleText()==a.getType()) {
+			i.setVisible(false);
+			break;
+		}}
+		
 	}
 
-	public static void ajoutItem(Item a, int i) {
-		getEquipment().getView().getNodes().get(i + 1).setVisible(true);
-		DisplayInventaire.itemViewInventaire(a,
-				((EntityView) ((Entity) getEquipment().getView().getNodes().get(i + 1).getUserData()).getView()),"equip");
+	public static void ajoutItemEquipment(Item a) {
+		for(Node i : getEquipment().getView().getNodes()){
+			if(i.getAccessibleText()==a.getType()) {
+			i.setVisible(true);
+			DisplayInventaire.itemViewInventaire(a,
+			((Entity)i.getUserData()).getView(),"desequip");
+			break;
+		}}
 	}
 	
 	
@@ -61,7 +70,9 @@ public class DisplayEquipment extends DisplayBasic {
 
 		int x = 0;
 		int y = 0;
-		for (Entry<String, Item> i : RPGApp.hero.getEquipement().entrySet()) {
+		HashMap<String, Item> i = RPGApp.hero.getEquipement();
+		String[] list={"Arme","Armure"};
+		for (String type : list) {
 
 			if (x >= 4) {
 				x = 0;
@@ -69,9 +80,10 @@ public class DisplayEquipment extends DisplayBasic {
 			}
 			Entity item = createRectangle(64, 64, new Point2D(64 * x, 64 * y));
 			item.getView().setUserData(item);
+			item.getView().setAccessibleText(type);
 
-			if (i != null) {
-				DisplayInventaire.itemViewInventaire(i.getValue(), item.getView(),"desequip");
+			if (i.get(type) != null) {		
+				DisplayInventaire.itemViewInventaire(i.get(type), item.getView(),"desequip");
 			}
 			equipmentView.addNode(item.getView());
 			x++;

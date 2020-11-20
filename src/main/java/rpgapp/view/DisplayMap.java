@@ -37,6 +37,7 @@ public class DisplayMap extends DisplayBasic {
 			FXGL.getApp().getGameScene().addGameView(abcd);
 		}
 		DisplayInventaire.createInventaire();
+		DisplayEquipment.createEquipment();
 		if (RPGApp.ListeMaps.get(map) != null) {
 			for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {
 				FXGL.getApp().getGameWorld().spawn("portal", i.getKey());

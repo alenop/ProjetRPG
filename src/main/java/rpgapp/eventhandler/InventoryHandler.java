@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.view.DisplayEquipment;
+import rpgapp.view.DisplayInventaire;
 
 
 public class InventoryHandler implements EventHandler<MouseEvent> {
@@ -37,9 +39,14 @@ public class InventoryHandler implements EventHandler<MouseEvent> {
 				
 				if(choix.equals("equip")) {
 					RPGApp.hero.equip(item);
+					DisplayInventaire.updateInventaire("remove", item,RPGApp.hero.getPositionItem(item));
 					RPGApp.hero.removeItemInventaire(item);
+					DisplayEquipment.updateEquipment("ajout",  item);
+					
 				}else if(choix.equals("desequip")) {
 					RPGApp.hero.desequip(item);
+					DisplayEquipment.updateEquipment("remove",  item);
+					DisplayInventaire.updateInventaire("ajout",item,RPGApp.hero.getPositionVoid());
 				}
 				
 				

@@ -44,6 +44,8 @@ public class DisplayCoffre extends DisplayBasic {
 			@Override
 			public void handle(ActionEvent ActionEvent) {
 				RPGApp.hero.equip(a.getContenu());
+				DisplayEquipment.updateEquipment("ajout",  a.getContenu());
+				//DisplayInventaire.updateInventaire("ajout", a.getContenu(),RPGApp.hero.getPositionVoid());
 				FXGL.getApp().getGameWorld().getEntitiesAt(c).get(0).setViewFromTexture("Coffre_Ouvert.png");
 				
 				a.setContenu(null);

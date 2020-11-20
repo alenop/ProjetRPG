@@ -102,13 +102,15 @@ public class RPGApp extends GameApplication {
 		getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
 
 		playerComponent = player.getComponent(PlayerComponent.class);
-
-		DisplayInventaire.createInventaire();
-		DisplayEquipment.createEquipment();
+		
 		hero.addItemInventaire(new Arme(40, "Hache", "Hache.png"));
 		hero.addItemInventaire(new Arme(40, "Epée", "Epee.png"));
 		hero.addItemInventaire(new Arme(40, "balai de ménagère", "Balai.png"));
 		hero.addItemInventaire(new Arme(40, "balai de ménagère", "Balai.png"));
+		DisplayInventaire.createInventaire();
+		hero.equip(new Arme(40, "Hache", "Hache.png"));
+		DisplayEquipment.createEquipment();
+		
 	}
 
 	@Override
@@ -181,18 +183,11 @@ public class RPGApp extends GameApplication {
 
 				}
 
-				if (DisplayEquipment.getEquipment().getView().isVisible()) {
-
-					
+				if (DisplayEquipment.getEquipment().getView().isVisible()) {				
 					DisplayEquipment.removeEquipment();
-					
-
 				}
-
 				else {
-
-					DisplayEquipment.afficheEquipment();
-					
+					DisplayEquipment.afficheEquipment();				
 				}
 			}
 		}, KeyCode.E);

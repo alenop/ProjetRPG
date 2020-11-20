@@ -1,12 +1,10 @@
 package rpgapp.data.character;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
 
 import com.almasb.fxgl.entity.view.EntityView;
 
 import rpgapp.system.Quest;
-import rpgapp.view.DisplayInventaire;
 import rpgapp.data.elementInteractifs.Item;
 
 public class Hero extends Character {
@@ -49,8 +47,17 @@ public class Hero extends Character {
 	}
 	public int getPositionItem(Item a) {
 		int j=0;
-		for (Entry<String, Item> i : getEquipement().entrySet()) {
-			if (i.getValue() == a) {
+		for (int i = 0; i < this.inventaire.length; i++) {
+			if (inventaire[i] == a) {
+				return j;
+			}
+			j++;
+		}return (Integer) null;
+	}
+	public int getPositionVoid() {
+		int j=0;
+		for (int i = 0; i < this.inventaire.length; i++) {
+			if (inventaire[i] == null) {
 				return j;
 			}
 			j++;
@@ -108,7 +115,6 @@ public class Hero extends Character {
 		for (int i = 0; i < this.inventaire.length; i++) {
 			if (inventaire[i] == null) {
 				inventaire[i] = a;
-				DisplayInventaire.updateInventaire("ajout", a, i);
 				break;
 			}
 		}
@@ -118,7 +124,6 @@ public class Hero extends Character {
 		for (int i = 0; i < this.inventaire.length; i++) {
 			if (inventaire[i] == a) {
 				inventaire[i] = null;
-				DisplayInventaire.updateInventaire("remove", a, i);
 				break;
 			}
 		}
