@@ -5,10 +5,12 @@ import java.util.Map.Entry;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.RenderLayer;
 import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.shape.Rectangle;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
@@ -39,7 +41,10 @@ public class DisplayEquipment extends DisplayBasic {
 
 		for(Node i : getEquipment().getView().getNodes()){
 			if(i.getAccessibleText()==a.getType()) {
-			i.setVisible(false);
+				EntityView v=(EntityView)i;
+				v.clearChildren();
+				Rectangle c = DisplayBasic.createBorder(64,64);
+				((Entity)i.getUserData()).setViewWithBBox(c);
 			break;
 		}}
 		
@@ -48,7 +53,7 @@ public class DisplayEquipment extends DisplayBasic {
 	public static void ajoutItemEquipment(Item a) {
 		for(Node i : getEquipment().getView().getNodes()){
 			if(i.getAccessibleText()==a.getType()) {
-			i.setVisible(true);
+			
 			DisplayInventaire.itemViewInventaire(a,
 			((Entity)i.getUserData()).getView(),"desequip");
 			break;

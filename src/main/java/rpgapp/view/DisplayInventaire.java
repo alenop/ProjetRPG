@@ -8,6 +8,7 @@ import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.shape.Rectangle;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
@@ -40,13 +41,18 @@ public class DisplayInventaire extends DisplayBasic {
 	public static void removeItem(Item a, int position) {
 
 		Node i = getInventory().getView().getNodes().get(position + 1);
-		i.setVisible(false);
+		EntityView v=(EntityView)i;
+		v.clearChildren();
+		Rectangle c = DisplayBasic.createBorder(64,64);
+		((Entity)i.getUserData()).setViewWithBBox(c);
+		
+		
 	}
 
 	public static void ajoutItem(Item a, int i) {
-		getInventory().getView().getNodes().get(i + 1).setVisible(true);
+		//getInventory().getView().getNodes().get(i+1).setVisible(true);
 		itemViewInventaire(a,
-				((EntityView) ((Entity) getInventory().getView().getNodes().get(i + 1).getUserData()).getView()),"equip");
+				((EntityView) ((Entity) getInventory().getView().getNodes().get(i+1).getUserData()).getView()),"equip");
 	}
 
 	public static void itemViewInventaire(Item i, EntityView a,String choix) {
@@ -54,6 +60,7 @@ public class DisplayInventaire extends DisplayBasic {
 		Entity itemViewPetit = Entities.builder()
 				.viewFromTextureWithBBox(i.getInventaireImage()).build();
 		Entity itemViewGrand = itemViewPetit.copy();
+		itemViewPetit.getView().setUserData(itemViewPetit);
 		itemViewGrand.setViewFromTexture(i.getImage());
 		a.setOnMouseClicked(new InventoryHandler(itemViewGrand,i,choix));
 		a.addNode(itemViewPetit.getView());
@@ -82,6 +89,7 @@ public class DisplayInventaire extends DisplayBasic {
 			}
 			Entity item = createRectangle(64, 64, new Point2D(64 * x, 64 * y));
 			item.getView().setUserData(item);
+		
 
 			if (i != null) {
 				itemViewInventaire(i, item.getView(),"equip");

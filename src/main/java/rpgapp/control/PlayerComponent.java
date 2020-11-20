@@ -84,6 +84,10 @@ public class PlayerComponent extends Component {
 					Entity i =Display.trouveEntity(new Point2D(position.getX()+RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE),EntityType.Inventaire);
 					i.translate(direction);
 				}
+				if (checkEntity(new Point2D(position.getX()-3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE),EntityType.Equipment)==false) {
+					Entity i =Display.trouveEntity(new Point2D(position.getX()-3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE),EntityType.Equipment);
+					i.translate(direction);
+				}
 				
 				
 				position.translate(direction);

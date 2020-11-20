@@ -43,6 +43,10 @@ public class DisplayCoffre extends DisplayBasic {
 		av[1].setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent ActionEvent) {
+				if (RPGApp.hero.getEquipement().get(a.getContenu().getType()) != null) {
+					DisplayInventaire.updateInventaire("ajout",RPGApp.hero.getEquipement().get(a.getContenu().getType()),RPGApp.hero.getPositionVoid());
+					DisplayEquipment.updateEquipment("remove",  RPGApp.hero.getEquipement().get(a.getContenu().getType()));
+				}
 				RPGApp.hero.equip(a.getContenu());
 				DisplayEquipment.updateEquipment("ajout",  a.getContenu());
 				//DisplayInventaire.updateInventaire("ajout", a.getContenu(),RPGApp.hero.getPositionVoid());
