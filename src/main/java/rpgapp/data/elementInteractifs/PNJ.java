@@ -26,13 +26,11 @@ public class PNJ {
 		return texteQueteOk;
 	}
 	
-	public PNJ(String name, int x, int y, String message) {
+	public PNJ(String name, String message) {
 		
 		this.name = name;
 
 		// on redonne la position du pnj maintenant que l'image est créée
-		this.posX = x;
-		this.posY = y;
 
 		this.texte = message;
 		this.texteQueteOk = "Tu as trouver les fleurs !";

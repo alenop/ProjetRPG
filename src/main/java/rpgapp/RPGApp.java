@@ -23,6 +23,7 @@ import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.data.map.ModeleMap;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
+import rpgapp.view.DisplayMap;
 import rpgapp.system.Quest;
 
 public class RPGApp extends GameApplication {
@@ -55,7 +56,7 @@ public class RPGApp extends GameApplication {
 		getGameWorld().addEntityFactory(new RPGFactory());
 
 		// Créer la map à partir du fichier Tiled
-		getGameWorld().setLevelFromMap(hero.getCurrentMap());
+		//getGameWorld().setLevelFromMap(hero.getCurrentMap());
 		// getGameWorld().addWorldListener(getPhysicsWorld());
 		// getPhysicsWorld().onEntityRemoved();
 
@@ -82,16 +83,16 @@ public class RPGApp extends GameApplication {
 		createPortal("mapMaison.json", new Point2D(576, 384), "map5.json");
 		createPortal("mapMaison.json", new Point2D(1024, 1280), "map5.json");
 		createMonstre("map5.json", new Monstre("souris", 20, 20, 100), new Point2D(128 + 64, 0));
-
-		getGameWorld().spawn("pnj", new Point2D(1024, 960));
-		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
-		PNJList.init();
-		PNJList.pnjList.put(new Point2D(1024, 960), pnj1);
+		createPNJ("mapMaison.json",new PNJ("pnj1", "Tue la souris"), new Point2D(1024,960));
+//		getGameWorld().spawn("pnj", new Point2D(1024, 960));
+//		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
+//		PNJList.init();
+//		PNJList.pnjList.put(new Point2D(1024, 960), pnj1);
 		// test pour quête monstre
 //		for (int i=0;i<11;i++) {
 //		createMonstre("map5.json",new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
 //		}
-
+		DisplayMap.chargeMap(hero.getCurrentMap(),"init");
 		// Créer le joueur
 		player = Entities.builder().at(ListeMaps.get(hero.getCurrentMap()).getPositionHero())
 				.viewFromTexture("HerosFace.png").with(new PlayerComponent()).type(EntityType.PLAYER)
@@ -197,6 +198,12 @@ public class RPGApp extends GameApplication {
 
 		if (ListeMaps.get(a).getMonsterList().get(c) == null) {
 			ListeMaps.get(a).getMonsterList().put(c, b);
+		}
+	}
+	public void createPNJ(String a, PNJ b, Point2D c) {
+		
+		if (ListeMaps.get(a).getPNJList().get(c) == null) {
+			ListeMaps.get(a).getPNJList().put(c, b);
 		}
 	}
 
