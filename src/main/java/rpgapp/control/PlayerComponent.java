@@ -2,10 +2,14 @@ package rpgapp.control;
 
 import java.util.Map.Entry;
 
+import javax.swing.JOptionPane;
+import javax.swing.text.View;
+
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.PositionComponent;
 import com.almasb.fxgl.entity.components.TypeComponent;
+import com.almasb.fxgl.util.Consumer;
 
 import elementsInteractifs.PNJ;
 import elementsInteractifs.PNJList;
@@ -16,6 +20,7 @@ import rpgapp.RPGApp;
 public class PlayerComponent extends Component {
 
 	private PositionComponent position;
+	private Runnable callback;
 
 	@Override
 	public void onUpdate(double tpf) {
@@ -41,12 +46,19 @@ public class PlayerComponent extends Component {
 			for (Entry<String, PNJ> pnj : PNJList.pnjList.entrySet()) {
 				PNJ p = pnj.getValue();
 				if (p.getPosX() == xPNJ && p.getPosY() == yPNJ) {
-
+					
+					
 					FXGL.getApp().getDisplay().showMessageBox(p.getTextitems());
-
+				
 				}
 			}
 		}
+	}
+				
+	
+	protected Object getApplicationContext() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void moveLeft() {

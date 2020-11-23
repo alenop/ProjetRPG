@@ -41,9 +41,9 @@ public class PNJ {
 		this.posY = y;
 
 		this.texte = message;
-		this.texteQueteOk = message;
-		this.texteGagne = message;
-		this.textePerd = message;
+		this.texteQueteOk = "quete";
+		this.texteGagne = "bravo! super";
+		this.textePerd = "perdu! rejoue";
 	}
 
 	public int getPosX() {

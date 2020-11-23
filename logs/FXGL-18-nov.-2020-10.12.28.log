@@ -1,0 +1,229 @@
+10:12:08.574 [JavaFX Application Thread] DEBUG GameApplication      - Logger initialized
+10:12:08.640 [JavaFX Application Thread] DEBUG GameApplication      - Logging settings
+Title: Basic Game App
+Version: 0.1
+Width: 640
+Height: 640
+Fullscreen: false
+Intro: false
+Menus: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.scene.SceneFactory
+Dialog Factory: class com.almasb.fxgl.ui.FXGLDialogFactory
+UI Factory: class com.almasb.fxgl.ui.FXGLUIFactory
+Notification Service: class com.almasb.fxgl.gameplay.notification.XboxNotificationView
+Exception Handler: class com.almasb.fxgl.app.FXGLExceptionHandler
+10:12:08.641 [JavaFX Application Thread] DEBUG GameApplication      - Starting FXGL
+10:12:08.668 [JavaFX Application Thread] INFO  FXGL                 - FXGL-0.5.4 on DESKTOP
+10:12:08.669 [JavaFX Application Thread] INFO  FXGL                 - Source code and latest versions at: https://github.com/AlmasB/FXGL
+10:12:08.670 [JavaFX Application Thread] INFO  FXGL                 -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+10:12:08.671 [JavaFX Application Thread] DEBUG FXGL                 - FXGL started
+10:12:08.672 [JavaFX Application Thread] DEBUG FXGL                 - Initializing FXGL
+10:12:08.829 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:12:09.245 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/VarelaRound-Regular.ttf
+10:12:12.408 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+10:12:12.497 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 640.0 x 640.0
+10:12:12.497 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    640.0 x 640.0
+10:12:12.498 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+10:12:12.551 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+10:12:12.566 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/fxgl_icon.png
+10:12:12.591 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+10:12:13.242 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (16.0, 39.0)
+10:12:13.243 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 640.0 x 640.0
+10:12:13.245 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+10:12:13.246 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 640.0 x 640.0
+10:12:13.247 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 656.0 x 679.0
+10:12:13.696 [ForkJoinPool.commonPool-worker-1] DEBUG FS                   - Loaded DesktopFSService
+10:12:13.721 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL                 - Loading FXGL system data
+10:12:13.872 [ForkJoinPool.commonPool-worker-1] DEBUG DesktopFSService     - Reading from: system\fxgl.bundle
+10:12:13.998 [ForkJoinPool.commonPool-worker-1] DEBUG Bundle               - Logging bundle: FXGL
+10:12:13.999 [ForkJoinPool.commonPool-worker-1] DEBUG Bundle               - FXGL.offline.timer.version.check=2020-11-17T16:18:24.765
+10:12:14.004 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL                 - Initializing state machine and application states
+10:12:14.007 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:12:14.036 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:12:14.054 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+10:12:14.063 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+10:12:14.068 [ForkJoinPool.commonPool-worker-1] DEBUG GameScene            - Game scene initialized: 640x640
+10:12:14.079 [ForkJoinPool.commonPool-worker-1] DEBUG GameWorld            - Game world initialized
+10:12:14.244 [ForkJoinPool.commonPool-worker-1] DEBUG PhysicsWorld         - Physics world initialized: appHeight=640, physics.ppm=50,0
+10:12:14.324 [ForkJoinPool.commonPool-worker-1] DEBUG Input                - Registered new binding: Pause - Esc
+10:12:14.472 [JavaFX Application Thread] DEBUG FXGL                 - Running preInit()
+10:12:14.475 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+10:12:14.479 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Options - CTRL+0
+10:12:14.479 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+10:12:14.480 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+10:12:14.481 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Right - D
+10:12:14.481 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Up - Z
+10:12:14.482 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Down - S
+10:12:14.483 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Left - Q
+10:12:14.487 [JavaFX Application Thread] INFO  FXGL                 - FXGL initialization took: 5,816 sec
+10:12:14.488 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+10:12:14.494 [JavaFX Application Thread] DEBUG StartupState         - STARTUP
+10:12:14.494 [JavaFX Application Thread] DEBUG GameApplication      - Starting new game
+10:12:14.495 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+10:12:14.497 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+10:12:14.506 [JavaFX Application Thread] DEBUG AppStateMachine      - StartupState -> LoadingState
+10:12:14.517 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Clearing previous game
+10:12:14.517 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing game world
+10:12:14.518 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Clearing physics world
+10:12:14.520 [FXGL Background Thread 1 ] DEBUG GameScene            - Clearing game scene
+10:12:14.534 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Game
+10:12:14.632 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/json/map5.json
+10:12:15.379 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing removable entities
+10:12:15.379 [FXGL Background Thread 1 ] DEBUG GameWorld            - Setting level from map
+10:12:15.415 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/tiles_12_grand.png
+10:12:15.536 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.536 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.537 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.537 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.537 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.537 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.538 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.538 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.539 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.539 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.539 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.539 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.539 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.540 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.540 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.541 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.541 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.541 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.541 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.541 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.542 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.542 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.543 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.543 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.543 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.543 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.544 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.544 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.544 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.544 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.545 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.546 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.546 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.546 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.547 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.547 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.547 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.547 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.547 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.547 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.548 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.548 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.548 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.548 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.548 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.548 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.549 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.549 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.549 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.549 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.549 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.550 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.550 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.550 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.551 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.551 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.552 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.552 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.553 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.553 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.553 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.554 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.554 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.554 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.554 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.554 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.555 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.556 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.562 [FXGL Background Thread 1 ] DEBUG GameScene            - Creating render group for layer: BACKGROUND(1000)
+10:12:15.566 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.566 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.567 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.567 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.567 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.567 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.567 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.568 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.569 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.569 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.569 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.570 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.570 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.570 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.571 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.571 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.571 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.571 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.571 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.572 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.572 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.572 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.572 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.572 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.572 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.574 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.574 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.575 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.575 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.575 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.575 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.577 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.577 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.577 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.577 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.581 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.583 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.583 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/tiles_12_grand.png
+10:12:15.590 [FXGL Background Thread 1 ] DEBUG GameScene            - Creating render group for layer: DEFAULT(100000)
+10:12:15.598 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/mouse_fin.png
+10:12:15.614 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/pnj.png
+10:12:15.623 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/image.png
+10:12:15.631 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Physics
+10:12:15.632 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing UI
+10:12:15.632 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initialization Complete
+10:12:15.633 [FXGL Background Thread 1 ] INFO  InitAppTask          - Game initialization took: 1,116 sec
+10:12:15.648 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+10:12:15.648 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+10:12:15.658 [JavaFX Application Thread] DEBUG AppStateMachine      - LoadingState -> PlayState
+10:12:28.931 [JavaFX Application Thread] DEBUG FXGL                 - Exiting FXGL
+10:12:28.932 [JavaFX Application Thread] DEBUG FXGL                 - Shutting down background threads
+10:12:28.932 [JavaFX Application Thread] DEBUG FXGL                 - Saving FXGL system data
+10:12:28.949 [JavaFX Application Thread] DEBUG DesktopFSService     - Writing to: system\fxgl.bundle
+10:12:28.954 [JavaFX Application Thread] DEBUG FXGL                 - Closing logger and exiting JavaFX

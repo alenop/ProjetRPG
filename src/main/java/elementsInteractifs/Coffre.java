@@ -32,12 +32,12 @@ public class Coffre {
 		System.out.println("-- coffre " + this);
 	}
 	
-	public static void main(String[] args) {
-		Cle cle1 = new Cle();
-		Coffre c1 = new Coffre(cle1);
-		Coffre c2 = new Coffre(3);
-		c2.detruire1();
-		c1.detruire1();
-		cle1.detruire();
-	}
+//	public static void main(String[] args) {
+//		Cle cle1 = new Cle();
+//		Coffre c1 = new Coffre(cle1);
+//		Coffre c2 = new Coffre(3);
+//		c2.detruire1();
+//		c1.detruire1();
+//		cle1.detruire();
+//	}
 }
