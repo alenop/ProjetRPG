@@ -69,20 +69,20 @@ public class RPGApp extends GameApplication {
 		//hero.equip(a);
 
 		initMap("mapMaison.json", new Point2D(1472, 448));
-		initMap("map5.json", new Point2D(0, 0));
+		initMap("mapCave.json", new Point2D(1280, 896));
 
 		System.out.println(ListeMaps.get(hero.getCurrentMap()));
 		// quest = new Quest("kill souris",50000,Monstres.Souris,1);
 		// hero.setCurrentquest(quest);
-		createPortal("map5.json", new Point2D(0, 128), "mapMaison.json");
-		createPortal("map5.json", new Point2D(0, 256), "map5.json");
-		createCoffre("map5.json", new Point2D(192, 256), new Coffre(new Arme(40, "Hache", "Hache.png")));
-		createCoffre("map5.json", new Point2D(256, 256), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
-		createCoffre("map5.json", new Point2D(320, 256), new Coffre(new Arme(30, "Epée", "Epee.png")));
-		createPortal("mapMaison.json", new Point2D(960, 1280), "map5.json");
-		createPortal("mapMaison.json", new Point2D(576, 384), "map5.json");
-		createPortal("mapMaison.json", new Point2D(1024, 1280), "map5.json");
-		createMonstre("map5.json", new Monstre("souris", 20, 20, 100), new Point2D(128 + 64, 0));
+		createPortal("mapCave.json", new Point2D(1280, 960), "mapMaison.json");
+		createPortal("mapCave.json", new Point2D(1344, 448), "mapCave.json");
+		createCoffre("mapMaison.json", new Point2D(768, 768), new Coffre(new Arme(40, "Hache", "Hache.png")));
+		createCoffre("mapCave.json", new Point2D(1664, 448), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
+		createCoffre("mapCave.json", new Point2D(320, 256), new Coffre(new Arme(30, "Epée", "Epee.png")));
+		createPortal("mapMaison.json", new Point2D(960, 1280), "mapCave.json");
+		createPortal("mapMaison.json", new Point2D(576, 384), "mapCave.json");
+		createPortal("mapMaison.json", new Point2D(1024, 1280), "mapCave.json");
+		createMonstre("mapCave.json", new Monstre("souris", 20, 20, 100), new Point2D(320, 704));
 		createPNJ("mapMaison.json",new PNJ("pnj1", "Tue la souris"), new Point2D(1024,960));
 //		getGameWorld().spawn("pnj", new Point2D(1024, 960));
 //		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
@@ -90,7 +90,7 @@ public class RPGApp extends GameApplication {
 //		PNJList.pnjList.put(new Point2D(1024, 960), pnj1);
 		// test pour quête monstre
 //		for (int i=0;i<11;i++) {
-//		createMonstre("map5.json",new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
+//		createMonstre("mapCave.json",new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
 //		}
 		DisplayMap.chargeMap(hero.getCurrentMap(),"init");
 		// Créer le joueur
@@ -122,32 +122,48 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Right") {
 			@Override
 			protected void onAction() {
-				playerComponent.moveRight();
 				player.setViewFromTexture("HerosDroiteMV.gif");
+				playerComponent.moveRight();
+			}
+			
+			protected void onActionEnd() {
+				player.setViewFromTexture("HerosDroite.png");
 			}
 		}, KeyCode.D);
 
 		input.addAction(new UserAction("Move Left") {
 			@Override
 			protected void onAction() {
-				playerComponent.moveLeft();
 				player.setViewFromTexture("HerosGaucheMV.gif");
+				playerComponent.moveLeft();
+			}
+			
+			protected void onActionEnd() {
+				player.setViewFromTexture("HerosGauche.png");
 			}
 		}, KeyCode.Q);
 
 		input.addAction(new UserAction("Move Up") {
 			@Override
 			protected void onAction() {
-				playerComponent.moveUp();
 				player.setViewFromTexture("HerosDosMV.gif");
+				playerComponent.moveUp();
+			}
+			
+			protected void onActionEnd() {
+				player.setViewFromTexture("HerosDos.png");
 			}
 		}, KeyCode.Z);
 
 		input.addAction(new UserAction("Move Down") {
 			@Override
 			protected void onAction() {
-				playerComponent.moveDown();
 				player.setViewFromTexture("HerosMV.gif");
+				playerComponent.moveDown();
+			}
+			
+			protected void onActionEnd() {
+				player.setViewFromTexture("HerosFace.png");
 			}
 		}, KeyCode.S);
 
