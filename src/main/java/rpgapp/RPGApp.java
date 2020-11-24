@@ -55,43 +55,25 @@ public class RPGApp extends GameApplication {
 		// AJoute la Factory
 		getGameWorld().addEntityFactory(new RPGFactory());
 
-		// Créer la map à partir du fichier Tiled
-		//getGameWorld().setLevelFromMap(hero.getCurrentMap());
-		// getGameWorld().addWorldListener(getPhysicsWorld());
-		// getPhysicsWorld().onEntityRemoved();
-
-		// paramètres de jeu pour tester
-		// Item b = new Arme(40, "Hache");
-		// hero.getInventaire()[0] = b;
-		// hero.getInventaire()[1] = new Armure(0, "Armure");
-		//Item a = new Armure(0, "Armure", "yo");
-		// hero.equip(b);
-		//hero.equip(a);
-
+		initMap("map5.json", new Point2D(0,0));
 		initMap("mapMaison.json", new Point2D(1472, 448));
 		initMap("mapCave.json", new Point2D(1280, 896));
-
-		System.out.println(ListeMaps.get(hero.getCurrentMap()));
-		// quest = new Quest("kill souris",50000,Monstres.Souris,1);
-		// hero.setCurrentquest(quest);
 		createPortal("mapCave.json", new Point2D(1280, 960), "mapMaison.json");
-		createPortal("mapCave.json", new Point2D(1344, 448), "mapCave.json");
+		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json");
 		createCoffre("mapMaison.json", new Point2D(768, 768), new Coffre(new Arme(40, "Hache", "Hache.png")));
-		createCoffre("mapCave.json", new Point2D(1664, 448), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
-		createCoffre("mapCave.json", new Point2D(320, 256), new Coffre(new Arme(30, "Epée", "Epee.png")));
-		createPortal("mapMaison.json", new Point2D(960, 1280), "mapCave.json");
+		createCoffre("mapMaison.json", new Point2D(768+64, 768), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
+		createCoffre("mapMaison.json", new Point2D(768+128, 768), new Coffre(new Arme(30, "Epée", "Epee.png")));
+		createPortal("mapMaison.json", new Point2D(960, 1280), "map5.json");
 		createPortal("mapMaison.json", new Point2D(576, 384), "mapCave.json");
-		createPortal("mapMaison.json", new Point2D(1024, 1280), "mapCave.json");
+		createPortal("mapMaison.json", new Point2D(1024, 1280), "map5.json");
 		createMonstre("mapCave.json", new Monstre("souris", 20, 20, 100), new Point2D(320, 704));
 		createPNJ("mapMaison.json",new PNJ("pnj1", "Tue la souris"), new Point2D(1024,960));
-//		getGameWorld().spawn("pnj", new Point2D(1024, 960));
+	    getGameWorld().spawn("pnj", new Point2D(1024, 960));
 //		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
 //		PNJList.init();
 //		PNJList.pnjList.put(new Point2D(1024, 960), pnj1);
-		// test pour quête monstre
-//		for (int i=0;i<11;i++) {
-//		createMonstre("mapCave.json",new Monstre("souris",10,20,100),new Point2D(128+i*64,0));
-//		}
+
+
 		DisplayMap.chargeMap(hero.getCurrentMap(),"init");
 		// Créer le joueur
 		player = Entities.builder().at(ListeMaps.get(hero.getCurrentMap()).getPositionHero())
@@ -122,7 +104,7 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Right") {
 			@Override
 			protected void onAction() {
-				player.setViewFromTexture("HerosDroiteMV.gif");
+				
 				playerComponent.moveRight();
 			}
 			
@@ -134,7 +116,7 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Left") {
 			@Override
 			protected void onAction() {
-				player.setViewFromTexture("HerosGaucheMV.gif");
+				//player.setViewFromTexture("HerosGaucheMV.gif");
 				playerComponent.moveLeft();
 			}
 			
@@ -146,7 +128,7 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Up") {
 			@Override
 			protected void onAction() {
-				player.setViewFromTexture("HerosDosMV.gif");
+				//player.setViewFromTexture("HerosDosMV.gif");
 				playerComponent.moveUp();
 			}
 			
@@ -158,7 +140,7 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Down") {
 			@Override
 			protected void onAction() {
-				player.setViewFromTexture("HerosMV.gif");
+				//player.setViewFromTexture("HerosMV.gif");
 				playerComponent.moveDown();
 			}
 			
@@ -173,20 +155,13 @@ public class RPGApp extends GameApplication {
 				try {
 					Thread.sleep(200);
 				} catch (Exception e) {
-
+					
 				}
-
 				if (DisplayInventaire.getInventory().getView().isVisible()) {
-
 					DisplayInventaire.removeInventaire();
-					
-
 				}
-
 				else {
-
-					DisplayInventaire.afficheInventaire();
-					
+					DisplayInventaire.afficheInventaire();					
 				}
 			}
 		}, KeyCode.I);
@@ -197,9 +172,7 @@ public class RPGApp extends GameApplication {
 				try {
 					Thread.sleep(200);
 				} catch (Exception e) {
-
 				}
-
 				if (DisplayEquipment.getEquipment().getView().isVisible()) {				
 					DisplayEquipment.removeEquipment();
 				}

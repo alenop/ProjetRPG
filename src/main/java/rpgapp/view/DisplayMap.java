@@ -16,11 +16,7 @@ import rpgapp.data.elementInteractifs.PNJ;
 
 public class DisplayMap extends DisplayBasic {
 	public static void changeMap(String a, Point2D b) {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		
 
 		String map = RPGApp.ListeMaps.get(a).getPortalList().get(b);
 		chargeMap(map,"progress");

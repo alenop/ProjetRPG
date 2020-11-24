@@ -46,7 +46,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		Label label = new Label("yo");
 		label.setTextFill(Color.rgb(254, 254, 254));
 
-		// Text text2 = FXGL.getUIFactory().newText(text, Color.WHITE, 10.0);
+		//Text text2 = FXGL.getUIFactory().newText(text, Color.WHITE, 10.0);
 		Entity text = CreateEntityWithNode(label, 192, 0);
 		text.getView().setUserData(text);
 		text.getView().setAccessibleText("text");

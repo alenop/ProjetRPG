@@ -1,7 +1,7 @@
 package rpgapp.data.elementInteractifs;
 
 public class PNJ {
-
+	
 	private String name;
 	private int posX;
 	private int posY;

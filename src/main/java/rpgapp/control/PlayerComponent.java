@@ -34,21 +34,21 @@ public class PlayerComponent extends Component {
 	// Les methodes move ne fonctionnent que si "CanMove" est vérifié
 
 	public void moveRight() {
-		CheckAction(new Point2D(RPGApp.TILE_SIZE, 0));
+		CheckAction(new Point2D(RPGApp.TILE_SIZE, 0),"Droite");
 	}
 
 	public void moveLeft() {
-		CheckAction(new Point2D(-RPGApp.TILE_SIZE, 0));
+		CheckAction(new Point2D(-RPGApp.TILE_SIZE, 0),"Gauche");
 
 	}
 
 	public void moveDown() {
-		CheckAction(new Point2D(0, RPGApp.TILE_SIZE));
+		CheckAction(new Point2D(0, RPGApp.TILE_SIZE),"Face");
 
 	}
 
 	public void moveUp() {
-		CheckAction(new Point2D(0, -RPGApp.TILE_SIZE));
+		CheckAction(new Point2D(0, -RPGApp.TILE_SIZE),"Dos");
 	}
 
 	private boolean checkEntity(Point2D direction, EntityType a) {
@@ -69,7 +69,7 @@ public class PlayerComponent extends Component {
 
 	}
 
-	private void CheckAction(Point2D direction) {
+	private void CheckAction(Point2D direction, String angle) {
 
 		Point2D newPosition = position.getValue().add(direction);
 		System.out.println(newPosition);
@@ -77,6 +77,9 @@ public class PlayerComponent extends Component {
 		if (RPGApp.notif!=null) {
 			FXGL.getApp().getGameWorld().removeEntity(RPGApp.notif);
 			}
+		if (checkEntity(newPosition, EntityType.BLOC)==false){
+			position.getEntity().setViewFromTexture("Heros"+angle+".png");
+		}
 		if (checkEntity(newPosition, EntityType.BLOC) && checkEntity(newPosition, EntityType.Monstre)
 				&& checkEntity(newPosition, EntityType.PNJ) && checkEntity(newPosition, EntityType.Coffre)) {
 			try {
@@ -91,6 +94,7 @@ public class PlayerComponent extends Component {
 				
 				
 				position.translate(direction);
+				position.getEntity().setViewFromTexture("Heros"+angle+"MV.gif");
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -116,24 +120,7 @@ public class PlayerComponent extends Component {
 			
 			
 			DisplayPNJ.init(newPosition);
-			PNJ p =PNJList.pnjList.get(newPosition);
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					System.out.println(" Bonjour je suis " + p.getName());
-					System.out.println(p.getTexte());
-					System.out.println(" quete " + p.getName());
-					System.out.println(p.getTexteQueteOk());
-					System.out.println(" gain " + p.getName());
-					System.out.println(p.getTexteGagne());
-					System.out.println(" perdu " + p.getName());
-					System.out.println(p.getTextePerd());
-					
-					
-				}
+		}
 		else if (checkEntity(newPosition, EntityType.Coffre) == false) {
 			
 			DisplayCoffre.trouveCoffre(newPosition);
