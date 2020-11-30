@@ -22,6 +22,7 @@ import rpgapp.data.character.Character;
 
 import rpgapp.data.character.Monstre;
 import rpgapp.eventhandler.CombatEventHandler;
+import rpgapp.eventhandler.GameOverHandler;
 
 
 public abstract class DisplayCombat extends DisplayBasic {
@@ -33,6 +34,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		monstreview.setUserData(monstre);
 		Entity hero = CreateEntityWithPicture("HerosFace.png", 32, 64);
 		EntityView heroview = hero.getView();
+		heroview.setUserData(hero);
 		heroview.setAccessibleText("hero");
 
 		// Display.mode_combat2(monstreview,a,b,1,heroview);
@@ -136,25 +138,36 @@ public abstract class DisplayCombat extends DisplayBasic {
 		if (nb_tour == 0) {
 			text = monstre.getNom() + " est mort !\nBravo tu as gagné " + monstre.getGive_experience()
 					+ " points d'expérience";
-		} else {
-			av = new Button[3];
-			av[0] = new Button("attaque");
-			av[1] = new Button("défense");
-			av[2] = new Button("fuir");
+		} 
+		if(nb_tour == -1) {
+			text="Tu est mort veux tu recommencer ?";
 		}
 		for (Node i : viewcombat.getView().getNodes()) {
 			if (i.getAccessibleText() != null) {
 				if (i.getAccessibleText().equals("text")) {
 					((Label) ((Entity) i.getUserData()).getView().getNodes().get(0)).setText(text);
-				} else if (i.getAccessibleText().equals("monstre")) {
-					if (nb_tour == 0) {
+				} else if (i.getAccessibleText().equals("monstre")&& nb_tour==0) {			
 						((Entity) i.getUserData()).setViewFromTexture("RatMort.png");
+			
+				}else if (i.getAccessibleText().equals("hero")) {	
+					if (nb_tour==-1) {
+					((Entity) i.getUserData()).setViewFromTexture("GameOver.jpg");
+					}else if(nb_tour==1) {
+						((Entity) i.getUserData()).setViewFromTexture("HerosFace.png");
 					}
-				} else if (nb_tour == 0) {
+				}else if (nb_tour == 0) {
 					i.setVisible(false);
 				}
 				if (i.getAccessibleText().equals("attaque")) {
-					if (nb_tour == 0) {
+					if (nb_tour==1) {
+						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get()).setText("attaque");
+					}
+					if(nb_tour==-1) {
+						Button retry=((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get());
+						retry.setText("Retry");
+						retry.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, c,"retry"));
+					}
+					else if (nb_tour == 0) {
 						i.setVisible(false);
 					} else {
 						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get())
@@ -164,7 +177,15 @@ public abstract class DisplayCombat extends DisplayBasic {
 				}
 
 				else if (i.getAccessibleText().equals("défense")) {
-					if (nb_tour == 0) {
+					if (nb_tour==1) {
+						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get()).setText("défense");
+					}
+					if (nb_tour==-1) {
+						Button quit=((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get());
+						quit.setText("quit");
+						quit.setOnAction(new GameOverHandler());
+					}
+					else if (nb_tour == 0) {
 						i.setVisible(false);
 					} else {
 						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get())
@@ -174,7 +195,13 @@ public abstract class DisplayCombat extends DisplayBasic {
 				}
 
 				else if (i.getAccessibleText().equals("fuir")) {
-					if (nb_tour == 0) {
+					if (nb_tour==1) {
+						i.setVisible(true);
+					}
+					if (nb_tour==-1) {
+						i.setVisible(false);
+					}
+					else if (nb_tour == 0) {
 						i.setVisible(true);
 						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get()).setText("partir");
 						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get())

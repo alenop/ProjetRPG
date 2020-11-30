@@ -1,53 +1,66 @@
 package rpgapp.data.elementInteractifs;
 
+import java.util.HashMap;
+
+import rpgapp.system.Quest;
+
 public class PNJ {
 	
 	private String name;
-	private int posX;
-	private int posY;
 	private String texte;
-	private String texteQueteOk;
-	private String texteGagne;
-	private String textePerd;
+	private String image;
+	private Quest quest;
+	private String giveQuest="null";
+	private HashMap<String,String[]> conversation;
+	private HashMap<String,HashMap<String,String[]>> traceConversation;
+	
 
 	public String getTexte() {
 		return texte;
 	}
-	
-	public String getTexteGagne() {
-		return texteGagne;
+	public PNJ(String name, String message, String image,HashMap<String,HashMap<String,String[]>> conversation, Quest Quest,String giveQuest) {
+		this.traceConversation=conversation;
+		this.name = name;
+		this.texte = message;
+		this.image = image;
+		setQuest(Quest,giveQuest);
 	}
-	
-	public String getTextePerd() {
-		return textePerd;
-	}
-	
-	public String getTexteQueteOk() {
-		return texteQueteOk;
-	}
-	
-	public PNJ(String name, String message) {
+	public PNJ(String name, String message, String image) {
 		
 		this.name = name;
-
-		// on redonne la position du pnj maintenant que l'image est créée
-
 		this.texte = message;
-		this.texteQueteOk = "Tu as trouver les fleurs !";
-		this.texteGagne = "Bravo ! Super classe !";
-		this.textePerd = "Dommage... Rejoue !";
+		this.image = image;
+		this.conversation=new HashMap<String,String[]>();
+		this.traceConversation=new HashMap<String,HashMap<String,String[]>>();
+		String[] a = new String[1];
+		a[0]="OK";
+		this.conversation.put("answers",a);
+		String[] b = new String[1];
+		b[0]=texte;
+		this.conversation.put("message",b);
+		this.traceConversation.put("begin", conversation);
 	}
-
-	public int getPosX() {
-		return posX;
+	public HashMap<String,HashMap<String,String[]>> getTraceConversation() {
+		return this.traceConversation;
 	}
-
-	public int getPosY() {
-		return posY;
+	public void setTraceConversation(HashMap<String,HashMap<String,String[]>> a) {
+		this.traceConversation=a;
 	}
-
 	public String getName() {
 		return name;
+	}
+	public Quest getQuest() {
+		return quest;
+	}
+	public void setQuest(Quest Quest,String givequest) {
+		quest=Quest;
+		giveQuest=givequest;
+	}
+	public String getgiveQuest() {
+		return giveQuest;
+	}
+	public String getImage() {
+		return image;
 	}
 		
 }

@@ -68,21 +68,15 @@ public abstract class DisplayBasic {
 
 	    
 	        Entity notif =createRectangle(BG_WIDTH, BG_HEIGHT,new Point2D(PlayerComponent.position.getX()-RPGApp.TILE_SIZE*3,PlayerComponent.position.getY()-RPGApp.TILE_SIZE*3));
-	        Label Label = new Label(a);
-	        Label.setTextFill(Color.rgb(254, 254, 254, 0.8));
 	        Text text = FXGL.getUIFactory().newText(a, Color.WHITE, 30.0);
 	        
-	        Label.setStyle("fx-font-size: 200;");
-	        
-
-	       
-	        Entity inventaire2 = Entities.builder()
+	        Entity contour = Entities.builder()
                     .at(16,32)
                     .build();
-	        inventaire2.setViewWithBBox(text);
-	        EntityView abd =inventaire2.getView();
-			EntityView inventaireView = notif.getView();
-			inventaireView.addNode(abd);
+	        contour.setViewWithBBox(text);
+	        EntityView abd =contour.getView();
+			EntityView notifView = notif.getView();
+			notifView.addNode(abd);
 			return notif;
 			
 			

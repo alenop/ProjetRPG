@@ -39,11 +39,8 @@ public abstract class Systems {
 							Combat_attaque(a, b);
 							a.setAtk(g);
 							break;
-						}else {
-							Combat_attaque(a,b);
-							break;
-						}
-					}
+						}		
+					}Combat_attaque(a,b);
 				}else {
 					Combat_attaque(a,b);
 				}
@@ -62,8 +59,8 @@ public abstract class Systems {
 			a.setDef(c);
 		}
 		
-
-		else if (b.getEtat() == Etat.mort) {
+		
+		if (b.getEtat() == Etat.mort) {		
 			RPGApp.hero.gainExp(b.getGive_experience());
 			if (RPGApp.hero.getCurrentquest()!=null) {
 			if (RPGApp.hero.getCurrentquest().getTypeMonstre() == b.getTypeMonstre()) {

@@ -72,29 +72,34 @@ public class DisplayEquipment extends DisplayBasic {
 
 		equipment.setType(EntityType.Equipment);
 		EntityView equipmentView = equipment.getView();
+		Entity fond=CreateEntityWithPicture("EquipmentFond.jpg", 0, 0);
+		equipmentView.addNode(fond.getView());
 
 		int x = 0;
 		int y = 0;
 		HashMap<String, Item> i = RPGApp.hero.getEquipement();
-		String[] list={"Arme","Armure"};
-		for (String type : list) {
+		//String[] list={"Arme","Armure"};
+		HashMap<String,Point2D> list =new HashMap<String,Point2D>();
+		list.put("Arme", new Point2D(2*64+32+16,64+32+16));
+		list.put("Armure", new Point2D(64+32,64));
+		for (Entry<String, Point2D> type : list.entrySet()) {
 
 			if (x >= 4) {
 				x = 0;
 				y = y + 1;
 			}
-			Entity item = createRectangle(64, 64, new Point2D(64 * x, 64 * y));
+			Entity item = createRectangle(64, 64, type.getValue());
 			item.getView().setUserData(item);
-			item.getView().setAccessibleText(type);
+			item.getView().setAccessibleText(type.getKey());
 
-			if (i.get(type) != null) {		
-				DisplayInventaire.itemViewInventaire(i.get(type), item.getView(),"desequip");
+			if (i.get(type.getKey()) != null) {		
+				DisplayInventaire.itemViewInventaire(i.get(type.getKey()), item.getView(),"desequip");
 			}
 			equipmentView.addNode(item.getView());
 			x++;
 
 		}
-
+		
 		equipment.getView().setVisible(false);
 		FXGL.getApp().getGameWorld().addEntity(equipment);
 

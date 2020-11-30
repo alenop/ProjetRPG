@@ -17,6 +17,7 @@ import rpgapp.data.character.Monstre;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.view.Display;
+import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayCoffre;
 import rpgapp.view.DisplayCombat;
 import rpgapp.view.DisplayMap;
@@ -76,9 +77,10 @@ public class PlayerComponent extends Component {
 		System.out.println(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));
 		if (RPGApp.notif!=null) {
 			FXGL.getApp().getGameWorld().removeEntity(RPGApp.notif);
+			RPGApp.notif=null;
 			}
 		if (checkEntity(newPosition, EntityType.BLOC)==false){
-			position.getEntity().setViewFromTexture("Heros"+angle+".png");
+			RPGApp.player.setViewFromTexture("Heros"+angle+".png");
 		}
 		if (checkEntity(newPosition, EntityType.BLOC) && checkEntity(newPosition, EntityType.Monstre)
 				&& checkEntity(newPosition, EntityType.PNJ) && checkEntity(newPosition, EntityType.Coffre)) {
@@ -94,7 +96,7 @@ public class PlayerComponent extends Component {
 				
 				
 				position.translate(direction);
-				position.getEntity().setViewFromTexture("Heros"+angle+"MV.gif");
+				RPGApp.player.setViewFromTexture("Heros"+angle+"MV.gif");
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -119,7 +121,7 @@ public class PlayerComponent extends Component {
 		else if (checkEntity(newPosition, EntityType.PNJ) == false) {
 			
 			
-			DisplayPNJ.init(newPosition);
+			DisplayPNJ.init(RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getPNJList().get(newPosition));
 		}
 		else if (checkEntity(newPosition, EntityType.Coffre) == false) {
 			

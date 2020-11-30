@@ -31,11 +31,6 @@ public class Quest {
 			return false;
 		}}
 	
-	public void verif_Quest() {
-//		FOR (CONDITIONS I : CONDITIONS) {
-//			//I.VERIF_CONDITION(A, B)
-//		}
-	}
 	public int getReward() {
 		return reward;
 	}

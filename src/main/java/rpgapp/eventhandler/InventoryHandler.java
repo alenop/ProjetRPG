@@ -38,6 +38,7 @@ public class InventoryHandler implements EventHandler<MouseEvent> {
 			public void handle(ActionEvent ActionEvent) {
 				
 				if(choix.equals("equip")) {
+					
 					if (RPGApp.hero.getEquipement().get(item.getType()) != null) {
 						DisplayInventaire.updateInventaire("ajout",RPGApp.hero.getEquipement().get(item.getType()),RPGApp.hero.getPositionVoid());
 						DisplayEquipment.updateEquipment("remove",  RPGApp.hero.getEquipement().get(item.getType()));

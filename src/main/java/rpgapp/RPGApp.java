@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
+import rpgapp.data.character.Monstres;
 import rpgapp.data.elementInteractifs.Arme;
 import rpgapp.data.elementInteractifs.Armure;
 import rpgapp.data.elementInteractifs.Coffre;
@@ -31,7 +32,7 @@ public class RPGApp extends GameApplication {
 	public static final int TILE_SIZE = 64;
 	public static Hero hero = new Hero("ian");
 	public static Quest quest;
-	private Entity player;
+	public static Entity player;
 	private PlayerComponent playerComponent;
 	public static HashMap<String, ModeleMap> ListeMaps = new HashMap<String, ModeleMap>();
 	public static Entity notif = null;
@@ -58,23 +59,40 @@ public class RPGApp extends GameApplication {
 		initMap("map5.json", new Point2D(0,0));
 		initMap("mapMaison.json", new Point2D(1472, 448));
 		initMap("mapCave.json", new Point2D(1280, 896));
-		createPortal("mapCave.json", new Point2D(1280, 960), "mapMaison.json");
-		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json");
+		createPortal("mapCave.json", new Point2D(1280, 960), "mapMaison.json",new Point2D(576, 448));
+		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1280, 960));
 		createCoffre("mapMaison.json", new Point2D(768, 768), new Coffre(new Arme(40, "Hache", "Hache.png")));
 		createCoffre("mapMaison.json", new Point2D(768+64, 768), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
 		createCoffre("mapMaison.json", new Point2D(768+128, 768), new Coffre(new Arme(30, "Epée", "Epee.png")));
-		createPortal("mapMaison.json", new Point2D(960, 1280), "map5.json");
-		createPortal("mapMaison.json", new Point2D(576, 384), "mapCave.json");
-		createPortal("mapMaison.json", new Point2D(1024, 1280), "map5.json");
-		createMonstre("mapCave.json", new Monstre("souris", 20, 20, 100), new Point2D(320, 704));
-		createPNJ("mapMaison.json",new PNJ("pnj1", "Tue la souris"), new Point2D(1024,960));
-	    getGameWorld().spawn("pnj", new Point2D(1024, 960));
+		createPortal("mapMaison.json", new Point2D(960, 1280), "map5.json",new Point2D(1280, 960));
+		createPortal("mapMaison.json", new Point2D(576, 384), "mapCave.json",new Point2D(1280, 896));
+		createPortal("mapMaison.json", new Point2D(1024, 1280), "map5.json",new Point2D(1280, 960));
+		createMonstre("mapCave.json", new Monstre("souris", 50, 40, 100), new Point2D(320, 704));
+		
+		String[] liste=new String[2];
+		liste[0]="Une arme adaptée ?";
+		liste[1]="Oui papa";
+		HashMap<String,String[]> conversation = Conversation(liste,"Un rat mange tout mon fromage dans la cave\n va t'équiper d'une arme adaptée et tue le");
+		String[] liste2=new String[2];
+		liste2[0]="Oui papa";
+		liste2[1]="protéiné ?";
+		HashMap<String,String[]> conversation2 = Conversation(liste2,"Seule une arme adaptée te permettra de\n vaincre ce rat mangeur de fromage protéiné");
+		String[] liste3=new String[1];
+		liste3[0]="Oui papa";
+		HashMap<String,String[]> conversation3 = Conversation(liste3,"Va me tuer ce rat et arrête de poser tant de questions !");
+		HashMap<String,HashMap<String,String[]>> conversationComplète=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplète.put("begin", conversation);
+		conversationComplète.put("Une arme adaptée ?", conversation2);
+		conversationComplète.put("protéiné ?", conversation3);
+		PNJ père =new PNJ("père", "Tue la souris","PnjFace.png",conversationComplète,new Quest("tuer le rat de la cave",5000,Monstres.Souris,1),"Oui papa");
+		createPNJ("mapMaison.json",père, new Point2D(1024,960));
+//  	getGameWorld().spawn("pnj", new Point2D(1024, 960));
 //		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
 //		PNJList.init();
 //		PNJList.pnjList.put(new Point2D(1024, 960), pnj1);
 
 
-		DisplayMap.chargeMap(hero.getCurrentMap(),"init");
+		DisplayMap.chargeMapInit(hero.getCurrentMap());
 		// Créer le joueur
 		player = Entities.builder().at(ListeMaps.get(hero.getCurrentMap()).getPositionHero())
 				.viewFromTexture("HerosFace.png").with(new PlayerComponent()).type(EntityType.PLAYER)
@@ -92,6 +110,7 @@ public class RPGApp extends GameApplication {
 		hero.addItemInventaire(new Arme(40, "balai de ménagère", "Balai.png"));
 		DisplayInventaire.createInventaire();
 		hero.equip(new Arme(40, "Hache", "Hache.png"));
+		hero.equip(new Armure(40, "t-shirt", "t-shirt.jpg"));
 		DisplayEquipment.createEquipment();
 		
 	}
@@ -196,10 +215,13 @@ public class RPGApp extends GameApplication {
 		}
 	}
 
-	public void createPortal(String a, Point2D b, String c) {
+	public void createPortal(String map, Point2D entry, String mapExit,Point2D exit) {
 
-		if (ListeMaps.get(a).getPortalList().get(b) == null) {
-			ListeMaps.get(a).getPortalList().put(b, c);
+		if (ListeMaps.get(map).getPortalList().get(entry) == null) {
+			ListeMaps.get(map).getPortalList().put(entry, mapExit);
+		}
+		if (ListeMaps.get(mapExit).getReturnPortalList().get(map+entry.toString()) == null) {
+			ListeMaps.get(mapExit).getReturnPortalList().put(map+entry.toString(), exit);
 		}
 	}
 
@@ -210,19 +232,19 @@ public class RPGApp extends GameApplication {
 		}
 	}
 
-	public void createPortal2(String a, Point2D b, String c) {
-
-		if (ListeMaps.get(a).getPortalList().get(b) == null) {
-			getGameWorld().spawn("portal", b);
-			ListeMaps.get(a).getPortalList().put(b, c);
-		}
-	}
-
 	public void initMap(String a, Point2D b) {
 		ModeleMap mapbase = new ModeleMap();
 		mapbase.init();
 		mapbase.setPositionHero(b);
 		ListeMaps.put(a, mapbase);
+	}
+	public HashMap<String,String[]> Conversation (String[] réponses, String question){
+		HashMap<String,String[]> conversation = new HashMap<String,String[]>();
+		conversation.put("answers",réponses);
+		String[] bt = new String[1];
+		bt[0]=question;
+		conversation.put("message",bt);
+		return conversation;
 	}
 
 

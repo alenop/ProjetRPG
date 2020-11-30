@@ -34,6 +34,7 @@ public abstract class Character {
 		return def;
 	}
 	public void fullLife() {
+		this.etat=Etat.vivant;
 		this.setPv(Pvmax);
 	}
 
