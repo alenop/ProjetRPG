@@ -1,7 +1,7 @@
 package rpgapp.data.character;
 
 public enum Monstres {
-	Souris,
+	Rat,
 	Slime,
-	Rat
+	
 }

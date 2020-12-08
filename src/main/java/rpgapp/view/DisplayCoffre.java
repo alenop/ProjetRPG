@@ -11,6 +11,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Coffre;
+import rpgapp.eventhandler.CoffreHandler;
 
 public class DisplayCoffre extends DisplayBasic {
 	public static void trouveCoffre(Point2D newPosition) {
@@ -32,30 +33,7 @@ public class DisplayCoffre extends DisplayBasic {
 		Button[] av = new Button[2];
 		av[0] = new Button("non");
 		av[1] = new Button("oui");
-		av[0].setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent ActionEvent) {
-				
-				FXGL.getApp().getGameWorld().getEntitiesAt(c).get(0).setViewFromTexture("Coffre_Ferme.png");
-				
-			}
-		});
-		av[1].setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent ActionEvent) {
-				if (RPGApp.hero.getEquipement().get(a.getContenu().getType()) != null) {
-					DisplayInventaire.updateInventaire("ajout",RPGApp.hero.getEquipement().get(a.getContenu().getType()),RPGApp.hero.getPositionVoid());
-					DisplayEquipment.updateEquipment("remove",  RPGApp.hero.getEquipement().get(a.getContenu().getType()));
-				}
-				RPGApp.hero.equip(a.getContenu());
-				DisplayEquipment.updateEquipment("ajout",  a.getContenu());
-				//DisplayInventaire.updateInventaire("ajout", a.getContenu(),RPGApp.hero.getPositionVoid());
-				FXGL.getApp().getGameWorld().getEntitiesAt(c).get(0).setViewFromTexture("Coffre_Ouvert.png");
-				
-				a.setContenu(null);
-				
-			}
-		});
+		av[1].setOnAction(new CoffreHandler(a,c));
 		FXGL.getApp().getDisplay().showBox("tu as trouve "+a.getContenu().getNom()+" dans ce coffre veux tu l'équiper ?", an, av);
 	}
 }

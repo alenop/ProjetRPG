@@ -1,18 +1,28 @@
 package rpgapp.data.character;
 
 public class Monstre extends Character{
-	private Monstres typeMonstre;
+	private Monstres typeMonstre=Monstres.Rat;
 	private int give_experience=100;
+	private boolean Unique=false;
 	
-	
-	public Monstre(String nom, int atk, int def, int pv) {
+	public Monstre(String nom, int atk, int def, int pv,boolean unique) {
 		super(nom,atk,def,pv);
-		this.setAtk(atk);
-		this.setDef(def);
-		this.setPv(pv);
-		this.setTypeMonstre(Monstres.Souris);
+		this.Unique=unique;
 		this.setFaiblesses(new String[5]);
 		this.getFaiblesses()[0]="balai de ménagère";
+	}
+	public Monstre(String nom, int atk, int def, int pv) {
+		super(nom,atk,def,pv);
+		this.setFaiblesses(new String[5]);
+		this.getFaiblesses()[0]="balai de ménagère";
+	}
+	public Monstre(String nom, int atk, int def, int pv,Monstres type) {
+		super(nom,atk,def,pv);
+		this.setTypeMonstre(type);
+		this.setFaiblesses(new String[5]);
+		if (type.equals(Monstres.Rat)) {
+		this.getFaiblesses()[0]="balai de ménagère";
+		}
 	}
 
 
@@ -33,6 +43,9 @@ public class Monstre extends Character{
 
 	public void setTypeMonstre(Monstres typeMonstre) {
 		this.typeMonstre = typeMonstre;
+	}
+	public boolean isUnique() {
+		return this.Unique;
 	}
 
 

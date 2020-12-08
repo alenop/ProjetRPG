@@ -79,7 +79,7 @@ public class PlayerComponent extends Component {
 			FXGL.getApp().getGameWorld().removeEntity(RPGApp.notif);
 			RPGApp.notif=null;
 			}
-		if (checkEntity(newPosition, EntityType.BLOC)==false){
+		if (checkEntity(newPosition, EntityType.BLOC)==false || checkEntity(newPosition, EntityType.PNJ)==false){
 			RPGApp.player.setViewFromTexture("Heros"+angle+".png");
 		}
 		if (checkEntity(newPosition, EntityType.BLOC) && checkEntity(newPosition, EntityType.Monstre)

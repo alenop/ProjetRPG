@@ -62,7 +62,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 	}
 		if(choix.equals("attaque")){
 			if (monstre.getEtat() == Etat.mort) {
-				FXGL.getApp().getGameWorld().getEntitiesAt(point).get(0).setViewFromTexture("RatMort.png");
+				FXGL.getApp().getGameWorld().getEntitiesAt(point).get(0).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
 				DisplayCombat.mode_combat2(viewcombat, monstre, point, 0);
 			} else if(RPGApp.hero.getEtat()==Etat.vivant) {
 				DisplayCombat.mode_combat2(viewcombat, monstre, point, nb_tour + 1);
@@ -70,9 +70,18 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		}else if(choix.equals("fuir") || choix.equals("partir")) {
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
 			if(choix.equals("partir")) {
+				//RPGApp.notif = DisplayBasic.createNotif("yoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\n");
+				//FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
 				if(RPGApp.hero.getCurrentquest()!=null) {
 				if (RPGApp.hero.getCurrentquest().verifQuest()) {
-					RPGApp.notif = DisplayBasic.createNotif("Quest succeed");
+					String niveau="";
+					int nvA=RPGApp.hero.getLevel();
+					RPGApp.hero.gainExp(RPGApp.hero.getCurrentquest().getReward());
+					if(RPGApp.hero.getLevel()>nvA) {
+						niveau="Félicitations tu est maintenant niveau "+RPGApp.hero.getLevel();
+					}
+					String notif=DisplayBasic.retourLigne("Quête : "+RPGApp.hero.getCurrentquest().getName() +" accomplie !"+niveau,30);
+					RPGApp.notif = DisplayBasic.createNotif(notif);
 					FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
 				}
 			}}

@@ -1,21 +1,41 @@
 package rpgapp.data.character;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.almasb.fxgl.entity.view.EntityView;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import rpgapp.system.Quest;
+import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Item;
 
-public class Hero extends Character {
-	private Item inventaire[];
+public class Hero extends Character implements Serializable {
+	private transient Item inventaire[];
 	// private ArrayList<Item> inventaire = new ArrayList<Item>();
 	private int experience = 0;
-	private HashMap<String, Item> equipement = new HashMap<String, Item>();
+	private transient HashMap<String, Item> equipement = new HashMap<String, Item>();
 	private HashMap<Integer, Integer> niveaux;
 	private Quest currentquest;
 	private String currentMap;
 	private EntityView view;
+	private ArrayList<String>listeQuêteFinies=new ArrayList<String>();
 
 	public Hero(String nom) {
 		super(nom, 20, 20, 50);
@@ -47,8 +67,10 @@ public class Hero extends Character {
 	}
 	public int getPositionItem(Item a) {
 		int j=0;
+		System.out.println(inventaire);
 		for (int i = 0; i < this.inventaire.length; i++) {
-			if (inventaire[i] == a) {
+			System.out.println(inventaire[i]);
+			if (inventaire[i].equals(a)) {
 				return j;
 			}
 			j++;
@@ -94,6 +116,9 @@ public class Hero extends Character {
 	public HashMap<String, Item> getEquipement() {
 		return equipement;
 	}
+	public void setEquipement(HashMap<String, Item> equip) {
+		 this.equipement=equip;
+	}
 
 	public void desequip() {
 
@@ -115,6 +140,7 @@ public class Hero extends Character {
 		for (int i = 0; i < this.inventaire.length; i++) {
 			if (inventaire[i] == null) {
 				inventaire[i] = a;
+				a.setPosition(i);
 				break;
 			}
 		}
@@ -168,4 +194,70 @@ public class Hero extends Character {
 	public void setView(EntityView view) {
 		this.view = view;
 	}
+
+	public void addListeQuêteFinies(String nom) {
+		listeQuêteFinies.add(nom);
+	}
+	public ArrayList<String> getFinishQuests() {
+		return listeQuêteFinies;
+	}
+	public void save() {
+		File f= new File("src\\main\\resources\\example.txt");
+		if(f.isFile()) {
+		System.out.println(f.canWrite()+"//"+f.canRead());
+		}else {
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		PrintWriter writer;
+		ObjectOutputStream oos = null;
+		Files yo;
+		String test=String.valueOf(RPGApp.hero);
+		Path fichier = Paths.get("src\\main\\resources\\example.txt");
+		try {
+			
+			writer = new PrintWriter(new BufferedWriter(new FileWriter("src\\main\\resources\\example.txt",true)));
+			//writer.print(RPGApp.hero);
+			//writer.println(test.getBytes());
+			Files.write(fichier, test.getBytes());
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("yo");
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("yo2");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("yo3");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void load() {
+		BufferedReader fr;
+		Files yo;
+		String test="test la joie est grande si ca marche";
+		Path fichier = Paths.get("src\\main\\resources\\example.txt");
+		try {
+			//fr = new BufferedReader(new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\example.txt"))));
+			//String line = "";
+			//while((line = fr.readLine()) != null) {
+			    //System.out.println(line);
+			//}
+			System.out.println(Files.readAllLines(fichier));
+		} catch ( IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}}
+		
+	
+	
+
 }

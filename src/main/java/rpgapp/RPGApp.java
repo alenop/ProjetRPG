@@ -1,31 +1,46 @@
 package rpgapp;
 
+import java.awt.Button;
+import java.awt.Font;
+import javafx.geometry.Insets;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
+import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.saving.DataFile;
+import com.almasb.fxgl.scene.FXGLMenu;
+import com.almasb.fxgl.scene.FXGLScene;
+import com.almasb.fxgl.scene.menu.MenuType;
 import com.almasb.fxgl.settings.GameSettings;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
 import rpgapp.data.character.Monstres;
+import rpgapp.data.character.SaveLoad;
 import rpgapp.data.elementInteractifs.Arme;
 import rpgapp.data.elementInteractifs.Armure;
 import rpgapp.data.elementInteractifs.Coffre;
-
+import rpgapp.data.elementInteractifs.Item;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.data.map.ModeleMap;
+import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
 import rpgapp.view.DisplayMap;
 import rpgapp.system.Quest;
+import rpgapp.Menu;
 
 public class RPGApp extends GameApplication {
 
@@ -45,8 +60,19 @@ public class RPGApp extends GameApplication {
 		settings.setTitle("Basic Game App");
 		settings.setVersion("0.1");
 		settings.setFullScreenAllowed(true);
+		settings.setMenuEnabled(false);
+		
 		// other settings
 	}
+	
+//	@Override
+//	protected void initMainMenu(Pane mainMenuRoot) {
+//		Rectngle bg=new Rectangle(640,640);
+//		Font font=Font.font(72);
+//		Button btnStart = new Button("Start");
+//		btnStart.setFont(font);
+//		
+//	}
 
 	@Override
 	protected void initGame() {
@@ -55,7 +81,11 @@ public class RPGApp extends GameApplication {
 		hero.setCurrentMap("mapMaison.json");
 		// AJoute la Factory
 		getGameWorld().addEntityFactory(new RPGFactory());
-
+		
+		
+		//Menu node=new Menu(FXGL.getApp(), MenuType.MAIN_MENU);
+		
+//		getGameScene().addUINode(node);
 		initMap("map5.json", new Point2D(0,0));
 		initMap("mapMaison.json", new Point2D(1472, 448));
 		initMap("mapCave.json", new Point2D(1280, 896));
@@ -67,7 +97,7 @@ public class RPGApp extends GameApplication {
 		createPortal("mapMaison.json", new Point2D(960, 1280), "map5.json",new Point2D(1280, 960));
 		createPortal("mapMaison.json", new Point2D(576, 384), "mapCave.json",new Point2D(1280, 896));
 		createPortal("mapMaison.json", new Point2D(1024, 1280), "map5.json",new Point2D(1280, 960));
-		createMonstre("mapCave.json", new Monstre("souris", 50, 40, 100), new Point2D(320, 704));
+		createMonstre("mapCave.json", new Monstre("souris", 50, 40, 100,true), new Point2D(320, 704));
 		
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";
@@ -80,11 +110,19 @@ public class RPGApp extends GameApplication {
 		String[] liste3=new String[1];
 		liste3[0]="Oui papa";
 		HashMap<String,String[]> conversation3 = Conversation(liste3,"Va me tuer ce rat et arrête de poser tant de questions !");
+		String[] liste4=new String[1];
+		liste4[0]="Merci papa";
+		HashMap<String,String[]> conversation4 = Conversation(liste4,"Bravo fils!");
+		String[] liste5=new String[1];
+		liste5[0]="oui papa";
+		HashMap<String,String[]> conversation5 = Conversation(liste5,"Eh bien ce rat te pose des soucis ? n'oublie\n pas seule une arme adaptée te permettra\n de vaincre ce rat");
 		HashMap<String,HashMap<String,String[]>> conversationComplète=new HashMap<String,HashMap<String,String[]>>();
 		conversationComplète.put("begin", conversation);
 		conversationComplète.put("Une arme adaptée ?", conversation2);
 		conversationComplète.put("protéiné ?", conversation3);
-		PNJ père =new PNJ("père", "Tue la souris","PnjFace.png",conversationComplète,new Quest("tuer le rat de la cave",5000,Monstres.Souris,1),"Oui papa");
+		conversationComplète.put("finish", conversation4);
+		conversationComplète.put("en cours", conversation5);
+		PNJ père =new PNJ("père","PnjFace.png",conversationComplète,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
 		createPNJ("mapMaison.json",père, new Point2D(1024,960));
 //  	getGameWorld().spawn("pnj", new Point2D(1024, 960));
 //		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
@@ -110,8 +148,16 @@ public class RPGApp extends GameApplication {
 		hero.addItemInventaire(new Arme(40, "balai de ménagère", "Balai.png"));
 		DisplayInventaire.createInventaire();
 		hero.equip(new Arme(40, "Hache", "Hache.png"));
-		hero.equip(new Armure(40, "t-shirt", "t-shirt.jpg"));
+		hero.equip(new Armure(21, "t-shirt", "t-shirt.jpg"));
 		DisplayEquipment.createEquipment();
+		DisplayInventaire.createInventaire();
+		
+		System.out.println(getGameplay().getStats());		
+		//FXGLScene
+		//FXGLMenu;
+		//new Menu(FXGL.getApp(), MenuType.GAME_MENU);
+		System.out.println(getGameScene().getUINodes());
+		//new Menu(FXGL.getApp(), MenuType.GAME_MENU);
 		
 	}
 
@@ -174,7 +220,7 @@ public class RPGApp extends GameApplication {
 				try {
 					Thread.sleep(200);
 				} catch (Exception e) {
-					
+					e.printStackTrace();
 				}
 				if (DisplayInventaire.getInventory().getView().isVisible()) {
 					DisplayInventaire.removeInventaire();
@@ -191,6 +237,7 @@ public class RPGApp extends GameApplication {
 				try {
 					Thread.sleep(200);
 				} catch (Exception e) {
+					e.printStackTrace();
 				}
 				if (DisplayEquipment.getEquipment().getView().isVisible()) {				
 					DisplayEquipment.removeEquipment();
@@ -200,6 +247,55 @@ public class RPGApp extends GameApplication {
 				}
 			}
 		}, KeyCode.E);
+		input.addAction(new UserAction("Save") {
+			@Override
+			protected void onAction() {
+				try {
+					Thread.sleep(200);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println("yo");
+				SaveLoad.save(RPGApp.hero);
+			}
+		}, KeyCode.M);
+		
+		input.addAction(new UserAction("Load") {
+			@Override
+			protected void onAction() {
+				try {
+					Thread.sleep(200);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println("yo");
+				System.out.println(RPGApp.hero.getInventaire());
+				for (Item i:RPGApp.hero.getInventaire()) {
+					if(i!=null) {
+					DisplayInventaire.updateInventaire("remove", i, i.getPosition());
+					}
+				}
+				for (Entry<String, Item> i:RPGApp.hero.getEquipement().entrySet()) {
+					if(i.getValue()!=null) {
+					DisplayEquipment.updateEquipment("remove", i.getValue());
+					}
+				}
+				RPGApp.hero=SaveLoad.load();
+				
+				for (Item i:RPGApp.hero.getInventaire()) {
+					if(i!=null) {
+					DisplayInventaire.updateInventaire("ajout", i, i.getPosition());
+					}
+				}
+				for (Entry<String, Item> i:RPGApp.hero.getEquipement().entrySet()) {
+					if(i.getValue()!=null) {
+					DisplayEquipment.updateEquipment("ajout", i.getValue());
+					}
+				}
+				System.out.println(RPGApp.hero.getInventaire());
+				
+			}
+		}, KeyCode.L);
 	}
 
 	public void createMonstre(String a, Monstre b, Point2D c) {

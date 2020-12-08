@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.view.EntityView;
+import com.almasb.fxgl.io.serialization.Bundle;
 
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
@@ -15,6 +16,7 @@ import rpgapp.data.elementInteractifs.Coffre;
 import rpgapp.data.elementInteractifs.PNJ;
 
 public class DisplayMap extends DisplayBasic {
+	private static Bundle a=null;
 	public static void changeMap(String a, Point2D b) {
 		
 
@@ -24,7 +26,8 @@ public class DisplayMap extends DisplayBasic {
 		public static void chargeMapInit(String map) {
 			
 			EntityView abcd = null;
-			
+		
+		
 		FXGL.getApp().getGameWorld().setLevelFromMap(map);
 		RPGApp.hero.setCurrentMap(map);
 		if (abcd != null) {
@@ -36,9 +39,15 @@ public class DisplayMap extends DisplayBasic {
 
 			}
 			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
+				if(i.getValue().isUnique() && i.getValue().getEtat()==Etat.mort) {
+				
+				}
+				else {	
 				FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
 				i.getValue().fullLife();
 				i.getValue().setEtat(Etat.vivant);
+				System.out.println(i.getValue().isUnique());
+				}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
 				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey());
@@ -54,7 +63,12 @@ public class DisplayMap extends DisplayBasic {
 public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 			
 			EntityView abcd = null;
-			
+			if(a==null) {
+			a = new Bundle("yo");
+			RPGApp.player.save(a);
+			}else {
+				RPGApp.player.load(a);
+			}
 			if (PlayerComponent.position.getEntity() != null) {
 				abcd = PlayerComponent.position.getEntity().getView();
 				RPGApp.hero.setView(abcd);
@@ -75,9 +89,14 @@ public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 
 			}
 			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
-				FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
-				i.getValue().fullLife();
-				i.getValue().setEtat(Etat.vivant);
+				if(i.getValue().isUnique() && i.getValue().getEtat()==Etat.mort) {
+					
+				}
+				else {
+					FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
+					i.getValue().fullLife();
+					i.getValue().setEtat(Etat.vivant);
+					}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
 				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey());

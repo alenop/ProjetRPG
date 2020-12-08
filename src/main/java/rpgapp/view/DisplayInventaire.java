@@ -13,6 +13,7 @@ import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.eventhandler.EquipmentHandler;
 import rpgapp.eventhandler.InventoryHandler;
 
 public class DisplayInventaire extends DisplayBasic {
@@ -62,7 +63,12 @@ public class DisplayInventaire extends DisplayBasic {
 		Entity itemViewGrand = itemViewPetit.copy();
 		itemViewPetit.getView().setUserData(itemViewPetit);
 		itemViewGrand.setViewFromTexture(i.getImage());
-		a.setOnMouseClicked(new InventoryHandler(itemViewGrand,i,choix));
+		if (choix.equals("desequip")) {
+			a.setOnMouseClicked(new EquipmentHandler(itemViewGrand,i.getType()));
+		}else if(choix.equals("equip")) {
+			a.setOnMouseClicked(new InventoryHandler(itemViewGrand,i.getPosition(),choix));
+		}
+		
 		a.addNode(itemViewPetit.getView());
 
 	}

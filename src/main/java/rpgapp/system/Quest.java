@@ -1,9 +1,12 @@
 package rpgapp.system;
 
 
+import java.io.Serializable;
+
+import rpgapp.RPGApp;
 import rpgapp.data.character.Monstres;
 
-public class Quest {
+public class Quest implements Serializable {
 	private String nom;
 	private int reward;
 	private boolean succeed=false;
@@ -22,7 +25,7 @@ public class Quest {
 		boolean b=getKill()==nb_kill;
 		if (succeed==false) {
 			if (b) {
-				
+			RPGApp.hero.addListeQuêteFinies(nom);
 			succeed=true;
 			return (b) ;
 			}else {
@@ -48,5 +51,8 @@ public class Quest {
 	}
 	public void setTypeMonstre(Monstres typeMonstre) {
 		this.typeMonstre = typeMonstre;
+	}
+	public String getName() {
+		return nom;
 	}
 }

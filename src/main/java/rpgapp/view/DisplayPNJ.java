@@ -23,7 +23,14 @@ public class DisplayPNJ extends DisplayBasic {
                 .viewFromTexture(pnj.getImage())
                 .build();
 		EntityView an = item.getView();
+		if (RPGApp.hero.getFinishQuests().contains(pnj.getQuest().getName())) {
+			DisplayPNJ.dialogue2(an, pnj,"finish");
+		}else if(RPGApp.hero.getCurrentquest()!=null) {
+			if(RPGApp.hero.getCurrentquest().equals(pnj.getQuest())) {
+			DisplayPNJ.dialogue2(an, pnj,"en cours");
+			}}else {
 		DisplayPNJ.dialogue2(an,pnj,"begin");
+		}
 	}
 	public static void dialogue2(EntityView an, PNJ pnj,String étape) {
 		Button[]av;

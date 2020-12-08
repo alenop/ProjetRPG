@@ -1,5 +1,7 @@
 package rpgapp.view;
 
+import java.util.ArrayList;
+
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
@@ -92,5 +94,19 @@ public abstract class DisplayBasic {
 			}
 		}
 		return null;
+	}
+	public static String retourLigne(String a,int b) {
+		ArrayList<Integer> liste=new ArrayList<Integer>();
+		for (int i=0;i<a.length();i++) {
+			if(i%b==0 && i!=0) {
+				liste.add(i);
+			}
+		}
+		for (int i=0;i<liste.size();i++) {
+			String first = a.substring(0,liste.get(i)+i);
+			String second = a.substring(liste.get(i)+i); 
+			a=first+"\n"+second;
+		}
+			return a;
 	}
 }
