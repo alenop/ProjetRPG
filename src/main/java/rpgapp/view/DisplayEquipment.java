@@ -40,24 +40,25 @@ public class DisplayEquipment extends DisplayBasic {
 	public static void removeItemEquipment(Item a) {
 
 		for(Node i : getEquipment().getView().getNodes()){
-			if(i.getAccessibleText()==a.getType()) {
+			if(i.getAccessibleText()!=null) {
+			if(i.getAccessibleText().equals(a.getType())) {
 				EntityView v=(EntityView)i;
 				v.clearChildren();
 				Rectangle c = DisplayBasic.createBorder(64,64);
 				((Entity)i.getUserData()).setViewWithBBox(c);
 			break;
-		}}
+		}}}
 		
 	}
 
 	public static void ajoutItemEquipment(Item a) {
 		for(Node i : getEquipment().getView().getNodes()){
-			if(i.getAccessibleText()==a.getType()) {
-			
+			if(i.getAccessibleText()!=null) {
+			if(i.getAccessibleText().equals(a.getType())) {
 			DisplayInventaire.itemViewInventaire(a,
 			((Entity)i.getUserData()).getView(),"desequip");
 			break;
-		}}
+		}}}
 	}
 	
 	

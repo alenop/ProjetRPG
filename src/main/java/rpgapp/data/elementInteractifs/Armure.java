@@ -1,6 +1,8 @@
 package rpgapp.data.elementInteractifs;
 
-public class Armure extends Item {
+import java.io.Serializable;
+
+public class Armure extends Item implements Serializable {
 	public Armure(int b,String a, String c){
 		super(b,a,c);
 		this.type="Armure";

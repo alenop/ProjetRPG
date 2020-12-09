@@ -31,7 +31,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 	public static Music musicBoss;
 
 	public static void begin(Monstre a, Point2D b) {
-		Entity monstre = CreateEntityWithPicture("RatCombatGif.gif", 64 * 5 + 32, 64);
+		Entity monstre = CreateEntityWithPicture(a.getTypeMonstre().name()+"CombatGif.gif", 64 * 5 + 32, 64);
 		EntityView monstreview = monstre.getView();
 		MusicComponent.musicPlay("battle");
 		
@@ -83,9 +83,9 @@ public abstract class DisplayCombat extends DisplayBasic {
 		mode_combat2(viewcombat, a, b, 1);
 	}
 
-	public static void addbarreVie(EntityView i, Character monstre, double a, double b) {
+	public static void addbarreVie(EntityView i, Character character, double a, double b) {
 
-		double pourcentage2 = ((monstre.getPvMax() - monstre.getPv()) * 100 / monstre.getPvMax());
+		double pourcentage2 = ((character.getPvMax() - character.getPv()) * 100 / character.getPvMax());
 		BigDecimal pourcentage3 = new BigDecimal(Double.toString(pourcentage2));
 		double pourcentage = pourcentage3.doubleValue();
 		Rectangle border1 = createBorder(Math.round((192 * (100 - pourcentage)) / 100), 16);
@@ -101,11 +101,11 @@ public abstract class DisplayCombat extends DisplayBasic {
 		createRectangleWithBorder(border2, new Point2D(128, 0));
 		Entity RedBar = createRectangleWithBorder(border2, new Point2D(a + 192 * (100 - (pourcentage)) / 100, b));
 		RedBar.setProperty("border", border2);
-		RedBar.getView().setAccessibleText("border1" + monstre.toString());
+		RedBar.getView().setAccessibleText("border1" + character.toString());
 		RedBar.getView().setUserData(RedBar);
 		Entity GreenBar = createRectangleWithBorder(border1, new Point2D(a, b));
 		GreenBar.setProperty("border", border1);
-		GreenBar.getView().setAccessibleText("border2" + monstre.toString());
+		GreenBar.getView().setAccessibleText("border2" + character.toString());
 		GreenBar.getView().setUserData(GreenBar);
 		i.addNode(RedBar.getView());
 		i.addNode(GreenBar.getView());
@@ -152,7 +152,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 				if (i.getAccessibleText().equals("text")) {
 					((Label) ((Entity) i.getUserData()).getView().getNodes().get(0)).setText(text);
 				} else if (i.getAccessibleText().equals("monstre")&& nb_tour==0) {			
-						((Entity) i.getUserData()).setViewFromTexture("RatMort.png");
+						((Entity) i.getUserData()).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
 			
 				}else if (i.getAccessibleText().equals("hero")) {	
 					if (nb_tour==-1) {

@@ -18,10 +18,9 @@ public class PNJ {
 	public String getTexte() {
 		return texte;
 	}
-	public PNJ(String name, String message, String image,HashMap<String,HashMap<String,String[]>> conversation, Quest Quest,String giveQuest) {
+	public PNJ(String name, String image,HashMap<String,HashMap<String,String[]>> conversation, Quest Quest,String giveQuest) {
 		this.traceConversation=conversation;
 		this.name = name;
-		this.texte = message;
 		this.image = image;
 		setQuest(Quest,giveQuest);
 	}
