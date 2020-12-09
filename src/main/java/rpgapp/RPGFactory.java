@@ -43,21 +43,10 @@ public class RPGFactory implements EntityFactory{
 	public Entity newPortal(SpawnData data ) {
 		//Créer un objet de type bloc 
 		return Entities.builder()
-				.viewFromTexture("Water_Icon.png")
 				.from(data)
 				.type(EntityType.Portal)
 				.build();
 	}
-	
-//	@Spawns("portalMaison")
-//	public Entity newPortalMaison(SpawnData data ) {
-//		//Créer un objet de type bloc 
-//		return Entities.builder()
-//				.viewFromTexture("Fire_Icon.png")
-//				.from(data)
-//				.type(EntityType.Portal)
-//				.build();
-//	}
 	
 	@Spawns("pnj")
 	public Entity newPNJ(SpawnData data ) {

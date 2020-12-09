@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 
 import com.almasb.fxgl.app.FXGL;
-
+import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import rpgapp.RPGApp;
+import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Character;
 
@@ -26,10 +27,14 @@ import rpgapp.eventhandler.GameOverHandler;
 
 
 public abstract class DisplayCombat extends DisplayBasic {
+	
+	public static Music musicBoss;
 
 	public static void begin(Monstre a, Point2D b) {
 		Entity monstre = CreateEntityWithPicture("RatCombatGif.gif", 64 * 5 + 32, 64);
 		EntityView monstreview = monstre.getView();
+		MusicComponent.musicPlay("battle");
+		
 		monstreview.setAccessibleText("monstre");
 		monstreview.setUserData(monstre);
 		Entity hero = CreateEntityWithPicture("HerosFace.png", 32, 64);

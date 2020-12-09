@@ -8,6 +8,7 @@ import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
+import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Etat;
 import rpgapp.data.character.Monstre;
@@ -19,6 +20,7 @@ public class DisplayMap extends DisplayBasic {
 		
 
 		String map = RPGApp.ListeMaps.get(a).getPortalList().get(b);
+		MusicComponent.musicPlay(map);
 		chargeMapProgress(map,b,a);
 	}
 		public static void chargeMapInit(String map) {

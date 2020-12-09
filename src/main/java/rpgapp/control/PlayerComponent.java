@@ -1,7 +1,7 @@
 package rpgapp.control;
 
 import com.almasb.fxgl.app.FXGL;
-
+import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.PositionComponent;
@@ -124,11 +124,13 @@ public class PlayerComponent extends Component {
 			DisplayPNJ.init(RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getPNJList().get(newPosition));
 		}
 		else if (checkEntity(newPosition, EntityType.Coffre) == false) {
-			
+			MusicComponent.soundPlay("chest");
 			DisplayCoffre.trouveCoffre(newPosition);
 			}
 		if (checkEntity(newPosition, EntityType.Portal) == false) {
+			MusicComponent.soundPlay("door");
 			DisplayMap.changeMap(RPGApp.hero.getCurrentMap(), newPosition);
+			
 		}
 	
 

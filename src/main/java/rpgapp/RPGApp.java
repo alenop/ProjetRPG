@@ -2,7 +2,10 @@ package rpgapp;
 
 import java.util.HashMap;
 
+import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
+import com.almasb.fxgl.audio.Music;
+import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.Input;
@@ -11,6 +14,7 @@ import com.almasb.fxgl.settings.GameSettings;
 
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
+import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
@@ -36,15 +40,17 @@ public class RPGApp extends GameApplication {
 	private PlayerComponent playerComponent;
 	public static HashMap<String, ModeleMap> ListeMaps = new HashMap<String, ModeleMap>();
 	public static Entity notif = null;
+	public static Music test;
 
 	@Override
 	protected void initSettings(GameSettings settings) {
 		// Initialise la fenetre
-		settings.setWidth(10 * 64);
-		settings.setHeight(10 * 64);
-		settings.setTitle("Basic Game App");
+		settings.setWidth(15*64);
+		settings.setHeight(10*64);
+		settings.setTitle("The RPG");
 		settings.setVersion("0.1");
 		settings.setFullScreenAllowed(true);
+		settings.setManualResizeEnabled(true);
 		// other settings
 	}
 
@@ -55,19 +61,41 @@ public class RPGApp extends GameApplication {
 		hero.setCurrentMap("mapMaison.json");
 		// AJoute la Factory
 		getGameWorld().addEntityFactory(new RPGFactory());
-
+		getAudioPlayer().setGlobalMusicVolume(0.15);
+		getAudioPlayer().setGlobalSoundVolume(0.25);
+		MusicComponent.musicPlay("House");
 		initMap("map5.json", new Point2D(0,0));
 		initMap("mapMaison.json", new Point2D(1472, 448));
-		initMap("mapCave.json", new Point2D(1280, 896));
-		createPortal("mapCave.json", new Point2D(1280, 960), "mapMaison.json",new Point2D(576, 448));
-		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1280, 960));
-		createCoffre("mapMaison.json", new Point2D(768, 768), new Coffre(new Arme(40, "Hache", "Hache.png")));
-		createCoffre("mapMaison.json", new Point2D(768+64, 768), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
-		createCoffre("mapMaison.json", new Point2D(768+128, 768), new Coffre(new Arme(30, "Epée", "Epee.png")));
-		createPortal("mapMaison.json", new Point2D(960, 1280), "map5.json",new Point2D(1280, 960));
-		createPortal("mapMaison.json", new Point2D(576, 384), "mapCave.json",new Point2D(1280, 896));
-		createPortal("mapMaison.json", new Point2D(1024, 1280), "map5.json",new Point2D(1280, 960));
-		createMonstre("mapCave.json", new Monstre("souris", 50, 40, 100), new Point2D(320, 704));
+		initMap("mapCave.json", new Point2D(1472, 896));
+		initMap("mapJardin.json", new Point2D(1216,1536));
+		initMap("mapPnj1.json", new Point2D(832,1088));
+		initMap("mapPnj2.json", new Point2D(832,1088));
+		initMap("mapPnj3.json", new Point2D(832,1088));
+		//Portail de la cave
+		createPortal("mapCave.json", new Point2D(1472, 960), "mapMaison.json",new Point2D(768, 448));
+		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1472, 960));
+		//Portail de la maison
+		createCoffre("mapMaison.json", new Point2D(896, 768), new Coffre(new Arme(40, "Hache", "Hache.png")));
+		createCoffre("mapMaison.json", new Point2D(896+64, 768), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
+		createCoffre("mapMaison.json", new Point2D(896+128, 768), new Coffre(new Arme(30, "Epée", "Epee.png")));
+		createPortal("mapMaison.json", new Point2D(1152, 1216), "mapJardin.json", new Point2D(1216, 1536));
+		createPortal("mapMaison.json", new Point2D(768, 384), "mapCave.json", new Point2D(1472, 896));
+		createPortal("mapMaison.json", new Point2D(1216, 1216), "mapJardin.json", new Point2D(1216, 1536));
+		//Portail du jardin
+		createPortal("mapJardin.json", new Point2D(1216, 1472), "mapMaison.json", new Point2D(1216, 1152));
+		createPortal("mapJardin.json", new Point2D(960, 2688), "mapPnj1.json", new Point2D(832, 1024));
+		createPortal("mapJardin.json", new Point2D(2112, 2176), "mapPnj2.json", new Point2D(832, 1024));
+		createPortal("mapJardin.json", new Point2D(2432, 2816), "mapPnj3.json", new Point2D(832, 1024));
+		//Portail des maisons PNJ
+		createPortal("mapPnj1.json", new Point2D(768, 1088), "mapJardin.json", new Point2D(960, 2752));
+		createPortal("mapPnj1.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(960, 2752));
+		createPortal("mapPnj2.json", new Point2D(768, 1088), "mapJardin.json", new Point2D(2112, 2240));
+		createPortal("mapPnj2.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2112, 2240));
+		createPortal("mapPnj3.json", new Point2D(768, 1088), "mapJardin.json", new Point2D(2432, 2880));
+		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
+		
+		
+		createMonstre("mapCave.json", new Monstre("souris", 50, 40, 100), new Point2D(512, 704));
 		
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";
@@ -119,12 +147,14 @@ public class RPGApp extends GameApplication {
 	protected void initInput() {
 		// Initialise les commandes de l'utilisateur
 		Input input = getInput();
+		
 
 		input.addAction(new UserAction("Move Right") {
 			@Override
 			protected void onAction() {
 				
 				playerComponent.moveRight();
+				
 			}
 			
 			protected void onActionEnd() {
@@ -231,6 +261,12 @@ public class RPGApp extends GameApplication {
 			ListeMaps.get(a).getCoffreList().put(b, c);
 		}
 	}
+	
+	
+	
+//	public void musicStop() {
+//		getAudioPlayer().stopMusic(music);
+//	}
 
 	public void initMap(String a, Point2D b) {
 		ModeleMap mapbase = new ModeleMap();

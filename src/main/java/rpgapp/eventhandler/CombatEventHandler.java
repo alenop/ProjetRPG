@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
+import rpgapp.control.MusicComponent;
 import rpgapp.data.character.Etat;
 import rpgapp.data.character.Monstre;
 import rpgapp.system.Systems;
@@ -50,6 +51,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 			}
 			if (RPGApp.hero.getEtat()==Etat.mort) {
 				DisplayCombat.mode_combat2(viewcombat, monstre, point, -1);
+				MusicComponent.musicPlay("gameover");
 				
 			}
 		} catch (Exception e) {
@@ -58,17 +60,22 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		}
 		if (choix.equals("défense") && RPGApp.hero.getEtat()==Etat.vivant) {
 		DisplayCombat.mode_combat2(viewcombat, monstre, point, nb_tour + 1);
+		MusicComponent.soundPlay("shield");
 		}
 	}
 		if(choix.equals("attaque")){
+			MusicComponent.soundPlay("attack");
 			if (monstre.getEtat() == Etat.mort) {
 				FXGL.getApp().getGameWorld().getEntitiesAt(point).get(0).setViewFromTexture("RatMort.png");
 				DisplayCombat.mode_combat2(viewcombat, monstre, point, 0);
+				MusicComponent.soundPlay("win");
+				MusicComponent.musicPlay("victory");
 			} else if(RPGApp.hero.getEtat()==Etat.vivant) {
 				DisplayCombat.mode_combat2(viewcombat, monstre, point, nb_tour + 1);
 			}
 		}else if(choix.equals("fuir") || choix.equals("partir")) {
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
+			MusicComponent.musicPlay("cave");
 			if(choix.equals("partir")) {
 				if(RPGApp.hero.getCurrentquest()!=null) {
 				if (RPGApp.hero.getCurrentquest().verifQuest()) {
@@ -80,6 +87,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 			RPGApp.hero.fullLife();
 			monstre.fullLife();
 			DisplayCombat.mode_combat2(viewcombat, monstre, point, 1);
+			MusicComponent.musicPlay("battle");
 		}
 	}
 
