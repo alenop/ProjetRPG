@@ -26,26 +26,26 @@ public class EquipmentHandler implements EventHandler<MouseEvent> {
 	
 	@Override
 	public void handle(MouseEvent event) {
-		Button[] av = new Button[2];
-		av[0] = new Button("non");
-		av[1] = new Button("oui");
+		Button[] listButton = new Button[2];
+		listButton[0] = new Button("non");
+		listButton[1] = new Button("oui");
 		Hero hero = RPGApp.hero;
 		Item item = hero.getEquipement().get(type);
-		String a=" dans ton équipement veux tu la déséquiper ?";
-		av[1].setOnAction(new EventHandler<ActionEvent>() {
+		String findephrase=" dans ton équipement veux tu la déséquiper ?";
+		listButton[1].setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent ActionEvent) {
 					item.setPosition(RPGApp.hero.getPositionVoid());
 					DisplayInventaire.updateInventaire("ajout",item,RPGApp.hero.getPositionVoid());
-					RPGApp.hero.desequip(item);
+					RPGApp.hero.unequip(item);
 					DisplayEquipment.updateEquipment("remove",  item);
 					
 				}
 				
 				
 			});
-		FXGL.getApp().getDisplay().showBox("tu as " + item.getNom() +a ,
-				itemViewGrand.getView(), av);
+		FXGL.getApp().getDisplay().showBox("tu as " + item.getName() +findephrase ,
+				itemViewGrand.getView(), listButton);
 	}
 
 		

@@ -30,7 +30,7 @@ public class Quest implements Serializable {
 		boolean b=getKill()==nb_kill;
 		if (succeed==false) {
 			if (b) {
-			RPGApp.hero.addListeQuêteFinies(nom);
+			RPGApp.hero.addlistFinishQuests(nom);
 			succeed=true;
 			return (b) ;
 			}else {

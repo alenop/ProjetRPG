@@ -3,7 +3,7 @@ package rpgapp.system;
 
 
 import rpgapp.data.character.Character;
-import rpgapp.data.character.Etat;
+import rpgapp.data.character.State;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
 import rpgapp.RPGApp;
@@ -15,7 +15,7 @@ public abstract class Systems {
 		int result = (b.getAtk() - a.getDef());
 		int result_final = a.getPv() - Math.max(1, result);
 		if (result_final <= 0) {
-			a.setEtat(Etat.mort);
+			a.setState(State.dead);
 			a.setPv(0);
 		} else {
 			a.setPv(result_final);
@@ -24,7 +24,7 @@ public abstract class Systems {
 	}
 
 	public static void Combat(Hero a, Monstre b, String x) throws Exception {
-		if (a.getEtat() == Etat.mort || b.getEtat() == Etat.mort) {
+		if (a.getState() == State.dead || b.getState() == State.dead) {
 			throw (new Exception("Erreur l'un des 2 Character est mort"));
 
 		}
@@ -32,8 +32,8 @@ public abstract class Systems {
 			if (a instanceof Hero) {
 				Hero c = (Hero) a;
 				if (c.getEquipement().get("Arme") != null) {
-					for (int i = 0; i < b.getFaiblesses().length; i++) {
-						if (c.getEquipement().get("Arme").getNom().equals(b.getFaiblesses()[i])) {
+					for (int i = 0; i < b.getWeaknesses().length; i++) {
+						if (c.getEquipement().get("Arme").getName().equals(b.getWeaknesses()[i])) {
 							int g = a.getAtk();
 							a.setAtk(a.getAtk() * 4);
 							Combat_attaque(a, b);
@@ -45,7 +45,7 @@ public abstract class Systems {
 					Combat_attaque(a,b);
 				}
 			}
-			if (b instanceof Monstre && b.getEtat() == Etat.vivant) {
+			if (b instanceof Monstre && b.getState() == State.alive) {
 				Combat_attaque(b, a);
 			}
 		}
@@ -53,14 +53,14 @@ public abstract class Systems {
 		else if (x.equals("défense")) {
 			int c = a.getDef();
 			a.setDef(a.getDef() * 2);
-			if (b instanceof Monstre && b.getEtat() == Etat.vivant) {
+			if (b instanceof Monstre && b.getState() == State.alive) {
 				Combat_attaque(b, a);
 			}
 			a.setDef(c);
 		}
 		
 		
-		if (b.getEtat() == Etat.mort) {		
+		if (b.getState() == State.dead) {		
 			RPGApp.hero.gainExp(b.getGive_experience());
 			if (RPGApp.hero.getCurrentquest()!=null) {
 			if (RPGApp.hero.getCurrentquest().getTypeMonstre() == b.getTypeMonstre()) {

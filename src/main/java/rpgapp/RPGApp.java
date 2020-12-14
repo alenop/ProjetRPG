@@ -33,7 +33,7 @@ import rpgapp.data.character.Monstres;
 import rpgapp.data.character.SaveLoad;
 import rpgapp.data.elementInteractifs.Arme;
 import rpgapp.data.elementInteractifs.Armure;
-import rpgapp.data.elementInteractifs.Coffre;
+import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
@@ -90,9 +90,9 @@ public class RPGApp extends GameApplication {
 		createPortal("mapCave.json", new Point2D(1472, 960), "mapMaison.json",new Point2D(768, 448));
 		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1472, 960));
 		//Portail de la maison
-		createCoffre("mapJardin.json", new Point2D(1472, 320), new Coffre(new Arme(40, "Hache", "Hache.png")));
-		createCoffre("mapJardin.json", new Point2D(1408, 320), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
-		createCoffre("mapMaison.json", new Point2D(1664, 448), new Coffre(new Arme(30, "Epée", "Epee.png")));
+		createChest("mapJardin.json", new Point2D(1472, 320), new Coffre(new Arme(40, "Hache", "Hache.png")));
+		createChest("mapJardin.json", new Point2D(1408, 320), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
+		createChest("mapMaison.json", new Point2D(1664, 448), new Coffre(new Arme(30, "Epée", "Epee.png")));
 		createPortal("mapMaison.json", new Point2D(1152, 1216), "mapJardin.json", new Point2D(1216, 1536));
 		createPortal("mapMaison.json", new Point2D(768, 384), "mapCave.json", new Point2D(1472, 896));
 		createPortal("mapMaison.json", new Point2D(1216, 1216), "mapJardin.json", new Point2D(1216, 1536));
@@ -110,25 +110,25 @@ public class RPGApp extends GameApplication {
 		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		
 		
-		createMonstre("mapCave.json", new Monstre("souris", 50, 40, 100), new Point2D(512, 704));
+		createMonster("mapCave.json", new Monstre("souris", 50, 40, 100,true), new Point2D(512, 704));
 		
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";
 		liste[1]="Oui papa";
-		HashMap<String,String[]> conversation = Conversation(liste,"Un rat mange tout mon fromage dans la cave\n va t'équiper d'une arme adaptée et tue le");
+		HashMap<String,String[]> conversation = Chat(liste,"Un rat mange tout mon fromage dans la cave\n va t'équiper d'une arme adaptée et tue le");
 		String[] liste2=new String[2];
 		liste2[0]="Oui papa";
 		liste2[1]="protéiné ?";
-		HashMap<String,String[]> conversation2 = Conversation(liste2,"Seule une arme adaptée te permettra de\n vaincre ce rat mangeur de fromage protéiné");
+		HashMap<String,String[]> conversation2 = Chat(liste2,"Seule une arme adaptée te permettra de\n vaincre ce rat mangeur de fromage protéiné");
 		String[] liste3=new String[1];
 		liste3[0]="Oui papa";
-		HashMap<String,String[]> conversation3 = Conversation(liste3,"Va me tuer ce rat et arrête de poser tant de questions !");
+		HashMap<String,String[]> conversation3 = Chat(liste3,"Va me tuer ce rat et arrête de poser tant de questions !");
 		String[] liste4=new String[1];
 		liste4[0]="Merci papa";
-		HashMap<String,String[]> conversation4 = Conversation(liste4,"Bravo fils!");
+		HashMap<String,String[]> conversation4 = Chat(liste4,"Bravo fils!");
 		String[] liste5=new String[1];
 		liste5[0]="oui papa";
-		HashMap<String,String[]> conversation5 = Conversation(liste5,"Eh bien ce rat te pose des soucis ? n'oublie\n pas seule une arme adaptée te permettra\n de vaincre ce rat");
+		HashMap<String,String[]> conversation5 = Chat(liste5,"Eh bien ce rat te pose des soucis ? n'oublie\n pas seule une arme adaptée te permettra\n de vaincre ce rat");
 		HashMap<String,HashMap<String,String[]>> conversationComplète=new HashMap<String,HashMap<String,String[]>>();
 		conversationComplète.put("begin", conversation);
 		conversationComplète.put("Une arme adaptée ?", conversation2);
@@ -203,10 +203,10 @@ public class RPGApp extends GameApplication {
 
 		playerComponent = player.getComponent(PlayerComponent.class);
 		
-		hero.addItemInventaire(new Arme(40, "Hache", "Hache.png"));
-		hero.addItemInventaire(new Arme(40, "Epée", "Epee.png"));
-		hero.addItemInventaire(new Arme(40, "balai de ménagère", "Balai.png"));
-		hero.addItemInventaire(new Arme(40, "balai de ménagère", "Balai.png"));
+		hero.addItemInventory(new Arme(40, "Hache", "Hache.png"));
+		hero.addItemInventory(new Arme(40, "Epée", "Epee.png"));
+		hero.addItemInventory(new Arme(40, "balai de ménagère", "Balai.png"));
+		hero.addItemInventory(new Arme(40, "balai de ménagère", "Balai.png"));
 		DisplayInventaire.createInventaire();
 		hero.equip(new Arme(40, "Hache", "Hache.png"));
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.jpg"));
@@ -332,8 +332,8 @@ public class RPGApp extends GameApplication {
 					e.printStackTrace();
 				}
 				System.out.println("yo");
-				System.out.println(RPGApp.hero.getInventaire());
-				for (Item i:RPGApp.hero.getInventaire()) {
+				System.out.println(RPGApp.hero.getInventory());
+				for (Item i:RPGApp.hero.getInventory()) {
 					if(i!=null) {
 					DisplayInventaire.updateInventaire("remove", i, i.getPosition());
 					}
@@ -345,7 +345,7 @@ public class RPGApp extends GameApplication {
 				}
 				RPGApp.hero=SaveLoad.load();
 				
-				for (Item i:RPGApp.hero.getInventaire()) {
+				for (Item i:RPGApp.hero.getInventory()) {
 					if(i!=null) {
 					DisplayInventaire.updateInventaire("ajout", i, i.getPosition());
 					}
@@ -355,22 +355,22 @@ public class RPGApp extends GameApplication {
 					DisplayEquipment.updateEquipment("ajout", i.getValue());
 					}
 				}
-				System.out.println(RPGApp.hero.getInventaire());
+				System.out.println(RPGApp.hero.getInventory());
 				
 			}
 		}, KeyCode.L);
 	}
 
-	public void createMonstre(String a, Monstre b, Point2D c) {
+	public void createMonster(String map, Monstre monstre, Point2D posmonstre) {
 
-		if (ListeMaps.get(a).getMonsterList().get(c) == null) {
-			ListeMaps.get(a).getMonsterList().put(c, b);
+		if (ListeMaps.get(map).getMonsterList().get(posmonstre) == null) {
+			ListeMaps.get(map).getMonsterList().put(posmonstre, monstre);
 		}
 	}
-	public void createPNJ(String a, PNJ b, Point2D c) {
-		
-		if (ListeMaps.get(a).getPNJList().get(c) == null) {
-			ListeMaps.get(a).getPNJList().put(c, b);
+	public void createPNJ(String map, PNJ pnj, Point2D pospnj) {
+		System.out.println(ListeMaps.get(map).getPNJList());
+		if (ListeMaps.get(map).getPNJList().get(pospnj) == null) {
+			ListeMaps.get(map).getPNJList().put(pospnj, pnj);
 		}
 	}
 
@@ -384,10 +384,10 @@ public class RPGApp extends GameApplication {
 		}
 	}
 
-	public void createCoffre(String a, Point2D b, rpgapp.data.elementInteractifs.Coffre c) {
+	public void createChest(String map, Point2D pos, rpgapp.data.elementInteractifs.Chest chest) {
 
-		if (ListeMaps.get(a).getCoffreList().get(b) == null) {
-			ListeMaps.get(a).getCoffreList().put(b, c);
+		if (ListeMaps.get(map).getCoffreList().get(pos) == null) {
+			ListeMaps.get(map).getCoffreList().put(pos, chest);
 		}
 	}
 	
@@ -397,19 +397,19 @@ public class RPGApp extends GameApplication {
 //		getAudioPlayer().stopMusic(music);
 //	}
 
-	public void initMap(String a, Point2D b) {
+	public void initMap(String map, Point2D poshero) {
 		ModeleMap mapbase = new ModeleMap();
 		mapbase.init();
-		mapbase.setPositionHero(b);
-		ListeMaps.put(a, mapbase);
+		mapbase.setPositionHero(poshero);
+		ListeMaps.put(map, mapbase);
 	}
-	public HashMap<String,String[]> Conversation (String[] réponses, String question){
-		HashMap<String,String[]> conversation = new HashMap<String,String[]>();
-		conversation.put("answers",réponses);
-		String[] bt = new String[1];
-		bt[0]=question;
-		conversation.put("message",bt);
-		return conversation;
+	public HashMap<String,String[]> Chat (String[] answers, String question){
+		HashMap<String,String[]> chat = new HashMap<String,String[]>();
+		chat.put("answers",answers);
+		String[] listeQuestion = new String[1];
+		listeQuestion[0]=question;
+		chat.put("message",listeQuestion);
+		return chat;
 	}
 
 

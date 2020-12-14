@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 	private int stat;
-	private String nom;
+	private String name;
 	protected String type;
 	private String image;
 	private int position=-2;
 	
-	public Item(int stat,String nom,String image) {
+	public Item(int stat,String name,String image) {
 		this.setStat(stat);
-		this.setNom(nom);
+		this.setName(name);
 		this.image=image;
 	}
 
@@ -32,13 +32,13 @@ public class Item implements Serializable {
 	}
 
 
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String nom) {
+		this.name = nom;
 	}
 	public String getType() {
 		return type;

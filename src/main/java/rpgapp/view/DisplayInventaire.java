@@ -66,7 +66,7 @@ public class DisplayInventaire extends DisplayBasic {
 		if (choix.equals("desequip")) {
 			a.setOnMouseClicked(new EquipmentHandler(itemViewGrand,i.getType()));
 		}else if(choix.equals("equip")) {
-			a.setOnMouseClicked(new InventoryHandler(itemViewGrand,i.getPosition(),choix));
+			a.setOnMouseClicked(new InventoryHandler(itemViewGrand,i.getPosition()));
 		}
 		
 		a.addNode(itemViewPetit.getView());
@@ -87,7 +87,7 @@ public class DisplayInventaire extends DisplayBasic {
 
 		int x = 0;
 		int y = 0;
-		for (Item i : RPGApp.hero.getInventaire()) {
+		for (Item i : RPGApp.hero.getInventory()) {
 
 			if (x >= 4) {
 				x = 0;

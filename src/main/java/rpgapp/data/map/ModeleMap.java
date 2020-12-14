@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 
 import rpgapp.data.character.Monstre;
-import rpgapp.data.elementInteractifs.Coffre;
+import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.PNJ;
 import javafx.geometry.Point2D;
 
@@ -13,7 +13,7 @@ public class ModeleMap {
 	private HashMap<String,Point2D> ReturnPortalList;
 	private HashMap<Point2D,Monstre> MonsterList;
 	private Point2D positionHero;
-	private HashMap<Point2D,Coffre> CoffreList;
+	private HashMap<Point2D,Chest> CoffreList;
 	private HashMap<Point2D,PNJ> PNJList;
 	public ModeleMap() {
 		this.PortalList=PortalList;
@@ -42,17 +42,17 @@ public class ModeleMap {
 	public HashMap<Point2D,Monstre> getMonsterList() {
 		return this.MonsterList;
 	}
-	public void setCoffreList( HashMap<Point2D,Coffre> CoffreList) {
+	public void setCoffreList( HashMap<Point2D,Chest> CoffreList) {
 		this.CoffreList=CoffreList;
 	}
-	public HashMap<Point2D,Coffre> getCoffreList() {
+	public HashMap<Point2D,Chest> getCoffreList() {
 		return this.CoffreList;
 	}
 	public void init() {
 		PortalList=new HashMap<Point2D,String>();
 		ReturnPortalList=new HashMap<String,Point2D>();
 		MonsterList=new HashMap<Point2D, Monstre>();
-		CoffreList=new HashMap<Point2D,Coffre>();
+		CoffreList=new HashMap<Point2D,Chest>();
 		setPNJList(new HashMap<Point2D, PNJ>());
 	}
 	public void setPositionHero( Point2D PositionHero) {
@@ -64,7 +64,7 @@ public class ModeleMap {
 	public HashMap<Point2D,PNJ> getPNJList() {
 		return PNJList;
 	}
-	public void setPNJList(HashMap<Point2D,PNJ> pNJList) {
-		PNJList = pNJList;
+	public void setPNJList(HashMap<Point2D,PNJ> PNJList) {
+		this.PNJList = PNJList;
 	}
 }

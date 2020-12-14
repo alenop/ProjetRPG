@@ -11,9 +11,9 @@ import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
-import rpgapp.data.character.Etat;
+import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
-import rpgapp.data.elementInteractifs.Coffre;
+import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.PNJ;
 
 public class DisplayMap extends DisplayBasic {
@@ -41,22 +41,22 @@ public class DisplayMap extends DisplayBasic {
 
 			}
 			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
-				if(i.getValue().isUnique() && i.getValue().getEtat()==Etat.mort) {
+				if(i.getValue().isUnique() && i.getValue().getState()==State.dead ) {
 				
 				}
 				else {	
 				FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
 				i.getValue().fullLife();
-				i.getValue().setEtat(Etat.vivant);
+				i.getValue().setState(State.alive);
 				System.out.println(i.getValue().isUnique());
 				}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
 				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey());
 			}
-			for (Entry<Point2D, Coffre> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
+			for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
 				String a="Coffre_";
-				if (i.getValue().getContenu()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
+				if (i.getValue().getLoot()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
 				FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
 			}
 		}
@@ -91,21 +91,21 @@ public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 
 			}
 			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
-				if(i.getValue().isUnique() && i.getValue().getEtat()==Etat.mort) {
+				if(i.getValue().isUnique() && i.getValue().getState()==State.dead && RPGApp.hero.finishQuest("tuer le rat de la cave")) {
 					
 				}
 				else {
 					FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
 					i.getValue().fullLife();
-					i.getValue().setEtat(Etat.vivant);
+					i.getValue().setState(State.alive);
 					}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
 				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey());
 			}
-			for (Entry<Point2D, Coffre> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
+			for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
 				String a="Coffre_";
-				if (i.getValue().getContenu()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
+				if (i.getValue().getLoot()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
 				FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
 			}
 		}

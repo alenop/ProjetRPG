@@ -7,19 +7,19 @@ import rpgapp.system.Quest;
 public class PNJ {
 	
 	private String name;
-	private String texte;
+	private String text;
 	private String image;
 	private Quest quest;
 	private String giveQuest="null";
-	private HashMap<String,String[]> conversation;
-	private HashMap<String,HashMap<String,String[]>> traceConversation;
+	private HashMap<String,String[]> chat;
+	private HashMap<String,HashMap<String,String[]>> listChat;
 	
 
-	public String getTexte() {
-		return texte;
+	public String getText() {
+		return text;
 	}
-	public PNJ(String name, String image,HashMap<String,HashMap<String,String[]>> conversation, Quest Quest,String giveQuest) {
-		this.traceConversation=conversation;
+	public PNJ(String name, String image,HashMap<String,HashMap<String,String[]>> listChat, Quest Quest,String giveQuest) {
+		this.listChat=listChat;
 		this.name = name;
 		this.image = image;
 		setQuest(Quest,giveQuest);
@@ -27,31 +27,33 @@ public class PNJ {
 	public PNJ(String name, String image, String message) {
 		
 		this.name = name;
-		this.texte = message;
+		this.text = message;
 		this.image = image;
-		this.conversation=new HashMap<String,String[]>();
-		this.traceConversation=new HashMap<String,HashMap<String,String[]>>();
-		String[] a = new String[1];
-		a[0]="OK";
-		this.conversation.put("answers",a);
-		String[] b = new String[1];
-		b[0]=texte;
-		this.conversation.put("message",b);
-		this.traceConversation.put("begin", conversation);
+		this.chat=new HashMap<String,String[]>();
+		this.listChat=new HashMap<String,HashMap<String,String[]>>();
+		String[] answers = new String[1];
+		answers[0]="OK";
+		this.chat.put("answers",answers);
+		String[] listMessage = new String[1];
+		listMessage[0]=text;
+		this.chat.put("message",listMessage);
+		this.listChat.put("begin", chat);
 	}
 	
 	public PNJ(String name, String image,HashMap<String,HashMap<String,String[]>> conversation) {
+
 		this.traceConversation=conversation;
 		this.name = name;
 		this.image = image;
 		setQuest(new Quest(),"");
 	}
 	
-	public HashMap<String,HashMap<String,String[]>> getTraceConversation() {
-		return this.traceConversation;
+	public HashMap<String,HashMap<String,String[]>> getListChat() {
+		return this.listChat;
 	}
-	public void setTraceConversation(HashMap<String,HashMap<String,String[]>> a) {
-		this.traceConversation=a;
+	}
+	public void setListChat(HashMap<String,HashMap<String,String[]>> listChat) {
+		this.listChat=listChat;
 	}
 	public String getName() {
 		return name;

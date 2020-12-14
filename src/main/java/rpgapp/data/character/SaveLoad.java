@@ -20,8 +20,8 @@ public abstract class SaveLoad {
 		      final FileInputStream fichier = new FileInputStream("mon_objet.ser");
 		      ois = new ObjectInputStream(fichier);
 		      final Hero hero = (Hero) ois.readObject();
-		      hero.setInventaire((Item[]) ois.readObject());
-		      hero.setEquipement((HashMap<String, Item>) ois.readObject());
+		      hero.setInventory((Item[]) ois.readObject());
+		      hero.setEquipment((HashMap<String, Item>) ois.readObject());
 		      
 		      return hero;
 		    } catch (final java.io.IOException e) {
@@ -51,7 +51,7 @@ public abstract class SaveLoad {
 	      oos = new ObjectOutputStream(fichier);
 	      
 	      oos.writeObject(hero);
-	      oos.writeObject(hero.getInventaire());
+	      oos.writeObject(hero.getInventory());
 	      oos.writeObject(hero.getEquipement());
 	      
 	      // ...

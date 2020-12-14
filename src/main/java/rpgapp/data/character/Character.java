@@ -3,7 +3,7 @@ package rpgapp.data.character;
 import java.io.Serializable;
 
 public abstract class Character  implements Serializable {
-	private String nom;
+	private String name;
 	//protected Apparence apparence;
 	private int atk;
 	private int def;
@@ -11,15 +11,15 @@ public abstract class Character  implements Serializable {
 	protected int atkmax;
 	protected int defmax;
 	private int pv;
-	private Etat etat;
+	private State state;
 	private int spd;
 	private Faiblesse faiblesses2[];
-	private String faiblesses[];
+	private String weaknesses[];
 	protected int level=1;
 	
 	public Character(String nom, int atk, int def, int pv) {
 		// comment
-		this.setNom(nom);
+		this.setName(nom);
 		this.Pvmax=pv;
 		this.atkmax=atk;
 		this.defmax=def;
@@ -27,7 +27,7 @@ public abstract class Character  implements Serializable {
 		this.setDef(def);
 		this.setPv(pv);
 		this.setSpd(20);
-		this.setEtat(Etat.vivant);
+		this.setState(State.alive);
 	}
 	
 	
@@ -36,7 +36,7 @@ public abstract class Character  implements Serializable {
 		return def;
 	}
 	public void fullLife() {
-		this.etat=Etat.vivant;
+		this.state=State.alive;
 		this.setPv(Pvmax);
 	}
 
@@ -67,12 +67,12 @@ public abstract class Character  implements Serializable {
 		this.pv = pv;
 	}
 
-	public Etat getEtat() {
-		return etat;
+	public State getState() {
+		return state;
 	}
 
-	public void setEtat(Etat etat) {
-		this.etat = etat;
+	public void setState(State state) {
+		this.state = state;
 	}
 
 	public int getSpd() {
@@ -90,23 +90,23 @@ public abstract class Character  implements Serializable {
 	public void setFaiblesses2(Faiblesse faiblesses2[]) {
 		this.faiblesses2 = faiblesses2;
 	}
-	public String[] getFaiblesses() {
-		return faiblesses;
+	public String[] getWeaknesses() {
+		return weaknesses;
 	}
 
-	public void setFaiblesses(String faiblesses[]) {
-		this.faiblesses = faiblesses;
-	}
-
-
-
-	public String getNom() {
-		return nom;
+	public void setWeaknesses(String faiblesses[]) {
+		this.weaknesses = faiblesses;
 	}
 
 
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }
