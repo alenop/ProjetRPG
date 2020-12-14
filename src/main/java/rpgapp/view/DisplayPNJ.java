@@ -26,22 +26,22 @@ public class DisplayPNJ extends DisplayBasic {
 		if (RPGApp.hero.getFinishQuests().contains(pnj.getQuest().getName())) {
 			DisplayPNJ.dialogue2(pnjview, pnj,"finish");
 		}else if(RPGApp.hero.getCurrentquest()!=null && RPGApp.hero.getCurrentquest()==pnj.getQuest() ) {
-			if(RPGApp.hero.getCurrentquest().equals(pnj.getQuest())) {
 			DisplayPNJ.dialogue2(pnjview, pnj,"en cours");
-			}}else {
+			}
+		else {
 		DisplayPNJ.dialogue2(pnjview,pnj,"begin");
 		}
 	}
 	public static void dialogue2(EntityView pnjview, PNJ pnj,String étape) {
-		Button[]av;
-		HashMap<String, String[]> step =pnj.getListChat().get(étape);
-		String[] textButton =step.get("answers");
-		av = new Button[textButton.length];
+		Button[]listButton;
+		HashMap<String, String[]> chat =pnj.getListChat().get(étape);
+		String[] textButton =chat.get("answers");
+		listButton = new Button[textButton.length];
 			
 			for (int i=0;i<textButton.length;i++) {
-				av[i] =  new Button(textButton[i]);
-				av[i].setOnAction(new PnjEventHandler(av[i],pnj,pnjview));
+				listButton[i] =  new Button(textButton[i]);
+				listButton[i].setOnAction(new PnjEventHandler(listButton[i],pnj,pnjview));
 			}
-		FXGL.getApp().getDisplay().showBox(step.get("message")[0], pnjview, av);
+		FXGL.getApp().getDisplay().showBox(chat.get("message")[0], pnjview, listButton);
 	}
 }

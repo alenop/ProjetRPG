@@ -30,26 +30,26 @@ public abstract class DisplayCombat extends DisplayBasic {
 	
 	public static Music musicBoss;
 
-	public static void begin(Monstre a, Point2D b) {
-		Entity monstre = CreateEntityWithPicture(a.getTypeMonstre().name()+"CombatGif.gif", 64 * 5 + 32, 64);
-		EntityView monstreview = monstre.getView();
+	public static void begin(Monstre monstre, Point2D posMonstre) {
+		Entity monstreEntity = CreateEntityWithPicture(monstre.getTypeMonstre().name()+"CombatGif.gif", 64 * 5 + 32, 64);
+		EntityView monstreview = monstreEntity.getView();
 		MusicComponent.musicPlay("battle");
 		
 		monstreview.setAccessibleText("monstre");
-		monstreview.setUserData(monstre);
+		monstreview.setUserData(monstreEntity);
 		Entity hero = CreateEntityWithPicture("HerosFace.png", 32, 64);
 		EntityView heroview = hero.getView();
 		heroview.setUserData(hero);
 		heroview.setAccessibleText("hero");
 
 		// Display.mode_combat2(monstreview,a,b,1,heroview);
-		Rectangle border = createBorder(64 * 10, 64 * 10);
+		Rectangle border = createBorder(FXGL.getSettings().getWidth(),FXGL.getSettings().getHeight());
 		border.setFill(Color.rgb(0, 0, 0));
 		Entity viewcombat = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - RPGApp.TILE_SIZE * 5,
 						PlayerComponent.position.getY() - RPGApp.TILE_SIZE * 5));
 		addbarreVie(viewcombat.getView(), RPGApp.hero, 32, 32);
-		addbarreVie(viewcombat.getView(), a, 64 * 5 + 32, 32);
+		addbarreVie(viewcombat.getView(), monstre, 64 * 5 + 32, 32);
 		Label label = new Label("yo");
 		label.setTextFill(Color.rgb(254, 254, 254));
 
@@ -80,7 +80,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		viewcombat.getView().addNode(heroview);
 
 		FXGL.getApp().getGameWorld().addEntity(viewcombat);
-		mode_combat2(viewcombat, a, b, 1);
+		mode_combat2(viewcombat, monstre, posMonstre, 1);
 	}
 
 	public static void addbarreVie(EntityView i, Character character, double a, double b) {
@@ -129,8 +129,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		}
 	}
 
-	public static void mode_combat2(Entity viewcombat, Monstre monstre, Point2D c, int nb_tour) {
-		Button[] av;
+	public static void mode_combat2(Entity viewcombat, Monstre monstre, Point2D posMonstre, int nb_tour) {
 		String text;
 		System.out.println(monstre.getPv()+"/"+RPGApp.hero.getPv());
 		if (nb_tour == 1) {
@@ -143,6 +142,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		if (nb_tour == 0) {
 			text = monstre.getName() + " est mort !\nBravo tu as gagné " + monstre.getGive_experience()
 					+ " points d'expérience";
+			RPGApp.hero.gainExp(monstre.getGive_experience());
 		} 
 		if(nb_tour == -1) {
 			text="Tu est mort veux tu recommencer ?";
@@ -170,14 +170,14 @@ public abstract class DisplayCombat extends DisplayBasic {
 					if(nb_tour==-1) {
 						Button retry=((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get());
 						retry.setText("Retry");
-						retry.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, c,"retry"));
+						retry.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, posMonstre,"retry"));
 					}
 					else if (nb_tour == 0) {
 						i.setVisible(false);
 					} else {
 						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get())
 
-								.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, c,"attaque"));
+								.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, posMonstre,"attaque"));
 					}
 				}
 
@@ -195,7 +195,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 					} else {
 						((Button) ((Entity) i.getUserData()).getPropertyOptional("bouton").get())
 
-						.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, c,"défense"));
+						.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, posMonstre,"défense"));
 					}
 				}
 
