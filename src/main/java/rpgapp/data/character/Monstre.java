@@ -1,27 +1,27 @@
 package rpgapp.data.character;
 
 public class Monstre extends Character{
-	private Monstres typeMonstre=Monstres.Rat;
+	private Monstres typeMonster=Monstres.Rat;
 	private int give_experience=100;
 	private boolean Unique=false;
 	
 	public Monstre(String nom, int atk, int def, int pv,boolean unique) {
 		super(nom,atk,def,pv);
 		this.Unique=unique;
-		this.setFaiblesses(new String[5]);
-		this.getFaiblesses()[0]="balai de ménagère";
+		this.setWeaknesses(new String[5]);
+		this.getWeaknesses()[0]="balai de ménagère";
 	}
 	public Monstre(String nom, int atk, int def, int pv) {
 		super(nom,atk,def,pv);
-		this.setFaiblesses(new String[5]);
-		this.getFaiblesses()[0]="balai de ménagère";
+		this.setWeaknesses(new String[5]);
+		this.getWeaknesses()[0]="balai de ménagère";
 	}
 	public Monstre(String nom, int atk, int def, int pv,Monstres type) {
 		super(nom,atk,def,pv);
-		this.setTypeMonstre(type);
-		this.setFaiblesses(new String[5]);
+		this.setTypeMonster(type);
+		this.setWeaknesses(new String[5]);
 		if (type.equals(Monstres.Rat)) {
-		this.getFaiblesses()[0]="balai de ménagère";
+		this.getWeaknesses()[0]="balai de ménagère";
 		}
 	}
 
@@ -37,12 +37,12 @@ public class Monstre extends Character{
 
 
 	public Monstres getTypeMonstre() {
-		return typeMonstre;
+		return typeMonster;
 	}
 
 
-	public void setTypeMonstre(Monstres typeMonstre) {
-		this.typeMonstre = typeMonstre;
+	public void setTypeMonster(Monstres typeMonstre) {
+		this.typeMonster = typeMonstre;
 	}
 	public boolean isUnique() {
 		return this.Unique;

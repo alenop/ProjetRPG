@@ -134,14 +134,14 @@ public abstract class DisplayCombat extends DisplayBasic {
 		String text;
 		System.out.println(monstre.getPv()+"/"+RPGApp.hero.getPv());
 		if (nb_tour == 1) {
-			text = "tu as trouve " + monstre.getNom() + " que veut tu faire ?";
+			text = "tu as trouve " + monstre.getName() + " que veut tu faire ?";
 		} else if (nb_tour == 2) {
-			text = "Attention " + monstre.getNom() + " prépare une grosse attaque";
+			text = "Attention " + monstre.getName() + " prépare une grosse attaque";
 		} else {
-			text = monstre.getNom() + " est encore vivant que veut tu faire ?";
+			text = monstre.getName() + " est encore vivant que veut tu faire ?";
 		}
 		if (nb_tour == 0) {
-			text = monstre.getNom() + " est mort !\nBravo tu as gagné " + monstre.getGive_experience()
+			text = monstre.getName() + " est mort !\nBravo tu as gagné " + monstre.getGive_experience()
 					+ " points d'expérience";
 		} 
 		if(nb_tour == -1) {

@@ -17,19 +17,19 @@ import rpgapp.view.DisplayPNJ;
 public class PnjEventHandler implements EventHandler<ActionEvent> {
 	private Button a;
 	private PNJ pnj;
-	private EntityView an;
-	public  PnjEventHandler(Button a,PNJ pnj,EntityView an) {
+	private EntityView pnjview;
+	public  PnjEventHandler(Button a,PNJ pnj,EntityView pnjview) {
 		this.a=a;
 		this.pnj=pnj;
-		this.an=an;
+		this.pnjview=pnjview;
 	}
 	
 	@Override
 	public void handle(ActionEvent ActionEvent) {
 		if (pnj.getgiveQuest().equals(a.getText())) {
 			RPGApp.hero.setCurrentquest(pnj.getQuest());
-		}else if (pnj.getTraceConversation().get(a.getText())!=null) {
-			DisplayPNJ.dialogue2(an,pnj,a.getText());
+		}else if (pnj.getListChat().get(a.getText())!=null) {
+			DisplayPNJ.dialogue2(pnjview,pnj,a.getText());
 		}
 	}}
 

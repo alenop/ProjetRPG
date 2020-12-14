@@ -11,7 +11,7 @@ import com.almasb.fxgl.entity.components.TypeComponent;
 import javafx.geometry.Point2D;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
-import rpgapp.data.character.Etat;
+import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
 
 import rpgapp.data.elementInteractifs.PNJ;
@@ -103,7 +103,7 @@ public class PlayerComponent extends Component {
 			}
 		} else if (checkEntity(newPosition, EntityType.Monstre) == false) {
 			Monstre monstre = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().get(newPosition);
-			if (monstre.getEtat() == Etat.vivant) {
+			if (monstre.getState() == State.alive) {
 				DisplayCombat.begin(monstre,newPosition);
 				try {
 					Thread.sleep(200);
@@ -112,7 +112,7 @@ public class PlayerComponent extends Component {
 					e.printStackTrace();
 				}
 			}
-			if (monstre.getEtat()==Etat.mort){
+			if (monstre.getState()==State.dead){
 				FXGL.getApp().getGameWorld()
 				.removeEntities(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));
 				
