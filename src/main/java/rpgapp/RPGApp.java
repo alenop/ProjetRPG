@@ -90,9 +90,9 @@ public class RPGApp extends GameApplication {
 		createPortal("mapCave.json", new Point2D(1472, 960), "mapMaison.json",new Point2D(768, 448));
 		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1472, 960));
 		//Portail de la maison
-		createCoffre("mapMaison.json", new Point2D(896, 768), new Coffre(new Arme(40, "Hache", "Hache.png")));
-		createCoffre("mapMaison.json", new Point2D(896+64, 768), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
-		createCoffre("mapMaison.json", new Point2D(896+128, 768), new Coffre(new Arme(30, "Epée", "Epee.png")));
+		createCoffre("mapJardin.json", new Point2D(1472, 320), new Coffre(new Arme(40, "Hache", "Hache.png")));
+		createCoffre("mapJardin.json", new Point2D(1408, 320), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
+		createCoffre("mapMaison.json", new Point2D(1664, 448), new Coffre(new Arme(30, "Epée", "Epee.png")));
 		createPortal("mapMaison.json", new Point2D(1152, 1216), "mapJardin.json", new Point2D(1216, 1536));
 		createPortal("mapMaison.json", new Point2D(768, 384), "mapCave.json", new Point2D(1472, 896));
 		createPortal("mapMaison.json", new Point2D(1216, 1216), "mapJardin.json", new Point2D(1216, 1536));
@@ -137,6 +137,54 @@ public class RPGApp extends GameApplication {
 		conversationComplète.put("en cours", conversation5);
 		PNJ père =new PNJ("père","PnjFace.png",conversationComplète,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
 		createPNJ("mapMaison.json",père, new Point2D(1024,960));
+		
+		String[] answer1A = new String[2];
+		answer1A[0] = "Pourquoi pas.";
+		answer1A[1] = "Bof ça ira, merci...";
+		String[] answer1B = new String[1];
+		answer1B[0] = "...";
+		
+		String[] answer2A = new String[2];
+		answer2A[0] = "Pas de soucis.";
+		answer2A[1] = "Désolé, je n'ai pas le temps.";
+		String[] answer2B = new String[1];
+		answer2B[0] = "D'accord.";
+		
+		String[] answer3A = new String[1];
+		answer3A[0] = "Merci.";
+		
+		HashMap<String, String[]> conversation1A = Conversation(answer1A, "Oh bonjour mon ptit billy ! \nTu veux que je te raconte la fois ou j'ai échoué \nà vaincre un criminel de mon épée ? \nQuel rat celui la !");
+		HashMap<String, String[]> conversation1B1 = Conversation(answer1B, "Je crois que je m'en souviens plus..");
+		HashMap<String, String[]> conversation1B2 = Conversation(answer1B, "Ah...Je m'en souviens plus de toute façon..");
+		
+		HashMap<String, String[]> conversation2A = Conversation(answer2A, "Hey Bobby ! \nJ'ai faim, si tu vas dans ton jardin n'hésite \npas à me ramener des pommes de ton coffre.");
+		HashMap<String, String[]> conversation2B1 = Conversation(answer2B, "Merci ! j'ai faim.");
+		HashMap<String, String[]> conversation2B2 = Conversation(answer2B, "Tu es sûr ? Pourtant tu dois bien contrer l'invasion de rat non ?");
+		
+		HashMap<String, String[]> conversation3A = Conversation(answer3A, "Coucou Jimmy, tu as vu cette invasion de rat ? \nFais attention si tu utilises un objet tranchant, \ntu risquerais de te faire mal.");
+
+		HashMap<String,HashMap<String,String[]>> conversationComplète1=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplète1.put("begin", conversation1A);
+		conversationComplète1.put("Pourquoi pas.", conversation1B1);
+		conversationComplète1.put("Bof ça ira, merci...", conversation1B2);
+		
+		HashMap<String,HashMap<String,String[]>> conversationComplète2=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplète2.put("begin", conversation2A);
+		conversationComplète2.put("Pas de soucis.", conversation2B1);
+		conversationComplète2.put("Désolé, je n'ai pas le temps.", conversation2B2);
+		
+		HashMap<String,HashMap<String,String[]>> conversationComplète3=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplète3.put("begin", conversation3A);
+		
+		PNJ pnj1 =new PNJ("Mr.Georges le garde","PnjFace.png",conversationComplète1);
+		createPNJ("mapPnj1.json",pnj1, new Point2D(640,768));
+		
+		PNJ pnj2 =new PNJ("Mr.Bernard le boulanger","PnjFace.png",conversationComplète2);
+		createPNJ("mapPnj2.json",pnj2, new Point2D(1024,576));
+		
+		PNJ pnj3 =new PNJ("Mme.Juliette la médecin","PnjFace.png",conversationComplète3);
+		createPNJ("mapPnj3.json",pnj3, new Point2D(896,704));
+
 //  	getGameWorld().spawn("pnj", new Point2D(1024, 960));
 //		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
 //		PNJList.init();
