@@ -43,7 +43,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		heroview.setAccessibleText("hero");
 
 		// Display.mode_combat2(monstreview,a,b,1,heroview);
-		Rectangle border = createBorder(64 * 10, 64 * 10);
+		Rectangle border = createBorder(FXGL.getSettings().getWidth(), FXGL.getSettings().getHeight());
 		border.setFill(Color.rgb(0, 0, 0));
 		Entity viewcombat = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - RPGApp.TILE_SIZE * 5,

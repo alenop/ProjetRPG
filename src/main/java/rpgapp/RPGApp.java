@@ -65,6 +65,7 @@ public class RPGApp extends GameApplication {
 		settings.setVersion("0.1");
 		settings.setFullScreenAllowed(true);
 		settings.setManualResizeEnabled(true);
+		//settings.setMenuEnabled(true);
 		
 		// other settings
 	}
