@@ -90,9 +90,9 @@ public class RPGApp extends GameApplication {
 		createPortal("mapCave.json", new Point2D(1472, 960), "mapMaison.json",new Point2D(768, 448));
 		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1472, 960));
 		//Portail de la maison
-		createChest("mapJardin.json", new Point2D(1472, 320), new Coffre(new Arme(40, "Hache", "Hache.png")));
-		createChest("mapJardin.json", new Point2D(1408, 320), new Coffre(new Arme(15, "balai de ménagère", "Balai.png")));
-		createChest("mapMaison.json", new Point2D(1664, 448), new Coffre(new Arme(30, "Epée", "Epee.png")));
+		createChest("mapJardin.json", new Point2D(1472, 320), new Chest(new Arme(40, "Hache", "Hache.png")));
+		createChest("mapJardin.json", new Point2D(1408, 320), new Chest(new Arme(15, "balai de ménagère", "Balai.png")));
+		createChest("mapMaison.json", new Point2D(1664, 448), new Chest(new Arme(30, "Epée", "Epee.png")));
 		createPortal("mapMaison.json", new Point2D(1152, 1216), "mapJardin.json", new Point2D(1216, 1536));
 		createPortal("mapMaison.json", new Point2D(768, 384), "mapCave.json", new Point2D(1472, 896));
 		createPortal("mapMaison.json", new Point2D(1216, 1216), "mapJardin.json", new Point2D(1216, 1536));
@@ -153,15 +153,15 @@ public class RPGApp extends GameApplication {
 		String[] answer3A = new String[1];
 		answer3A[0] = "Merci.";
 		
-		HashMap<String, String[]> conversation1A = Conversation(answer1A, "Oh bonjour mon ptit billy ! \nTu veux que je te raconte la fois ou j'ai échoué \nà vaincre un criminel de mon épée ? \nQuel rat celui la !");
-		HashMap<String, String[]> conversation1B1 = Conversation(answer1B, "Je crois que je m'en souviens plus..");
-		HashMap<String, String[]> conversation1B2 = Conversation(answer1B, "Ah...Je m'en souviens plus de toute façon..");
+		HashMap<String, String[]> conversation1A = Chat(answer1A, "Oh bonjour mon ptit billy ! \nTu veux que je te raconte la fois ou j'ai échoué \nà vaincre un criminel de mon épée ? \nQuel rat celui la !");
+		HashMap<String, String[]> conversation1B1 = Chat(answer1B, "Je crois que je m'en souviens plus..");
+		HashMap<String, String[]> conversation1B2 = Chat(answer1B, "Ah...Je m'en souviens plus de toute façon..");
 		
-		HashMap<String, String[]> conversation2A = Conversation(answer2A, "Hey Bobby ! \nJ'ai faim, si tu vas dans ton jardin n'hésite \npas à me ramener des pommes de ton coffre.");
-		HashMap<String, String[]> conversation2B1 = Conversation(answer2B, "Merci ! j'ai faim.");
-		HashMap<String, String[]> conversation2B2 = Conversation(answer2B, "Tu es sûr ? Pourtant tu dois bien contrer l'invasion de rat non ?");
+		HashMap<String, String[]> conversation2A = Chat(answer2A, "Hey Bobby ! \nJ'ai faim, si tu vas dans ton jardin n'hésite \npas à me ramener des pommes de ton coffre.");
+		HashMap<String, String[]> conversation2B1 = Chat(answer2B, "Merci ! j'ai faim.");
+		HashMap<String, String[]> conversation2B2 = Chat(answer2B, "Tu es sûr ? Pourtant tu dois bien contrer l'invasion de rat non ?");
 		
-		HashMap<String, String[]> conversation3A = Conversation(answer3A, "Coucou Jimmy, tu as vu cette invasion de rat ? \nFais attention si tu utilises un objet tranchant, \ntu risquerais de te faire mal.");
+		HashMap<String, String[]> conversation3A = Chat(answer3A, "Coucou Jimmy, tu as vu cette invasion de rat ? \nFais attention si tu utilises un objet tranchant, \ntu risquerais de te faire mal.");
 
 		HashMap<String,HashMap<String,String[]>> conversationComplète1=new HashMap<String,HashMap<String,String[]>>();
 		conversationComplète1.put("begin", conversation1A);
