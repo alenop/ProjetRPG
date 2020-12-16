@@ -38,6 +38,7 @@ import rpgapp.data.elementInteractifs.Item;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.data.map.ModeleMap;
+import rpgapp.factory.MenuSceneFactory;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
@@ -66,6 +67,7 @@ public class RPGApp extends GameApplication {
 		settings.setFullScreenAllowed(true);
 		settings.setManualResizeEnabled(true);
 		settings.setMenuEnabled(true);
+		//settings.setSceneFactory(new MenuSceneFactory());
 		// other settings
 	}
 
