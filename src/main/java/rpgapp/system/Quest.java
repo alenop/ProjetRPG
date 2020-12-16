@@ -21,6 +21,11 @@ public class Quest implements Serializable {
 		this.setTypeMonstre(c);
 		
 	}
+	
+	public Quest() {
+		this.nom="null";
+	}
+	
 	public boolean verifQuest() {
 		boolean b=getKill()==nb_kill;
 		if (succeed==false) {

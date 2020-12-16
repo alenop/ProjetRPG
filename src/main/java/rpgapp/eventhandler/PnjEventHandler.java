@@ -15,21 +15,21 @@ import rpgapp.system.Quest;
 import rpgapp.view.DisplayPNJ;
 
 public class PnjEventHandler implements EventHandler<ActionEvent> {
-	private Button a;
+	private Button button;
 	private PNJ pnj;
 	private EntityView pnjview;
-	public  PnjEventHandler(Button a,PNJ pnj,EntityView pnjview) {
-		this.a=a;
+	public  PnjEventHandler(Button button,PNJ pnj,EntityView pnjview) {
+		this.button=button;
 		this.pnj=pnj;
 		this.pnjview=pnjview;
 	}
 	
 	@Override
 	public void handle(ActionEvent ActionEvent) {
-		if (pnj.getgiveQuest().equals(a.getText())) {
+		if (pnj.getgiveQuest().equals(button.getText())) {
 			RPGApp.hero.setCurrentquest(pnj.getQuest());
-		}else if (pnj.getListChat().get(a.getText())!=null) {
-			DisplayPNJ.dialogue2(pnjview,pnj,a.getText());
+		}else if (pnj.getListChat().get(button.getText())!=null) {
+			DisplayPNJ.dialogue2(pnjview,pnj,button.getText());
 		}
 	}}
 

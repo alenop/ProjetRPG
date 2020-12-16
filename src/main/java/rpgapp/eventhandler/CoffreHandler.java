@@ -34,9 +34,7 @@ public class CoffreHandler implements EventHandler<ActionEvent> {
 						RPGApp.hero.removeItemInventory(item);
 						RPGApp.hero.equip(item);
 					}else {
-						DisplayInventaire.updateInventaire("remove", item,item.getPosition());
 						DisplayEquipment.updateEquipment("ajout",  item);
-						RPGApp.hero.removeItemInventory(item);
 						RPGApp.hero.equip(item);
 						
 					}

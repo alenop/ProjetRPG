@@ -65,8 +65,7 @@ public class RPGApp extends GameApplication {
 		settings.setVersion("0.1");
 		settings.setFullScreenAllowed(true);
 		settings.setManualResizeEnabled(true);
-		//settings.setMenuEnabled(true);
-		
+		settings.setMenuEnabled(true);
 		// other settings
 	}
 
@@ -91,9 +90,9 @@ public class RPGApp extends GameApplication {
 		createPortal("mapCave.json", new Point2D(1472, 960), "mapMaison.json",new Point2D(768, 448));
 		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1472, 960));
 		//Portail de la maison
-		createChest("mapMaison.json", new Point2D(896, 768), new Chest(new Arme(40, "Hache", "Hache.png")));
-		createChest("mapMaison.json", new Point2D(896+64, 768), new Chest(new Arme(15, "balai de ménagère", "Balai.png")));
-		createChest("mapMaison.json", new Point2D(896+128, 768), new Chest(new Arme(30, "Epée", "Epee.png")));
+		createChest("mapJardin.json", new Point2D(1472, 320), new Chest(new Arme(40, "Hache", "Hache.png")));
+		createChest("mapJardin.json", new Point2D(1408, 320), new Chest(new Arme(15, "balai de ménagère", "Balai.png")));
+		createChest("mapMaison.json", new Point2D(1664, 448), new Chest(new Arme(30, "Epée", "Epee.png")));
 		createPortal("mapMaison.json", new Point2D(1152, 1216), "mapJardin.json", new Point2D(1216, 1536));
 		createPortal("mapMaison.json", new Point2D(768, 384), "mapCave.json", new Point2D(1472, 896));
 		createPortal("mapMaison.json", new Point2D(1216, 1216), "mapJardin.json", new Point2D(1216, 1536));
@@ -116,7 +115,7 @@ public class RPGApp extends GameApplication {
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";
 		liste[1]="Oui papa";
-		HashMap<String,String[]> conversation = Chat(liste,"Un rat mange tout mon fromage dans la cave\n va t'équiper d'une arme adaptée et tue le");
+		HashMap<String,String[]> conversation = Chat(liste,"Un rat mange tout mon fromage dans la cave\n va t'equiper d'une arme adaptée et tue le");
 		String[] liste2=new String[2];
 		liste2[0]="Oui papa";
 		liste2[1]="protéiné ?";
@@ -130,14 +129,62 @@ public class RPGApp extends GameApplication {
 		String[] liste5=new String[1];
 		liste5[0]="oui papa";
 		HashMap<String,String[]> conversation5 = Chat(liste5,"Eh bien ce rat te pose des soucis ? n'oublie\n pas seule une arme adaptée te permettra\n de vaincre ce rat");
-		HashMap<String,HashMap<String,String[]>> conversationComplète=new HashMap<String,HashMap<String,String[]>>();
-		conversationComplète.put("begin", conversation);
-		conversationComplète.put("Une arme adaptée ?", conversation2);
-		conversationComplète.put("protéiné ?", conversation3);
-		conversationComplète.put("finish", conversation4);
-		conversationComplète.put("en cours", conversation5);
-		PNJ père =new PNJ("père","PnjFace.png",conversationComplète,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
-		createPNJ("mapMaison.json",père, new Point2D(1024,960));
+		HashMap<String,HashMap<String,String[]>> conversationComplete=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplete.put("begin", conversation);
+		conversationComplete.put("Une arme adaptée ?", conversation2);
+		conversationComplete.put("protéiné ?", conversation3);
+		conversationComplete.put("finish", conversation4);
+		conversationComplete.put("en cours", conversation5);
+		PNJ pere =new PNJ("pere","PnjFace.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
+		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
+		
+		String[] answer1A = new String[2];
+		answer1A[0] = "Pourquoi pas.";
+		answer1A[1] = "Bof ça ira, merci...";
+		String[] answer1B = new String[1];
+		answer1B[0] = "...";
+		
+		String[] answer2A = new String[2];
+		answer2A[0] = "Pas de soucis.";
+		answer2A[1] = "Desole, je n'ai pas le temps.";
+		String[] answer2B = new String[1];
+		answer2B[0] = "D'accord.";
+		
+		String[] answer3A = new String[1];
+		answer3A[0] = "Merci.";
+		
+		HashMap<String, String[]> conversation1A = Chat(answer1A, "Oh bonjour mon ptit "+hero.getName()+" ! \nTu veux que je te raconte la fois ou j'ai echoue \nà vaincre un criminel de mon epee ? \nQuel rat celui la !");
+		HashMap<String, String[]> conversation1B1 = Chat(answer1B, "Je crois que je m'en souviens plus..");
+		HashMap<String, String[]> conversation1B2 = Chat(answer1B, "Ah...Je m'en souviens plus de toute façon..");
+		
+		HashMap<String, String[]> conversation2A = Chat(answer2A, "Hey "+hero.getName()+" ! \nJ'ai faim, si tu vas dans ton jardin n'hesite \npas à me ramener des pommes de ton coffre.");
+		HashMap<String, String[]> conversation2B1 = Chat(answer2B, "Merci ! j'ai faim.");
+		HashMap<String, String[]> conversation2B2 = Chat(answer2B, "Tu es sûr ? Pourtant tu dois bien contrer l'invasion de rat non ?");
+		
+		HashMap<String, String[]> conversation3A = Chat(answer3A, "Coucou "+hero.getName()+", tu as vu cette invasion de rat ? \nFais attention si tu utilises un objet tranchant, \ntu risquerais de te faire mal.");
+
+		HashMap<String,HashMap<String,String[]>> conversationComplete1=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplete1.put("begin", conversation1A);
+		conversationComplete1.put("Pourquoi pas.", conversation1B1);
+		conversationComplete1.put("Bof ça ira, merci...", conversation1B2);
+		
+		HashMap<String,HashMap<String,String[]>> conversationComplete2=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplete2.put("begin", conversation2A);
+		conversationComplete2.put("Pas de soucis.", conversation2B1);
+		conversationComplete2.put("Desole, je n'ai pas le temps.", conversation2B2);
+		
+		HashMap<String,HashMap<String,String[]>> conversationComplete3=new HashMap<String,HashMap<String,String[]>>();
+		conversationComplete3.put("begin", conversation3A);
+		
+		PNJ pnj1 =new PNJ("Mr.Georges le garde","PnjFace.png",conversationComplete1);
+		createPNJ("mapPnj1.json",pnj1, new Point2D(640,768));
+		
+		PNJ pnj2 =new PNJ("Mr.Bernard le boulanger","PnjFace.png",conversationComplete2);
+		createPNJ("mapPnj2.json",pnj2, new Point2D(1024,576));
+		
+		PNJ pnj3 =new PNJ("Mme.Juliette la medecin","PnjFace.png",conversationComplete3);
+		createPNJ("mapPnj3.json",pnj3, new Point2D(896,704));
+
 //  	getGameWorld().spawn("pnj", new Point2D(1024, 960));
 //		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
 //		PNJList.init();
@@ -156,21 +203,15 @@ public class RPGApp extends GameApplication {
 
 		playerComponent = player.getComponent(PlayerComponent.class);
 		
-		hero.addItemInventory(new Arme(40, "Hache", "Hache.png"));
-		hero.addItemInventory(new Arme(40, "Epée", "Epee.png"));
-		hero.addItemInventory(new Arme(40, "balai de ménagère", "Balai.png"));
-		hero.addItemInventory(new Arme(40, "balai de ménagère", "Balai.png"));
+//		hero.addItemInventory(new Arme(40, "Hache", "Hache.png"));
+//		hero.addItemInventory(new Arme(40, "Epee", "Epee.png"));
+//		hero.addItemInventory(new Arme(40, "balai de menagere", "Balai.png"));
+//		hero.addItemInventory(new Arme(40, "balai de menagere", "Balai.png"));
 		DisplayInventaire.createInventaire();
-		hero.equip(new Arme(40, "Hache", "Hache.png"));
+		//hero.equip(new Arme(40, "Hache", "Hache.png"));
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.jpg"));
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
-		
-		System.out.println(getGameplay().getStats());		
-		//FXGLScene
-		//FXGLMenu;
-		//new Menu(FXGL.getApp(), MenuType.GAME_MENU);
-		System.out.println(getGameScene().getUINodes());
 		//new Menu(FXGL.getApp(), MenuType.GAME_MENU);
 		
 	}

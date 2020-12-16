@@ -17,7 +17,6 @@ import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.PNJ;
 
 public class DisplayMap extends DisplayBasic {
-	private static Bundle a=null;
 	public static void changeMap(String a, Point2D b) {
 		
 
@@ -65,12 +64,6 @@ public class DisplayMap extends DisplayBasic {
 public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 			
 			EntityView abcd = null;
-			if(a==null) {
-			a = new Bundle("yo");
-			RPGApp.player.save(a);
-			}else {
-				RPGApp.player.load(a);
-			}
 			if (PlayerComponent.position.getEntity() != null) {
 				abcd = PlayerComponent.position.getEntity().getView();
 				RPGApp.hero.setView(abcd);
@@ -80,7 +73,6 @@ public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 		if (abcd != null) {
 			FXGL.getApp().getGameScene().addGameView(abcd);
 		}
-		System.out.println(RPGApp.ListeMaps.get(map).getReturnPortalList().get(map+pos.toString())+"///"+map+pos.toString());
 		PlayerComponent.position.setValue(RPGApp.ListeMaps.get(map).getReturnPortalList().get(mapOf+pos.toString()));
 		DisplayInventaire.createInventaire();
 		DisplayEquipment.createEquipment();

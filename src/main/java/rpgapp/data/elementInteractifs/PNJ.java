@@ -24,7 +24,7 @@ public class PNJ {
 		this.image = image;
 		setQuest(Quest,giveQuest);
 	}
-	public PNJ(String name, String message, String image) {
+	public PNJ(String name, String image, String message) {
 		
 		this.name = name;
 		this.text = message;
@@ -39,9 +39,19 @@ public class PNJ {
 		this.chat.put("message",listMessage);
 		this.listChat.put("begin", chat);
 	}
+	
+	public PNJ(String name, String image,HashMap<String,HashMap<String,String[]>> conversation) {
+
+		this.listChat=conversation;
+		this.name = name;
+		this.image = image;
+		setQuest(new Quest(),"");
+	}
+	
 	public HashMap<String,HashMap<String,String[]>> getListChat() {
 		return this.listChat;
 	}
+	
 	public void setListChat(HashMap<String,HashMap<String,String[]>> listChat) {
 		this.listChat=listChat;
 	}
