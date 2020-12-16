@@ -65,7 +65,7 @@ public class RPGApp extends GameApplication {
 		settings.setVersion("0.1");
 		settings.setFullScreenAllowed(true);
 		settings.setManualResizeEnabled(true);
-		
+		settings.setMenuEnabled(true);
 		// other settings
 	}
 
@@ -131,8 +131,8 @@ public class RPGApp extends GameApplication {
 		HashMap<String,String[]> conversation5 = Chat(liste5,"Eh bien ce rat te pose des soucis ? n'oublie\n pas seule une arme adaptée te permettra\n de vaincre ce rat");
 		HashMap<String,HashMap<String,String[]>> conversationComplete=new HashMap<String,HashMap<String,String[]>>();
 		conversationComplete.put("begin", conversation);
-		conversationComplete.put("Une arme adaptee ?", conversation2);
-		conversationComplete.put("proteine ?", conversation3);
+		conversationComplete.put("Une arme adaptée ?", conversation2);
+		conversationComplete.put("protéiné ?", conversation3);
 		conversationComplete.put("finish", conversation4);
 		conversationComplete.put("en cours", conversation5);
 		PNJ pere =new PNJ("pere","PnjFace.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
