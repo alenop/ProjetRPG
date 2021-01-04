@@ -5,22 +5,9 @@ import java.util.HashMap;
 
 import com.almasb.fxgl.entity.view.EntityView;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
+import javafx.geometry.Point2D;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 import rpgapp.system.Quest;
 import rpgapp.RPGApp;
@@ -36,6 +23,7 @@ public class Hero extends Character implements Serializable {
 	private String currentMap;
 	private EntityView view;
 	private ArrayList<String>listFinishQuests=new ArrayList<String>();
+	private transient Point2D position ;
 
 	public Hero(String nom) {
 		super(nom, 20, 20, 50);
@@ -48,7 +36,12 @@ public class Hero extends Character implements Serializable {
 		initLevels();
 
 	}
-
+	public void setPosition(Point2D pos) {
+		this.position=pos;
+	}
+	public Point2D getPosition() {
+		return this.position;
+	}
 	public void gainExp(int experience) {
 		this.experience = getExperience() + experience;
 		gainLevel(this.experience);

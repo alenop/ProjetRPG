@@ -25,7 +25,7 @@ public class DisplayPNJ extends DisplayBasic {
 		EntityView pnjview = pnjentity.getView();
 		if (RPGApp.hero.getFinishQuests().contains(pnj.getQuest().getName())) {
 			DisplayPNJ.dialogue2(pnjview, pnj,"finish");
-		}else if(RPGApp.hero.getCurrentquest()!=null && RPGApp.hero.getCurrentquest()==pnj.getQuest() ) {
+		}else if(RPGApp.hero.getCurrentquest()!=null && RPGApp.hero.getCurrentquest().getName().equals(pnj.getQuest().getName() )) {
 			DisplayPNJ.dialogue2(pnjview, pnj,"en cours");
 			}
 		else {

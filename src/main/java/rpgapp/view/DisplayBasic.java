@@ -97,9 +97,22 @@ public abstract class DisplayBasic {
 	}
 	public static String retourLigne(String a,int b) {
 		ArrayList<Integer> liste=new ArrayList<Integer>();
+		int e=0;
+		String[] li=a.split("");
 		for (int i=0;i<a.length();i++) {
+			if(li[i].equals(" ")) {
+				e=i;
+			}
 			if(i%b==0 && i!=0) {
-				liste.add(i);
+				if(li[i].equals(" ")|| li[i].equals("!")) {
+					System.out.println(li[i]);
+					liste.add(i);
+				}else if(li[i+1].equals(" ")) {
+					liste.add(i+1);
+				}
+				else {
+					liste.add(e);
+				}
 			}
 		}
 		for (int i=0;i<liste.size();i++) {

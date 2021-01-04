@@ -1,5 +1,6 @@
 package rpgapp.data.map;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
@@ -8,7 +9,7 @@ import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.PNJ;
 import javafx.geometry.Point2D;
 
-public class ModeleMap {
+public class ModeleMap implements Serializable {
 	private HashMap<Point2D,String> PortalList;
 	private HashMap<String,Point2D> ReturnPortalList;
 	private HashMap<Point2D,Monstre> MonsterList;
