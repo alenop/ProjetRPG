@@ -123,7 +123,7 @@ public class RPGApp extends GameApplication {
 		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		
 		
-		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true), new Point2D(512, 704));
+		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
 		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
 		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
 		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
@@ -151,7 +151,7 @@ public class RPGApp extends GameApplication {
 		conversationComplete.put("protéiné ?", conversation3);
 		conversationComplete.put("finish", conversation4);
 		conversationComplete.put("en cours", conversation5);
-		PNJ pere =new PNJ("père","Pnj_Face.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
+		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
 		
 		String[] answer1A = new String[2];

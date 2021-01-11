@@ -52,7 +52,7 @@ public class RPGFactory implements EntityFactory{
 	public Entity newPNJ(SpawnData data ) {
 		//Créer un objet de type pnj 
 		return Entities.builder()
-				.viewFromTexture("Pere_Dos.png") //TODO image à ajouter au projet
+				.viewFromTexture("Père_Dos.png") //TODO image à ajouter au projet
 				.from(data)
 				.type(EntityType.PNJ)
 				.build();

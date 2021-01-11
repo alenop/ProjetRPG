@@ -53,14 +53,14 @@ public class DisplayPNJ extends DisplayBasic {
 		//FXGL.getApp().getDisplay().showBox(chat.get("message")[0], pnjview, listButton);
 		if (RPGApp.dialogBox==null) {
 		Entity pnjentity = Entities.builder()
-                .viewFromTexture(pnj.getImage("Cadre"))
+                .viewFromTexture(pnj.getImage())
                 .at(0,0)
                 .build();
 		EntityView pnjview = pnjentity.getView();
 		RPGApp.dialogBox=initDialogBox(pnjview,pnj.getName(),listButton,chat.get("message")[0]);
 		}else {
 		showBox(RPGApp.dialogBox,listButton,chat.get("message")[0]);
-		}
+		}}
 	public static void tourner(Point2D posPNJ, String angle) {
 		String nouvAngle = "";
 		String nom = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getPNJList().get(posPNJ).getName();
@@ -81,7 +81,7 @@ public class DisplayPNJ extends DisplayBasic {
 		FXGL.getApp().getGameWorld().getEntitiesAt(posPNJ).get(0).setViewFromTexture(nom + "_" + nouvAngle + ".png");
 		
 	}
-	}
+	
 	private static Entity initDialogBox(EntityView pnjview2,String pnjname,Button[] av,String text) {
 		// Display.mode_combat2(monstreview,a,b,1,heroview);
 		Rectangle border = createBorder(FXGL.getSettings().getWidth(),192);
