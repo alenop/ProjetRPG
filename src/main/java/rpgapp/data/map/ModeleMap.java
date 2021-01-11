@@ -1,5 +1,6 @@
 package rpgapp.data.map;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
@@ -8,10 +9,11 @@ import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.PNJ;
 import javafx.geometry.Point2D;
 
-public class ModeleMap {
+public class ModeleMap implements Serializable {
 	private HashMap<Point2D,String> PortalList;
 	private HashMap<String,Point2D> ReturnPortalList;
 	private HashMap<Point2D,Monstre> MonsterList;
+	private HashMap<Point2D,Monstre> MonsterListActual;
 	private Point2D positionHero;
 	private HashMap<Point2D,Chest> CoffreList;
 	private HashMap<Point2D,PNJ> PNJList;
@@ -42,6 +44,12 @@ public class ModeleMap {
 	public HashMap<Point2D,Monstre> getMonsterList() {
 		return this.MonsterList;
 	}
+	public void setMonsterListActual( HashMap<Point2D,Monstre> MonsterListActual) {
+		this.MonsterListActual=MonsterListActual;
+	}
+	public HashMap<Point2D,Monstre> getMonsterListActual() {
+		return this.MonsterListActual;
+	}
 	public void setCoffreList( HashMap<Point2D,Chest> CoffreList) {
 		this.CoffreList=CoffreList;
 	}
@@ -52,6 +60,7 @@ public class ModeleMap {
 		PortalList=new HashMap<Point2D,String>();
 		ReturnPortalList=new HashMap<String,Point2D>();
 		MonsterList=new HashMap<Point2D, Monstre>();
+		MonsterListActual=new HashMap<Point2D, Monstre>();
 		CoffreList=new HashMap<Point2D,Chest>();
 		setPNJList(new HashMap<Point2D, PNJ>());
 	}

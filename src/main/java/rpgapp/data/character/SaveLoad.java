@@ -8,13 +8,14 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 
+import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.system.SaveMap;
+import rpgapp.view.DisplayMap;
 
 public abstract class SaveLoad {
-	
-
-	public static Hero load() {
+	public static Hero load(String menu) {
 		ObjectInputStream ois = null;
 		try {
 		      final FileInputStream fichier = new FileInputStream("mon_objet.ser");
@@ -22,6 +23,11 @@ public abstract class SaveLoad {
 		      final Hero hero = (Hero) ois.readObject();
 		      hero.setInventory((Item[]) ois.readObject());
 		      hero.setEquipment((HashMap<String, Item>) ois.readObject());
+		      hero.setPosition(new Point2D(ois.readDouble(),ois.readDouble()));
+		      SaveMap.load(ois);
+		      if (menu.equals("GameMenu")) {
+		      DisplayMap.chargeMap(hero.getCurrentMap(),hero.getPosition());
+		      }
 		      
 		      return hero;
 		    } catch (final java.io.IOException e) {
@@ -49,10 +55,15 @@ public abstract class SaveLoad {
 	    try {
 	      final FileOutputStream fichier = new FileOutputStream("mon_objet.ser");
 	      oos = new ObjectOutputStream(fichier);
-	      
+	     
 	      oos.writeObject(hero);
 	      oos.writeObject(hero.getInventory());
 	      oos.writeObject(hero.getEquipement());
+	      oos.writeDouble(RPGApp.player.getX());
+		  oos.writeDouble(RPGApp.player.getY());
+		  SaveMap.save(oos);
+	      
+	      
 	      
 	      // ...
 	    } catch (final java.io.IOException e) {

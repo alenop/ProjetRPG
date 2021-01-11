@@ -29,7 +29,7 @@ public class DisplayMap extends DisplayBasic {
 			EntityView abcd = null;
 		
 		
-		FXGL.getApp().getGameWorld().setLevelFromMap(map);
+		FXGL.getApp().getGameWorld().setLevelFromMap(map); 	
 		RPGApp.hero.setCurrentMap(map);
 		if (abcd != null) {
 			FXGL.getApp().getGameScene().addGameView(abcd);
@@ -44,10 +44,10 @@ public class DisplayMap extends DisplayBasic {
 				
 				}
 				else {	
-				FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
-				i.getValue().fullLife();
-				i.getValue().setState(State.alive);
-				System.out.println(i.getValue().isUnique());
+
+					i.getValue().fullLife();
+					i.getValue().setState(State.alive);
+					FXGL.getApp().getGameWorld().spawn("monstre", i.getKey()).setProperty("data",i.getValue());
 				}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
@@ -63,46 +63,91 @@ public class DisplayMap extends DisplayBasic {
 
 	}
 public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
-			
-			EntityView abcd = null;
-			if (PlayerComponent.position.getEntity() != null) {
-				abcd = PlayerComponent.position.getEntity().getView();
-				RPGApp.hero.setView(abcd);
-			}
-		FXGL.getApp().getGameWorld().setLevelFromMap(map);
-		RPGApp.hero.setCurrentMap(map);
-		if (abcd != null) {
-			FXGL.getApp().getGameScene().addGameView(abcd);
-		}
-		PlayerComponent.position.setValue(RPGApp.ListeMaps.get(map).getReturnPortalList().get(mapOf+pos.toString()));
-		DisplayInventaire.createInventaire();
-		DisplayEquipment.createEquipment();
-		
-		if (RPGApp.ListeMaps.get(map) != null) {
-			for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {
-				FXGL.getApp().getGameWorld().spawn("portal", i.getKey());
-
-			}
-			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
-				if(i.getValue().isUnique() && i.getValue().getState()==State.dead && RPGApp.hero.finishQuest("tuer le rat de la cave")) {
-					
-				}
-				else {
-					FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
-					i.getValue().fullLife();
-					i.getValue().setState(State.alive);
-					}
-			}
-			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
-				String nom = i.getValue().getName();
-				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey()).setViewFromTexture(nom+"_Face.png");
-			}
-			for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
-				String a="Coffre_";
-				if (i.getValue().getLoot()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
-				FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
-			}
-		}
+			Point2D m =RPGApp.ListeMaps.get(map).getReturnPortalList().get(mapOf+pos.toString());
+			String mp=map;
+			chargeMap(mp,m);
+//			EntityView abcd = null;
+//			if (PlayerComponent.position.getEntity() != null) {
+//				abcd = PlayerComponent.position.getEntity().getView();
+//				RPGApp.hero.setView(abcd);
+//			}
+//		FXGL.getApp().getGameWorld().setLevelFromMap(map);
+//		RPGApp.hero.setCurrentMap(map);
+//		if (abcd != null) {
+//			FXGL.getApp().getGameScene().addGameView(abcd);
+//		}
+//		PlayerComponent.position.setValue(RPGApp.ListeMaps.get(map).getReturnPortalList().get(mapOf+pos.toString()));
+//		DisplayInventaire.createInventaire();
+//		DisplayEquipment.createEquipment();
+//		
+//		if (RPGApp.ListeMaps.get(map) != null) {
+//			for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {
+//				FXGL.getApp().getGameWorld().spawn("portal", i.getKey());
+//
+//			}
+//			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
+//				if(i.getValue().isUnique() && i.getValue().getState()==State.dead && RPGApp.hero.finishQuest("tuer le rat de la cave")) {
+//					
+//				}
+//				else {
+//					FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
+//					i.getValue().fullLife();
+//					i.getValue().setState(State.alive);
+//					}
+//			}
+//			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
+//				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey());
+//			}
+//			for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
+//				String a="Coffre_";
+//				if (i.getValue().getLoot()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
+//				FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
+//			}
+//		}
 
 	}
+public static void chargeMap(String map,Point2D pos) {
+	
+	EntityView abcd = null;
+	if (PlayerComponent.position.getEntity() != null) {
+		abcd = PlayerComponent.position.getEntity().getView();
+		RPGApp.hero.setView(abcd);
+	}
+FXGL.getApp().getGameWorld().setLevelFromMap(map);
+RPGApp.hero.setCurrentMap(map);
+if (abcd != null) {
+	FXGL.getApp().getGameScene().addGameView(abcd);
+}
+PlayerComponent.position.setValue(pos);
+DisplayInventaire.createInventaire();
+DisplayEquipment.createEquipment();
+
+if (RPGApp.ListeMaps.get(map) != null) {
+	for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {
+		FXGL.getApp().getGameWorld().spawn("portal", i.getKey());
+
+	}
+	for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
+		if(i.getValue().isUnique() && i.getValue().getState()==State.dead && RPGApp.hero.finishQuest("tuer le rat de la cave")) {
+			
+		}
+		else {
+			
+			i.getValue().fullLife();
+			i.getValue().setState(State.alive);
+			FXGL.getApp().getGameWorld().spawn("monstre", i.getKey()).setProperty("data",i.getValue());
+			}
+	}
+	for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
+				String nom = i.getValue().getName();
+				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey()).setViewFromTexture(nom+"_Face.png");
+	}
+	for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
+		String a="Coffre_";
+		if (i.getValue().getLoot()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
+		FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
+	}
+}
+
+}
 }

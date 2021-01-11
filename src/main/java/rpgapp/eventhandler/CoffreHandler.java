@@ -28,10 +28,11 @@ public class CoffreHandler implements EventHandler<ActionEvent> {
 					String a="tu as trouve "+item.getName()+" dans ce coffre veux tu l'équiper ?";
 					int positionItem =RPGApp.hero.getPositionVoid();
 					if (RPGApp.hero.getEquipement().get(item.getType()) != null) {	
+						
+						RPGApp.hero.getEquipement().get(item.getType()).setPosition(positionItem);
 						DisplayInventaire.updateInventaire("ajout",RPGApp.hero.getEquipement().get(item.getType()),positionItem);
 						DisplayEquipment.updateEquipment("remove",  RPGApp.hero.getEquipement().get(item.getType()));
 						DisplayEquipment.updateEquipment("ajout",  item);
-						RPGApp.hero.removeItemInventory(item);
 						RPGApp.hero.equip(item);
 					}else {
 						DisplayEquipment.updateEquipment("ajout",  item);

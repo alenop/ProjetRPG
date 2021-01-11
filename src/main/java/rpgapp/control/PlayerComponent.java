@@ -1,5 +1,10 @@
 package rpgapp.control;
 
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
@@ -9,6 +14,7 @@ import com.almasb.fxgl.entity.components.TypeComponent;
 
 
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.data.character.State;
@@ -30,6 +36,19 @@ public class PlayerComponent extends Component {
 
 	@Override
 	public void onUpdate(double tpf) {
+//		try {
+//			Thread.sleep(500);
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().entrySet()) {
+//			if(DisplayBasic.trouveEntity(i.getKey(),EntityType.Monstre)!=null) {
+//				DisplayBasic.trouveEntity(i.getKey(),EntityType.Monstre).setPosition(i.getKey().add(64, 0));
+//			}
+//			else if(DisplayBasic.trouveEntity(i.getKey().add(64, 0),EntityType.PNJ)!=null) {
+//				DisplayBasic.trouveEntity(i.getKey().add(64, 0),EntityType.PNJ).setPosition(i.getKey());
+//			}
+//		}
 	}
 
 	// Les methodes move ne fonctionnent que si "CanMove" est vérifié
@@ -71,10 +90,11 @@ public class PlayerComponent extends Component {
 	}
 
 	private void CheckAction(Point2D direction, String angle) {
-
+		if (RPGApp.move) {
 		Point2D newPosition = position.getValue().add(direction);
 		System.out.println(newPosition);
 		System.out.println(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));
+		CheckMonsterRange(newPosition);
 		if (RPGApp.notif!=null) {
 			FXGL.getApp().getGameWorld().removeEntity(RPGApp.notif);
 			RPGApp.notif=null;
@@ -102,7 +122,8 @@ public class PlayerComponent extends Component {
 				e.printStackTrace();
 			}
 		} else if (checkEntity(newPosition, EntityType.Monstre) == false) {
-			Monstre monstre = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().get(newPosition);
+			Monstre monstre = DisplayBasic.trouveEntity(newPosition, EntityType.Monstre).getProperties().getObject("data");
+			
 			if (monstre.getState() == State.alive) {
 				DisplayCombat.begin(monstre,newPosition);
 				try {
@@ -133,5 +154,63 @@ public class PlayerComponent extends Component {
 		}
 	
 
+	}}
+	public void CheckMonsterRange(Point2D pos) {
+		CheckMonsterRangeWithDir(pos,"left");
+		CheckMonsterRangeWithDir(pos,"right");
+		CheckMonsterRangeWithDir(pos,"down");
+		CheckMonsterRangeWithDir(pos,"up");
+		if (RPGApp.MonstreMove==false) {
+			RPGApp.MonstreMove=true;
+		}
+	}
+	public void CheckMonsterRangeWithDir(Point2D pos, String dir){
+		int x=0;
+		int y=0;
+		int z=0;;
+		switch (dir) {
+			case "right":
+				x=0;
+				y=-128;
+				z=-64;
+				break;
+			case "left":
+				x=-64*4;
+				y=-128;
+				z=64;
+				break;
+			case "up":
+				x=-128;
+				y=(-64*4);
+				z=64;
+				break;
+			case "down":
+				x=-128;
+				y=0;
+				z=-64;
+				break;
+		}
+		List<Entity> mob=FXGL.getApp().getGameWorld().getEntitiesInRange(new Rectangle2D(pos.getX()+x,pos.getY()+y,64*4,64*4));
+		for (Entity a : mob) {
+			if (a.isType(EntityType.Monstre)) {
+				System.out.println(a);
+				if (dir.equals("right")||dir.equals("left")) {
+					if(checkEntity(a.getPosition().add(z, 0), EntityType.BLOC)) {
+						if (RPGApp.MonstreMove) {
+							a.translateX(z);
+							RPGApp.MonstreMove=false;
+						}
+						
+					}
+					
+				}else
+					if(checkEntity(a.getPosition().add(0, z), EntityType.BLOC)) {
+						if (RPGApp.MonstreMove) {
+						a.translateY(z);
+						RPGApp.MonstreMove=false;
+					}}
+			}
+		}
+		
 	}
 }

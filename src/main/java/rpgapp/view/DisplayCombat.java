@@ -32,6 +32,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 	public static Music musicBoss;
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
+		RPGApp.move=false;
 		Entity monstreEntity = CreateEntityWithPicture(monstre.getTypeMonstre().name()+"CombatGif.gif", 64 * 5 + 32, 64);
 		EntityView monstreview = monstreEntity.getView();
 		MusicComponent.musicPlay("battle");
@@ -47,8 +48,8 @@ public abstract class DisplayCombat extends DisplayBasic {
 		Rectangle border = createBorder(FXGL.getSettings().getWidth(),FXGL.getSettings().getHeight());
 		border.setFill(Color.rgb(0, 0, 0));
 		Entity viewcombat = createRectangleWithBorder(border,
-				new Point2D(PlayerComponent.position.getX() - RPGApp.TILE_SIZE * 5,
-						PlayerComponent.position.getY() - RPGApp.TILE_SIZE * 5));
+				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
+						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2));
 		addbarreVie(viewcombat.getView(), RPGApp.hero, 32, 185);
 		addbarreVie(viewcombat.getView(), monstre, 64 * 5 + 32, 32);
 		Label label = new Label("yo");

@@ -18,20 +18,24 @@ import rpgapp.view.DisplayPNJ;
 public class PnjEventHandler implements EventHandler<ActionEvent> {
 	private Button button;
 	private PNJ pnj;
-	private EntityView pnjview;
-	public  PnjEventHandler(Button button,PNJ pnj,EntityView pnjview) {
+	public  PnjEventHandler(Button button,PNJ pnj) {
 		this.button=button;
 		this.pnj=pnj;
-		this.pnjview=pnjview;
 	}
 	
 	@Override
 	public void handle(ActionEvent ActionEvent) {
 		if (pnj.getgiveQuest().equals(button.getText())) {
 			RPGApp.hero.setCurrentquest(pnj.getQuest());
+			RPGApp.dialogBox.removeFromWorld();
 			MusicComponent.soundPlay("accept");
+			RPGApp.dialogBox=null;
 		}else if (pnj.getListChat().get(button.getText())!=null) {
-			DisplayPNJ.dialogue2(pnjview,pnj,button.getText());
+			DisplayPNJ.dialogue2(pnj,button.getText());
+		}else {
+			RPGApp.dialogBox.removeFromWorld();
+			RPGApp.dialogBox=null;
+			RPGApp.move=true;
 		}
 	}}
 

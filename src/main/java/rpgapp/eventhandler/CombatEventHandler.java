@@ -75,6 +75,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
 			}
 		}else if(choix.equals("fuir") || choix.equals("partir")) {
+			RPGApp.move=true;
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
 			MusicComponent.musicPlay("cave");
 			MusicComponent.soundPlay("run");
