@@ -91,8 +91,8 @@ public class RPGApp extends GameApplication {
 		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1472, 960));
 		//Portail de la maison
 		createChest("mapJardin.json", new Point2D(1472, 320), new Chest(new Arme(40, "Hache", "Hache.png")));
-		createChest("mapJardin.json", new Point2D(1408, 320), new Chest(new Arme(15, "balai de ménagère", "Balai.png")));
-		createChest("mapMaison.json", new Point2D(1664, 448), new Chest(new Arme(30, "Epée", "Epee.png")));
+		createChest("mapJardin.json", new Point2D(1408, 320), new Chest(new Arme(15, "Balai", "Balai.png")));
+		createChest("mapMaison.json", new Point2D(1664, 448), new Chest(new Arme(30, "Epee", "Epee.png")));
 		createPortal("mapMaison.json", new Point2D(1152, 1216), "mapJardin.json", new Point2D(1216, 1536));
 		createPortal("mapMaison.json", new Point2D(768, 384), "mapCave.json", new Point2D(1472, 896));
 		createPortal("mapMaison.json", new Point2D(1216, 1216), "mapJardin.json", new Point2D(1216, 1536));
@@ -110,7 +110,7 @@ public class RPGApp extends GameApplication {
 		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		
 		
-		createMonster("mapCave.json", new Monstre("souris", 50, 40, 100,true), new Point2D(512, 704));
+		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true), new Point2D(512, 704));
 		
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";
@@ -135,7 +135,7 @@ public class RPGApp extends GameApplication {
 		conversationComplete.put("proteine ?", conversation3);
 		conversationComplete.put("finish", conversation4);
 		conversationComplete.put("en cours", conversation5);
-		PNJ pere =new PNJ("pere","PnjFace.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
+		PNJ pere =new PNJ("Pere","Cadre.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
 		
 		String[] answer1A = new String[2];
@@ -157,7 +157,7 @@ public class RPGApp extends GameApplication {
 		HashMap<String, String[]> conversation1B1 = Chat(answer1B, "Je crois que je m'en souviens plus..");
 		HashMap<String, String[]> conversation1B2 = Chat(answer1B, "Ah...Je m'en souviens plus de toute façon..");
 		
-		HashMap<String, String[]> conversation2A = Chat(answer2A, "Hey "+hero.getName()+" ! \nJ'ai faim, si tu vas dans ton jardin n'hesite \npas à me ramener des pommes de ton coffre.");
+		HashMap<String, String[]> conversation2A = Chat(answer2A, "Hey "+hero.getName()+" ! \nJ'ai faim, si tu vas dans ton jardin n'hesite \npas à me ramener des pommes.");
 		HashMap<String, String[]> conversation2B1 = Chat(answer2B, "Merci ! j'ai faim.");
 		HashMap<String, String[]> conversation2B2 = Chat(answer2B, "Tu es sûr ? Pourtant tu dois bien contrer l'invasion de rat non ?");
 		
@@ -176,13 +176,13 @@ public class RPGApp extends GameApplication {
 		HashMap<String,HashMap<String,String[]>> conversationComplete3=new HashMap<String,HashMap<String,String[]>>();
 		conversationComplete3.put("begin", conversation3A);
 		
-		PNJ pnj1 =new PNJ("Mr.Georges le garde","PnjFace.png",conversationComplete1);
+		PNJ pnj1 =new PNJ("MrGeorges","Cadre1.png",conversationComplete1);
 		createPNJ("mapPnj1.json",pnj1, new Point2D(640,768));
 		
-		PNJ pnj2 =new PNJ("Mr.Bernard le boulanger","PnjFace.png",conversationComplete2);
-		createPNJ("mapPnj2.json",pnj2, new Point2D(1024,576));
+		PNJ pnj2 =new PNJ("MrBernard","Cadre2.png",conversationComplete2);
+		createPNJ("mapPnj2.json",pnj2, new Point2D(960,640));
 		
-		PNJ pnj3 =new PNJ("Mme.Juliette la medecin","PnjFace.png",conversationComplete3);
+		PNJ pnj3 =new PNJ("MmeJuliette","Cadre3.png",conversationComplete3);
 		createPNJ("mapPnj3.json",pnj3, new Point2D(896,704));
 
 //  	getGameWorld().spawn("pnj", new Point2D(1024, 960));
@@ -209,7 +209,7 @@ public class RPGApp extends GameApplication {
 //		hero.addItemInventory(new Arme(40, "balai de menagere", "Balai.png"));
 		DisplayInventaire.createInventaire();
 		//hero.equip(new Arme(40, "Hache", "Hache.png"));
-		hero.equip(new Armure(21, "t-shirt", "t-shirt.jpg"));
+		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
 		//new Menu(FXGL.getApp(), MenuType.GAME_MENU);

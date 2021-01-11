@@ -51,7 +51,8 @@ public class DisplayMap extends DisplayBasic {
 				}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
-				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey());
+				String nom = i.getValue().getName();
+				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey()).setViewFromTexture(nom+"_Face.png");
 			}
 			for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
 				String a="Coffre_";
@@ -93,7 +94,8 @@ public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 					}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
-				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey());
+				String nom = i.getValue().getName();
+				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey()).setViewFromTexture(nom+"_Face.png");
 			}
 			for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
 				String a="Coffre_";

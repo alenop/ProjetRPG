@@ -25,8 +25,8 @@ public class DisplayEquipment extends DisplayBasic {
 		getEquipment().getView().setVisible(true);
 	}
 	public static Entity getEquipment() {
-		Entity equipment = trouveEntity(new Point2D(PlayerComponent.position.getX() -3* RPGApp.TILE_SIZE,
-				PlayerComponent.position.getY() + RPGApp.TILE_SIZE), EntityType.Equipment);
+		Entity equipment = trouveEntity(new Point2D(PlayerComponent.position.getX() -7* RPGApp.TILE_SIZE,
+				PlayerComponent.position.getY() + RPGApp.TILE_SIZE -32 ), EntityType.Equipment);
 		return equipment;
 	}
 	public static void updateEquipment(String a, Item b) {
@@ -65,24 +65,25 @@ public class DisplayEquipment extends DisplayBasic {
 	public static void createEquipment() {
 
 		double BG_WIDTH = 64 * 4;
-		double BG_HEIGHT = 64 * 4;
+		double BG_HEIGHT = 64 * 4 +32;
 
 		Entity equipment = createRectangle(BG_WIDTH, BG_HEIGHT,
-				new Point2D(PlayerComponent.position.getX() -3* RPGApp.TILE_SIZE,
-						PlayerComponent.position.getY() + RPGApp.TILE_SIZE));
-
+				new Point2D(PlayerComponent.position.getX() -7* RPGApp.TILE_SIZE,
+						PlayerComponent.position.getY() + RPGApp.TILE_SIZE -32));
+		
 		equipment.setType(EntityType.Equipment);
+		equipment.setViewFromTexture("EquipmentFond.png");
 		EntityView equipmentView = equipment.getView();
-		Entity fond=CreateEntityWithPicture("EquipmentFond.jpg", 0, 0);
-		equipmentView.addNode(fond.getView());
+//		Entity fond=CreateEntityWithPicture("EquipmentFond.png", 0, 0);
+//		equipmentView.addNode(fond.getView());
 
 		int x = 0;
 		int y = 0;
 		HashMap<String, Item> i = RPGApp.hero.getEquipement();
 		//String[] list={"Arme","Armure"};
 		HashMap<String,Point2D> list =new HashMap<String,Point2D>();
-		list.put("Arme", new Point2D(2*64+32+16,64+32+16));
-		list.put("Armure", new Point2D(64+32,64));
+		list.put("Arme", new Point2D(2*64+48,64+80));
+		list.put("Armure", new Point2D(64+40,64+56));
 		for (Entry<String, Point2D> type : list.entrySet()) {
 
 			if (x >= 4) {

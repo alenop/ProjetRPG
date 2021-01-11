@@ -69,6 +69,16 @@ public class MusicComponent {
 				break;
 			case "shield":
 				setSoundPlayed("shield.mp3");
+				break;
+			case "run":
+				setSoundPlayed("run.mp3");
+				break;
+			case "accept":
+				setSoundPlayed("accepted.mp3");
+				break;
+			case "succes":
+				setSoundPlayed("succes.mp3");
+				break;
 		}
 		FXGL.getApp().getAudioPlayer().playSound(soundPlayed);
 	}

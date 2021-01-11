@@ -77,6 +77,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		}else if(choix.equals("fuir") || choix.equals("partir")) {
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
 			MusicComponent.musicPlay("cave");
+			MusicComponent.soundPlay("run");
 			if(choix.equals("partir")) {
 				if(RPGApp.hero.getCurrentquest()!=null) {
 				if (RPGApp.hero.getCurrentquest().verifQuest()) {
@@ -89,6 +90,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 					String notif=DisplayBasic.retourLigne("Quête : "+RPGApp.hero.getCurrentquest().getName() +" accomplie !"+niveau,30);
 					RPGApp.notif = DisplayBasic.createNotif(notif);
 					FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
+					MusicComponent.soundPlay("succes");
 				}
 			}}
 		}else if(choix.equals("retry")) {

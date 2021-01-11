@@ -44,4 +44,24 @@ public class DisplayPNJ extends DisplayBasic {
 			}
 		FXGL.getApp().getDisplay().showBox(chat.get("message")[0], pnjview, listButton);
 	}
+	public static void tourner(Point2D posPNJ, String angle) {
+		String nouvAngle = "";
+		String nom = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getPNJList().get(posPNJ).getName();
+		switch(angle) {
+			case "Dos":
+				nouvAngle = "Face";
+				break;
+			case "Face":
+				nouvAngle = "Dos";
+				break;
+			case "Gauche":
+				nouvAngle = "Droite";
+				break;
+			case "Droite":
+				nouvAngle = "Gauche";
+				break;
+		}
+		FXGL.getApp().getGameWorld().getEntitiesAt(posPNJ).get(0).setViewFromTexture(nom + "_" + nouvAngle + ".png");
+		
+	}
 }
