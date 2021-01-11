@@ -87,7 +87,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 					if(RPGApp.hero.getLevel()>nvA) {
 						niveau="Félicitations tu est maintenant niveau "+RPGApp.hero.getLevel();
 					}
-					String notif=DisplayBasic.retourLigne("Quête : "+RPGApp.hero.getCurrentquest().getName() +" accomplie !"+niveau,30);
+					String notif="Quête : "+RPGApp.hero.getCurrentquest().getName() +" accomplie !"+niveau;
 					RPGApp.notif = DisplayBasic.createNotif(notif);
 					FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
 				}

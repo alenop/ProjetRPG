@@ -4,12 +4,14 @@ public class Monstre extends Character{
 	private Monstres typeMonster=Monstres.Rat;
 	private int give_experience=100;
 	private boolean Unique=false;
+	private String quest;
 	
-	public Monstre(String nom, int atk, int def, int pv,boolean unique) {
+	public Monstre(String nom, int atk, int def, int pv,boolean unique, String quest) {
 		super(nom,atk,def,pv);
 		this.Unique=unique;
 		this.setWeaknesses(new String[5]);
 		this.getWeaknesses()[0]="balai de ménagère";
+		this.quest=quest;
 	}
 	public Monstre(String nom, int atk, int def, int pv) {
 		super(nom,atk,def,pv);
@@ -24,8 +26,14 @@ public class Monstre extends Character{
 		this.getWeaknesses()[0]="balai de ménagère";
 		}
 	}
-
-
+	
+	public String getQuest() {
+		if (this.Unique) {
+			return this.quest;
+		}else {
+			return "ce monstre n'est pas unique et par conséquent ne dispose pas de quête associée";
+		}
+	}
 	public int getGive_experience() {
 		return give_experience;
 	}

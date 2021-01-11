@@ -123,15 +123,15 @@ public class RPGApp extends GameApplication {
 		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		
 		
-		createMonster("mapCave.json", new Monstre("souris", 50, 40, 100,true), new Point2D(512, 704));
-		createMonster("mapJardin.json", new Monstre("souris", 50, 40, 100,true), new Point2D(896, 2048));
-		createMonster("mapJardin.json", new Monstre("souris", 50, 40, 100,true), new Point2D(2304, 2304));
-		createMonster("mapJardin.json", new Monstre("souris", 50, 40, 100,true), new Point2D(2624, 2880));
+		createMonster("mapCave.json", new Monstre("souris", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
+		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
+		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
+		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
 		
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";
 		liste[1]="Oui papa";
-		HashMap<String,String[]> conversation = Chat(liste,"Un rat mange tout mon fromage dans la cave! va t'equiper d'une arme adaptée et tue le");
+		HashMap<String,String[]> conversation = Chat(liste,"Un rat mange tout mon fromage dans la cave ! va t'equiper d'une arme adaptée et tue le !");
 		String[] liste2=new String[2];
 		liste2[0]="Oui papa";
 		liste2[1]="protéiné ?";
@@ -151,7 +151,7 @@ public class RPGApp extends GameApplication {
 		conversationComplete.put("protéiné ?", conversation3);
 		conversationComplete.put("finish", conversation4);
 		conversationComplete.put("en cours", conversation5);
-		PNJ pere =new PNJ("pere","Pnj_Face.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
+		PNJ pere =new PNJ("père","Pnj_Face.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
 		
 		String[] answer1A = new String[2];
@@ -200,13 +200,7 @@ public class RPGApp extends GameApplication {
 		
 		PNJ pnj3 =new PNJ("Mme.Juliette la medecin","Pnj_Face.png",conversationComplete3);
 		createPNJ("mapPnj3.json",pnj3, new Point2D(896,704));
-
-//  	getGameWorld().spawn("pnj", new Point2D(1024, 960));
-//		PNJ pnj1 = new PNJ("pnj1", 192, 128, "Tue la souris");
-//		PNJList.init();
-//		PNJList.pnjList.put(new Point2D(1024, 960), pnj1);
-
-		
+	
 		DisplayMap.chargeMapInit(hero.getCurrentMap());
 		if (save==false) {
 			pos=ListeMaps.get(hero.getCurrentMap()).getPositionHero();
@@ -326,7 +320,6 @@ public class RPGApp extends GameApplication {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				System.out.println("yo");
 				SaveLoad.save(RPGApp.hero);
 			}
 		}, KeyCode.M);
@@ -401,8 +394,6 @@ public class RPGApp extends GameApplication {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("yo");
-		System.out.println(RPGApp.hero.getInventory());
 		for (Item i:RPGApp.hero.getInventory()) {
 			if(i!=null) {
 			DisplayInventaire.updateInventaire("remove", i, i.getPosition());

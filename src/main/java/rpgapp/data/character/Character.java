@@ -63,8 +63,8 @@ public abstract class Character  implements Serializable {
 		return pv;
 	}
 
-	public void setPv(int pv) {
-		this.pv = pv;
+	public void setPv(double d) {
+		this.pv = (int) d;
 	}
 
 	public State getState() {

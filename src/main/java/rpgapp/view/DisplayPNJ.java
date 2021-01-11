@@ -54,7 +54,7 @@ public class DisplayPNJ extends DisplayBasic {
 		if (RPGApp.dialogBox==null) {
 		Entity pnjentity = Entities.builder()
                 .viewFromTexture(pnj.getImage("Cadre"))
-                .at(FXGL.getSettings().getWidth()/2-64, 32)
+                .at(0,0)
                 .build();
 		EntityView pnjview = pnjentity.getView();
 		RPGApp.dialogBox=initDialogBox(pnjview,pnj.getName(),listButton,chat.get("message")[0]);
@@ -64,7 +64,7 @@ public class DisplayPNJ extends DisplayBasic {
 	}
 	private static Entity initDialogBox(EntityView pnjview2,String pnjname,Button[] av,String text) {
 		// Display.mode_combat2(monstreview,a,b,1,heroview);
-		Rectangle border = createBorder(FXGL.getSettings().getWidth(),FXGL.getSettings().getHeight());
+		Rectangle border = createBorder(FXGL.getSettings().getWidth(),192);
 		border.setFill(Color.rgb(0, 0, 0));
 		Entity dialogBox = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
@@ -74,11 +74,11 @@ public class DisplayPNJ extends DisplayBasic {
 		//label.setMinSize(400,400);
 		label.setTextFill(Color.rgb(254, 254, 254));
 		Label label2 = new Label(text);
-		Text text2 = FXGL.getUIFactory().newText("dialogue entre "+pnjname+" et vous", Color.WHITE, 20.0);
+		Text text2 = FXGL.getUIFactory().newText(pnjname+" :", Color.WHITE, 20.0);
 		Text text4 = FXGL.getUIFactory().newText(text, Color.WHITE, 15.0);
 		
 		Entity text3 = CreateEntityWithNode(text2, FXGL.getSettings().getWidth()/2-192, 32);
-		Entity dialog = CreateEntityWithNode(text4, FXGL.getSettings().getWidth()/2-192, 192+128);
+		Entity dialog = CreateEntityWithNode(text4, FXGL.getSettings().getWidth()/2-192,64);
 		dialog.getView().setUserData(dialog);
 		dialog.getView().setAccessibleText("dialog");
 		dialogBox.getView().addNode(dialog.getView());
@@ -87,7 +87,7 @@ public class DisplayPNJ extends DisplayBasic {
 		int a=0;
 		for (Button i : av) {
 			System.out.println(i.getText());
-			Entity Bouton = CreateEntityWithNode(i,FXGL.getSettings().getWidth()/2- 192 + 64 * j+4*a, 310+128);
+			Entity Bouton = CreateEntityWithNode(i,FXGL.getSettings().getWidth()/2- 192 + 64 * j+4*a,128);
 			a=i.getText().length();
 			Bouton.setProperty("bouton", i);
 			Bouton.getView().setUserData(Bouton);

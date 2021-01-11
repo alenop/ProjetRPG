@@ -10,7 +10,16 @@ import rpgapp.RPGApp;
 
 
 public abstract class Systems {
-
+	public static void Combat_attaque(Character a,int c) {
+		int result = (c - a.getDef());
+		int result_final = a.getPv() - Math.max(1, result);
+		if (result_final <= 0) {
+			a.setState(State.dead);
+			a.setPv(0);
+		} else {
+			a.setPv(result_final);
+		}
+	}
 	public static void Combat_attaque(Character b, Character a) {
 		int result = (b.getAtk() - a.getDef());
 		int result_final = a.getPv() - Math.max(1, result);
@@ -34,10 +43,7 @@ public abstract class Systems {
 				if (c.getEquipement().get("Arme") != null) {
 					for (int i = 0; i < b.getWeaknesses().length; i++) {
 						if (c.getEquipement().get("Arme").getName().equals(b.getWeaknesses()[i])) {
-							int g = a.getAtk();
-							a.setAtk(a.getAtk() * 4);
-							Combat_attaque(a, b);
-							a.setAtk(g);
+							Combat_attaque(b, a.getAtk()*4);
 							break;
 						}		
 					}Combat_attaque(a,b);

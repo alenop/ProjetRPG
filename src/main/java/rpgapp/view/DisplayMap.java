@@ -127,7 +127,7 @@ if (RPGApp.ListeMaps.get(map) != null) {
 
 	}
 	for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
-		if(i.getValue().isUnique() && i.getValue().getState()==State.dead && RPGApp.hero.finishQuest("tuer le rat de la cave")) {
+		if(i.getValue().isUnique() && RPGApp.hero.finishQuest(i.getValue().getQuest())) {
 			
 		}
 		else {

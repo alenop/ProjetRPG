@@ -38,7 +38,7 @@ public abstract class DisplayBasic {
         border.setStrokeWidth (2.0);
         border.setArcWidth (10.0);
         border.setArcHeight (10.0);
-        border.setFill(Color.rgb(25, 25, 25, 0.8));
+        border.setFill(Color.rgb(0, 0, 0,0.8));
         return border;
 	}
 	protected static  Entity createRectangleWithBorder(Rectangle border,Point2D c) {
@@ -65,8 +65,15 @@ public abstract class DisplayBasic {
 	        return rectangleView;
 	}
 	protected static Entity createNotif(String a) {
-		double BG_WIDTH = 64*4;
-	    double BG_HEIGHT = 48;
+		a=retourLigne(a, 50);
+		String[] li=a.split("");
+		int j=1;
+		for (int i=0;i<a.length();i++) {
+			if (li[i].equals("\n")){
+				j++;
+			}}
+		double BG_WIDTH = 50*12;
+	    double BG_HEIGHT = 42*j;
 
 	    
 	        Entity notif =createRectangle(BG_WIDTH, BG_HEIGHT,new Point2D(PlayerComponent.position.getX()-RPGApp.TILE_SIZE*3,PlayerComponent.position.getY()-RPGApp.TILE_SIZE*3));
@@ -107,23 +114,19 @@ public abstract class DisplayBasic {
 				e=i+1;
 			}
 			if(i%b==0 && i!=0) {
-				if (li[i].equals("\n") && (li[i-1].equals(" ") || li[i-1].equals("!"))){
-
-				}
-				else if(li[i].equals(" ")|| li[i].equals("!")|| li[i].equals("?")) {
+				if(li[i].equals(" ")|| li[i].equals("!")|| li[i].equals("?")) {
 					if (li[i+1].equals("!")|| li[i+1].equals("?")) {
 						liste.add(i+2);
+						System.out.println("yo1");
 						
 					}
 					else {
-					
-					liste.add(i);
+					System.out.println("yo2");
+					liste.add(i+1);
 					}
 				}
-//				else if(li[i+1].equals(" ")) {
-//					liste.add(i+1);
-//				}
 				else {
+					System.out.println("yo3");
 					liste.add(e);
 				}
 			}

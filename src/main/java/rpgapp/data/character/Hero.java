@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 
 import rpgapp.system.Quest;
+import rpgapp.system.Systems;
 import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Item;
 
@@ -85,12 +86,12 @@ public class Hero extends Character implements Serializable {
 		if (this.equipment.get(item.getType()) != null) {
 			unequip(this.equipment.get(item.getType()));
 		}
-
 		this.equipment.put(item.getType(), item);
 
-		if (item.getType() == "Arme") {
+		if (item.getType().equals("Arme")) {
 			this.setAtk(this.getAtk() + item.getStat());
-		} else if (item.getType() == "Armure") {
+			System.out.println("yo");
+		} else if (item.getType().equals("Armure")) {
 			this.setDef(this.getDef() + item.getStat());
 		}
 	}
@@ -180,6 +181,12 @@ public class Hero extends Character implements Serializable {
 	}
 	public boolean finishQuest(String namequest) {
 		return listFinishQuests.contains(namequest);
+	}
+	public void skillHeal() {
+		this.setPv(this.getPv()+this.Pvmax*0.4);
+	}
+	public void skillSlash(Character a) {
+		Systems.Combat_attaque(a,(int) (this.getAtk()*1.5));
 	}
 	
 		

@@ -28,6 +28,7 @@ public class PnjEventHandler implements EventHandler<ActionEvent> {
 			RPGApp.hero.setCurrentquest(pnj.getQuest());
 			RPGApp.dialogBox.removeFromWorld();
 			RPGApp.dialogBox=null;
+			RPGApp.move=true;
 		}else if (pnj.getListChat().get(button.getText())!=null) {
 			DisplayPNJ.dialogue2(pnj,button.getText());
 		}else {
