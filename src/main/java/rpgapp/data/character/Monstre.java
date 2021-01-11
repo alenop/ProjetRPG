@@ -10,20 +10,20 @@ public class Monstre extends Character{
 		super(nom,atk,def,pv);
 		this.Unique=unique;
 		this.setWeaknesses(new String[5]);
-		this.getWeaknesses()[0]="balai de ménagère";
+		this.getWeaknesses()[0]="Balai";
 		this.quest=quest;
 	}
 	public Monstre(String nom, int atk, int def, int pv) {
 		super(nom,atk,def,pv);
 		this.setWeaknesses(new String[5]);
-		this.getWeaknesses()[0]="balai de ménagère";
+		this.getWeaknesses()[0]="Balai";
 	}
 	public Monstre(String nom, int atk, int def, int pv,Monstres type) {
 		super(nom,atk,def,pv);
 		this.setTypeMonster(type);
 		this.setWeaknesses(new String[5]);
 		if (type.equals(Monstres.Rat)) {
-		this.getWeaknesses()[0]="balai de ménagère";
+		this.getWeaknesses()[0]="Balai";
 		}
 	}
 	

@@ -26,8 +26,8 @@ public class DisplayInventaire extends DisplayBasic {
 	}
 
 	public static Entity getInventory() {
-		Entity inventaire = trouveEntity(new Point2D(PlayerComponent.position.getX() + RPGApp.TILE_SIZE,
-				PlayerComponent.position.getY() + RPGApp.TILE_SIZE), EntityType.Inventaire);
+		Entity inventaire = trouveEntity(new Point2D(PlayerComponent.position.getX() + 3*RPGApp.TILE_SIZE,
+				PlayerComponent.position.getY() + RPGApp.TILE_SIZE -32), EntityType.Inventaire);
 		return inventaire;
 	}
 
@@ -75,14 +75,15 @@ public class DisplayInventaire extends DisplayBasic {
 
 	public static void createInventaire() {
 
-		double BG_WIDTH = 64 * 4;
-		double BG_HEIGHT = 64 * 4;
+		double BG_WIDTH = 64 * 4 + 16;
+		double BG_HEIGHT = 64 * 4 + 32;
 
 		Entity inventaire = createRectangle(BG_WIDTH, BG_HEIGHT,
-				new Point2D(PlayerComponent.position.getX() + RPGApp.TILE_SIZE,
-						PlayerComponent.position.getY() + RPGApp.TILE_SIZE));
+				new Point2D(PlayerComponent.position.getX() + 3*RPGApp.TILE_SIZE,
+						PlayerComponent.position.getY() + RPGApp.TILE_SIZE -32));
 
 		inventaire.setType(EntityType.Inventaire);
+		inventaire.setViewFromTexture("InventaireFond.png");
 		EntityView inventaireView = inventaire.getView();
 
 		int x = 0;
@@ -93,7 +94,7 @@ public class DisplayInventaire extends DisplayBasic {
 				x = 0;
 				y = y + 1;
 			}
-			Entity item = createRectangle(64, 64, new Point2D(64 * x, 64 * y));
+			Entity item = createRectangle(64, 64, new Point2D(64 * x +8, 64 * y +32));
 			item.getView().setUserData(item);
 		
 

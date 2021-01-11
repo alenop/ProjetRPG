@@ -22,6 +22,7 @@ import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Character;
 
 import rpgapp.data.character.Monstre;
+import rpgapp.data.elementInteractifs.Item;
 import rpgapp.eventhandler.CombatEventHandler;
 import rpgapp.eventhandler.GameOverHandler;
 
@@ -38,7 +39,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		
 		monstreview.setAccessibleText("monstre");
 		monstreview.setUserData(monstreEntity);
-		Entity hero = CreateEntityWithPicture("HerosFace.png", 32, 64);
+		Entity hero = CreateEntityWithPicture("heroCombatPoing.gif", 32, 192);
 		EntityView heroview = hero.getView();
 		heroview.setUserData(hero);
 		heroview.setAccessibleText("hero");
@@ -49,7 +50,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		Entity viewcombat = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2));
-		addbarreVie(viewcombat.getView(), RPGApp.hero, 32, 32);
+		addbarreVie(viewcombat.getView(), RPGApp.hero, 32, 185);
 		addbarreVie(viewcombat.getView(), monstre, 64 * 5 + 32, 32);
 		Label label = new Label("yo");
 		label.setTextFill(Color.rgb(254, 254, 254));
@@ -68,7 +69,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		av[2].setOnAction(new CombatEventHandler("fuir",viewcombat));
 		int j = 0;
 		for (Button i : av) {
-			Entity Bouton = CreateEntityWithNode(i, 32 + 64 * j, 256);
+			Entity Bouton = CreateEntityWithNode(i, 32 + 64 * j, 385);
 			Bouton.setProperty("bouton", i);
 			Bouton.getView().setUserData(Bouton);
 			Bouton.getView().setAccessibleText(i.getText());
@@ -123,7 +124,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 				i.setPosition(64 * 5 + 32 + 192 * (100 - (pourcentage)) / 100, 32);
 			} else {
-				i.setPosition(32 + 192 * (100 - (pourcentage)) / 100, 32);
+				i.setPosition(32 + 192 * (100 - (pourcentage)) / 100, 185);
 			}
 		} else {
 			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (100 - pourcentage)) / 100));
@@ -134,7 +135,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		String text;
 		System.out.println(monstre.getPv()+"/"+RPGApp.hero.getPv());
 		if (nb_tour == 1) {
-			text = "tu as trouve " + monstre.getName() + " que veut tu faire ?";
+			text = "Tu as trouvé " + monstre.getName() + " que veut tu faire ?";
 		} else if (nb_tour == 2) {
 			text = "Attention " + monstre.getName() + " prépare une grosse attaque";
 		} else {
@@ -157,9 +158,16 @@ public abstract class DisplayCombat extends DisplayBasic {
 			
 				}else if (i.getAccessibleText().equals("hero")) {	
 					if (nb_tour==-1) {
-					((Entity) i.getUserData()).setViewFromTexture("GameOver.jpg");
+					((Entity) i.getUserData()).setViewFromTexture("GameOver.gif");
 					}else if(nb_tour==1) {
-						((Entity) i.getUserData()).setViewFromTexture("HerosFace.png");
+						Item arme = RPGApp.hero.getEquipement().get("Arme");
+						if (arme != null) {
+							((Entity) i.getUserData()).setViewFromTexture("heroCombat"+arme.getName()+".gif");
+						}
+						else {
+							((Entity) i.getUserData()).setViewFromTexture("heroCombatPoing.gif");
+						}
+						
 					}
 				}else if (nb_tour == 0) {
 					i.setVisible(false);

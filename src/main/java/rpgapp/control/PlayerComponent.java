@@ -105,12 +105,12 @@ public class PlayerComponent extends Component {
 		if (checkEntity(newPosition, EntityType.BLOC) && checkEntity(newPosition, EntityType.Monstre)
 				&& checkEntity(newPosition, EntityType.PNJ) && checkEntity(newPosition, EntityType.Coffre)) {
 			try {
-				if (checkEntity(new Point2D(position.getX()+RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE),EntityType.Inventaire)==false) {
-					Entity i =Display.trouveEntity(new Point2D(position.getX()+RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE),EntityType.Inventaire);
+				if (checkEntity(new Point2D(position.getX()+3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Inventaire)==false) {
+					Entity i =Display.trouveEntity(new Point2D(position.getX()+3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Inventaire);
 					i.translate(direction);
 				}
-				if (checkEntity(new Point2D(position.getX()-3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE),EntityType.Equipment)==false) {
-					Entity i =Display.trouveEntity(new Point2D(position.getX()-3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE),EntityType.Equipment);
+				if (checkEntity(new Point2D(position.getX()-7*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Equipment)==false) {
+					Entity i =Display.trouveEntity(new Point2D(position.getX()-7*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Equipment);
 					i.translate(direction);
 				}
 				
@@ -140,9 +140,8 @@ public class PlayerComponent extends Component {
 			}
 		}
 		else if (checkEntity(newPosition, EntityType.PNJ) == false) {
-			
-			
 			DisplayPNJ.init(RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getPNJList().get(newPosition));
+			DisplayPNJ.tourner(newPosition, angle);
 		}
 		else if (checkEntity(newPosition, EntityType.Coffre) == false) {
 			MusicComponent.soundPlay("chest");

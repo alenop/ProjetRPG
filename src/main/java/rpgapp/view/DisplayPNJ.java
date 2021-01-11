@@ -61,6 +61,26 @@ public class DisplayPNJ extends DisplayBasic {
 		}else {
 		showBox(RPGApp.dialogBox,listButton,chat.get("message")[0]);
 		}
+	public static void tourner(Point2D posPNJ, String angle) {
+		String nouvAngle = "";
+		String nom = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getPNJList().get(posPNJ).getName();
+		switch(angle) {
+			case "Dos":
+				nouvAngle = "Face";
+				break;
+			case "Face":
+				nouvAngle = "Dos";
+				break;
+			case "Gauche":
+				nouvAngle = "Droite";
+				break;
+			case "Droite":
+				nouvAngle = "Gauche";
+				break;
+		}
+		FXGL.getApp().getGameWorld().getEntitiesAt(posPNJ).get(0).setViewFromTexture(nom + "_" + nouvAngle + ".png");
+		
+	}
 	}
 	private static Entity initDialogBox(EntityView pnjview2,String pnjname,Button[] av,String text) {
 		// Display.mode_combat2(monstreview,a,b,1,heroview);

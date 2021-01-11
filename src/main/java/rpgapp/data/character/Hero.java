@@ -83,6 +83,8 @@ public class Hero extends Character implements Serializable {
 	}
 
 	public void equip(Item item) {
+		System.out.println(item);
+		System.out.println(item.getName());
 		if (this.equipment.get(item.getType()) != null) {
 			unequip(this.equipment.get(item.getType()));
 		}

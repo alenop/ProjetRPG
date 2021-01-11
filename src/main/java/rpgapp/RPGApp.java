@@ -104,8 +104,8 @@ public class RPGApp extends GameApplication {
 		createPortal("map5.json", new Point2D(1344, 448), "mapCave.json",new Point2D(1472, 960));
 		//Portail de la maison
 		createChest("mapJardin.json", new Point2D(1472, 320), new Chest(new Arme(40, "Hache", "Hache.png")));
-		createChest("mapJardin.json", new Point2D(1408, 320), new Chest(new Arme(15, "balai de ménagère", "Balai.png")));
-		createChest("mapMaison.json", new Point2D(1664, 448), new Chest(new Arme(30, "Epée", "Epee.png")));
+		createChest("mapJardin.json", new Point2D(1408, 320), new Chest(new Arme(15, "Balai", "Balai.png")));
+		createChest("mapMaison.json", new Point2D(1664, 448), new Chest(new Arme(30, "Epee", "Epee.png")));
 		createPortal("mapMaison.json", new Point2D(1152, 1216), "mapJardin.json", new Point2D(1216, 1536));
 		createPortal("mapMaison.json", new Point2D(768, 384), "mapCave.json", new Point2D(1472, 896));
 		createPortal("mapMaison.json", new Point2D(1216, 1216), "mapJardin.json", new Point2D(1216, 1536));
@@ -123,7 +123,7 @@ public class RPGApp extends GameApplication {
 		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		
 		
-		createMonster("mapCave.json", new Monstre("souris", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
+		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true), new Point2D(512, 704));
 		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
 		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
 		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
@@ -192,13 +192,13 @@ public class RPGApp extends GameApplication {
 		HashMap<String,HashMap<String,String[]>> conversationComplete3=new HashMap<String,HashMap<String,String[]>>();
 		conversationComplete3.put("begin", conversation3A);
 		
-		PNJ pnj1 =new PNJ("Mr.Georges le garde","Pnj_Face.png",conversationComplete1);
+		PNJ pnj1 =new PNJ("MrGeorges","Cadre1.png",conversationComplete1);
 		createPNJ("mapPnj1.json",pnj1, new Point2D(640,768));
 		
-		PNJ pnj2 =new PNJ("Mr.Bernard le boulanger","Pnj_Face.png",conversationComplete2);
-		createPNJ("mapPnj2.json",pnj2, new Point2D(1024,576));
+		PNJ pnj2 =new PNJ("MrBernard","Cadre2.png",conversationComplete2);
+		createPNJ("mapPnj2.json",pnj2, new Point2D(960,640));
 		
-		PNJ pnj3 =new PNJ("Mme.Juliette la medecin","Pnj_Face.png",conversationComplete3);
+		PNJ pnj3 =new PNJ("MmeJuliette","Cadre3.png",conversationComplete3);
 		createPNJ("mapPnj3.json",pnj3, new Point2D(896,704));
 	
 		DisplayMap.chargeMapInit(hero.getCurrentMap());
@@ -216,7 +216,7 @@ public class RPGApp extends GameApplication {
 		playerComponent = player.getComponent(PlayerComponent.class);
 		DisplayInventaire.createInventaire();
 		if (save==false) {
-		hero.equip(new Armure(21, "t-shirt", "t-shirt.jpg"));
+		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
 		}
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
