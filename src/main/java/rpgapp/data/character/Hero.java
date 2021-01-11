@@ -21,7 +21,7 @@ public class Hero extends Character implements Serializable {
 	private HashMap<Integer, Integer> levels;
 	private Quest currentquest;
 	private String currentMap;
-	private EntityView view;
+	private transient EntityView view;
 	private ArrayList<String>listFinishQuests=new ArrayList<String>();
 	private transient Point2D position ;
 

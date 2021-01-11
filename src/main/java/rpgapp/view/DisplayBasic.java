@@ -100,16 +100,29 @@ public abstract class DisplayBasic {
 		int e=0;
 		String[] li=a.split("");
 		for (int i=0;i<a.length();i++) {
+			if (li[i].equals("\n")){
+				return a;
+			}
 			if(li[i].equals(" ")) {
-				e=i;
+				e=i+1;
 			}
 			if(i%b==0 && i!=0) {
-				if(li[i].equals(" ")|| li[i].equals("!")) {
-					System.out.println(li[i]);
-					liste.add(i);
-				}else if(li[i+1].equals(" ")) {
-					liste.add(i+1);
+				if (li[i].equals("\n") && (li[i-1].equals(" ") || li[i-1].equals("!"))){
+
 				}
+				else if(li[i].equals(" ")|| li[i].equals("!")|| li[i].equals("?")) {
+					if (li[i+1].equals("!")|| li[i+1].equals("?")) {
+						liste.add(i+2);
+						
+					}
+					else {
+					
+					liste.add(i);
+					}
+				}
+//				else if(li[i+1].equals(" ")) {
+//					liste.add(i+1);
+//				}
 				else {
 					liste.add(e);
 				}

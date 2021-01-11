@@ -71,5 +71,9 @@ public class PNJ {
 	public String getImage() {
 		return image;
 	}
+	public String getImage(String ajout) {
+		String[] a =image.split("_");
+		return a[0]+ajout+".png";
+	}
 		
 }

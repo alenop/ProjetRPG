@@ -44,10 +44,10 @@ public class DisplayMap extends DisplayBasic {
 				
 				}
 				else {	
-				FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
-				i.getValue().fullLife();
-				i.getValue().setState(State.alive);
-				System.out.println(i.getValue().isUnique());
+
+					i.getValue().fullLife();
+					i.getValue().setState(State.alive);
+					FXGL.getApp().getGameWorld().spawn("monstre", i.getKey()).setProperty("data",i.getValue());
 				}
 			}
 			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
@@ -131,9 +131,10 @@ if (RPGApp.ListeMaps.get(map) != null) {
 			
 		}
 		else {
-			FXGL.getApp().getGameWorld().spawn("monstre", i.getKey());
+			
 			i.getValue().fullLife();
 			i.getValue().setState(State.alive);
+			FXGL.getApp().getGameWorld().spawn("monstre", i.getKey()).setProperty("data",i.getValue());
 			}
 	}
 	for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
