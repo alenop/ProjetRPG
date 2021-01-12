@@ -73,10 +73,10 @@ public abstract class DisplayBasic {
 				j++;
 			}}
 		double BG_WIDTH = FXGL.getAppWidth();
-	    double BG_HEIGHT = 64*j;
+	    double BG_HEIGHT = 50*j;
 
 	    
-	        Entity notif =createRectangle(BG_WIDTH, BG_HEIGHT,new Point2D(PlayerComponent.position.getY()-FXGL.getAppWidth()/2,PlayerComponent.position.getX()-FXGL.getAppHeight()/2));
+	        Entity notif =createRectangle(BG_WIDTH, BG_HEIGHT,new Point2D(PlayerComponent.position.getX()-FXGL.getAppWidth()/2,PlayerComponent.position.getY()-FXGL.getAppHeight()/2));
 	        Text text = FXGL.getUIFactory().newText(a, Color.WHITE, 30.0);
 	        
 	        Entity postext = Entities.builder()
@@ -109,7 +109,7 @@ public abstract class DisplayBasic {
 			if (li[i].equals("\n")){
 				return a;
 			}
-			if(li[i].equals(" ")) {
+			if(li[i].equals(" ")|| li[i].equals("!")|| li[i].equals("?")) {
 				e=i+1;
 			}
 			if(i%b==0 && i!=0) {
@@ -123,6 +123,7 @@ public abstract class DisplayBasic {
 					}
 				}
 				else {
+					System.out.println(li[i+1]);
 					liste.add(e);
 				}
 			}
