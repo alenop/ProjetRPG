@@ -25,9 +25,6 @@ public abstract class SaveLoad {
 		      hero.setEquipment((HashMap<String, Item>) ois.readObject());
 		      hero.setPosition(new Point2D(ois.readDouble(),ois.readDouble()));
 		      SaveMap.load(ois);
-		      if (menu.equals("GameMenu")) {
-		      DisplayMap.chargeMap(hero.getCurrentMap(),hero.getPosition());
-		      }
 		      
 		      return hero;
 		    } catch (final java.io.IOException e) {

@@ -196,7 +196,7 @@ public class PlayerComponent extends Component {
 				System.out.println(a);
 				if (dir.equals("right")||dir.equals("left")) {
 					if(checkEntity(a.getPosition().add(z, 0), EntityType.BLOC)) {
-						if (RPGApp.MonstreMove) {
+						if (RPGApp.MonstreMove && ((Monstre)a.getProperties().getObject("data")).getState()==State.alive) {
 							a.translateX(z);
 							RPGApp.MonstreMove=false;
 						}
@@ -205,7 +205,7 @@ public class PlayerComponent extends Component {
 					
 				}else
 					if(checkEntity(a.getPosition().add(0, z), EntityType.BLOC)) {
-						if (RPGApp.MonstreMove) {
+						if (RPGApp.MonstreMove && ((Monstre)a.getProperties().getObject("data")).getState()==State.alive) {
 						a.translateY(z);
 						RPGApp.MonstreMove=false;
 					}}

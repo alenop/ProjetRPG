@@ -62,10 +62,11 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 		EntityView afficheText = text.getView();
 		Button[] av;
-		av = new Button[3];
+		av = new Button[4];
 		av[0] = new Button("attaque");
 		av[1] = new Button("défense");
 		av[2] = new Button("fuir");
+		av[3] = new Button("skills");
 		av[2].setOnAction(new CombatEventHandler("fuir",viewcombat));
 		int j = 0;
 		for (Button i : av) {
