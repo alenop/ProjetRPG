@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
+import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.system.SaveMap;
 import rpgapp.view.DisplayMap;
@@ -22,7 +23,7 @@ public abstract class SaveLoad {
 		      ois = new ObjectInputStream(fichier);
 		      final Hero hero = (Hero) ois.readObject();
 		      hero.setInventory((Item[]) ois.readObject());
-		      hero.setEquipment((HashMap<String, Item>) ois.readObject());
+		      hero.setEquipment((HashMap<String, Equipment>) ois.readObject());
 		      hero.setPosition(new Point2D(ois.readDouble(),ois.readDouble()));
 		      SaveMap.load(ois);
 		      

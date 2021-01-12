@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Chest;
+import rpgapp.data.elementInteractifs.Consumable;
+import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
@@ -24,9 +26,22 @@ public class CoffreHandler implements EventHandler<ActionEvent> {
 	}
 	public void handle(ActionEvent ActionEvent) {
 				
-					Item item = chest.getLoot();
-					String a="tu as trouve "+item.getName()+" dans ce coffre veux tu l'équiper ?";
+					Item item2 = chest.getLoot();
+					String b;
+					if(item2 instanceof Consumable) {
+						b=" dans ce coffre veux tu l'utiliser ?";
+					}else {
+						b=" dans ce coffre veux tu l'équiper ?";
+					}
+					String a="tu as trouve "+item2.getName()+b;
 					int positionItem =RPGApp.hero.getPositionVoid();
+					if (item2 instanceof Consumable) {
+						Consumable item = (Consumable) item2;
+						item.effect();
+						RPGApp.hero.removeItemInventory(item);
+						DisplayInventaire.updateInventaire("remove", item,item.getPosition());
+					}else {
+						Equipment item=(Equipment) item2;
 					if (RPGApp.hero.getEquipement().get(item.getType()) != null) {	
 						
 						RPGApp.hero.getEquipement().get(item.getType()).setPosition(positionItem);
@@ -38,7 +53,7 @@ public class CoffreHandler implements EventHandler<ActionEvent> {
 						DisplayEquipment.updateEquipment("ajout",  item);
 						RPGApp.hero.equip(item);
 						
-					}
+					}}
 					FXGL.getApp().getGameWorld().getEntitiesAt(posChest).get(0).setViewFromTexture("Coffre_Ouvert.png");
 					
 					chest.setLoot(null);
