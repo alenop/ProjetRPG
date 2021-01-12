@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
+import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 
 public class DisplayEquipment extends DisplayBasic {
@@ -79,7 +80,7 @@ public class DisplayEquipment extends DisplayBasic {
 
 		int x = 0;
 		int y = 0;
-		HashMap<String, Item> i = RPGApp.hero.getEquipement();
+		HashMap<String, Equipment> i = RPGApp.hero.getEquipement();
 		//String[] list={"Arme","Armure"};
 		HashMap<String,Point2D> list =new HashMap<String,Point2D>();
 		list.put("Arme", new Point2D(2*64+48,64+80));

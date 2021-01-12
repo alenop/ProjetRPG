@@ -35,9 +35,11 @@ import rpgapp.data.character.SaveLoad;
 import rpgapp.data.elementInteractifs.Arme;
 import rpgapp.data.elementInteractifs.Armure;
 import rpgapp.data.elementInteractifs.Chest;
+import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
+import rpgapp.data.elementInteractifs.Potion;
 import rpgapp.data.map.ModeleMap;
 import rpgapp.factory.MenuSceneFactory;
 import rpgapp.view.DisplayBasic;
@@ -214,10 +216,11 @@ public class RPGApp extends GameApplication {
 
 		getGameScene().getViewport().bindToEntity(player, getWidth() / 2, getHeight() / 2);
 		playerComponent = player.getComponent(PlayerComponent.class);
-		DisplayInventaire.createInventaire();
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
+		hero.addItemInventory(new Potion("potion de soin","potion de soin.jpg"));
 		}
+		
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
 		//get
@@ -400,7 +403,7 @@ public class RPGApp extends GameApplication {
 			DisplayInventaire.updateInventaire("remove", i, i.getPosition());
 			}
 		}
-		for (Entry<String, Item> i:RPGApp.hero.getEquipement().entrySet()) {
+		for (Entry<String, Equipment> i:RPGApp.hero.getEquipement().entrySet()) {
 			if(i.getValue()!=null) {
 			DisplayEquipment.updateEquipment("remove", i.getValue());
 			}
@@ -416,7 +419,7 @@ public class RPGApp extends GameApplication {
 			DisplayInventaire.updateInventaire("ajout", i, i.getPosition());
 			}
 		}
-		for (Entry<String, Item> i:RPGApp.hero.getEquipement().entrySet()) {
+		for (Entry<String, Equipment> i:RPGApp.hero.getEquipement().entrySet()) {
 			if(i.getValue()!=null) {
 			DisplayEquipment.updateEquipment("ajout", i.getValue());
 			}

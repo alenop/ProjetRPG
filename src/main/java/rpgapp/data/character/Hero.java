@@ -12,13 +12,14 @@ import java.io.Serializable;
 import rpgapp.system.Quest;
 import rpgapp.system.Systems;
 import rpgapp.RPGApp;
+import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 
 public class Hero extends Character implements Serializable {
 	private transient Item inventory[];
 	// private ArrayList<Item> inventaire = new ArrayList<Item>();
 	private int experience = 0;
-	private transient HashMap<String, Item> equipment = new HashMap<String, Item>();
+	private transient HashMap<String, Equipment> equipment = new HashMap<String, Equipment>();
 	private HashMap<Integer, Integer> levels;
 	private Quest currentquest;
 	private String currentMap;
@@ -82,26 +83,26 @@ public class Hero extends Character implements Serializable {
 		this.inventory = inventaire;
 	}
 
-	public void equip(Item item) {
-		System.out.println(item);
-		System.out.println(item.getName());
-		if (this.equipment.get(item.getType()) != null) {
-			unequip(this.equipment.get(item.getType()));
+	public void equip(Equipment equipment) {
+		System.out.println(equipment);
+		System.out.println(equipment.getName());
+		if (this.equipment.get(equipment.getType()) != null) {
+			unequip(this.equipment.get(equipment.getType()));
 		}
-		this.equipment.put(item.getType(), item);
+		this.equipment.put(equipment.getType(), equipment);
 
-		if (item.getType().equals("Arme")) {
-			this.setAtk(this.getAtk() + item.getStat());
+		if (equipment.getType().equals("Arme")) {
+			this.setAtk(this.getAtk() + equipment.getStat());
 			System.out.println("yo");
-		} else if (item.getType().equals("Armure")) {
-			this.setDef(this.getDef() + item.getStat());
+		} else if (equipment.getType().equals("Armure")) {
+			this.setDef(this.getDef() + equipment.getStat());
 		}
 	}
 
-	public HashMap<String, Item> getEquipement() {
+	public HashMap<String, Equipment> getEquipement() {
 		return equipment;
 	}
-	public void setEquipment(HashMap<String, Item> equip) {
+	public void setEquipment(HashMap<String, Equipment> equip) {
 		 this.equipment=equip;
 	}
 
@@ -111,14 +112,14 @@ public class Hero extends Character implements Serializable {
 		unequip(this.equipment.get("Armure"));
 	}
 
-	public void unequip(Item item) {
-		if (item.getType() == "Arme") {
-			this.setAtk(this.getAtk() - item.getStat());
-		} else if (item.getType() == "Armure") {
-			this.setDef(this.getDef() - item.getStat());
+	public void unequip(Equipment equipment) {
+		if (equipment.getType() == "Arme") {
+			this.setAtk(this.getAtk() - equipment.getStat());
+		} else if (equipment.getType() == "Armure") {
+			this.setDef(this.getDef() - equipment.getStat());
 		}
-		addItemInventory(item);
-		this.equipment.remove(item.getType());
+		addItemInventory(equipment);
+		this.equipment.remove(equipment.getType());
 	}
 
 	public void addItemInventory(Item item) {
@@ -184,8 +185,16 @@ public class Hero extends Character implements Serializable {
 	public boolean finishQuest(String namequest) {
 		return listFinishQuests.contains(namequest);
 	}
+	public void heal(double a) {
+		double result = this.Pvmax*(a/100);
+		if(result+this.getPv()>=this.Pvmax) {
+			this.setPv(this.Pvmax);
+		}else {
+			this.setPv(this.getPv()+result);
+		}
+	}
 	public void skillHeal() {
-		this.setPv(this.getPv()+this.Pvmax*0.4);
+		heal(40);
 	}
 	public void skillSlash(Character a) {
 		Systems.Combat_attaque(a,(int) (this.getAtk()*1.5));

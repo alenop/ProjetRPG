@@ -3,14 +3,12 @@ package rpgapp.data.elementInteractifs;
 import java.io.Serializable;
 
 public class Item implements Serializable {
-	private int stat;
 	private String name;
 	protected String type;
 	private String image;
 	private int position=-2;
 	
-	public Item(int stat,String name,String image) {
-		this.setStat(stat);
+	public Item(String name,String image) {
 		this.setName(name);
 		this.image=image;
 	}
@@ -18,17 +16,9 @@ public class Item implements Serializable {
 	public String getImage() {
 		return image;
 	}
-	public int getStat() {
-		return stat;
-	}
 	public String getInventaireImage() {
 		String[] a =image.split("\\.");
 		return a[0]+"_Inventaire."+a[1];
-	}
-
-
-	public void setStat(int stat) {
-		this.stat = stat;
 	}
 
 

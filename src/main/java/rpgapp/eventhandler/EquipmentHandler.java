@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import rpgapp.RPGApp;
 import rpgapp.data.character.Hero;
+import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
@@ -30,7 +31,7 @@ public class EquipmentHandler implements EventHandler<MouseEvent> {
 		listButton[0] = new Button("non");
 		listButton[1] = new Button("oui");
 		Hero hero = RPGApp.hero;
-		Item item = hero.getEquipement().get(type);
+		Equipment item = hero.getEquipement().get(type);
 		String findephrase=" dans ton équipement veux tu la déséquiper ?";
 		listButton[1].setOnAction(new EventHandler<ActionEvent>() {
 			@Override

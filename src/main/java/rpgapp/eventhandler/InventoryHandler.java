@@ -9,7 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import rpgapp.RPGApp;
 import rpgapp.data.character.Hero;
+import rpgapp.data.elementInteractifs.Consumable;
+import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.data.elementInteractifs.Potion;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
 
@@ -29,12 +32,24 @@ public class InventoryHandler implements EventHandler<MouseEvent> {
 		av[0] = new Button("non");
 		av[1] = new Button("oui");
 		Hero hero = RPGApp.hero;
-		Item item = hero.getInventory()[pos];
-		String a=" dans ton inventaire veux tu l'équiper ?";
+		String a;
+		Item item2 = hero.getInventory()[pos];
+		if(hero.getInventory()[pos] instanceof Consumable) {
+			a=" dans ton inventaire veux tu l'utiliser ?";
+		}else {
+			a=" dans ton inventaire veux tu l'équiper ?";
+		}
+		
 		av[1].setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent ActionEvent) {
-					
+					if(item2 instanceof Consumable) {
+						Consumable item = (Consumable)item2;
+						item.effect();
+						RPGApp.hero.removeItemInventory(item);
+						DisplayInventaire.updateInventaire("remove", item,item.getPosition());
+					}else {
+					Equipment item = (Equipment) item2;
 					if (RPGApp.hero.getEquipement().get(item.getType()) != null) {	
 						
 						DisplayInventaire.updateInventaire("remove", item,pos);
@@ -55,9 +70,9 @@ public class InventoryHandler implements EventHandler<MouseEvent> {
 				
 				
 				
-			}
+			}}
 		});
-		FXGL.getApp().getDisplay().showBox("tu as " + item.getName() +a ,
+		FXGL.getApp().getDisplay().showBox("tu as " + item2.getName() +a ,
 				itemViewGrand.getView(), av);
 	}
 

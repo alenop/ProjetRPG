@@ -123,7 +123,6 @@ public abstract class DisplayBasic {
 					}
 				}
 				else {
-					System.out.println(li[i+1]);
 					liste.add(e);
 				}
 			}
