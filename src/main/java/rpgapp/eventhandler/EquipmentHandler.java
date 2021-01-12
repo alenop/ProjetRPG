@@ -44,8 +44,13 @@ public class EquipmentHandler implements EventHandler<MouseEvent> {
 				
 				
 			});
-		FXGL.getApp().getDisplay().showBox("tu as " + item.getName() +findephrase ,
-				itemViewGrand.getView(), listButton);
+		try {
+			FXGL.getApp().getDisplay().showBox("tu as " + item.getName() +findephrase ,
+					itemViewGrand.getView(), listButton);
+		} catch (Exception e) {
+			System.out.println("Il n'y a plus aucun objet dans cet emplacement");
+		}
+		
 	}
 
 		
