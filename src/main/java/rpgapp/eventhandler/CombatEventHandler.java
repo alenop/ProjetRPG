@@ -67,7 +67,8 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		if(choix.equals("attaque")){
 			MusicComponent.soundPlay("attack");
 			if (monstre.getState() == State.dead) {
-				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
+				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(//monstre.getTypeMonstre().name()+
+						"RatMort.png");
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
 				MusicComponent.soundPlay("win");
 				MusicComponent.musicPlay("victory");

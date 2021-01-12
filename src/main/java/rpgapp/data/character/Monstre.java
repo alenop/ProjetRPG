@@ -6,6 +6,15 @@ public class Monstre extends Character{
 	private boolean Unique=false;
 	private String quest;
 	
+	
+	public Monstre(String nom, int atk, int def, int pv,boolean unique, String quest,Monstres type) {
+		super(nom,atk,def,pv);
+		this.Unique=unique;
+		this.setWeaknesses(new String[5]);
+		this.getWeaknesses()[0]="Balai";
+		this.quest=quest;
+		this.setTypeMonster(type);
+	}
 	public Monstre(String nom, int atk, int def, int pv,boolean unique, String quest) {
 		super(nom,atk,def,pv);
 		this.Unique=unique;

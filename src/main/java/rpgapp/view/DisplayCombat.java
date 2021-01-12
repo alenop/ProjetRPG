@@ -33,7 +33,8 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
 		RPGApp.move=false;
-		Entity monstreEntity = CreateEntityWithPicture(monstre.getTypeMonstre().name()+"CombatGif.gif", 64*8 +32, 64);
+		Entity monstreEntity = CreateEntityWithPicture(//monstre.getTypeMonstre().name()+
+				"RatCombatGif.gif", 64*8 +32, 64);
 		EntityView monstreview = monstreEntity.getView();
 		MusicComponent.musicPlay("battle");
 		
