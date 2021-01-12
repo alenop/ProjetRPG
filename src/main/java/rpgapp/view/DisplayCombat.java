@@ -33,13 +33,13 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
 		RPGApp.move=false;
-		Entity monstreEntity = CreateEntityWithPicture(monstre.getTypeMonstre().name()+"CombatGif.gif", 64 * 5 + 32, 64);
+		Entity monstreEntity = CreateEntityWithPicture(monstre.getTypeMonstre().name()+"CombatGif.gif", 64*8 +32, 64);
 		EntityView monstreview = monstreEntity.getView();
 		MusicComponent.musicPlay("battle");
 		
 		monstreview.setAccessibleText("monstre");
 		monstreview.setUserData(monstreEntity);
-		Entity hero = CreateEntityWithPicture("heroCombatPoing.gif", 32, 192);
+		Entity hero = CreateEntityWithPicture("heroCombatPoing.gif", 192, 192);
 		EntityView heroview = hero.getView();
 		heroview.setUserData(hero);
 		heroview.setAccessibleText("hero");
@@ -50,13 +50,13 @@ public abstract class DisplayCombat extends DisplayBasic {
 		Entity viewcombat = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2));
-		addbarreVie(viewcombat.getView(), RPGApp.hero, 32, 185);
-		addbarreVie(viewcombat.getView(), monstre, 64 * 5 + 32, 32);
+		addbarreVie(viewcombat.getView(), RPGApp.hero, 192, 185);
+		addbarreVie(viewcombat.getView(), monstre, 64 * 8 + 32, 32);
 		Label label = new Label("yo");
 		label.setTextFill(Color.rgb(254, 254, 254));
 
 		//Text text2 = FXGL.getUIFactory().newText(text, Color.WHITE, 10.0);
-		Entity text = CreateEntityWithNode(label, 192, 0);
+		Entity text = CreateEntityWithNode(label, 352, 0);
 		text.getView().setUserData(text);
 		text.getView().setAccessibleText("text");
 
@@ -69,7 +69,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		av[2].setOnAction(new CombatEventHandler("fuir",viewcombat));
 		int j = 0;
 		for (Button i : av) {
-			Entity Bouton = CreateEntityWithNode(i, 32 + 64 * j, 385);
+			Entity Bouton = CreateEntityWithNode(i, 192 + 64 * j, 385);
 			Bouton.setProperty("bouton", i);
 			Bouton.getView().setUserData(Bouton);
 			Bouton.getView().setAccessibleText(i.getText());
@@ -122,9 +122,9 @@ public abstract class DisplayCombat extends DisplayBasic {
 			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (pourcentage)) / 100));
 			if (character instanceof Monstre) {
 
-				i.setPosition(64 * 5 + 32 + 192 * (100 - (pourcentage)) / 100, 32);
+				i.setPosition(64 * 8 + 32 + 192 * (100 - (pourcentage)) / 100, 32);
 			} else {
-				i.setPosition(32 + 192 * (100 - (pourcentage)) / 100, 185);
+				i.setPosition(192 + 192 * (100 - (pourcentage)) / 100, 185);
 			}
 		} else {
 			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (100 - pourcentage)) / 100));
@@ -154,7 +154,8 @@ public abstract class DisplayCombat extends DisplayBasic {
 				if (i.getAccessibleText().equals("text")) {
 					((Label) ((Entity) i.getUserData()).getView().getNodes().get(0)).setText(text);
 				} else if (i.getAccessibleText().equals("monstre")&& nb_tour==0) {			
-						((Entity) i.getUserData()).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
+						//((Entity) i.getUserData()).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
+						((Entity) i.getUserData()).setViewFromTexture("Victory.gif");
 			
 				}else if (i.getAccessibleText().equals("hero")) {	
 					if (nb_tour==-1) {
