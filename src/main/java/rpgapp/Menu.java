@@ -40,6 +40,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import rpgapp.data.character.SaveLoad;
+import rpgapp.view.DisplayMap;
 
 import java.util.EnumSet;
 
@@ -469,6 +470,7 @@ public class Menu extends FXGLMenu {
     private void loadFromGameMenu() {
     	RPGApp.load();
     	RPGApp.hero=SaveLoad.load("GameMenu");
+		DisplayMap.chargeMap(RPGApp.hero.getCurrentMap(),RPGApp.hero.getPosition());
     	RPGApp.load2();
     }
     private void save() {

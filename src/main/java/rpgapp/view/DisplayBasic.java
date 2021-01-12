@@ -72,20 +72,19 @@ public abstract class DisplayBasic {
 			if (li[i].equals("\n")){
 				j++;
 			}}
-		double BG_WIDTH = 50*12;
-	    double BG_HEIGHT = 42*j;
+		double BG_WIDTH = FXGL.getAppWidth();
+	    double BG_HEIGHT = 64*j;
 
 	    
-	        Entity notif =createRectangle(BG_WIDTH, BG_HEIGHT,new Point2D(PlayerComponent.position.getX()-RPGApp.TILE_SIZE*3,PlayerComponent.position.getY()-RPGApp.TILE_SIZE*3));
+	        Entity notif =createRectangle(BG_WIDTH, BG_HEIGHT,new Point2D(PlayerComponent.position.getY()-FXGL.getAppWidth()/2,PlayerComponent.position.getX()-FXGL.getAppHeight()/2));
 	        Text text = FXGL.getUIFactory().newText(a, Color.WHITE, 30.0);
 	        
-	        Entity contour = Entities.builder()
+	        Entity postext = Entities.builder()
                     .at(16,32)
                     .build();
-	        contour.setViewWithBBox(text);
-	        EntityView abd =contour.getView();
+	        postext.setViewWithBBox(text);
 			EntityView notifView = notif.getView();
-			notifView.addNode(abd);
+			notifView.addNode(postext.getView());
 			return notif;
 			
 			
@@ -117,16 +116,13 @@ public abstract class DisplayBasic {
 				if(li[i].equals(" ")|| li[i].equals("!")|| li[i].equals("?")) {
 					if (li[i+1].equals("!")|| li[i+1].equals("?")) {
 						liste.add(i+2);
-						System.out.println("yo1");
 						
 					}
 					else {
-					System.out.println("yo2");
 					liste.add(i+1);
 					}
 				}
 				else {
-					System.out.println("yo3");
 					liste.add(e);
 				}
 			}

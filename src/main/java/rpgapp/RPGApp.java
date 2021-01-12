@@ -329,6 +329,7 @@ public class RPGApp extends GameApplication {
 			protected void onAction() {
 				load();
 				RPGApp.hero=SaveLoad.load("GameMenu");
+				DisplayMap.chargeMap(RPGApp.hero.getCurrentMap(),RPGApp.hero.getPosition());
 				load2();
 			}
 		}, KeyCode.L);
