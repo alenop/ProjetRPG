@@ -77,8 +77,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		}else if(choix.equals("fuir") || choix.equals("partir")) {
 			RPGApp.move=true;
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
-			MusicComponent.musicPlay("cave");
-			MusicComponent.soundPlay("run");
+			MusicComponent.musicPlay(RPGApp.hero.getCurrentMap());
 			if(choix.equals("partir")) {
 				if(RPGApp.hero.getCurrentquest()!=null) {
 				if (RPGApp.hero.getCurrentquest().verifQuest()) {
@@ -94,6 +93,9 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 					MusicComponent.soundPlay("succes");
 				}
 			}}
+			else if(choix.equals("fuir")) {
+				MusicComponent.soundPlay("run");
+			}
 		}else if(choix.equals("retry")) {
 			RPGApp.hero.fullLife();
 			monstre.fullLife();
