@@ -83,6 +83,7 @@ public class RPGApp extends GameApplication {
 
 		// Initialise le jeu
 		Point2D pos=new Point2D(0,0);
+		//MusicComponent.musicPlay("cave");
 		if(save) {
 			RPGApp.hero=SaveLoad.load("MainMenu");
 			pos=RPGApp.hero.getPosition();
@@ -93,7 +94,6 @@ public class RPGApp extends GameApplication {
 		getGameWorld().addEntityFactory(new RPGFactory());
 		getAudioPlayer().setGlobalMusicVolume(0.15);
 		getAudioPlayer().setGlobalSoundVolume(0.25);
-		MusicComponent.musicPlay("House");
 		initMap("map5.json", new Point2D(0,0));
 		initMap("mapMaison.json", new Point2D(1472, 448));
 		initMap("mapCave.json", new Point2D(1472, 896));
@@ -218,7 +218,7 @@ public class RPGApp extends GameApplication {
 		playerComponent = player.getComponent(PlayerComponent.class);
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
-		hero.addItemInventory(new Potion("potion de soin","potion de soin.jpg"));
+		hero.addItemInventory(new Potion("potion de soin","potion_de_soin.png"));
 		}
 		
 		DisplayEquipment.createEquipment();
@@ -282,7 +282,7 @@ public class RPGApp extends GameApplication {
 			}
 		}, KeyCode.S);
 
-		input.addAction(new UserAction("see Inventory") {
+		input.addAction(new UserAction("Open Inventory") {
 			@Override
 			protected void onAction() {
 				try {
@@ -299,7 +299,7 @@ public class RPGApp extends GameApplication {
 			}
 		}, KeyCode.I);
 		
-		input.addAction(new UserAction("see Equipment") {
+		input.addAction(new UserAction("Open Equipment") {
 			@Override
 			protected void onAction() {
 				try {

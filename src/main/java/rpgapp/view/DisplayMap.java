@@ -31,6 +31,7 @@ public class DisplayMap extends DisplayBasic {
 		
 		FXGL.getApp().getGameWorld().setLevelFromMap(map); 	
 		RPGApp.hero.setCurrentMap(map);
+		MusicComponent.musicPlay(map);
 		if (abcd != null) {
 			FXGL.getApp().getGameScene().addGameView(abcd);
 		}
