@@ -116,7 +116,7 @@ public class PlayerComponent extends Component {
 				
 				
 				position.translate(direction);
-				RPGApp.player.setViewFromTexture("Heros"+angle+"MV.gif");
+				RPGApp.player.setViewFromTexture("Heros"+angle+"Mv.gif");
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
