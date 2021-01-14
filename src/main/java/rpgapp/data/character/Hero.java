@@ -27,6 +27,11 @@ public class Hero extends Character implements Serializable {
 	private ArrayList<String>listFinishQuests=new ArrayList<String>();
 	private transient Point2D position ;
 	private Skill skills[];
+	
+	private final int Mpgrowth=1;
+	private final int Atkgrowth=2;
+	private final int Defgrowth=2;
+	private final int Pvgrowth=5;
 
 	public Hero(String nom) {
 		super(nom, 20, 20, 50);
@@ -40,6 +45,8 @@ public class Hero extends Character implements Serializable {
 		this.skills=new Skill[2];
 		skills[0]=new FirstAid("firstAid");
 		skills[1]=new Slash("Slash");
+		this.Mp=10;
+		this.MpMax=10;
 	}
 	public void setPosition(Point2D pos) {
 		this.position=pos;
@@ -60,9 +67,13 @@ public class Hero extends Character implements Serializable {
 		if (experience >= this.levels.get(this.level)) {
 			this.level += 1;
 			System.out.println("gain de niveau ! Niveau actuel : " + this.level);
-			this.setAtk(this.atkmax + this.getAtk());
-			this.setDef(this.defmax + this.getDef());
-			this.Pvmax = this.Pvmax * this.level;
+			setAtk(atkmax + Atkgrowth);
+			setDef(defmax + Defgrowth);
+			Mp=MpMax+Mpgrowth;
+			atkmax=atkmax+Atkgrowth;
+			defmax=defmax+Defgrowth;
+			MpMax=MpMax+Mpgrowth;
+			Pvmax = Pvmax + Pvgrowth;
 			gainLevel(experience);
 		}
 	}
@@ -204,6 +215,11 @@ public class Hero extends Character implements Serializable {
 	}
 	public void skillSlash(Character a) {
 		Systems.Combat_attaque(a,(int) (this.getAtk()*1.5));
+	}
+	public void useSkill(int a) {
+		Mp=Mp-a;
+		// TODO Auto-generated method stub
+		
 	}
 	
 		

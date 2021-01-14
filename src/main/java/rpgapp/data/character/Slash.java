@@ -7,11 +7,13 @@ public class Slash extends Skill_InFight {
 
 	public Slash(String name) {
 		super(name);
+		this.cost=4;
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public void effect(Character a) {
 		Systems.Combat_attaque(a,(int) (RPGApp.hero.getAtk()*1.5));
+		RPGApp.hero.useSkill(cost);
 		// TODO Auto-generated method stub
 		
 	}

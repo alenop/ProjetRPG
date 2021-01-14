@@ -10,6 +10,8 @@ public abstract class Character  implements Serializable {
 	protected int Pvmax;
 	protected int atkmax;
 	protected int defmax;
+	protected int Mp;
+	protected int MpMax;
 	private int pv;
 	private State state;
 	private int spd;
@@ -108,5 +110,19 @@ public abstract class Character  implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+
+	public int getMpMax() {
+		// TODO Auto-generated method stub
+		return MpMax;
+	}
+
+
+
+	public int getMp() {
+		// TODO Auto-generated method stub
+		return Mp;
 	}
 }
