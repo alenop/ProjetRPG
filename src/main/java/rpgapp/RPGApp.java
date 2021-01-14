@@ -218,7 +218,7 @@ public class RPGApp extends GameApplication {
 		playerComponent = player.getComponent(PlayerComponent.class);
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
-		hero.addItemInventory(new Potion("potion de soin","potion de soin.jpg"));
+		hero.addItemInventory(new Potion("potion de soin","potionDeSoin.jpg"));
 		}
 		
 		DisplayEquipment.createEquipment();
