@@ -91,6 +91,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 					RPGApp.notif = DisplayBasic.createNotif(notif);
 					FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
 					MusicComponent.soundPlay("succes");
+					RPGApp.hero.getCurrentquest().validQuest();
 				}
 			}}
 			else if(choix.equals("fuir")) {

@@ -89,7 +89,7 @@ public class DisplayPNJ extends DisplayBasic {
 		Entity dialogBox = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2));
-		Label label = new Label("dialogue entre "+pnjname+" et vous");
+		Label label = new Label("Dialogue entre "+pnjname+" et vous");
 		//label.resize(width, height);
 		//label.setMinSize(400,400);
 		label.setTextFill(Color.rgb(254, 254, 254));

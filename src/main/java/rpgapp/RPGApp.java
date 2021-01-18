@@ -46,6 +46,7 @@ import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
 import rpgapp.view.DisplayMap;
+import rpgapp.view.DisplayQuete;
 import rpgapp.system.Quest;
 import rpgapp.Menu;
 
@@ -223,6 +224,7 @@ public class RPGApp extends GameApplication {
 		
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
+		DisplayQuete.createQuete();
 		//get
 		
 	}
@@ -315,6 +317,35 @@ public class RPGApp extends GameApplication {
 				}
 			}
 		}, KeyCode.E);
+		
+		input.addAction(new UserAction("Open TabQuest") {
+			@Override
+			protected void onAction() {
+				try {
+					Thread.sleep(200);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (DisplayQuete.getQuete().getView().isVisible()) {
+					DisplayQuete.removeQuete();
+				}
+				else {
+					DisplayQuete.afficheQuete();
+				}
+			}
+		}, KeyCode.K);
+		
+		input.addAction(new UserAction("test") {
+			@Override
+			protected void onAction() {
+				try {
+					System.out.println(hero.getCurrentquest());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}, KeyCode.G);
+		
 		input.addAction(new UserAction("Save") {
 			@Override
 			protected void onAction() {

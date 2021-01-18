@@ -14,6 +14,7 @@ import rpgapp.data.character.Monstres;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.system.Quest;
 import rpgapp.view.DisplayPNJ;
+import rpgapp.view.DisplayQuete;
 
 public class PnjEventHandler implements EventHandler<ActionEvent> {
 	private Button button;
@@ -27,6 +28,7 @@ public class PnjEventHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent ActionEvent) {
 		if (pnj.getgiveQuest().equals(button.getText())) {
 			RPGApp.hero.setCurrentquest(pnj.getQuest());
+			DisplayQuete.updateQuete();
 			RPGApp.dialogBox.removeFromWorld();
 			MusicComponent.soundPlay("accept");
 			RPGApp.dialogBox=null;

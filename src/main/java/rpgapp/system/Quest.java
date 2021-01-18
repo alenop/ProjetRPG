@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import rpgapp.RPGApp;
 import rpgapp.data.character.Monstres;
+import rpgapp.view.DisplayQuete;
 
 public class Quest implements Serializable {
 	private String nom;
@@ -30,14 +31,20 @@ public class Quest implements Serializable {
 		boolean b=getKill()==nb_kill;
 		if (succeed==false) {
 			if (b) {
-			RPGApp.hero.addlistFinishQuests(nom);
 			succeed=true;
+			DisplayQuete.updateQuete();
 			return (b) ;
 			}else {
 				return false;}
 		}else {
 			return false;
 		}}
+	
+	public void validQuest() {
+		RPGApp.hero.addlistFinishQuests(nom);
+		RPGApp.hero.setCurrentquest(null);
+		DisplayQuete.updateQuete();
+	}
 	
 	public int getReward() {
 		return reward;
@@ -59,5 +66,9 @@ public class Quest implements Serializable {
 	}
 	public String getName() {
 		return nom;
+	}
+	
+	public int getNbKill() {
+		return nb_kill;
 	}
 }
