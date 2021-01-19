@@ -1,8 +1,7 @@
 package rpgapp.view;
 
 import java.math.BigDecimal;
-
-import javax.security.auth.callback.Callback;
+import java.util.ArrayList;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.audio.Music;
@@ -14,9 +13,15 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.ComboBox;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.util.*;
 
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
@@ -74,13 +79,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 		//av[3] = new Button("skills");
 		av[2].setOnAction(new CombatEventHandler("fuir",viewcombat));
 		int j = 0;
-		ComboBox comboBox = new ComboBox();
-		comboBox.setValue("Skills");
-		comboBox.setShape(DisplayBasic.createBorder(10, 10));
-		//Border bord = DisplayBasic.createBorder(10, 10);
-		for (Skill i : RPGApp.hero.getSkills()) {
-			comboBox.getItems().add(i.getName());
-		}
 		
 		for (Button i : av) {
 			Entity Bouton = CreateEntityWithNode(i, 192 + 64 * j, 385);
@@ -90,10 +88,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 			viewcombat.getView().addNode(Bouton.getView());
 			j++;
 		}
-		Entity skills = CreateEntityWithNode(comboBox, 192 + 64 * j, 385);
-		skills.getView().setUserData(comboBox);
-		skills.getView().setAccessibleText("Skill");
-		viewcombat.getView().addNode(skills.getView());
 		viewcombat.getView().addNode(afficheText);
 		viewcombat.getView().addNode(monstreview);
 		viewcombat.getView().addNode(heroview);
@@ -138,6 +132,14 @@ public abstract class DisplayCombat extends DisplayBasic {
 			text="Tu est mort veux tu recommencer ?";
 		}
 		boolean barre=true;
+		ComboBox comboBox = createCombobox();
+		
+		Entity skills = CreateEntityWithNode(comboBox, 192 + 64 * 4, 385);
+		skills.getView().setUserData(comboBox);
+		skills.getView().setAccessibleText("Skill");
+		comboBox.setUserData(skills);
+		viewcombat.getView().addNode(skills.getView());
+			
 		for (Node i : viewcombat.getView().getNodes()) {
 			if (i.getAccessibleText() != null) {
 				if (i.getAccessibleText().equals("text")) {
@@ -224,7 +226,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 					}
 					 else {
 						ComboBox combobox =((ComboBox)  i.getUserData());
-						System.out.println("yo");
+					
 						combobox.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, posMonstre,"skills"));
 					}
 				}
@@ -254,31 +256,50 @@ public abstract class DisplayCombat extends DisplayBasic {
 		}
 
 	}
-	public static ComboBox update(ComboBox combobox) {
-//		combobox.setCellFactory(new Callback<ListView<MyType>, ListCell<MyType>>()
-//		{
-//			  @Override
-//			  public ListCell<MyType> call(ListView<MyType> arg0)
-//			  {
-//			    return new ListCell<MyType>()
-//			    {
-//			      @Override
-//			      protected void updateItem(MyType item, boolean empty)
-//			      {
-//			        super.updateItem(item, empty);
-//
-//			        if (item == null || empty)
-//			        {
-//			          setText("");
-//			        }
-//			        else
-//			        {
-//			          setText(item.myCustomRenderMethod());
-//			        }
-//			      }
-//			    };
-//			  }
-//			});
-		return combobox;
+	public static ComboBox createCombobox() {
+		ComboBox<String> comboBox = new ComboBox<String>();
+		ArrayList<String> disabledItems = new ArrayList<String>();
+		comboBox.setValue("Skills");
+		for (Skill i : RPGApp.hero.getSkills()) {
+			comboBox.getItems().add(i.getName()+" "+i.getCost());
+			if(i.getCost()>RPGApp.hero.getMp()) {
+				disabledItems.add(i.getName()+" "+i.getCost());
+			}
+		}
+		
+
+		comboBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>(){
+			  @Override
+			  public ListCell<String> call(ListView<String> arg0)
+			  {
+			    return new ListCell<String>()
+			    {
+			      @Override
+			      protected void updateItem(String item, boolean empty)
+			      {
+			        super.updateItem(item, empty);
+
+			        if (item == null || empty)
+			        {
+			          setText(null);
+			        }
+			        else
+			        {
+			          setText(item);
+			          
+			          
+			          if (disabledItems.contains(item)) {
+			        	  setTextFill(Color.GRAY);
+			        	  setStyle("-fx-background-color: #A0A0A0;");
+			        	  setDisable(true);
+			          }
+			        }
+			      }
+			    };
+			  }
+			});
+		return comboBox;
 	}
+
+	 
 }

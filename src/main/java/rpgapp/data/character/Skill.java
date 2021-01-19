@@ -15,4 +15,7 @@ public abstract class Skill implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getCost() {
+		return cost;
+	}
 }

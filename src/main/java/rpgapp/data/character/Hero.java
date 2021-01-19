@@ -21,6 +21,7 @@ public class Hero extends Character implements Serializable {
 	private int experience = 0;
 	private transient HashMap<String, Equipment> equipment = new HashMap<String, Equipment>();
 	private HashMap<Integer, Integer> levels;
+	private HashMap<String, Integer> stats = new HashMap<String,Integer>();
 	private Quest currentquest;
 	private String currentMap;
 	private transient EntityView view;
@@ -47,6 +48,10 @@ public class Hero extends Character implements Serializable {
 		skills[1]=new Slash("Slash");
 		this.Mp=10;
 		this.MpMax=10;
+		stats.put("atk",20);
+		stats.put("def",20);
+		stats.put("pv",50);
+		stats.put("mp",10);
 	}
 	public void setPosition(Point2D pos) {
 		this.position=pos;
@@ -67,8 +72,8 @@ public class Hero extends Character implements Serializable {
 		if (experience >= this.levels.get(this.level)) {
 			this.level += 1;
 			System.out.println("gain de niveau ! Niveau actuel : " + this.level);
-			setAtk(atkmax + Atkgrowth);
-			setDef(defmax + Defgrowth);
+			setAtk(getAtk() + Atkgrowth);
+			setDef(getDef() + Defgrowth);
 			Mp=MpMax+Mpgrowth;
 			atkmax=atkmax+Atkgrowth;
 			defmax=defmax+Defgrowth;
@@ -220,6 +225,16 @@ public class Hero extends Character implements Serializable {
 		Mp=Mp-a;
 		// TODO Auto-generated method stub
 		
+	}
+	public void updateStats() {
+		stats.replace("atk",getAtk());
+		stats.replace("def",getDef());
+		stats.replace("pv",getPv());
+		stats.replace("mp",Mp);
+	}
+	public HashMap<String, Integer> getStats() {
+		updateStats();
+		return stats;
 	}
 	
 		

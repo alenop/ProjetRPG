@@ -121,6 +121,7 @@ if (abcd != null) {
 PlayerComponent.position.setValue(pos);
 DisplayInventaire.createInventaire();
 DisplayEquipment.createEquipment();
+DisplayHero.begin();
 
 if (RPGApp.ListeMaps.get(map) != null) {
 	for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {

@@ -44,6 +44,7 @@ import rpgapp.data.map.ModeleMap;
 import rpgapp.factory.MenuSceneFactory;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayEquipment;
+import rpgapp.view.DisplayHero;
 import rpgapp.view.DisplayInventaire;
 import rpgapp.view.DisplayMap;
 import rpgapp.system.Quest;
@@ -218,11 +219,12 @@ public class RPGApp extends GameApplication {
 		playerComponent = player.getComponent(PlayerComponent.class);
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
-		hero.addItemInventory(new Potion("potion de soin","potion de soin.jpg"));
+		hero.addItemInventory(new Potion("potion de soin","potionDeSoin.jpg"));
 		}
 		
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
+		DisplayHero.begin();
 		//get
 		
 	}
@@ -315,6 +317,23 @@ public class RPGApp extends GameApplication {
 				}
 			}
 		}, KeyCode.E);
+		input.addAction(new UserAction("see Hero status") {
+			@Override
+			protected void onAction() {
+				try {
+					Thread.sleep(200);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (DisplayHero.getStatusWindow().getView().isVisible()) {
+					DisplayHero.removeStatusWindow();
+				}
+				else {
+					DisplayHero.update();
+					DisplayHero.afficheStatusWindow();
+				}
+			}
+		}, KeyCode.H);
 		input.addAction(new UserAction("Save") {
 			@Override
 			protected void onAction() {

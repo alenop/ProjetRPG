@@ -13,7 +13,7 @@ public class Slash extends Skill_InFight {
 	@Override
 	public void effect(Character a) {
 		Systems.Combat_attaque(a,(int) (RPGApp.hero.getAtk()*1.5));
-		RPGApp.hero.useSkill(cost);
+		RPGApp.hero.useSkill(getCost());
 		// TODO Auto-generated method stub
 		
 	}

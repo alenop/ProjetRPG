@@ -153,10 +153,12 @@ public abstract class DisplayBasic {
 		createRectangleWithBorder(border2, new Point2D(128, 0));
 		Entity RedBar = createRectangleWithBorder(border2, new Point2D(a + 192 * (100 - (pourcentage)) / 100, b));
 		RedBar.setProperty("border", border2);
+		RedBar.setProperty("position",new Point2D(a,b));
 		RedBar.getView().setAccessibleText("border1" + character.toString());
 		RedBar.getView().setUserData(RedBar);
 		Entity GreenBar = createRectangleWithBorder(border1, new Point2D(a, b));
 		GreenBar.setProperty("border", border1);
+		GreenBar.setProperty("position",new Point2D(a,b));
 		GreenBar.getView().setAccessibleText("border2" + character.toString());
 		GreenBar.getView().setUserData(GreenBar);
 		i.addNode(RedBar.getView());
@@ -169,13 +171,7 @@ public abstract class DisplayBasic {
 
 		if (color.equals("red")) {
 			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (pourcentage)) / 100));
-			if (character instanceof Monstre) {
-
-				i.setX(64 * 8 + 32 + 192 * (100 - (pourcentage)) / 100);
-			} else {
-				i.setX(192 + 192 * (100 - (pourcentage)) / 100);
-				
-			}
+				i.setX(((Point2D)i.getProperties().getObject("position")).getX()+ 192 * (100 - (pourcentage)) / 100);
 		} else {
 			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (100 - pourcentage)) / 100));
 		}

@@ -1,15 +1,18 @@
 package rpgapp.eventhandler;
 
+import java.util.List;
+
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.control.ComboBox;
-
+import javafx.scene.control.ListCell;
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
 import rpgapp.data.character.State;
@@ -43,92 +46,108 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 
 	@Override
 	public void handle(ActionEvent arg0) {
-		
-		if (choix.equals("défense")|| choix.equals("attaque")) {
-		try {
-			if (nb_tour == 2) {
-				monstre.setAtk(monstre.getAtk() * 2);
+
+		if (choix.equals("défense") || choix.equals("attaque")) {
+			try {
+				if (nb_tour == 2) {
+					monstre.setAtk(monstre.getAtk() * 2);
+				}
+				Systems.Combat(RPGApp.hero, monstre, choix);
+
+				if (nb_tour == 2) {
+					monstre.setAtk(monstre.getAtk() / 2);
+				}
+				if (RPGApp.hero.getState() == State.dead) {
+					DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, -1);
+					MusicComponent.musicPlay("gameover");
+
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			Systems.Combat(RPGApp.hero, monstre, choix);
-			
-			if (nb_tour == 2) {
-				monstre.setAtk(monstre.getAtk() / 2);
+			if (choix.equals("défense") && RPGApp.hero.getState() == State.alive) {
+				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
+				MusicComponent.soundPlay("shield");
+
 			}
-			if (RPGApp.hero.getState()==State.dead) {
-				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, -1);
-				MusicComponent.musicPlay("gameover");
-				
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		if (choix.equals("défense") && RPGApp.hero.getState()==State.alive) {
-			DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
-			MusicComponent.soundPlay("shield");
-		
-		}
-	}
-		if(choix.equals("attaque")){
+		if (choix.equals("attaque")) {
 			MusicComponent.soundPlay("attack");
 			if (monstre.getState() == State.dead) {
-				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(//monstre.getTypeMonstre().name()+
+				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(// monstre.getTypeMonstre().name()+
 						"RatMort.png");
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
 				MusicComponent.soundPlay("win");
 				MusicComponent.musicPlay("victory");
-			} else if(RPGApp.hero.getState()==State.alive) {
+			} else if (RPGApp.hero.getState() == State.alive) {
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
 			}
-		}else if(choix.equals("skills")){
-			this.nbSkill=((ComboBox) arg0.getSource()).getSelectionModel().getSelectedIndex();
-			if (RPGApp.hero.getSkills()[nbSkill] instanceof SkillOutFight) {
-				SkillOutFight skill=(SkillOutFight) RPGApp.hero.getSkills()[nbSkill];
-				skill.effect();
-			}else {
-				Skill_InFight skill=(Skill_InFight) RPGApp.hero.getSkills()[nbSkill];
-				skill.effect(monstre);
-			}
-			Systems.Combat_attaque(RPGApp.hero,monstre.getAtk());
-			if (monstre.getState() == State.dead) {
-				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(//monstre.getTypeMonstre().name()+
-						"RatMort.png");
-				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
-				MusicComponent.soundPlay("win");
-				MusicComponent.musicPlay("victory");
-			} else if(RPGApp.hero.getState()==State.alive) {
-				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
-			}
+		} else if (choix.equals("skills")) {
+			int index = ((ComboBox) arg0.getSource()).getSelectionModel().getSelectedIndex();
+			((Entity)((ComboBox) arg0.getSource()).getUserData()).removeFromWorld();
+			this.nbSkill = index ;
+				System.out.println("index :"+index+"nb tour :"+nb_tour);
+				
+				if (RPGApp.hero.getSkills()[nbSkill] instanceof SkillOutFight) {
+					SkillOutFight skill = (SkillOutFight) RPGApp.hero.getSkills()[nbSkill];
+					skill.effect();
+				} else {
+					Skill_InFight skill = (Skill_InFight) RPGApp.hero.getSkills()[nbSkill];
+					skill.effect(monstre);
+				}
+				Systems.Combat_attaque(RPGApp.hero, monstre.getAtk());
+				if (monstre.getState() == State.dead) {
+					FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(// monstre.getTypeMonstre().name()+
+							"RatMort.png");
+					DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
+					MusicComponent.soundPlay("win");
+					MusicComponent.musicPlay("victory");
+				} else if (RPGApp.hero.getState() == State.alive) {
+					DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
+				}
+			
 		}
-		
-		else if(choix.equals("fuir") || choix.equals("partir")) {
-			RPGApp.move=true;
+
+		else if (choix.equals("fuir") || choix.equals("partir")) {
+			RPGApp.move = true;
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
 			MusicComponent.musicPlay(RPGApp.hero.getCurrentMap());
-			if(choix.equals("partir")) {
-				if(RPGApp.hero.getCurrentquest()!=null) {
-				if (RPGApp.hero.getCurrentquest().verifQuest()) {
-					String niveau="";
-					int nvA=RPGApp.hero.getLevel();
-					RPGApp.hero.gainExp(RPGApp.hero.getCurrentquest().getReward());
-					if(RPGApp.hero.getLevel()>nvA) {
-						niveau="Félicitations tu est maintenant niveau "+RPGApp.hero.getLevel();
+			if (choix.equals("partir")) {
+				if (RPGApp.hero.getCurrentquest() != null) {
+					if (RPGApp.hero.getCurrentquest().verifQuest()) {
+						String niveau = "";
+						int nvA = RPGApp.hero.getLevel();
+						RPGApp.hero.gainExp(RPGApp.hero.getCurrentquest().getReward());
+						if (RPGApp.hero.getLevel() > nvA) {
+							niveau = "Félicitations tu est maintenant niveau " + RPGApp.hero.getLevel();
+						}
+						String notif = "Quête : " + RPGApp.hero.getCurrentquest().getName() + " accomplie !" + niveau;
+						RPGApp.notif = DisplayBasic.createNotif(notif);
+						FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
+						MusicComponent.soundPlay("succes");
 					}
-					String notif="Quête : "+RPGApp.hero.getCurrentquest().getName() +" accomplie !"+niveau;
-					RPGApp.notif = DisplayBasic.createNotif(notif);
-					FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
-					MusicComponent.soundPlay("succes");
 				}
-			}}
-			else if(choix.equals("fuir")) {
+			} else if (choix.equals("fuir")) {
 				MusicComponent.soundPlay("run");
 			}
-		}else if(choix.equals("retry")) {
+		} else if (choix.equals("retry")) {
 			RPGApp.hero.fullLife();
 			monstre.fullLife();
 			DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 1);
 			MusicComponent.musicPlay("battle");
 		}
+	}
+
+	public void setValueSilently(String value, ComboBox<String> combo) {
+		EventHandler<ActionEvent> filter = e -> e.consume();
+		//combo.removeEventFilter(ActionEvent.ACTION, this); // a custom listener
+		System.out.println("/"+combo.getOnAction());
+		//combo.addEventFilter(ActionEvent.ACTION, filter);
+		
+		//combo.setValue(value);
+		//combo.removeEventFilter(ActionEvent.ACTION, filter);
+		//combo.addEventHandler(ActionEvent.ACTION, this);
 	}
 
 }

@@ -13,7 +13,7 @@ public class FirstAid extends SkillOutFight {
 	@Override
 	public void effect() {
 		RPGApp.hero.heal(40);
-		RPGApp.hero.useSkill(cost);
+		RPGApp.hero.useSkill(getCost());
 		// TODO Auto-generated method stub
 		
 	}
