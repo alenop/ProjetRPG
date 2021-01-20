@@ -10,11 +10,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
+import rpgapp.control.QuestComponent;
 import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
 import rpgapp.system.Systems;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayCombat;
+import rpgapp.view.DisplayQuete;
 
 public class CombatEventHandler extends DisplayBasic implements EventHandler<ActionEvent> {
 	private Monstre monstre;
@@ -68,7 +70,10 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 			MusicComponent.soundPlay("attack");
 			if (monstre.getState() == State.dead) {
 				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
+				RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().remove(posMonstre);
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
+				RPGApp.hero.getCurrentquest().upNbCibles();
+				DisplayQuete.updateQuete();
 				MusicComponent.soundPlay("win");
 				MusicComponent.musicPlay("victory");
 			} else if(RPGApp.hero.getState()==State.alive) {
@@ -79,20 +84,9 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
 			MusicComponent.musicPlay(RPGApp.hero.getCurrentMap());
 			if(choix.equals("partir")) {
+				//RPGApp.hero.gainExp(RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().get(posMonstre).getGive_experience());
 				if(RPGApp.hero.getCurrentquest()!=null) {
-				if (RPGApp.hero.getCurrentquest().verifQuest()) {
-					String niveau="";
-					int nvA=RPGApp.hero.getLevel();
-					RPGApp.hero.gainExp(RPGApp.hero.getCurrentquest().getReward());
-					if(RPGApp.hero.getLevel()>nvA) {
-						niveau="Félicitations tu est maintenant niveau "+RPGApp.hero.getLevel();
-					}
-					String notif="Quête : "+RPGApp.hero.getCurrentquest().getName() +" accomplie !"+niveau;
-					RPGApp.notif = DisplayBasic.createNotif(notif);
-					FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
-					MusicComponent.soundPlay("succes");
-					RPGApp.hero.getCurrentquest().validQuest();
-				}
+					QuestComponent.verifQuest();
 			}}
 			else if(choix.equals("fuir")) {
 				MusicComponent.soundPlay("run");

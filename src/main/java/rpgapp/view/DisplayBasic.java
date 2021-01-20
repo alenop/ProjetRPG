@@ -64,7 +64,7 @@ public abstract class DisplayBasic {
 	        Entity rectangleView = createRectangleWithBorder(border,c);
 	        return rectangleView;
 	}
-	protected static Entity createNotif(String a) {
+	public static Entity createNotif(String a) {
 		a=retourLigne(a, 50);
 		String[] li=a.split("");
 		int j=1;

@@ -68,6 +68,11 @@ public class PNJ {
 	public String getgiveQuest() {
 		return giveQuest;
 	}
+	
+	public void setGiveQuest(String giveQuest) {
+		this.giveQuest = giveQuest;
+	}
+	
 	public String getImage() {
 		return image;
 	}

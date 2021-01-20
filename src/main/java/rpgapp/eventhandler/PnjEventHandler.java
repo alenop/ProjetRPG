@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
+import rpgapp.control.QuestComponent;
 import rpgapp.data.character.Monstres;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.system.Quest;
@@ -26,8 +27,17 @@ public class PnjEventHandler implements EventHandler<ActionEvent> {
 	
 	@Override
 	public void handle(ActionEvent ActionEvent) {
+		Quest q = RPGApp.hero.getCurrentquest();
 		if (pnj.getgiveQuest().equals(button.getText())) {
-			RPGApp.hero.setCurrentquest(pnj.getQuest());
+			if(q == null) {
+				RPGApp.hero.setCurrentquest(pnj.getQuest());
+			}
+			else {
+				if(q.getAction()=="Parler à" && q.getTypeCibles()==this.pnj.getName()) {
+					q.upNbCibles();
+					QuestComponent.verifQuest();
+				}
+			}
 			DisplayQuete.updateQuete();
 			RPGApp.dialogBox.removeFromWorld();
 			MusicComponent.soundPlay("accept");

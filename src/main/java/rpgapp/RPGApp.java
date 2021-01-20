@@ -28,6 +28,7 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
+import rpgapp.control.QuestComponent;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
 import rpgapp.data.character.Monstres;
@@ -36,6 +37,7 @@ import rpgapp.data.elementInteractifs.Arme;
 import rpgapp.data.elementInteractifs.Armure;
 import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.Equipment;
+import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
@@ -126,10 +128,12 @@ public class RPGApp extends GameApplication {
 		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		
 		
-		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
-		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
-		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
-		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
+//		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
+//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
+//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
+//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
+		
+		createIndice("mapCave.json", new Point2D(512, 704) ,new Indice("Morceau de fromage", "Water_Icon.png"));
 		
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";
@@ -154,7 +158,10 @@ public class RPGApp extends GameApplication {
 		conversationComplete.put("protéiné ?", conversation3);
 		conversationComplete.put("finish", conversation4);
 		conversationComplete.put("en cours", conversation5);
-		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.Rat,1),"Oui papa");
+		
+		Quest q = new Quest("Contact avec le Rat, Partie I:", 100, "Examiner", "Indice de la cave", 1, "Votre père vous demande de vous debarasser du rat de la cave. Trouvez le !");
+		
+		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,q,"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
 		
 		String[] answer1A = new String[2];
@@ -178,9 +185,9 @@ public class RPGApp extends GameApplication {
 		
 		HashMap<String, String[]> conversation2A = Chat(answer2A, "Hey "+hero.getName()+" ! \nJ'ai faim, si tu vas dans ton jardin n'hesite \npas à me ramener des pommes de ton coffre.");
 		HashMap<String, String[]> conversation2B1 = Chat(answer2B, "Merci ! j'ai faim.");
-		HashMap<String, String[]> conversation2B2 = Chat(answer2B, "Tu es sûr ? Pourtant tu dois bien contrer l'invasion de rat non ?");
+		HashMap<String, String[]> conversation2B2 = Chat(answer2B, "Tu es sûr ? Penses y si tu dois t'équiper");
 		
-		HashMap<String, String[]> conversation3A = Chat(answer3A, "Coucou "+hero.getName()+", tu as vu cette invasion de rat ? \nFais attention si tu utilises un objet tranchant, \ntu risquerais de te faire mal.");
+		HashMap<String, String[]> conversation3A = Chat(answer3A, "Coucou "+hero.getName()+". Fais attention si tu utilises un objet tranchant, \ntu risquerais de te faire mal.");
 
 		HashMap<String,HashMap<String,String[]>> conversationComplete1=new HashMap<String,HashMap<String,String[]>>();
 		conversationComplete1.put("begin", conversation1A);
@@ -335,16 +342,31 @@ public class RPGApp extends GameApplication {
 			}
 		}, KeyCode.K);
 		
-		input.addAction(new UserAction("test") {
+		input.addAction(new UserAction("Analyse") {
 			@Override
-			protected void onAction() {
+			protected void onActionBegin() {
 				try {
-					System.out.println(hero.getCurrentquest());
+					playerComponent.analyse();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}
-		}, KeyCode.G);
+		}, KeyCode.A);
+		
+		
+		input.addAction(new UserAction("Quete Suivante") {
+			@Override
+			protected void onActionBegin() {
+				try {
+					QuestComponent.suiteQuete(hero.getCurrentquest());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}, KeyCode.B);
+		
 		
 		input.addAction(new UserAction("Save") {
 			@Override
@@ -369,7 +391,7 @@ public class RPGApp extends GameApplication {
 		}, KeyCode.L);
 	}
 
-	public void createMonster(String map, Monstre monstre, Point2D posmonstre) {
+	public static void createMonster(String map, Monstre monstre, Point2D posmonstre) {
 
 		if (ListeMaps.get(map).getMonsterList().get(posmonstre) == null) {
 			ListeMaps.get(map).getMonsterList().put(posmonstre, monstre);
@@ -402,6 +424,13 @@ public class RPGApp extends GameApplication {
 		}
 	}
 	
+	public static void createIndice(String map, Point2D pos, rpgapp.data.elementInteractifs.Indice indice) {
+		
+		if (ListeMaps.get(map).getIndiceList().get(pos) == null) {
+			ListeMaps.get(map).getIndiceList().put(pos, indice);
+		}
+	}
+	
 	
 	
 //	public void musicStop() {
@@ -414,7 +443,7 @@ public class RPGApp extends GameApplication {
 		mapbase.setPositionHero(poshero);
 		ListeMaps.put(map, mapbase);
 	}
-	public HashMap<String,String[]> Chat (String[] answers, String question){
+	public static HashMap<String,String[]> Chat (String[] answers, String question){
 		HashMap<String,String[]> chat = new HashMap<String,String[]>();
 		chat.put("answers",answers);
 		question=DisplayBasic.retourLigne(question,30);

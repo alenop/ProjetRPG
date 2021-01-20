@@ -44,25 +44,22 @@ public class DisplayQuete extends DisplayBasic {
 		Quest q = RPGApp.hero.getCurrentquest();
 		
 		for (Node ligne : getQuete().getView().getNodes()) {
-			System.out.println(ligne);
-			System.out.println(getQuete());
 			String nouvText = "";
 			String textAT = ligne.getAccessibleText();
-			System.out.println(textAT);
 			if (textAT != null && q!= null) {
 				
 				switch (textAT) {
 					case "Nom":
-						nouvText = q.getName() + ":";
+						nouvText = q.getName();
 						break;
 					case "Objectif":
-						nouvText = "- " + q.getKill() + " / " + q.getNbKill() + " " + q.getTypeMonstre() + " (s)";
+						nouvText = "- " + q.getAction() + " " + q.getNbCibles() + " / " + q.getNbCiblesMax() + " " + q.getTypeCibles();
 						break;
 					case "Recompense":
 						nouvText = "- " + q.getReward() + " Xp";
 						break;
 					case "Description":
-						nouvText = "- ";
+						nouvText = "- " + q.getDescription();
 						break;
 					
 				}
@@ -70,9 +67,7 @@ public class DisplayQuete extends DisplayBasic {
 			}
 			if(textAT == "Nom" || textAT == "Description" || textAT == "Objectif" || textAT == "Recompense") {
 				Entity textEntity = (Entity) ligne.getUserData();
-				System.out.println("l69:" + textEntity);
 				Text text = (Text) textEntity.getView().getNodes().get(0);
-				System.out.println("l71:" + text);
 				text.setText(nouvText);
 			}
 			
@@ -104,28 +99,28 @@ public class DisplayQuete extends DisplayBasic {
 		label.setTextFill(Color.rgb(254, 254, 254));
 		label2.setTextFill(Color.rgb(254, 254, 254));
 		
-		Text nomTxt = FXGL.getUIFactory().newText("A la recherche du rat perdu Partie I"+" :", Color.GOLD, 20.0);
-		Text descTxt = FXGL.getUIFactory().newText("- \"Votre père vous demande de vaincre le rat présent dans la cave. Trouvez le !\"", Color.BLACK, 20.0);
-		Text objTxt = FXGL.getUIFactory().newText("- 0/1 indice(s)", Color.BLACK, 20.0);
-		Text recTxt = FXGL.getUIFactory().newText("- 150 Xp", Color.BLACK, 20.0);
+		Text nomTxt = FXGL.getUIFactory().newText(""+" ", Color.GOLD, 20.0);
+		Text descTxt = FXGL.getUIFactory().newText("", Color.WHITE, 20.0);
+		Text objTxt = FXGL.getUIFactory().newText("", Color.WHITE, 20.0);
+		Text recTxt = FXGL.getUIFactory().newText("", Color.WHITE, 20.0);
 		
 		if(q!=null) {
-			nomTxt.setText(q.getName()+" :");
-			descTxt.setText("- "+ "\"\"");
-			objTxt.setText("- " + q.getKill() + " / " + q.getNbKill() + " " + q.getTypeMonstre() + " (s)");
+			nomTxt.setText(q.getName());
+			descTxt.setText("- "+ q.getDescription());
+			objTxt.setText("- "+ q.getAction() + " " + q.getNbCibles() + " / " + q.getNbCiblesMax() + " " + q.getTypeCibles());
 			recTxt.setText("- " + q.getReward() + " Xp");
 		}
 		
 		
 		
 		nomTxt.setWrappingWidth(BG_WIDTH-15);
-		nomTxt.setFont(Font.font("Elephant", FontWeight.BOLD, FontPosture.REGULAR, 13));
+		nomTxt.setFont(Font.font("Elephant", FontWeight.BOLD, FontPosture.REGULAR, 14));
 		descTxt.setWrappingWidth(BG_WIDTH-20);
-		descTxt.setFont(Font.font("Elephant", FontWeight.BLACK, FontPosture.ITALIC, 10));
+		descTxt.setFont(Font.font("Elephant", FontWeight.BLACK, FontPosture.REGULAR, 11));
 		objTxt.setWrappingWidth(BG_WIDTH-20);
-		objTxt.setFont(Font.font("Elephant", FontWeight.BLACK, FontPosture.REGULAR, 10));
+		objTxt.setFont(Font.font("Elephant", FontWeight.BLACK, FontPosture.REGULAR, 11));
 		recTxt.setWrappingWidth(BG_WIDTH-20);
-		recTxt.setFont(Font.font("Elephant", FontWeight.BLACK, FontPosture.REGULAR, 10));
+		recTxt.setFont(Font.font("Elephant", FontWeight.BLACK, FontPosture.REGULAR, 11));
 		
 		Entity nomQuete = CreateEntityWithNode(nomTxt, 10, 32);
 		nomQuete.getView().setUserData(nomQuete);

@@ -3,6 +3,7 @@ package rpgapp.data.character;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
@@ -11,7 +12,10 @@ import java.io.Serializable;
 
 import rpgapp.system.Quest;
 import rpgapp.system.Systems;
+import rpgapp.view.DisplayBasic;
 import rpgapp.RPGApp;
+import rpgapp.control.PlayerComponent;
+import rpgapp.control.QuestComponent;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 
@@ -19,6 +23,7 @@ public class Hero extends Character implements Serializable {
 	private transient Item inventory[];
 	// private ArrayList<Item> inventaire = new ArrayList<Item>();
 	private int experience = 0;
+	private int requis = 1000;
 	private transient HashMap<String, Equipment> equipment = new HashMap<String, Equipment>();
 	private HashMap<Integer, Integer> levels;
 	private Quest currentquest;
@@ -46,19 +51,33 @@ public class Hero extends Character implements Serializable {
 	}
 	public void gainExp(int experience) {
 		this.experience = getExperience() + experience;
-		gainLevel(this.experience);
-
+		while(this.experience >= this.requis) {
+			gainLevel(this.experience);
+			this.experience = this.experience - requis;
+			this.requis = this.requis + 500;
+		}
+		
+		
+		
 	}
 
 	public void gainLevel(int experience) {
 		if (experience >= this.levels.get(this.level)) {
 			this.level += 1;
 			System.out.println("gain de niveau ! Niveau actuel : " + this.level);
-			this.setAtk(this.atkmax + this.getAtk());
-			this.setDef(this.defmax + this.getDef());
-			this.Pvmax = this.Pvmax * this.level;
-			gainLevel(experience);
+			this.setAtk(this.atkmax + this.getAtk()/2);
+			this.setDef(this.defmax + this.getDef()/2);
+			this.Pvmax = this.Pvmax + this.Pvmax * this.level/2;
 		}
+		
+		this.level += 1;
+		System.out.println("gain de niveau ! Niveau actuel : " + this.level);
+		this.setAtk(this.atkmax + this.getAtk());
+		this.setDef(this.defmax + this.getDef());
+		this.Pvmax = this.Pvmax * this.level;
+		String notif="Félicitations tu est maintenant niveau " + this.level;
+		RPGApp.notif = DisplayBasic.createNotif(notif);
+		FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
 	}
 	public int getPositionVoid() {
 		int j=0;

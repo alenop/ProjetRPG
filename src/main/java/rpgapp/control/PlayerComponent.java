@@ -2,6 +2,7 @@ package rpgapp.control;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -19,7 +20,7 @@ import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
-
+import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.view.Display;
@@ -28,6 +29,7 @@ import rpgapp.view.DisplayCoffre;
 import rpgapp.view.DisplayCombat;
 import rpgapp.view.DisplayMap;
 import rpgapp.view.DisplayPNJ;
+import rpgapp.view.DisplayQuete;
 
 public class PlayerComponent extends Component {
 
@@ -36,6 +38,8 @@ public class PlayerComponent extends Component {
 
 	@Override
 	public void onUpdate(double tpf) {
+		
+
 //		try {
 //			Thread.sleep(500);
 //		}catch(Exception e){
@@ -159,6 +163,33 @@ public class PlayerComponent extends Component {
 	
 
 	}}
+	
+	public void analyse() {
+		//Verifie que le joueur possède une quete
+		if(RPGApp.hero.getCurrentquest() != null) {
+			//Vérifie que le joueur possède une quete d'analyse
+			if(RPGApp.hero.getCurrentquest().getAction()=="Examiner") {
+				//Vérifie que le joueur est bien sur un indice
+				for (Entry<Point2D, Indice> i : RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getIndiceList().entrySet()) {
+					System.out.println(position.getX());
+					System.out.println(position.getY());
+					System.out.println(i.getKey().getX());
+					System.out.println(i.getKey().getY());
+					if(i.getKey().getX()== position.getX() && i.getKey().getY()==position.getY()) {
+						RPGApp.hero.getCurrentquest().upNbCibles();
+						QuestComponent.verifQuest();
+						DisplayQuete.updateQuete();
+						FXGL.getApp().getGameWorld()
+						.removeEntities(FXGL.getApp().getGameWorld().getEntitiesAt(new Point2D(position.getX(), position.getY())));
+						RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getIndiceList().remove(i.getKey());
+					}
+
+				}
+			}
+
+		}
+	}
+	
 	public void CheckMonsterRange(Point2D pos) {
 		CheckMonsterRangeWithDir(pos,"left");
 		CheckMonsterRangeWithDir(pos,"right");

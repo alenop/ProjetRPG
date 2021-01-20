@@ -14,6 +14,7 @@ import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
 import rpgapp.data.elementInteractifs.Chest;
+import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.PNJ;
 
 public class DisplayMap extends DisplayBasic {
@@ -59,6 +60,9 @@ public class DisplayMap extends DisplayBasic {
 				String a="Coffre_";
 				if (i.getValue().getLoot()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
 				FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
+			}
+			for (Entry<Point2D, Indice> i : RPGApp.ListeMaps.get(map).getIndiceList().entrySet()) {
+				FXGL.getApp().getGameWorld().spawn("indice", i.getKey());
 			}
 		}
 
@@ -109,47 +113,55 @@ public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 	}
 public static void chargeMap(String map,Point2D pos) {
 	
-	EntityView abcd = null;
-	if (PlayerComponent.position.getEntity() != null) {
-		abcd = PlayerComponent.position.getEntity().getView();
-		RPGApp.hero.setView(abcd);
-	}
-FXGL.getApp().getGameWorld().setLevelFromMap(map);
-RPGApp.hero.setCurrentMap(map);
-if (abcd != null) {
-	FXGL.getApp().getGameScene().addGameView(abcd);
-}
-PlayerComponent.position.setValue(pos);
-DisplayInventaire.createInventaire();
-DisplayEquipment.createEquipment();
-DisplayQuete.createQuete();
-
-if (RPGApp.ListeMaps.get(map) != null) {
-	for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {
-		FXGL.getApp().getGameWorld().spawn("portal", i.getKey());
-
-	}
-	for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
-		if(i.getValue().isUnique() && RPGApp.hero.finishQuest(i.getValue().getQuest())) {
-			
+		EntityView abcd = null;
+		if (PlayerComponent.position.getEntity() != null) {
+			abcd = PlayerComponent.position.getEntity().getView();
+			RPGApp.hero.setView(abcd);
 		}
-		else {
-			
-			i.getValue().fullLife();
-			i.getValue().setState(State.alive);
-			FXGL.getApp().getGameWorld().spawn("monstre", i.getKey()).setProperty("data",i.getValue());
+		FXGL.getApp().getGameWorld().setLevelFromMap(map);
+		RPGApp.hero.setCurrentMap(map);
+		if (abcd != null) {
+			FXGL.getApp().getGameScene().addGameView(abcd);
+		}
+		PlayerComponent.position.setValue(pos);
+		DisplayInventaire.createInventaire();
+		DisplayEquipment.createEquipment();
+		DisplayQuete.createQuete();
+
+		if (RPGApp.ListeMaps.get(map) != null) {
+			for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {
+				FXGL.getApp().getGameWorld().spawn("portal", i.getKey());
+
 			}
-	}
-	for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
+			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
+				if(i.getValue().isUnique() && RPGApp.hero.finishQuest(i.getValue().getQuest())) {
+			
+				}
+				else {
+			
+					i.getValue().fullLife();
+					i.getValue().setState(State.alive);
+					FXGL.getApp().getGameWorld().spawn("monstre", i.getKey()).setProperty("data",i.getValue());
+				}
+			}	
+			for (Map.Entry<Point2D, PNJ> i : RPGApp.ListeMaps.get(map).getPNJList().entrySet()) {
 				String nom = i.getValue().getName();
 				FXGL.getApp().getGameWorld().spawn("pnj", i.getKey()).setViewFromTexture(nom+"_Face.png");
-	}
-	for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
-		String a="Coffre_";
-		if (i.getValue().getLoot()==null) {a+="Ouvert.png";}else {a+="Ferme.png";}
-		FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
-	}
-}
+			}
+			for (Entry<Point2D, Chest> i : RPGApp.ListeMaps.get(map).getCoffreList().entrySet()) {
+				String a="Coffre_";
+				if (i.getValue().getLoot()==null) {
+					a+="Ouvert.png";
+					}
+				else {
+					a+="Ferme.png";
+					}
+				FXGL.getApp().getGameWorld().spawn("coffre",i.getKey()).setViewFromTexture(a);
+			}
+			for (Entry<Point2D, Indice> i : RPGApp.ListeMaps.get(map).getIndiceList().entrySet()) {
+				FXGL.getApp().getGameWorld().spawn("indice", i.getKey());
+			}
+		}
 
-}
+	}
 }

@@ -33,11 +33,14 @@ public class DisplayPNJ extends DisplayBasic {
 		RPGApp.move=false;
 		if (RPGApp.hero.getFinishQuests().contains(pnj.getQuest().getName())) {
 			DisplayPNJ.dialogue2( pnj,"finish");
+			
 		}else if(RPGApp.hero.getCurrentquest()!=null && RPGApp.hero.getCurrentquest().getName().equals(pnj.getQuest().getName() )) {
 			DisplayPNJ.dialogue2(pnj,"en cours");
+			
 			}
 		else {
 			DisplayPNJ.dialogue2(pnj,"begin");
+			
 		}
 	}
 	public static void dialogue2(PNJ pnj,String étape) {
