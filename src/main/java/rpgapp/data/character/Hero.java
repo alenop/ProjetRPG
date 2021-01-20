@@ -31,6 +31,7 @@ public class Hero extends Character implements Serializable {
 	private transient EntityView view;
 	private ArrayList<String>listFinishQuests=new ArrayList<String>();
 	private transient Point2D position ;
+	private Skill skills[];
 
 	public Hero(String nom) {
 		super(nom, 20, 20, 50);
@@ -41,10 +42,15 @@ public class Hero extends Character implements Serializable {
 		this.levels = new HashMap<Integer, Integer>();
 		this.setView(view);
 		initLevels();
-
+		this.skills=new Skill[2];
+		skills[0]=new FirstAid("firstAid");
+		skills[1]=new Slash("Slash");
 	}
 	public void setPosition(Point2D pos) {
 		this.position=pos;
+	}
+	public Skill[] getSkills() {
+		return this.skills;
 	}
 	public Point2D getPosition() {
 		return this.position;

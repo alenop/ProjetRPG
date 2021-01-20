@@ -8,11 +8,15 @@ import com.almasb.fxgl.entity.view.EntityView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.control.ComboBox;
+
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
 import rpgapp.control.QuestComponent;
 import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
+import rpgapp.data.character.SkillOutFight;
+import rpgapp.data.character.Skill_InFight;
 import rpgapp.system.Systems;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayCombat;
@@ -24,6 +28,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 	private int nb_tour;
 	private Entity viewcombat;
 	private String choix;
+	private int nbSkill;
 
 	public CombatEventHandler(Monstre monster, int nb_tour, Entity viewcombat, Point2D posMonstre, String choix) {
 		this.monstre = monster;
@@ -69,7 +74,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		if(choix.equals("attaque")){
 			MusicComponent.soundPlay("attack");
 			if (monstre.getState() == State.dead) {
-				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
+				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(//monstre.getTypeMonstre().name()+"RatMort.png");
 				RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().remove(posMonstre);
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
 				RPGApp.hero.getCurrentquest().upNbCibles();
@@ -79,7 +84,28 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 			} else if(RPGApp.hero.getState()==State.alive) {
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
 			}
-		}else if(choix.equals("fuir") || choix.equals("partir")) {
+		}else if(choix.equals("skills")){
+			this.nbSkill=((ComboBox) arg0.getSource()).getSelectionModel().getSelectedIndex();
+			if (RPGApp.hero.getSkills()[nbSkill] instanceof SkillOutFight) {
+				SkillOutFight skill=(SkillOutFight) RPGApp.hero.getSkills()[nbSkill];
+				skill.effect();
+			}else {
+				Skill_InFight skill=(Skill_InFight) RPGApp.hero.getSkills()[nbSkill];
+				skill.effect(monstre);
+			}
+			Systems.Combat_attaque(RPGApp.hero,monstre.getAtk());
+			if (monstre.getState() == State.dead) {
+				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(//monstre.getTypeMonstre().name()+
+						"RatMort.png");
+				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
+				MusicComponent.soundPlay("win");
+				MusicComponent.musicPlay("victory");
+			} else if(RPGApp.hero.getState()==State.alive) {
+				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
+			}
+		}
+		
+		else if(choix.equals("fuir") || choix.equals("partir")) {
 			RPGApp.move=true;
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
 			MusicComponent.musicPlay(RPGApp.hero.getCurrentMap());

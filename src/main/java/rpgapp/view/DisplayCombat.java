@@ -8,13 +8,14 @@ import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
-
+import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.control.ComboBox;
 
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
@@ -22,6 +23,7 @@ import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Character;
 
 import rpgapp.data.character.Monstre;
+import rpgapp.data.character.Skill;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.eventhandler.CombatEventHandler;
 import rpgapp.eventhandler.GameOverHandler;
@@ -33,7 +35,8 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
 		RPGApp.move=false;
-		Entity monstreEntity = CreateEntityWithPicture(monstre.getTypeMonstre().name()+"CombatGif.gif", 64*8 +32, 64);
+		Entity monstreEntity = CreateEntityWithPicture(//monstre.getTypeMonstre().name()+
+				"RatCombatGif.gif", 64*8 +32, 64);
 		EntityView monstreview = monstreEntity.getView();
 		MusicComponent.musicPlay("battle");
 		
@@ -62,13 +65,21 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 		EntityView afficheText = text.getView();
 		Button[] av;
-		av = new Button[4];
+		av = new Button[3];
 		av[0] = new Button("attaque");
 		av[1] = new Button("défense");
 		av[2] = new Button("fuir");
-		av[3] = new Button("skills");
+		//av[3] = new Button("skills");
 		av[2].setOnAction(new CombatEventHandler("fuir",viewcombat));
 		int j = 0;
+		ComboBox comboBox = new ComboBox();
+		comboBox.setValue("Skills");
+		comboBox.setShape(DisplayBasic.createBorder(10, 10));
+		//Border bord = DisplayBasic.createBorder(10, 10);
+		for (Skill i : RPGApp.hero.getSkills()) {
+			comboBox.getItems().add(i.getName());
+		}
+		
 		for (Button i : av) {
 			Entity Bouton = CreateEntityWithNode(i, 192 + 64 * j, 385);
 			Bouton.setProperty("bouton", i);
@@ -77,7 +88,10 @@ public abstract class DisplayCombat extends DisplayBasic {
 			viewcombat.getView().addNode(Bouton.getView());
 			j++;
 		}
-
+		Entity skills = CreateEntityWithNode(comboBox, 192 + 64 * j, 385);
+		skills.getView().setUserData(comboBox);
+		skills.getView().setAccessibleText("Skill");
+		viewcombat.getView().addNode(skills.getView());
 		viewcombat.getView().addNode(afficheText);
 		viewcombat.getView().addNode(monstreview);
 		viewcombat.getView().addNode(heroview);
@@ -226,6 +240,19 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 								
 					
+				}
+				else if(i.getAccessibleText().equals("Skill")) {
+					if (nb_tour==1) {
+						i.setVisible(true);
+					}
+					if (nb_tour==-1 || nb_tour==0) {
+						i.setVisible(false);
+					}
+					 else {
+						ComboBox combobox =((ComboBox)  i.getUserData());
+
+						combobox.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, posMonstre,"skills"));
+					}
 				}
 
 				if (i.getAccessibleText().equals("border1" + monstre.toString())) {

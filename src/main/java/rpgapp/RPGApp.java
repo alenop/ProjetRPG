@@ -129,6 +129,7 @@ public class RPGApp extends GameApplication {
 		
 		
 //		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
+		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave",Monstres.BossRat), new Point2D(512, 704));
 //		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
 //		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
 //		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
@@ -158,7 +159,7 @@ public class RPGApp extends GameApplication {
 		conversationComplete.put("protéiné ?", conversation3);
 		conversationComplete.put("finish", conversation4);
 		conversationComplete.put("en cours", conversation5);
-		
+		//PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.BossRat,1),"Oui papa");
 		Quest q = new Quest("Contact avec le Rat, Partie I:", 100, "Examiner", "Indice de la cave", 1, "Votre père vous demande de vous debarasser du rat de la cave. Trouvez le !");
 		
 		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,q,"Oui papa");
