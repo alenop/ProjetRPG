@@ -1,5 +1,6 @@
 package rpgapp.view;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import com.almasb.fxgl.app.FXGL;
@@ -16,6 +17,8 @@ import javafx.scene.text.Text;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
+import rpgapp.data.character.Character;
+import rpgapp.data.character.Monstre;
 
 public abstract class DisplayBasic {
 	public static Entity CreateEntityWithNode(Node a,double b,double c) {
@@ -133,5 +136,44 @@ public abstract class DisplayBasic {
 			a=first+"\n"+second;
 		}
 			return a;
+	}
+	public static void addbarre(EntityView i, Character character, double a, double b,double pourcentage2,Color color) {
+		BigDecimal pourcentage3 = new BigDecimal(Double.toString(pourcentage2));
+		double pourcentage = pourcentage3.doubleValue();
+		Rectangle border1 = createBorder(Math.round((192 * (100 - pourcentage)) / 100), 16);
+		border1.setFill(color);
+		border1.setArcHeight(0.0);
+		border1.setArcWidth(0.0);
+
+		Rectangle border2 = createBorder(Math.round((192 * (pourcentage) / 100)), 16);
+		border2.setFill(Color.rgb(254, 0, 0, 0.8));
+		border2.setArcHeight(0.0);
+		border2.setArcWidth(0.0);
+		createRectangleWithBorder(border1, new Point2D(0, 0));
+		createRectangleWithBorder(border2, new Point2D(128, 0));
+		Entity RedBar = createRectangleWithBorder(border2, new Point2D(a + 192 * (100 - (pourcentage)) / 100, b));
+		RedBar.setProperty("border", border2);
+		RedBar.setProperty("position",new Point2D(a,b));
+		RedBar.getView().setAccessibleText("border1" + character.toString());
+		RedBar.getView().setUserData(RedBar);
+		Entity GreenBar = createRectangleWithBorder(border1, new Point2D(a, b));
+		GreenBar.setProperty("border", border1);
+		GreenBar.setProperty("position",new Point2D(a,b));
+		GreenBar.getView().setAccessibleText("border2" + character.toString());
+		GreenBar.getView().setUserData(GreenBar);
+		i.addNode(RedBar.getView());
+		i.addNode(GreenBar.getView());
+	}
+	
+	public static void updateBarre(Character character, Entity i, String color,double pourcentage2) {
+		BigDecimal pourcentage3 = new BigDecimal(Double.toString(pourcentage2));
+		double pourcentage = pourcentage3.doubleValue();
+
+		if (color.equals("red")) {
+			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (pourcentage)) / 100));
+				i.setX(((Point2D)i.getProperties().getObject("position")).getX()+ 192 * (100 - (pourcentage)) / 100);
+		} else {
+			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (100 - pourcentage)) / 100));
+		}
 	}
 }

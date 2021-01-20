@@ -39,6 +39,7 @@ import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.data.elementInteractifs.ManaPotion;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.data.elementInteractifs.Potion;
@@ -46,6 +47,7 @@ import rpgapp.data.map.ModeleMap;
 import rpgapp.factory.MenuSceneFactory;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayEquipment;
+import rpgapp.view.DisplayHero;
 import rpgapp.view.DisplayInventaire;
 import rpgapp.view.DisplayMap;
 import rpgapp.view.DisplayQuete;
@@ -164,7 +166,7 @@ public class RPGApp extends GameApplication {
 		
 		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,q,"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
-		
+		//getGameWorld().ad
 		String[] answer1A = new String[2];
 		answer1A[0] = "Pourquoi pas.";
 		answer1A[1] = "Bof ça ira, merci...";
@@ -228,11 +230,13 @@ public class RPGApp extends GameApplication {
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
 		hero.addItemInventory(new Potion("potion de soin","potion_de_soin.png"));
+		hero.addItemInventory(new ManaPotion("potion de mana","PotionDeMana.jpg"));
 		}
 		
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
 		DisplayQuete.createQuete();
+		DisplayHero.begin();
 		//get
 		
 	}
@@ -325,8 +329,7 @@ public class RPGApp extends GameApplication {
 				}
 			}
 		}, KeyCode.E);
-		
-		input.addAction(new UserAction("Open TabQuest") {
+put.addAction(new UserAction("Open TabQuest") {
 			@Override
 			protected void onAction() {
 				try {
@@ -344,6 +347,50 @@ public class RPGApp extends GameApplication {
 		}, KeyCode.K);
 		
 		input.addAction(new UserAction("Analyse") {
+			@Override
+			protected void onActionBegin() {
+				try {
+					playerComponent.analyse();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}, KeyCode.A);
+		
+		
+		input.addAction(new UserAction("Quete Suivante") {
+			@Override
+			protected void onActionBegin() {
+				try {
+					QuestComponent.suiteQuete(hero.getCurrentquest());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}, KeyCode.B);
+				input.addAction(new UserAction("see Hero status") {
+			@Override
+			protected void onAction() {
+				try {
+					Thread.sleep(200);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (DisplayHero.getStatusWindow().getView().isVisible()) {
+					DisplayHero.removeStatusWindow();
+					move=true;
+				}
+				else {
+					DisplayHero.update();
+					DisplayHero.afficheStatusWindow();
+					move=false;
+				}
+			}
+		}, KeyCode.H);
+				
+				
 			@Override
 			protected void onActionBegin() {
 				try {
@@ -392,7 +439,7 @@ public class RPGApp extends GameApplication {
 		}, KeyCode.L);
 	}
 
-	public static void createMonster(String map, Monstre monstre, Point2D posmonstre) {
+	public void createMonster(String map, Monstre monstre, Point2D posmonstre) {
 
 		if (ListeMaps.get(map).getMonsterList().get(posmonstre) == null) {
 			ListeMaps.get(map).getMonsterList().put(posmonstre, monstre);
@@ -444,7 +491,7 @@ public class RPGApp extends GameApplication {
 		mapbase.setPositionHero(poshero);
 		ListeMaps.put(map, mapbase);
 	}
-	public static HashMap<String,String[]> Chat (String[] answers, String question){
+	public HashMap<String,String[]> Chat (String[] answers, String question){
 		HashMap<String,String[]> chat = new HashMap<String,String[]>();
 		chat.put("answers",answers);
 		question=DisplayBasic.retourLigne(question,30);

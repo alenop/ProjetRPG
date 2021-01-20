@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public abstract class Skill implements Serializable {
 	private String name;
+	protected int cost;
 	public Skill(String name) {
 		this.setName(name);
 	}
@@ -13,5 +14,8 @@ public abstract class Skill implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getCost() {
+		return cost;
 	}
 }

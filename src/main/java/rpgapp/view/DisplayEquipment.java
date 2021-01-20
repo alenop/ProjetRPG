@@ -75,6 +75,7 @@ public class DisplayEquipment extends DisplayBasic {
 		equipment.setType(EntityType.Equipment);
 		equipment.setViewFromTexture("EquipmentFond.png");
 		EntityView equipmentView = equipment.getView();
+		equipmentView.setUserData(equipment);
 //		Entity fond=CreateEntityWithPicture("EquipmentFond.png", 0, 0);
 //		equipmentView.addNode(fond.getView());
 

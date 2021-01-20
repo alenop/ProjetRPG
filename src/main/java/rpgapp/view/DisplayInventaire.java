@@ -15,6 +15,7 @@ import rpgapp.control.PlayerComponent;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.eventhandler.EquipmentHandler;
 import rpgapp.eventhandler.InventoryHandler;
+import rpgapp.eventhandler.ItemEventHandler;
 
 public class DisplayInventaire extends DisplayBasic {
 	public static void removeInventaire() {
@@ -65,9 +66,12 @@ public class DisplayInventaire extends DisplayBasic {
 		itemViewGrand.setViewFromTexture(i.getImage());
 		if (choix.equals("desequip")) {
 			a.setOnMouseClicked(new EquipmentHandler(itemViewGrand,i.getType()));
+			a.setOnMouseEntered(new ItemEventHandler(i.getType()));
 		}else if(choix.equals("equip")) {
 			a.setOnMouseClicked(new InventoryHandler(itemViewGrand,i.getPosition()));
+			a.setOnMouseEntered(new ItemEventHandler(i.getPosition()) );
 		}
+		
 		
 		a.addNode(itemViewPetit.getView());
 
@@ -85,6 +89,7 @@ public class DisplayInventaire extends DisplayBasic {
 		inventaire.setType(EntityType.Inventaire);
 		inventaire.setViewFromTexture("InventaireFond.png");
 		EntityView inventaireView = inventaire.getView();
+		inventaireView.setUserData(inventaire);
 
 		int x = 0;
 		int y = 0;
@@ -98,7 +103,7 @@ public class DisplayInventaire extends DisplayBasic {
 			item.getView().setUserData(item);
 		
 
-			if (i != null) {
+			if (i != null) {	
 				itemViewInventaire(i, item.getView(),"equip");
 			}
 			inventaireView.addNode(item.getView());
