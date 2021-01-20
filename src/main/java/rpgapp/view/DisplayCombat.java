@@ -41,6 +41,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
 		RPGApp.move=false;
+		RPGApp.hero.resetTemporaryBonus();
 		Entity monstreEntity = CreateEntityWithPicture(//monstre.getTypeMonstre().name()+
 				"RatCombatGif.gif", 64*8 +32, 64);
 		EntityView monstreview = monstreEntity.getView();
@@ -59,9 +60,9 @@ public abstract class DisplayCombat extends DisplayBasic {
 		Entity viewcombat = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2));
-		addbarreVie(viewcombat.getView(), RPGApp.hero, 192, 185);
-		addbarreVie(viewcombat.getView(), monstre, 64 * 8 + 32, 32);
-		addbarreMana(viewcombat.getView(), RPGApp.hero, 192, 185+20);
+		DisplayHero.addbarreVie(viewcombat.getView(), RPGApp.hero, 192, 185);
+		DisplayHero.addbarreVie(viewcombat.getView(), monstre, 64 * 8 + 32, 32);
+		DisplayHero.addbarreMana(viewcombat.getView(), RPGApp.hero, 192, 185+20);
 		Label label = new Label("yo");
 		label.setTextFill(Color.rgb(254, 254, 254));
 
@@ -95,23 +96,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		FXGL.getApp().getGameWorld().addEntity(viewcombat);
 		mode_combat2(viewcombat, monstre, posMonstre, 1);
 	}
-	public static void addbarreMana(EntityView i, Character character, double a, double b) {
-		double pourcentage2 = ((character.getMpMax() - character.getMp()) * 100 / character.getMpMax());
-		DisplayBasic.addbarre(i, character, a, b, pourcentage2, Color.rgb(0, 0, 254, 0.8));
-	}
-	public static void updateBarreMana(Character character, Entity i, String color) {
-		double pourcentage2 = ((character.getMpMax() - character.getMp()) * 100 / character.getMpMax());
-		DisplayBasic.updateBarre(character, i, color, pourcentage2);
-	}
-	public static void addbarreVie(EntityView i, Character character, double a, double b) {
-
-		double pourcentage2 = ((character.getPvMax() - character.getPv()) * 100 / character.getPvMax());
-		DisplayBasic.addbarre(i, character, a, b, pourcentage2, Color.rgb(0, 254, 0, 0.8));
-	}
-	public static void updateBarreVie(Character character, Entity i, String color) {
-		double pourcentage2 = ((character.getPvMax() - character.getPv()) * 100 / character.getPvMax());
-		DisplayBasic.updateBarre(character, i, color, pourcentage2);
-	}
+	
 
 	public static void mode_combat2(Entity viewcombat, Monstre monstre, Point2D posMonstre, int nb_tour) {
 		String text;
@@ -132,7 +117,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 			text="Tu est mort veux tu recommencer ?";
 		}
 		boolean barre=true;
-		ComboBox comboBox = createCombobox();
+		ComboBox comboBox = DisplayHero.createComboboxSkill(RPGApp.hero.getSkills());
 		
 		Entity skills = CreateEntityWithNode(comboBox, 192 + 64 * 4, 385);
 		skills.getView().setUserData(comboBox);
@@ -233,72 +218,28 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 				if (i.getAccessibleText().equals("border1" + monstre.toString())) {
 
-					DisplayCombat.updateBarreVie(monstre, ((Entity) i.getUserData()), "red");
+					DisplayHero.updateBarreVie(monstre, ((Entity) i.getUserData()), "red");
 				} else if (i.getAccessibleText().equals("border2" + monstre.toString())) {
 
-					DisplayCombat.updateBarreVie(monstre, ((Entity) i.getUserData()), "green");
+					DisplayHero.updateBarreVie(monstre, ((Entity) i.getUserData()), "green");
 				} else if (i.getAccessibleText().equals("border1" + RPGApp.hero.toString()) && barre) {
 					System.out.println("yo1");
-					DisplayCombat.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "red");
+					DisplayHero.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "red");
 				} else if (i.getAccessibleText().equals("border2" + RPGApp.hero.toString()) && barre) {
 					barre=false;
 					System.out.println("yo2");
-					DisplayCombat.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "green");
+					DisplayHero.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "green");
 				}else if (i.getAccessibleText().equals("border1" + RPGApp.hero.toString()) && barre==false) {
 					System.out.println("yo3");
-					DisplayCombat.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "red");
+					DisplayHero.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "red");
 				} else if (i.getAccessibleText().equals("border2" + RPGApp.hero.toString()) && barre==false) {
 					System.out.println("yo4");
-					DisplayCombat.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "blue");
+					DisplayHero.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "blue");
 				}
 
 			}
 		}
 
-	}
-	public static ComboBox createCombobox() {
-		ComboBox<String> comboBox = new ComboBox<String>();
-		ArrayList<String> disabledItems = new ArrayList<String>();
-		comboBox.setValue("Skills");
-		for (Skill i : RPGApp.hero.getSkills()) {
-			comboBox.getItems().add(i.getName()+" "+i.getCost());
-			if(i.getCost()>RPGApp.hero.getMp()) {
-				disabledItems.add(i.getName()+" "+i.getCost());
-			}
-		}
-		
-
-		comboBox.setCellFactory(new Callback<ListView<String>, ListCell<String>>(){
-			  @Override
-			  public ListCell<String> call(ListView<String> arg0)
-			  {
-			    return new ListCell<String>()
-			    {
-			      @Override
-			      protected void updateItem(String item, boolean empty)
-			      {
-			        super.updateItem(item, empty);
-
-			        if (item == null || empty)
-			        {
-			          setText(null);
-			        }
-			        else
-			        {
-			          setText(item);
-			          
-			          
-			          if (disabledItems.contains(item)) {
-			        	  setTextFill(Color.GRAY);
-			        	  setStyle("-fx-background-color: #A0A0A0;");
-			        	  setDisable(true);
-			          }
-			        }
-			      }
-			    };
-			  }
-			});
-		return comboBox;
 	}
 
 	 

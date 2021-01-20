@@ -29,7 +29,6 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 	private int nb_tour;
 	private Entity viewcombat;
 	private String choix;
-	private int nbSkill;
 
 	public CombatEventHandler(Monstre monster, int nb_tour, Entity viewcombat, Point2D posMonstre, String choix) {
 		this.monstre = monster;
@@ -86,14 +85,14 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		} else if (choix.equals("skills")) {
 			int index = ((ComboBox) arg0.getSource()).getSelectionModel().getSelectedIndex();
 			((Entity)((ComboBox) arg0.getSource()).getUserData()).removeFromWorld();
-			this.nbSkill = index ;
+			int nbSkill = index ;
 				System.out.println("index :"+index+"nb tour :"+nb_tour);
 				
-				if (RPGApp.hero.getSkills()[nbSkill] instanceof SkillOutFight) {
-					SkillOutFight skill = (SkillOutFight) RPGApp.hero.getSkills()[nbSkill];
+				if (RPGApp.hero.getSkills().get(nbSkill) instanceof SkillOutFight) {
+					SkillOutFight skill = (SkillOutFight) RPGApp.hero.getSkills().get(nbSkill);
 					skill.effect();
 				} else {
-					Skill_InFight skill = (Skill_InFight) RPGApp.hero.getSkills()[nbSkill];
+					Skill_InFight skill = (Skill_InFight) RPGApp.hero.getSkills().get(nbSkill);
 					skill.effect(monstre);
 				}
 				Systems.Combat_attaque(RPGApp.hero, monstre.getAtk());

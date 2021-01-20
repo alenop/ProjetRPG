@@ -37,6 +37,7 @@ import rpgapp.data.elementInteractifs.Armure;
 import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.data.elementInteractifs.ManaPotion;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.data.elementInteractifs.Potion;
@@ -156,7 +157,7 @@ public class RPGApp extends GameApplication {
 		conversationComplete.put("en cours", conversation5);
 		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.BossRat,1),"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
-		
+		//getGameWorld().ad
 		String[] answer1A = new String[2];
 		answer1A[0] = "Pourquoi pas.";
 		answer1A[1] = "Bof ça ira, merci...";
@@ -220,6 +221,7 @@ public class RPGApp extends GameApplication {
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
 		hero.addItemInventory(new Potion("potion de soin","potionDeSoin.jpg"));
+		hero.addItemInventory(new ManaPotion("potion de mana","PotionDeMana.jpg"));
 		}
 		
 		DisplayEquipment.createEquipment();
@@ -327,10 +329,12 @@ public class RPGApp extends GameApplication {
 				}
 				if (DisplayHero.getStatusWindow().getView().isVisible()) {
 					DisplayHero.removeStatusWindow();
+					move=true;
 				}
 				else {
 					DisplayHero.update();
 					DisplayHero.afficheStatusWindow();
+					move=false;
 				}
 			}
 		}, KeyCode.H);

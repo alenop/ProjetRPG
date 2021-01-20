@@ -27,7 +27,7 @@ public class Hero extends Character implements Serializable {
 	private transient EntityView view;
 	private ArrayList<String>listFinishQuests=new ArrayList<String>();
 	private transient Point2D position ;
-	private Skill skills[];
+	private ArrayList<Skill> Skills= new ArrayList<Skill>();
 	
 	private final int Mpgrowth=1;
 	private final int Atkgrowth=2;
@@ -43,9 +43,9 @@ public class Hero extends Character implements Serializable {
 		this.levels = new HashMap<Integer, Integer>();
 		this.setView(view);
 		initLevels();
-		this.skills=new Skill[2];
-		skills[0]=new FirstAid("firstAid");
-		skills[1]=new Slash("Slash");
+		Skills.add(new FirstAid("firstAid"));
+		Skills.add(new Slash("Slash"));
+		Skills.add(new Courage("Courage"));
 		this.Mp=10;
 		this.MpMax=10;
 		stats.put("atk",20);
@@ -53,11 +53,14 @@ public class Hero extends Character implements Serializable {
 		stats.put("pv",50);
 		stats.put("mp",10);
 	}
+	public int getLv() {
+		return level;
+	}
 	public void setPosition(Point2D pos) {
 		this.position=pos;
 	}
-	public Skill[] getSkills() {
-		return this.skills;
+	public ArrayList<Skill> getSkills() {
+		return this.Skills;
 	}
 	public Point2D getPosition() {
 		return this.position;
@@ -236,6 +239,67 @@ public class Hero extends Character implements Serializable {
 		updateStats();
 		return stats;
 	}
+	public void givePermanently(String type,int nb) {
+		switch(type) {
+		case "atk":
+			atkmax=(atkmax+nb);
+			setAtk(getAtk()+nb);
+			
+			break;
+		case "def":
+			defmax=(defmax+nb);
+			setDef(getDef()+nb);
+			
+			break;
+		case "pv":
+			Pvmax=(Pvmax+nb);
+			setPv(getPv()+nb);
+			
+			break;
+		case "mp":
+			MpMax=(MpMax+nb);
+			Mp =(getMp()+nb);
+			break;
+		}
+	}
+	public void give(String type,int nb) {
+		switch(type) {
+		case "atk":
+			setAtk(getAtk()+nb);
+			break;
+		case "def":
+			setDef(getDef()+nb);
+			break;
+		case "pv":
+			setPv(getPv()+nb);
+			break;
+		case "mp":
+			Mp =(getMp()+nb);
+			break;
+		}
+	}
+	public void restore(String type,int nb) {
+		switch(type) {
+		case "pv":
+			heal(nb);
+			break;
+		case "mp":
+			if(getMp()+nb<MpMax) {
+				Mp =(getMp()+nb);
+			}else {
+				Mp=MpMax;
+			}
+			break;
+			
+		}
+	}
+	public void resetTemporaryBonus() {
+		setAtk(atkmax+getEquipement().get("Arme").getStat());
+		setDef(defmax+getEquipement().get("Armure").getStat());
+		restore("pv",0);
+		restore("mp",0);
+	}
+	
 	
 		
 	
