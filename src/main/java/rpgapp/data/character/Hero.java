@@ -96,7 +96,7 @@ public class Hero extends Character implements Serializable {
 		String notif="Félicitations tu est maintenant niveau " + this.level;
 		RPGApp.notif = DisplayBasic.createNotif(notif);
 		FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
-	}
+	}}
 	public int getPositionVoid() {
 		int j=0;
 		for (int i = 0; i < this.inventory.length; i++) {

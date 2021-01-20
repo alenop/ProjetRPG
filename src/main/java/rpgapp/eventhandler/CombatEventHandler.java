@@ -48,12 +48,14 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 	@Override
 	public void handle(ActionEvent arg0) {
 
-		if (choix.equals("défense") || choix.equals("attaque")) {
+		if (choix.equals("défense") || choix.equals("attaque") || choix.equals("Skills")) {
 			try {
 				if (nb_tour == 2) {
 					monstre.setAtk(monstre.getAtk() * 2);
 				}
+				if(choix.equals("Skills")==false) {
 				Systems.Combat(RPGApp.hero, monstre, choix);
+				}
 
 				if (nb_tour == 2) {
 					monstre.setAtk(monstre.getAtk() / 2);

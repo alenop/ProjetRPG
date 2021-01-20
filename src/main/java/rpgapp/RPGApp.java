@@ -329,7 +329,7 @@ public class RPGApp extends GameApplication {
 				}
 			}
 		}, KeyCode.E);
-put.addAction(new UserAction("Open TabQuest") {
+		input.addAction(new UserAction("Open TabQuest") {
 			@Override
 			protected void onAction() {
 				try {
@@ -370,7 +370,7 @@ put.addAction(new UserAction("Open TabQuest") {
 				
 			}
 		}, KeyCode.B);
-				input.addAction(new UserAction("see Hero status") {
+				input.addAction(new UserAction("see Hro status") {
 			@Override
 			protected void onAction() {
 				try {
@@ -389,31 +389,6 @@ put.addAction(new UserAction("Open TabQuest") {
 				}
 			}
 		}, KeyCode.H);
-				
-				
-			@Override
-			protected void onActionBegin() {
-				try {
-					playerComponent.analyse();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-			}
-		}, KeyCode.A);
-		
-		
-		input.addAction(new UserAction("Quete Suivante") {
-			@Override
-			protected void onActionBegin() {
-				try {
-					QuestComponent.suiteQuete(hero.getCurrentquest());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-			}
-		}, KeyCode.B);
 		
 		
 		input.addAction(new UserAction("Save") {
@@ -439,7 +414,7 @@ put.addAction(new UserAction("Open TabQuest") {
 		}, KeyCode.L);
 	}
 
-	public void createMonster(String map, Monstre monstre, Point2D posmonstre) {
+	public static void createMonster(String map, Monstre monstre, Point2D posmonstre) {
 
 		if (ListeMaps.get(map).getMonsterList().get(posmonstre) == null) {
 			ListeMaps.get(map).getMonsterList().put(posmonstre, monstre);
@@ -491,7 +466,7 @@ put.addAction(new UserAction("Open TabQuest") {
 		mapbase.setPositionHero(poshero);
 		ListeMaps.put(map, mapbase);
 	}
-	public HashMap<String,String[]> Chat (String[] answers, String question){
+	public static HashMap<String,String[]> Chat (String[] answers, String question){
 		HashMap<String,String[]> chat = new HashMap<String,String[]>();
 		chat.put("answers",answers);
 		question=DisplayBasic.retourLigne(question,30);
