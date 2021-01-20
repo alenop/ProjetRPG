@@ -9,6 +9,7 @@ import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
 import rpgapp.data.character.Monstre;
+import rpgapp.data.character.Monstres;
 import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.system.Quest;
@@ -184,7 +185,7 @@ public class QuestComponent extends Component{
 				pnj2.setQuest(pnjQ, "");
 				
 				//Spawn du rat de la cave
-				RPGApp.createMonster("mapCave.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
+				RPGApp.createMonster("mapCave.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"tuer le rat de la cave",Monstres.BossRat), new Point2D(512, 704));
 				//Change la quete
 				nouvQ = new Quest("Une Invasion de Rat ? Partie III:", 800, "Tuer", "Rat de la cave", 1, "Vous avez contré l'invasion mais votre père entends de nouveau le rat de la cave. Débarassez vous en !", 5);
 				break;
@@ -321,7 +322,7 @@ public class QuestComponent extends Component{
 			case 8:			//Une fois que le joueur a parlé au père >> Doit affronter le rat réaparru.
 				
 				//Spawn du rat de la cave
-				RPGApp.createMonster("mapJardin.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"A la recherche d'un rat, Partie III:"), new Point2D(2752, 448));
+				RPGApp.createMonster("mapJardin.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"A la recherche d'un rat, Partie III:",Monstres.BossRat), new Point2D(2752, 448));
 				//Change la quete
 				nouvQ = new Quest("A la recherche d'un rat, Partie III:", 1000, "Tuer", "Rat de la cave", 1, "La cachette du rat est découverte. Éliminez le une bonne fois pour toute ICI", 9);
 				break;
