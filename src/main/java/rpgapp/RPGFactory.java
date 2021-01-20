@@ -78,7 +78,7 @@ public class RPGFactory implements EntityFactory{
 	public Entity newIndice(SpawnData data) {
 		return Entities.builder()
 				.from(data)
-				.viewFromTexture("Water_Icon.png")
+				.viewFromTexture("sparkle.gif")
 				.build();
 	}
 	

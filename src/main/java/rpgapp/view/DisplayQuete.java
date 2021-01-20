@@ -53,7 +53,12 @@ public class DisplayQuete extends DisplayBasic {
 						nouvText = q.getName();
 						break;
 					case "Objectif":
-						nouvText = "- " + q.getAction() + " " + q.getNbCibles() + " / " + q.getNbCiblesMax() + " " + q.getTypeCibles();
+						if(q.getAction() == "Parler à" ) {
+							nouvText = "- " + q.getAction() + " " + q.getTypeCibles();
+						}
+						else {
+							nouvText = "- " + q.getAction() + " " + q.getNbCibles() + " / " + q.getNbCiblesMax() + " " + q.getTypeCibles();
+						}
 						break;
 					case "Recompense":
 						nouvText = "- " + q.getReward() + " Xp";
@@ -107,7 +112,13 @@ public class DisplayQuete extends DisplayBasic {
 		if(q!=null) {
 			nomTxt.setText(q.getName());
 			descTxt.setText("- "+ q.getDescription());
-			objTxt.setText("- "+ q.getAction() + " " + q.getNbCibles() + " / " + q.getNbCiblesMax() + " " + q.getTypeCibles());
+			if(q.getAction() == "Parler à" ) {
+				objTxt.setText("-" + q.getAction() + " " + q.getTypeCibles());
+			}
+			else {
+				objTxt.setText("- "+ q.getAction() + " " + q.getNbCibles() + " / " + q.getNbCiblesMax() + " " + q.getTypeCibles());
+			}
+			
 			recTxt.setText("- " + q.getReward() + " Xp");
 		}
 		
