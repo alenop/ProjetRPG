@@ -27,7 +27,7 @@ public class ItemEventHandler extends DisplayBasic implements EventHandler<Mouse
 	}
 	@Override
 	public void handle(MouseEvent arg0) {
-		int x=128;
+		int x=135;
 		int y=64;
 		//Item item=RPGApp.hero.getInventory()[positem];
 		Point2D center=((Entity)((EntityView)arg0.getSource()).getUserData()).getPosition();
@@ -35,9 +35,11 @@ public class ItemEventHandler extends DisplayBasic implements EventHandler<Mouse
 		Rectangle border = new Rectangle(0,0,x,y);
 		border.setFill(Color.rgb(0, 0, 0,0.8));
 		Entity window = DisplayBasic.createRectangleWithBorder(border, new Point2D(center.getX()-x/2+32,center.getY()-y+32));
-		Text name= FXGL.getUIFactory().newText(item.getName()+" : \n"+item.getEffect(), Color.WHITE, 15.0);
+		Text name= FXGL.getUIFactory().newText(item.getName()+" : \n"+DisplayBasic.retourLigne(item.getEffect(),20), Color.WHITE, 15.0);
 		window.getView().addNode(CreateEntityWithNode(name,0, 16).getView());
+		window.getView().setMouseTransparent(true);
 		((Entity)((EntityView)arg0.getSource()).getParent().getUserData()).getView().addNode(window.getView());
+		
 		//DisplayInventaire.getInventory().getView().addNode(window.getView());
 		((EntityView)arg0.getSource()).setOnMouseExited((e) -> ((Entity)((EntityView)arg0.getSource()).getParent().getUserData()).getView().removeNode(window.getView()));
 		//FXGL.getGameWorld().addEntity(window);

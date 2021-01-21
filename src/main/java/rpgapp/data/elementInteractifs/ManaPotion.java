@@ -6,6 +6,7 @@ public class ManaPotion extends Consumable {
 
 	public ManaPotion(String name, String image) {
 		super(name, image);
+		this.details="Restaure 10 mp au joueur";
 		// TODO Auto-generated constructor stub
 	}
 
