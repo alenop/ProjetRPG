@@ -1,7 +1,7 @@
 package rpgapp.view;
 
 import java.math.BigDecimal;
-
+import java.util.ArrayList;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.audio.Music;
@@ -13,9 +13,15 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.ComboBox;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.util.*;
 
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
@@ -35,6 +41,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
 		RPGApp.move=false;
+		RPGApp.hero.resetTemporaryBonus();
 		Entity monstreEntity = CreateEntityWithPicture(//monstre.getTypeMonstre().name()+
 				"RatCombatGif.gif", 64*8 +32, 64);
 		EntityView monstreview = monstreEntity.getView();
@@ -53,8 +60,9 @@ public abstract class DisplayCombat extends DisplayBasic {
 		Entity viewcombat = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2));
-		addbarreVie(viewcombat.getView(), RPGApp.hero, 192, 185);
-		addbarreVie(viewcombat.getView(), monstre, 64 * 8 + 32, 32);
+		DisplayHero.addbarreVie(viewcombat.getView(), RPGApp.hero, 192, 185);
+		DisplayHero.addbarreVie(viewcombat.getView(), monstre, 64 * 8 + 32, 32);
+		DisplayHero.addbarreMana(viewcombat.getView(), RPGApp.hero, 192, 185+20);
 		Label label = new Label("yo");
 		label.setTextFill(Color.rgb(254, 254, 254));
 
@@ -72,13 +80,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 		//av[3] = new Button("skills");
 		av[2].setOnAction(new CombatEventHandler("fuir",viewcombat));
 		int j = 0;
-		ComboBox comboBox = new ComboBox();
-		comboBox.setValue("Skills");
-		comboBox.setShape(DisplayBasic.createBorder(10, 10));
-		//Border bord = DisplayBasic.createBorder(10, 10);
-		for (Skill i : RPGApp.hero.getSkills()) {
-			comboBox.getItems().add(i.getName());
-		}
 		
 		for (Button i : av) {
 			Entity Bouton = CreateEntityWithNode(i, 192 + 64 * j, 385);
@@ -88,10 +89,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 			viewcombat.getView().addNode(Bouton.getView());
 			j++;
 		}
-		Entity skills = CreateEntityWithNode(comboBox, 192 + 64 * j, 385);
-		skills.getView().setUserData(comboBox);
-		skills.getView().setAccessibleText("Skill");
-		viewcombat.getView().addNode(skills.getView());
 		viewcombat.getView().addNode(afficheText);
 		viewcombat.getView().addNode(monstreview);
 		viewcombat.getView().addNode(heroview);
@@ -99,52 +96,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		FXGL.getApp().getGameWorld().addEntity(viewcombat);
 		mode_combat2(viewcombat, monstre, posMonstre, 1);
 	}
-
-	public static void addbarreVie(EntityView i, Character character, double a, double b) {
-
-		double pourcentage2 = ((character.getPvMax() - character.getPv()) * 100 / character.getPvMax());
-		BigDecimal pourcentage3 = new BigDecimal(Double.toString(pourcentage2));
-		double pourcentage = pourcentage3.doubleValue();
-		Rectangle border1 = createBorder(Math.round((192 * (100 - pourcentage)) / 100), 16);
-		border1.setFill(Color.rgb(0, 254, 0, 0.8));
-		border1.setArcHeight(0.0);
-		border1.setArcWidth(0.0);
-
-		Rectangle border2 = createBorder(Math.round((192 * (pourcentage) / 100)), 16);
-		border2.setFill(Color.rgb(254, 0, 0, 0.8));
-		border2.setArcHeight(0.0);
-		border2.setArcWidth(0.0);
-		createRectangleWithBorder(border1, new Point2D(0, 0));
-		createRectangleWithBorder(border2, new Point2D(128, 0));
-		Entity RedBar = createRectangleWithBorder(border2, new Point2D(a + 192 * (100 - (pourcentage)) / 100, b));
-		RedBar.setProperty("border", border2);
-		RedBar.getView().setAccessibleText("border1" + character.toString());
-		RedBar.getView().setUserData(RedBar);
-		Entity GreenBar = createRectangleWithBorder(border1, new Point2D(a, b));
-		GreenBar.setProperty("border", border1);
-		GreenBar.getView().setAccessibleText("border2" + character.toString());
-		GreenBar.getView().setUserData(GreenBar);
-		i.addNode(RedBar.getView());
-		i.addNode(GreenBar.getView());
-	}
-
-	public static void updateBarreVie(Character character, Entity i, String color) {
-		double pourcentage2 = ((character.getPvMax() - character.getPv()) * 100 / character.getPvMax());
-		BigDecimal pourcentage3 = new BigDecimal(Double.toString(pourcentage2));
-		double pourcentage = pourcentage3.doubleValue();
-
-		if (color.equals("red")) {
-			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (pourcentage)) / 100));
-			if (character instanceof Monstre) {
-
-				i.setPosition(64 * 8 + 32 + 192 * (100 - (pourcentage)) / 100, 32);
-			} else {
-				i.setPosition(192 + 192 * (100 - (pourcentage)) / 100, 185);
-			}
-		} else {
-			((Rectangle) i.getPropertyOptional("border").get()).setWidth(Math.round((192 * (100 - pourcentage)) / 100));
-		}
-	}
+	
 
 	public static void mode_combat2(Entity viewcombat, Monstre monstre, Point2D posMonstre, int nb_tour) {
 		String text;
@@ -164,6 +116,15 @@ public abstract class DisplayCombat extends DisplayBasic {
 		if(nb_tour == -1) {
 			text="Tu est mort veux tu recommencer ?";
 		}
+		boolean barre=true;
+		ComboBox comboBox = DisplayHero.createComboboxSkill(RPGApp.hero.getSkills());
+		
+		Entity skills = CreateEntityWithNode(comboBox, 192 + 64 * 4, 385);
+		skills.getView().setUserData(comboBox);
+		skills.getView().setAccessibleText("Skill");
+		comboBox.setUserData(skills);
+		viewcombat.getView().addNode(skills.getView());
+			
 		for (Node i : viewcombat.getView().getNodes()) {
 			if (i.getAccessibleText() != null) {
 				if (i.getAccessibleText().equals("text")) {
@@ -250,27 +211,36 @@ public abstract class DisplayCombat extends DisplayBasic {
 					}
 					 else {
 						ComboBox combobox =((ComboBox)  i.getUserData());
-
+					
 						combobox.setOnAction(new CombatEventHandler(monstre, nb_tour, viewcombat, posMonstre,"skills"));
 					}
 				}
 
 				if (i.getAccessibleText().equals("border1" + monstre.toString())) {
 
-					DisplayCombat.updateBarreVie(monstre, ((Entity) i.getUserData()), "red");
+					DisplayHero.updateBarreVie(monstre, ((Entity) i.getUserData()), "red");
 				} else if (i.getAccessibleText().equals("border2" + monstre.toString())) {
 
-					DisplayCombat.updateBarreVie(monstre, ((Entity) i.getUserData()), "green");
-				} else if (i.getAccessibleText().equals("border1" + RPGApp.hero.toString())) {
-
-					DisplayCombat.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "red");
-				} else if (i.getAccessibleText().equals("border2" + RPGApp.hero.toString())) {
-
-					DisplayCombat.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "green");
+					DisplayHero.updateBarreVie(monstre, ((Entity) i.getUserData()), "green");
+				} else if (i.getAccessibleText().equals("border1" + RPGApp.hero.toString()) && barre) {
+					System.out.println("yo1");
+					DisplayHero.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "red");
+				} else if (i.getAccessibleText().equals("border2" + RPGApp.hero.toString()) && barre) {
+					barre=false;
+					System.out.println("yo2");
+					DisplayHero.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "green");
+				}else if (i.getAccessibleText().equals("border1" + RPGApp.hero.toString()) && barre==false) {
+					System.out.println("yo3");
+					DisplayHero.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "red");
+				} else if (i.getAccessibleText().equals("border2" + RPGApp.hero.toString()) && barre==false) {
+					System.out.println("yo4");
+					DisplayHero.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "blue");
 				}
 
 			}
 		}
 
 	}
+
+	 
 }

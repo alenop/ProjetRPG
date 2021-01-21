@@ -39,6 +39,7 @@ import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.data.elementInteractifs.ManaPotion;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
 import rpgapp.data.elementInteractifs.Potion;
@@ -46,6 +47,7 @@ import rpgapp.data.map.ModeleMap;
 import rpgapp.factory.MenuSceneFactory;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayEquipment;
+import rpgapp.view.DisplayHero;
 import rpgapp.view.DisplayInventaire;
 import rpgapp.view.DisplayMap;
 import rpgapp.view.DisplayQuete;
@@ -129,10 +131,10 @@ public class RPGApp extends GameApplication {
 		
 		
 //		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
-//		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave",Monstres.BossRat), new Point2D(512, 704));
-//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
-//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
-//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
+		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave",Monstres.BossRat), new Point2D(512, 704));
+		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
+		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
+		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
 		
 		createIndice("mapCave.json", new Point2D(512, 704) ,new Indice("Morceau de fromage", "fromage.png"));
 		
@@ -164,7 +166,7 @@ public class RPGApp extends GameApplication {
 		
 		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,q,"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
-		
+		//getGameWorld().ad
 		String[] answer1A = new String[2];
 		answer1A[0] = "Pourquoi pas.";
 		answer1A[1] = "Bof ça ira, merci...";
@@ -228,11 +230,13 @@ public class RPGApp extends GameApplication {
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
 		hero.addItemInventory(new Potion("potion de soin","potion_de_soin.png"));
+		hero.addItemInventory(new ManaPotion("potion de mana","PotionDeMana.jpg"));
 		}
 		
 		DisplayEquipment.createEquipment();
 		DisplayInventaire.createInventaire();
 		DisplayQuete.createQuete();
+		DisplayHero.begin();
 		//get
 		
 	}
@@ -325,7 +329,6 @@ public class RPGApp extends GameApplication {
 				}
 			}
 		}, KeyCode.E);
-		
 		input.addAction(new UserAction("Open TabQuest") {
 			@Override
 			protected void onAction() {
@@ -367,6 +370,25 @@ public class RPGApp extends GameApplication {
 				
 			}
 		}, KeyCode.B);
+				input.addAction(new UserAction("see Hro status") {
+			@Override
+			protected void onAction() {
+				try {
+					Thread.sleep(200);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (DisplayHero.getStatusWindow().getView().isVisible()) {
+					DisplayHero.removeStatusWindow();
+					move=true;
+				}
+				else {
+					DisplayHero.update();
+					DisplayHero.afficheStatusWindow();
+					move=false;
+				}
+			}
+		}, KeyCode.H);
 		
 		
 		input.addAction(new UserAction("Save") {

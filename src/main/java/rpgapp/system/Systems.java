@@ -31,7 +31,6 @@ public abstract class Systems {
 		}
 
 	}
-
 	public static void Combat(Hero a, Monstre b, String x) throws Exception {
 		if (a.getState() == State.dead || b.getState() == State.dead) {
 			throw (new Exception("Erreur l'un des 2 Character est mort"));

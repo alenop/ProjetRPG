@@ -7,12 +7,15 @@ public class Item implements Serializable {
 	protected String type;
 	private String image;
 	private int position=-2;
+	protected String details;
 	
 	public Item(String name,String image) {
 		this.setName(name);
 		this.image=image;
 	}
-
+	public String getEffect() {
+		return details;
+	}
 	public String getImage() {
 		return image;
 	}

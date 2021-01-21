@@ -20,6 +20,7 @@ import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
+import rpgapp.data.character.Monstres;
 import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.data.elementInteractifs.PNJList;
@@ -111,6 +112,12 @@ public class PlayerComponent extends Component {
 			try {
 				if (checkEntity(new Point2D(position.getX()+3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Inventaire)==false) {
 					Entity i =Display.trouveEntity(new Point2D(position.getX()+3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Inventaire);
+					i.translate(direction);
+				}
+				if (checkEntity(new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
+						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2), EntityType.HeroStatus)==false) {
+					Entity i =Display.trouveEntity(new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
+							PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2), EntityType.HeroStatus);
 					i.translate(direction);
 				}
 				if (checkEntity(new Point2D(position.getX()-7*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Equipment)==false) {
@@ -228,10 +235,11 @@ public class PlayerComponent extends Component {
 		List<Entity> mob=FXGL.getApp().getGameWorld().getEntitiesInRange(new Rectangle2D(pos.getX()+x,pos.getY()+y,64*4,64*4));
 		for (Entity a : mob) {
 			if (a.isType(EntityType.Monstre)) {
+				Monstre monstre= ((Monstre)a.getProperties().getObject("data"));
 				System.out.println(a);
 				if (dir.equals("right")||dir.equals("left")) {
 					if(checkEntity(a.getPosition().add(z, 0), EntityType.BLOC)) {
-						if (RPGApp.MonstreMove && ((Monstre)a.getProperties().getObject("data")).getState()==State.alive) {
+						if (RPGApp.MonstreMove && monstre.getState()==State.alive && monstre.getTypeMonstre()!=Monstres.BossRat) {
 							a.translateX(z);
 							RPGApp.MonstreMove=false;
 						}
@@ -240,7 +248,7 @@ public class PlayerComponent extends Component {
 					
 				}else
 					if(checkEntity(a.getPosition().add(0, z), EntityType.BLOC)) {
-						if (RPGApp.MonstreMove && ((Monstre)a.getProperties().getObject("data")).getState()==State.alive) {
+						if (RPGApp.MonstreMove && monstre.getState()==State.alive && monstre.getTypeMonstre()!=Monstres.BossRat) {
 						a.translateY(z);
 						RPGApp.MonstreMove=false;
 					}}

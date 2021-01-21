@@ -1,18 +1,18 @@
 package rpgapp.data.character;
 
 import rpgapp.RPGApp;
-import rpgapp.system.Systems;
 
-public class Slash extends Skill_InFight {
+public class Courage extends Skill_InFight {
 
-	public Slash(String name) {
+	public Courage(String name) {
 		super(name);
-		this.cost=4;
+		this.cost=6;
 		// TODO Auto-generated constructor stub
 	}
+
 	@Override
 	public void effect(Character a) {
-		Systems.Combat_attaque(a,(int) (RPGApp.hero.getAtk()*1.5));
+		RPGApp.hero.give("atk",(int) (RPGApp.hero.getAtk()*0.2));
 		RPGApp.hero.useSkill(getCost());
 		// TODO Auto-generated method stub
 		
