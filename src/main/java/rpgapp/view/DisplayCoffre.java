@@ -34,6 +34,6 @@ public class DisplayCoffre extends DisplayBasic {
 		av[0] = new Button("non");
 		av[1] = new Button("oui");
 		av[1].setOnAction(new CoffreHandler(a,c));
-		FXGL.getApp().getDisplay().showBox("tu as trouve "+a.getLoot().getName()+" dans ce coffre veux tu l'équiper ?", an, av);
+		FXGL.getApp().getDisplay().showBox("Tu as trouve "+a.getLoot().getName()+" dans ce coffre veux tu l'équiper ?", an, av);
 	}
 }

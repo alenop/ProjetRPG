@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
+import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.system.Quest;
 
@@ -27,10 +28,12 @@ public class DisplayQuete extends DisplayBasic {
 	
 	public static void removeQuete() {
 		getQuete().getView().setVisible(false);
+		MusicComponent.soundPlay("open");
 	}
 
 	public static void afficheQuete() {
 		getQuete().getView().setVisible(true);
+		MusicComponent.soundPlay("open");
 	}
 	
 	public static Entity getQuete() {
