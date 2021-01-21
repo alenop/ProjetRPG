@@ -134,7 +134,7 @@ public class RPGApp extends GameApplication {
 //		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
 //		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
 		
-		createIndice("mapCave.json", new Point2D(512, 704) ,new Indice("Morceau de fromage", "Water_Icon.png"));
+		createIndice("mapCave.json", new Point2D(512, 704) ,new Indice("Morceau de fromage", "fromage.png"));
 		
 		String[] liste=new String[2];
 		liste[0]="Une arme adaptée ?";

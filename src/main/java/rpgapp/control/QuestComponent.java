@@ -263,10 +263,10 @@ public class QuestComponent extends Component{
 				pnj2.setQuest(pnjQ, "");
 				
 				//Spawn des 4 indices
-				RPGApp.createIndice("mapJardin.json", new Point2D(2496,704), new Indice("Crottes de rat", "Water_Icon.png"));
-				RPGApp.createIndice("mapJardin.json", new Point2D(2816,1728), new Indice("Traces de pattes", "Water_Icon.png"));
-				RPGApp.createIndice("mapMaison.json", new Point2D(1536,384), new Indice("Poils noirs", "Water_Icon.png"));
-				RPGApp.createIndice("mapPnj1.json", new Point2D(1024,768),  new Indice("Pétales rouges", "Water_Icon.png"));
+				RPGApp.createIndice("mapJardin.json", new Point2D(2496,704), new Indice("Crottes de rat", "crottes.png"));
+				RPGApp.createIndice("mapJardin.json", new Point2D(2816,1728), new Indice("Traces de pattes", "pattes.png"));
+				RPGApp.createIndice("mapMaison.json", new Point2D(1536,384), new Indice("Poils noirs", "poils.png"));
+				RPGApp.createIndice("mapPnj1.json", new Point2D(1024,768),  new Indice("Pétales rouges", "petales.png"));
 				//Change la quete
 				nouvQ = new Quest("A la recherche d'un rat, Partie I:", 600, "Examiner", "Indice(s) du rat", 4, "Il semblerait que le rat laisse des traces ou il passe. Trouvez ces traces en demandant aux habitants.", 7);
 				break;
