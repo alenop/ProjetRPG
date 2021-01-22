@@ -99,7 +99,9 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 				
 				RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().remove(posMonstre);
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
-				RPGApp.hero.getCurrentquest().upNbCibles();
+				if(RPGApp.hero.getCurrentquest().getAction() == "Tuer") {
+					RPGApp.hero.getCurrentquest().upNbCibles();
+				}
 				DisplayQuete.updateQuete();
 				MusicComponent.soundPlay("win");
 				MusicComponent.musicPlay("victory");
