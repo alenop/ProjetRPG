@@ -20,6 +20,7 @@ import javafx.scene.text.*;
 import javafx.util.Callback;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
+import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Character;
 import rpgapp.data.character.Skill;
@@ -99,10 +100,12 @@ public class DisplayHero extends DisplayBasic {
 	public static void removeStatusWindow() {
 		trouveEntity(new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 				PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2), EntityType.HeroStatus).getView().setVisible(false);
+		MusicComponent.soundPlay("open");
 	}
 	public static void afficheStatusWindow() {
 		trouveEntity(new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 				PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2), EntityType.HeroStatus).getView().setVisible(true);
+		MusicComponent.soundPlay("open");
 	}
 	public static void update() {
 		Entity viewstatus=getStatusWindow();

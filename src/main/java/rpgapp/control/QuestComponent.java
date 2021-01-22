@@ -287,7 +287,7 @@ public class QuestComponent extends Component{
 				String[] answer74= new String[1];
 				answer74[0] = "Crottes de rat";
 				String[] answer75= new String[1];
-				answer74[0] = "Ok";
+				answer75[0] = "Ok";
 				String[] answer7Finish = new String[1];
 				answer7Finish[0] = "Oui";
 				String[] answer7Cours = new String[1];
@@ -337,20 +337,18 @@ public class QuestComponent extends Component{
 				String[] answer91 = new String[1];
 				answer91[0] = "Oui";
 				String[] answer9Finish = new String[1];
-				answer9Finish[0] = "Non rien";
-				String[] answer9Cours = new String[1];
-				answer9Cours[0] = "D'accord";
+				answer9Finish[0] = "Merci";
 				HashMap<String, String[]> conversation91 = RPGApp.Chat(answer91, "C'est terminé ?");
-				HashMap<String, String[]> conversation93 = RPGApp.Chat(answer9Finish, "C'est bien mon fils");
-				HashMap<String, String[]> conversation94 = RPGApp.Chat(answer9Cours, "");
+				HashMap<String, String[]> conversation92 = RPGApp.Chat(answer9Finish, "C'est bien mon fils");
+				HashMap<String, String[]> conversation93 = RPGApp.Chat(answer91, "C'est terminé ?");
 				
 				nouvConversation.put("begin", conversation91);
-				nouvConversation.put("finish", conversation93);
-				nouvConversation.put("en cours", conversation94);
+				nouvConversation.put("finish", conversation92);
+				nouvConversation.put("en cours", conversation93);
 				
 				pnj.setListChat(nouvConversation);
 				pnjQ = new Quest("A la recherche d'un rat, Partie IV:");
-				pnj.setQuest(pnjQ, "");
+				pnj.setQuest(pnjQ, answer91[0]);
 				
 				
 				//Change la quete

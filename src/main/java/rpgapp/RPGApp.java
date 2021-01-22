@@ -230,7 +230,7 @@ public class RPGApp extends GameApplication {
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
 		hero.addItemInventory(new Potion("potion de soin","potion_de_soin.png"));
-		hero.addItemInventory(new ManaPotion("potion de mana","PotionDeMana.jpg"));
+		hero.addItemInventory(new ManaPotion("potion de mana","potion_de_mana.png"));
 		}
 		
 		DisplayEquipment.createEquipment();
@@ -370,7 +370,7 @@ public class RPGApp extends GameApplication {
 				
 			}
 		}, KeyCode.B);
-				input.addAction(new UserAction("see Hro status") {
+				input.addAction(new UserAction("see Hero status") {
 			@Override
 			protected void onAction() {
 				try {

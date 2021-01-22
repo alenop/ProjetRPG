@@ -28,6 +28,7 @@ import rpgapp.view.Display;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayCoffre;
 import rpgapp.view.DisplayCombat;
+import rpgapp.view.DisplayIndice;
 import rpgapp.view.DisplayMap;
 import rpgapp.view.DisplayPNJ;
 import rpgapp.view.DisplayQuete;
@@ -178,11 +179,9 @@ public class PlayerComponent extends Component {
 			if(RPGApp.hero.getCurrentquest().getAction()=="Examiner") {
 				//Vérifie que le joueur est bien sur un indice
 				for (Entry<Point2D, Indice> i : RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getIndiceList().entrySet()) {
-					System.out.println(position.getX());
-					System.out.println(position.getY());
-					System.out.println(i.getKey().getX());
-					System.out.println(i.getKey().getY());
 					if(i.getKey().getX()== position.getX() && i.getKey().getY()==position.getY()) {
+						MusicComponent.soundPlay("analyse");
+						DisplayIndice.trouveIndice(i.getKey());
 						RPGApp.hero.getCurrentquest().upNbCibles();
 						QuestComponent.verifQuest();
 						DisplayQuete.updateQuete();
@@ -254,6 +253,14 @@ public class PlayerComponent extends Component {
 					}}
 			}
 		}
+		
+	}
+
+	public static void levelUp(int level) {
+		
+		String notif="Félicitations tu est maintenant niveau " + level;
+		RPGApp.notif = DisplayBasic.createNotif(notif);
+		FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
 		
 	}
 }

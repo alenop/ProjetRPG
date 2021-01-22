@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
+import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
@@ -20,10 +21,12 @@ import rpgapp.data.elementInteractifs.Item;
 public class DisplayEquipment extends DisplayBasic {
 	public static void removeEquipment() {
 		getEquipment().getView().setVisible(false);
+		MusicComponent.soundPlay("open");
 	}
 
 	public static void afficheEquipment() {
 		getEquipment().getView().setVisible(true);
+		MusicComponent.soundPlay("open");
 	}
 	public static Entity getEquipment() {
 		Entity equipment = trouveEntity(new Point2D(PlayerComponent.position.getX() -7* RPGApp.TILE_SIZE,

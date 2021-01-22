@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
+import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.eventhandler.EquipmentHandler;
@@ -20,10 +21,12 @@ import rpgapp.eventhandler.ItemEventHandler;
 public class DisplayInventaire extends DisplayBasic {
 	public static void removeInventaire() {
 		getInventory().getView().setVisible(false);
+		MusicComponent.soundPlay("open");
 	}
 
 	public static void afficheInventaire() {
 		getInventory().getView().setVisible(true);
+		MusicComponent.soundPlay("open");
 	}
 
 	public static Entity getInventory() {
