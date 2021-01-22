@@ -78,7 +78,13 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		if (choix.equals("attaque")) {
 			MusicComponent.soundPlay("attack");
 			if (monstre.getState() == State.dead) {
-				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(monstre.getTypeMonstre().name()+"RatMort.png");
+				if(RPGApp.hero.getCurrentquest().getName()=="Une Invasion de Rat ? Partie III:") {
+					FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture("vide.png");
+				}
+				else {
+					FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
+				}
+				
 				RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().remove(posMonstre);
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
 				RPGApp.hero.getCurrentquest().upNbCibles();

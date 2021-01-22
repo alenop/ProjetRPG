@@ -255,4 +255,12 @@ public class PlayerComponent extends Component {
 		}
 		
 	}
+
+	public static void levelUp(int level) {
+		
+		String notif="Félicitations tu est maintenant niveau " + level;
+		RPGApp.notif = DisplayBasic.createNotif(notif);
+		FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
+		
+	}
 }
