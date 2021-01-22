@@ -33,6 +33,7 @@ public class Hero extends Character implements Serializable {
 	private ArrayList<String>listFinishQuests=new ArrayList<String>();
 	private transient Point2D position ;
 	private ArrayList<Skill> Skills= new ArrayList<Skill>();
+	private ArrayList<Boost> Boost=new ArrayList<Boost>();
 	
 	private final int Mpgrowth=1;
 	private final int Atkgrowth=2;
@@ -48,9 +49,9 @@ public class Hero extends Character implements Serializable {
 		this.levels = new HashMap<Integer, Integer>();
 		this.setView(view);
 		initLevels();
-		Skills.add(new FirstAid("firstAid"));
-		Skills.add(new Slash("Slash"));
-		Skills.add(new Courage("Courage"));
+		Skills.add(new Heal("firstAid",3,40));
+		Skills.add(new Attack("Slash",4,50));
+		Skills.add(new Boost("Courage",6,3,"atk",20));
 		this.Mp=10;
 		this.MpMax=10;
 		stats.put("atk",20);
@@ -80,6 +81,9 @@ public class Hero extends Character implements Serializable {
 		
 		
 		
+	}
+	public int getExp(int level) {
+		return this.levels.get(level);
 	}
 
 	public void gainLevel(int experience) {
@@ -290,6 +294,20 @@ public class Hero extends Character implements Serializable {
 			break;
 		}
 	}
+	public int givemultiply(String type,int pourcentage) {
+		switch(type) {
+		case "atk":
+			return(getAtk()*(1+pourcentage/100));
+		case "def":
+			return(getDef()*(1+pourcentage/100));
+		case "pv":
+			return(getPv()*(1+pourcentage/100));
+		case "mp":
+			return(getMp()*(1+pourcentage/100));
+			
+		}
+		return 0;
+	}
 	public void restore(String type,int nb) {
 		switch(type) {
 		case "pv":
@@ -306,10 +324,20 @@ public class Hero extends Character implements Serializable {
 		}
 	}
 	public void resetTemporaryBonus() {
+		if (getEquipement().get("Arme")!=null) {
 		setAtk(atkmax+getEquipement().get("Arme").getStat());
+		}
+		if (getEquipement().get("Armure")!=null) {
 		setDef(defmax+getEquipement().get("Armure").getStat());
+		}
 		restore("pv",0);
 		restore("mp",0);
+	}
+	public ArrayList<Boost> getBoosts() {
+		return Boost;
+	}
+	public void addBoost(Boost boost) {
+		Boost.add(boost);
 	}
 	
 	

@@ -17,8 +17,14 @@ import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
 import rpgapp.control.QuestComponent;
 import rpgapp.data.character.State;
+import rpgapp.data.character.Attack;
+import rpgapp.data.character.Boost;
+import rpgapp.data.character.Courage;
+import rpgapp.data.character.Heal;
 import rpgapp.data.character.Monstre;
+import rpgapp.data.character.Skill;
 import rpgapp.data.character.SkillOutFight;
+import rpgapp.data.character.SkillType;
 import rpgapp.data.character.Skill_InFight;
 import rpgapp.system.Systems;
 import rpgapp.view.DisplayBasic;
@@ -31,6 +37,7 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 	private int nb_tour;
 	private Entity viewcombat;
 	private String choix;
+	private int nbSkill;
 
 	public CombatEventHandler(Monstre monster, int nb_tour, Entity viewcombat, Point2D posMonstre, String choix) {
 		this.monstre = monster;
@@ -48,13 +55,18 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 	@Override
 	public void handle(ActionEvent arg0) {
 
-		if (choix.equals("défense") || choix.equals("attaque") || choix.equals("Skills")) {
+		if (choix.equals("défense") || choix.equals("attaque") || choix.equals("skills")) {
 			try {
 				if (nb_tour == 2) {
 					monstre.setAtk(monstre.getAtk() * 2);
 				}
-				if(choix.equals("Skills")==false) {
-				Systems.Combat(RPGApp.hero, monstre, choix);
+				if(choix.equals("skills")) {
+					this.nbSkill = ((ComboBox) arg0.getSource()).getSelectionModel().getSelectedIndex();
+					((Entity)((ComboBox) arg0.getSource()).getUserData()).removeFromWorld();
+					System.out.println(nbSkill);
+					Systems.CombatSkill(RPGApp.hero, monstre,this);
+				}else {
+					Systems.Combat(RPGApp.hero, monstre, choix);
 				}
 
 				if (nb_tour == 2) {
@@ -69,13 +81,13 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if (choix.equals("défense") && RPGApp.hero.getState() == State.alive) {
+			if ((choix.equals("défense")|| (choix.equals("skills") && RPGApp.hero.getSkills().get(nbSkill).getType()!=SkillType.attaque )) && RPGApp.hero.getState() == State.alive) {
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
 				MusicComponent.soundPlay("shield");
 
 			}
 		}
-		if (choix.equals("attaque")) {
+		if (choix.equals("attaque") || RPGApp.hero.getSkills().get(nbSkill).getType()==SkillType.attaque) {
 			MusicComponent.soundPlay("attack");
 			if (monstre.getState() == State.dead) {
 				FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(monstre.getTypeMonstre().name()+"RatMort.png");
@@ -87,35 +99,39 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 				MusicComponent.musicPlay("victory");
 			} else if(RPGApp.hero.getState()==State.alive) {
 				DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
-			}
-		} else if (choix.equals("skills")) {
-			int index = ((ComboBox) arg0.getSource()).getSelectionModel().getSelectedIndex();
-			((Entity)((ComboBox) arg0.getSource()).getUserData()).removeFromWorld();
-			int nbSkill = index ;
-				System.out.println("index :"+index+"nb tour :"+nb_tour);
-				
-				if (RPGApp.hero.getSkills().get(nbSkill) instanceof SkillOutFight) {
-					SkillOutFight skill = (SkillOutFight) RPGApp.hero.getSkills().get(nbSkill);
-					skill.effect();
-				} else {
-					Skill_InFight skill = (Skill_InFight) RPGApp.hero.getSkills().get(nbSkill);
-					skill.effect(monstre);
-				}
-				Systems.Combat_attaque(RPGApp.hero, monstre.getAtk());
-				if (monstre.getState() == State.dead) {
-					FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(// monstre.getTypeMonstre().name()+
-							"RatMort.png");
-					DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
-					MusicComponent.soundPlay("win");
-					MusicComponent.musicPlay("victory");
-				} else if (RPGApp.hero.getState() == State.alive) {
-					DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
-				}
-			
-		}
+			}}
+//		} else if (choix.equals("skills")) {
+//			int index = ((ComboBox) arg0.getSource()).getSelectionModel().getSelectedIndex();
+//			((Entity)((ComboBox) arg0.getSource()).getUserData()).removeFromWorld();
+//			int nbSkill = index ;
+//				System.out.println("index :"+index+"nb tour :"+nb_tour);
+//				
+//				if (RPGApp.hero.getSkills().get(nbSkill).getType()==SkillType.heal) {
+//					Heal skill = ((Heal)RPGApp.hero.getSkills().get(nbSkill));
+//					skill.effect();
+//				} else if (RPGApp.hero.getSkills().get(nbSkill).getType()==SkillType.attaque) {
+//					Attack skill = (Attack) RPGApp.hero.getSkills().get(nbSkill);
+//					skill.effect(monstre);
+//				} else if (RPGApp.hero.getSkills().get(nbSkill).getType()==SkillType.Boost) {
+//					Boost skill = ((Boost)RPGApp.hero.getSkills().get(nbSkill));
+//					skill.effect(nb_tour);
+//				}
+//				Systems.Combat_attaque(RPGApp.hero, monstre.getAtk());
+//				if (monstre.getState() == State.dead) {
+//					FXGL.getApp().getGameWorld().getEntitiesAt(posMonstre).get(0).setViewFromTexture(// monstre.getTypeMonstre().name()+
+//							"RatMort.png");
+//					DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 0);
+//					MusicComponent.soundPlay("win");
+//					MusicComponent.musicPlay("victory");
+//				} else if (RPGApp.hero.getState() == State.alive) {
+//					DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, nb_tour + 1);
+//				}
+//			
+//		}
 		
 		else if(choix.equals("fuir") || choix.equals("partir")) {
 			RPGApp.move=true;
+			RPGApp.hero.resetTemporaryBonus();
 			FXGL.getApp().getGameWorld().removeEntity(viewcombat);
 			MusicComponent.musicPlay(RPGApp.hero.getCurrentMap());
 			if (choix.equals("partir")) {
@@ -129,8 +145,26 @@ public class CombatEventHandler extends DisplayBasic implements EventHandler<Act
 		} else if (choix.equals("retry")) {
 			RPGApp.hero.fullLife();
 			monstre.fullLife();
+			RPGApp.hero.resetTemporaryBonus();
 			DisplayCombat.mode_combat2(viewcombat, monstre, posMonstre, 1);
 			MusicComponent.musicPlay("battle");
+		}
+	for (Boost i : RPGApp.hero.getBoosts()) {
+		if(i.getFinalTurn()==nb_tour) {
+			i.deleteBonus();
+		}
+		}
+	}
+	public void useSkill() {
+		if (RPGApp.hero.getSkills().get(nbSkill).getType()==SkillType.heal) {
+			Heal skill = ((Heal)RPGApp.hero.getSkills().get(nbSkill));
+			skill.effect();
+		} else if (RPGApp.hero.getSkills().get(nbSkill).getType()==SkillType.attaque) {
+			Attack skill = (Attack) RPGApp.hero.getSkills().get(nbSkill);
+			skill.effect(monstre);
+		} else if (RPGApp.hero.getSkills().get(nbSkill).getType()==SkillType.Boost) {
+			Boost skill = ((Boost)RPGApp.hero.getSkills().get(nbSkill));
+			skill.effect(nb_tour);
 		}
 	}
 

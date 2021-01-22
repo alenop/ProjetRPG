@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import rpgapp.RPGApp;
+import rpgapp.data.character.Heal;
 import rpgapp.data.character.Skill;
 import rpgapp.data.character.SkillOutFight;
 import rpgapp.view.DisplayHero;
@@ -19,7 +20,7 @@ public class HeroEventHandler implements EventHandler<ActionEvent> {
 		for (Skill i : RPGApp.hero.getSkills()) {
 			if (i instanceof SkillOutFight) {
 				if(combo.getSelectionModel().getSelectedIndex()==f) {
-					((SkillOutFight) i).effect();
+					((Heal) i).effect();
 					((Entity) combo.getUserData()).removeFromWorld();
 					DisplayHero.updateStats(DisplayHero.getStatusWindow());
 					DisplayHero.updatebarres(DisplayHero.getStatusWindow());
