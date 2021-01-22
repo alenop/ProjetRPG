@@ -3,7 +3,6 @@ package rpgapp.system;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.HashMap;
 import java.util.Map.Entry;
 
 import javafx.geometry.Point2D;
@@ -18,7 +17,6 @@ public abstract class SaveMap {
 			try {
 				saveChest(oos,map.getValue());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -42,7 +40,6 @@ public abstract class SaveMap {
 			try {
 				loadChest(ois,map.getValue());
 			} catch (IOException | ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

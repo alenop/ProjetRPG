@@ -5,16 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.HashMap;
 
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
-import rpgapp.control.QuestComponent;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.system.SaveMap;
-import rpgapp.view.DisplayMap;
 
 public abstract class SaveLoad {
 	public static Hero load(String menu) {

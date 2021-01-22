@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import rpgapp.RPGApp;
 import rpgapp.data.character.Hero;
 import rpgapp.data.elementInteractifs.Equipment;
-import rpgapp.data.elementInteractifs.Item;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
 

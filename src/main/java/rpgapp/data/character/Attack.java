@@ -11,13 +11,11 @@ public class Attack extends Skill {
 		this.pourcentage=pourcentage;
 		this.type=SkillType.attaque;
 		this.inFight=true;
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void effect(Character a) {
 		Systems.Combat_attaque(a,(int) (RPGApp.hero.getAtk()*(1+pourcentage/100)));
 		RPGApp.hero.useSkill(getCost());
-		// TODO Auto-generated method stub
 		
 	}
 }

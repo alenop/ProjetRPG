@@ -1,17 +1,11 @@
 package rpgapp.eventhandler;
 
-import javafx.scene.control.Button;
-
-import com.almasb.fxgl.app.FXGL;
-import com.almasb.fxgl.entity.view.EntityView;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
 import rpgapp.control.QuestComponent;
-import rpgapp.data.character.Monstres;
 import rpgapp.data.elementInteractifs.PNJ;
 import rpgapp.system.Quest;
 import rpgapp.view.DisplayPNJ;

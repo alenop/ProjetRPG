@@ -2,17 +2,12 @@ package rpgapp.system;
 
 
 
-import rpgapp.data.character.Attack;
-import rpgapp.data.character.Boost;
+import rpgapp.RPGApp;
 import rpgapp.data.character.Character;
-import rpgapp.data.character.Heal;
-import rpgapp.data.character.State;
-import rpgapp.eventhandler.CombatEventHandler;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
-import rpgapp.data.character.Skill;
-import rpgapp.data.character.SkillType;
-import rpgapp.RPGApp;
+import rpgapp.data.character.State;
+import rpgapp.eventhandler.CombatEventHandler;
 
 
 public abstract class Systems {

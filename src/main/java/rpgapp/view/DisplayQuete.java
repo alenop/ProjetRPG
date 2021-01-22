@@ -1,22 +1,17 @@
 package rpgapp.view;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.RenderLayer;
 import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.scene.text.FontPosture; 
-import javafx.scene.text.Font; 
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
@@ -161,8 +156,5 @@ public class DisplayQuete extends DisplayBasic {
 		
 		tabQuete.getView().setVisible(false);
 		FXGL.getApp().getGameWorld().addEntity(tabQuete);
-
-		// FXGL.getApp().getGameWorld().
-
 	}
 }

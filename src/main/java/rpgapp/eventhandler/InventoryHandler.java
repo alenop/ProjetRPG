@@ -12,7 +12,6 @@ import rpgapp.data.character.Hero;
 import rpgapp.data.elementInteractifs.Consumable;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
-import rpgapp.data.elementInteractifs.Potion;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayInventaire;
 

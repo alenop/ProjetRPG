@@ -5,8 +5,6 @@ import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import rpgapp.RPGApp;
@@ -19,7 +17,6 @@ public class DisplayCoffre extends DisplayBasic {
 		if (a.getLoot()!=null) {
 		Entity item = Entities.builder()
                 .viewFromTexture(a.getLoot().getImage())
-				//.viewFrom
                 .build();
 		EntityView an = item.getView();
                 

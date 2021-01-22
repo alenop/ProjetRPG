@@ -10,7 +10,7 @@ public abstract class Skill implements Serializable {
 	public Skill(String name) {
 		this.setName(name);
 	}
-	//public abstract void effect();
+	
 	public String getName() {
 		return name;
 	}

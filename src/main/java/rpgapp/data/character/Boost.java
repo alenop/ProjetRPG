@@ -17,7 +17,6 @@ public class Boost extends Skill {
 		this.pourcentage=pourcentage;
 		this.inFight=true;
 		this.stat=stat;
-		// TODO Auto-generated constructor stub
 	}
 	public void effect(int turn) {
 		this.boost=RPGApp.hero.givemultiply("atk",(int) (this.pourcentage));
@@ -25,7 +24,6 @@ public class Boost extends Skill {
 		RPGApp.hero.useSkill(getCost());
 		RPGApp.hero.addBoost(this);
 		this.finalturn=turn+nbturn;
-		// TODO Auto-generated method stub
 		
 	}
 	public void deleteBonus() {

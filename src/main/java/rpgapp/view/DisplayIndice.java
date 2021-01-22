@@ -16,7 +16,6 @@ public class DisplayIndice extends DisplayBasic {
 		Indice indice = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getIndiceList().get(position);
 		Entity image = Entities.builder()
                 .viewFromTexture(indice.getImage())
-				//.viewFrom
                 .build();
 		EntityView imageView = image.getView();        
 		afficheIndice(imageView,indice,position);

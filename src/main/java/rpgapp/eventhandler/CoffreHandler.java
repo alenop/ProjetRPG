@@ -2,11 +2,10 @@ package rpgapp.eventhandler;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import javafx.geometry.Point2D;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
+import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.Consumable;

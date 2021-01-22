@@ -3,7 +3,6 @@ package rpgapp.control;
 import java.util.HashMap;
 
 import com.almasb.fxgl.app.FXGL;
-import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.component.Component;
 
 import javafx.geometry.Point2D;
@@ -21,11 +20,10 @@ public class QuestComponent extends Component{
 	public static void verifQuest() {
 		Quest q = RPGApp.hero.getCurrentquest();
 		if(q.getNbCibles()==q.getNbCiblesMax()) {
-			System.out.println("La quête est terminée");
 			suiteQuete(q);
 		}
 		else {
-			System.out.println("La quête n'est pas terminée");
+			System.out.println("la quête n'est pas accomplie");
 		}
 	}
 	
@@ -398,7 +396,7 @@ public class QuestComponent extends Component{
 				
 		}
 		
-		//Attribut la nouvelle quête au héros
+		//Attribue la nouvelle quête au héros
 		RPGApp.hero.setCurrentquest(nouvQ);
 		RPGApp.hero.setQueststep(Id);
 		DisplayQuete.updateQuete();

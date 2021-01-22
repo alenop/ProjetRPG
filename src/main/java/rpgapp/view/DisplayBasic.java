@@ -10,15 +10,12 @@ import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import rpgapp.EntityType;
-import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Character;
-import rpgapp.data.character.Monstre;
 
 public abstract class DisplayBasic {
 	public static Entity CreateEntityWithNode(Node a,double b,double c) {

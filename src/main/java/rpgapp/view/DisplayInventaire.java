@@ -5,7 +5,6 @@ import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
-
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
@@ -55,7 +54,6 @@ public class DisplayInventaire extends DisplayBasic {
 	}
 
 	public static void ajoutItem(Item a, int i) {
-		//getInventory().getView().getNodes().get(i+1).setVisible(true);
 		itemViewInventaire(a,
 				((EntityView) ((Entity) getInventory().getView().getNodes().get(i+1).getUserData()).getView()),"equip");
 	}
@@ -116,8 +114,5 @@ public class DisplayInventaire extends DisplayBasic {
 
 		inventaire.getView().setVisible(false);
 		FXGL.getApp().getGameWorld().addEntity(inventaire);
-
-		// FXGL.getApp().getGameWorld().
-
 	}
 }

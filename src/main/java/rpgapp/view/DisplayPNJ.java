@@ -2,15 +2,11 @@ package rpgapp.view;
 
 import java.util.HashMap;
 
-import javax.swing.JLabel;
-
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -19,13 +15,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import rpgapp.RPGApp;
-import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
-import rpgapp.data.character.Monstres;
 import rpgapp.data.elementInteractifs.PNJ;
-import rpgapp.eventhandler.CombatEventHandler;
 import rpgapp.eventhandler.PnjEventHandler;
-import rpgapp.system.Quest;
 
 public class DisplayPNJ extends DisplayBasic {
 	private static Entity dialogBox;
@@ -53,7 +45,6 @@ public class DisplayPNJ extends DisplayBasic {
 				listButton[i] =  new Button(textButton[i]);
 				listButton[i].setOnAction(new PnjEventHandler(listButton[i],pnj));
 			}
-		//FXGL.getApp().getDisplay().showBox(chat.get("message")[0], pnjview, listButton);
 		if (RPGApp.dialogBox==null) {
 		Entity pnjentity = Entities.builder()
                 .viewFromTexture(pnj.getImage())
@@ -86,15 +77,12 @@ public class DisplayPNJ extends DisplayBasic {
 	}
 	
 	private static Entity initDialogBox(EntityView pnjview2,String pnjname,Button[] av,String text) {
-		// Display.mode_combat2(monstreview,a,b,1,heroview);
 		Rectangle border = createBorder(FXGL.getSettings().getWidth(),192);
 		border.setFill(Color.rgb(0, 0, 0));
 		Entity dialogBox = createRectangleWithBorder(border,
 				new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2));
 		Label label = new Label("Dialogue entre "+pnjname+" et vous");
-		//label.resize(width, height);
-		//label.setMinSize(400,400);
 		label.setTextFill(Color.rgb(254, 254, 254));
 		Label label2 = new Label(text);
 		Text text2 = FXGL.getUIFactory().newText(pnjname+" :", Color.WHITE, 20.0);
@@ -109,7 +97,6 @@ public class DisplayPNJ extends DisplayBasic {
 		int j = 0;
 		int a=0;
 		for (Button i : av) {
-			System.out.println(i.getText());
 			Entity Bouton = CreateEntityWithNode(i,FXGL.getSettings().getWidth()/2- 192 + 64 * j+4*a,128);
 			a=i.getText().length();
 			Bouton.setProperty("bouton", i);
@@ -124,15 +111,12 @@ public class DisplayPNJ extends DisplayBasic {
 		dialogBox.getView().addNode(pnjview2);
 		FXGL.getApp().getGameWorld().addEntity(dialogBox);
 		return dialogBox;
-		//showBox(dialogBox,av,text);
 	}
 	private static void showBox(Entity dialogBox,Button[] av,String text) {
 		int j=0;
-		//System.out.println(av.length+"//*"+j);
 		for (Node i : dialogBox.getView().getNodes()) {
 			if (i.getAccessibleText() != null) {
 				if (i.getAccessibleText().equals("dialog")) {
-					System.out.println(text);
 					Entity a = (Entity) i.getUserData();
 					Text b = (Text) a.getView().getNodes().get(0);
 					b.setText(text);

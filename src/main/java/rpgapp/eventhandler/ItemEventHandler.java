@@ -6,16 +6,15 @@ import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import rpgapp.RPGApp;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.view.DisplayBasic;
-import rpgapp.view.DisplayInventaire;
-import javafx.scene.paint.Color;
 
 public class ItemEventHandler extends DisplayBasic implements EventHandler<MouseEvent> {
 	private Item item;
@@ -29,7 +28,7 @@ public class ItemEventHandler extends DisplayBasic implements EventHandler<Mouse
 	public void handle(MouseEvent arg0) {
 		int x=135;
 		int y=64;
-		//Item item=RPGApp.hero.getInventory()[positem];
+		
 		Point2D center=((Entity)((EntityView)arg0.getSource()).getUserData()).getPosition();
 		
 		Rectangle border = new Rectangle(0,0,x,y);
@@ -40,9 +39,7 @@ public class ItemEventHandler extends DisplayBasic implements EventHandler<Mouse
 		window.getView().setMouseTransparent(true);
 		((Entity)((EntityView)arg0.getSource()).getParent().getUserData()).getView().addNode(window.getView());
 		
-		//DisplayInventaire.getInventory().getView().addNode(window.getView());
 		((EntityView)arg0.getSource()).setOnMouseExited((e) -> ((Entity)((EntityView)arg0.getSource()).getParent().getUserData()).getView().removeNode(window.getView()));
-		//FXGL.getGameWorld().addEntity(window);
 	}
 	
 }

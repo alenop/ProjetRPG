@@ -1,6 +1,5 @@
 package rpgapp.view;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -16,7 +15,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.*;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
@@ -24,7 +23,6 @@ import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Character;
 import rpgapp.data.character.Skill;
-import rpgapp.data.character.SkillOutFight;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.eventhandler.HeroEventHandler;
 
@@ -35,7 +33,6 @@ public class DisplayHero extends DisplayBasic {
 	heroview.setUserData(hero);
 	heroview.setAccessibleText("hero");
 	int space=24;
-	// Display.mode_combat2(monstreview,a,b,1,heroview);
 	Rectangle border = createBorder(FXGL.getSettings().getWidth()/2,FXGL.getSettings().getHeight()/2);
 	border.setFill(Color.rgb(0, 0, 0));
 	Entity viewstatus = createRectangleWithBorder(border,

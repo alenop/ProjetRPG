@@ -5,7 +5,6 @@ public class Equipment extends Item {
 	public Equipment(int stat,String name, String image) {
 		super(name, image);
 		this.setStat(stat);
-		// TODO Auto-generated constructor stub
 	}
 	public int getStat() {
 		return stat;

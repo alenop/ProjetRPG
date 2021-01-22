@@ -5,7 +5,6 @@ import java.util.Map.Entry;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.RenderLayer;
 import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
@@ -79,13 +78,10 @@ public class DisplayEquipment extends DisplayBasic {
 		equipment.setViewFromTexture("EquipmentFond.png");
 		EntityView equipmentView = equipment.getView();
 		equipmentView.setUserData(equipment);
-//		Entity fond=CreateEntityWithPicture("EquipmentFond.png", 0, 0);
-//		equipmentView.addNode(fond.getView());
 
 		int x = 0;
 		int y = 0;
 		HashMap<String, Equipment> i = RPGApp.hero.getEquipement();
-		//String[] list={"Arme","Armure"};
 		HashMap<String,Point2D> list =new HashMap<String,Point2D>();
 		list.put("Arme", new Point2D(2*64+48,64+80));
 		list.put("Armure", new Point2D(64+40,64+56));
@@ -109,8 +105,5 @@ public class DisplayEquipment extends DisplayBasic {
 		
 		equipment.getView().setVisible(false);
 		FXGL.getApp().getGameWorld().addEntity(equipment);
-
-		// FXGL.getApp().getGameWorld().
-
 	}
 }

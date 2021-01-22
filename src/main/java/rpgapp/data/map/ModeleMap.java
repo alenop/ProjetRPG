@@ -3,12 +3,11 @@ package rpgapp.data.map;
 import java.io.Serializable;
 import java.util.HashMap;
 
-
+import javafx.geometry.Point2D;
 import rpgapp.data.character.Monstre;
 import rpgapp.data.elementInteractifs.Chest;
 import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.PNJ;
-import javafx.geometry.Point2D;
 
 public class ModeleMap implements Serializable {
 	private HashMap<Point2D,String> portalList;

@@ -10,14 +10,12 @@ public class Heal extends Skill {
 		this.type=SkillType.heal;
 		this.pourcentage=pourcentage;
 		this.inFight=false;
-		// TODO Auto-generated constructor stub
 	}
 
 	
 	public void effect() {
 		RPGApp.hero.heal(pourcentage);
 		RPGApp.hero.useSkill(getCost());
-		// TODO Auto-generated method stub
 		
 	}
 }

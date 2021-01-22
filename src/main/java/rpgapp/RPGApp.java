@@ -1,37 +1,22 @@
 package rpgapp;
 
-import java.awt.Button;
-import java.awt.Font;
-import javafx.geometry.Insets;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.audio.Music;
-import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entities;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.view.EntityView;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.saving.DataFile;
-import com.almasb.fxgl.scene.FXGLMenu;
-import com.almasb.fxgl.scene.FXGLScene;
-import com.almasb.fxgl.scene.menu.MenuType;
 import com.almasb.fxgl.settings.GameSettings;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
-import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
 import rpgapp.control.QuestComponent;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
-import rpgapp.data.character.Monstres;
 import rpgapp.data.character.SaveLoad;
 import rpgapp.data.elementInteractifs.Arme;
 import rpgapp.data.elementInteractifs.Armure;
@@ -41,18 +26,16 @@ import rpgapp.data.elementInteractifs.Indice;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.data.elementInteractifs.ManaPotion;
 import rpgapp.data.elementInteractifs.PNJ;
-import rpgapp.data.elementInteractifs.PNJList;
-import rpgapp.data.elementInteractifs.Potion;
+import rpgapp.data.elementInteractifs.HealPotion;
 import rpgapp.data.map.ModeleMap;
 import rpgapp.factory.MenuSceneFactory;
+import rpgapp.system.Quest;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayEquipment;
 import rpgapp.view.DisplayHero;
 import rpgapp.view.DisplayInventaire;
 import rpgapp.view.DisplayMap;
 import rpgapp.view.DisplayQuete;
-import rpgapp.system.Quest;
-import rpgapp.Menu;
 
 public class RPGApp extends GameApplication {
 
@@ -88,7 +71,6 @@ public class RPGApp extends GameApplication {
 
 		// Initialise le jeu
 		Point2D pos=new Point2D(0,0);
-		//MusicComponent.musicPlay("cave");
 		if(save) {
 			RPGApp.hero=SaveLoad.load("MainMenu");
 			pos=RPGApp.hero.getPosition();
@@ -129,13 +111,6 @@ public class RPGApp extends GameApplication {
 		createPortal("mapPnj3.json", new Point2D(768, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		createPortal("mapPnj3.json", new Point2D(832, 1088), "mapJardin.json", new Point2D(2432, 2880));
 		
-		
-//		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave"), new Point2D(512, 704));
-//		createMonster("mapCave.json", new Monstre("le boss des Rats", 50, 40, 100,true,"tuer le rat de la cave",Monstres.BossRat), new Point2D(512, 704));
-//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(896, 2048));
-//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2304, 2304));
-//		createMonster("mapJardin.json", new Monstre("souris", 30, 20, 100,true,"tuer le rat de la cave"), new Point2D(2624, 2880));
-		
 		createIndice("mapCave.json", new Point2D(512, 704) ,new Indice("Morceau de fromage", "fromage.png"));
 		
 		String[] liste=new String[2];
@@ -161,12 +136,11 @@ public class RPGApp extends GameApplication {
 		conversationComplete.put("protéiné ?", conversation3);
 		conversationComplete.put("finish", conversation4);
 		conversationComplete.put("en cours", conversation5);
-		//PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,new Quest("tuer le rat de la cave",1000,Monstres.BossRat,1),"Oui papa");
+
 		Quest q = new Quest("Contact avec le Rat, Partie I:", 100, "Examiner", "Indice de la cave", 1, "Votre père vous demande de vous debarasser du rat de la cave. Trouvez le !");
 		
 		PNJ pere =new PNJ("Père","Cadre.png",conversationComplete,q,"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
-		//getGameWorld().ad
 		String[] answer1A = new String[2];
 		answer1A[0] = "Pourquoi pas.";
 		answer1A[1] = "Bof ça ira, merci...";
@@ -229,7 +203,7 @@ public class RPGApp extends GameApplication {
 		playerComponent = player.getComponent(PlayerComponent.class);
 		if (save==false) {
 		hero.equip(new Armure(21, "t-shirt", "t-shirt.png"));
-		hero.addItemInventory(new Potion("potion de soin","potion_de_soin.png"));
+		hero.addItemInventory(new HealPotion("potion de soin","potion_de_soin.png"));
 		hero.addItemInventory(new ManaPotion("potion de mana","potion_de_mana.png"));
 		}
 		
@@ -240,7 +214,7 @@ public class RPGApp extends GameApplication {
 		if(save && RPGApp.hero.getCurrentquest()!=null) {
 			QuestComponent.suiteQuete2(hero.getQueststep());
 		}
-		//get
+		
 		
 	}
 
@@ -266,7 +240,6 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Left") {
 			@Override
 			protected void onAction() {
-				//player.setViewFromTexture("HerosGaucheMV.gif");
 				playerComponent.moveLeft();
 			}
 			
@@ -278,7 +251,6 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Up") {
 			@Override
 			protected void onAction() {
-				//player.setViewFromTexture("HerosDosMV.gif");
 				playerComponent.moveUp();
 			}
 			
@@ -290,7 +262,6 @@ public class RPGApp extends GameApplication {
 		input.addAction(new UserAction("Move Down") {
 			@Override
 			protected void onAction() {
-				//player.setViewFromTexture("HerosMV.gif");
 				playerComponent.moveDown();
 			}
 			
@@ -430,7 +401,6 @@ public class RPGApp extends GameApplication {
 		}
 	}
 	public void createPNJ(String map, PNJ pnj, Point2D pospnj) {
-		System.out.println(ListeMaps.get(map).getPNJList());
 		if (ListeMaps.get(map).getPNJList().get(pospnj) == null) {
 			ListeMaps.get(map).getPNJList().put(pospnj, pnj);
 		}
@@ -459,12 +429,6 @@ public class RPGApp extends GameApplication {
 			ListeMaps.get(map).getIndiceList().put(pos, indice);
 		}
 	}
-	
-	
-	
-//	public void musicStop() {
-//		getAudioPlayer().stopMusic(music);
-//	}
 
 	public void initMap(String map, Point2D poshero) {
 		ModeleMap mapbase = new ModeleMap();
@@ -498,7 +462,6 @@ public class RPGApp extends GameApplication {
 			}
 		}
 		
-		System.out.println(RPGApp.hero.getInventory());
 	}
 	public static void load2() {
 		

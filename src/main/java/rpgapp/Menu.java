@@ -56,6 +56,7 @@ import static com.almasb.fxgl.core.math.FXGLMath.random;
  *
  * @author Almas Baimagambetov (AlmasB) (almaslvl@gmail.com)
  */
+// j'ai créer 3 méthodes a la toute fin de la classe et aie modifié légèrement l'affichage pour faire apparaitre les boutons save load qui utilisent mes méthodes.
 public class Menu extends FXGLMenu {
 
     private ParticleSystem particleSystem;

@@ -1,35 +1,21 @@
 package rpgapp.view;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.view.EntityView;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.control.ComboBox;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.util.*;
-
 import rpgapp.RPGApp;
 import rpgapp.control.MusicComponent;
 import rpgapp.control.PlayerComponent;
-import rpgapp.data.character.Character;
-
 import rpgapp.data.character.Monstre;
-import rpgapp.data.character.Skill;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.eventhandler.CombatEventHandler;
 import rpgapp.eventhandler.GameOverHandler;
@@ -41,7 +27,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
 		RPGApp.move=false;
-		Entity monstreEntity = CreateEntityWithPicture(//monstre.getTypeMonstre().name()+
+		Entity monstreEntity = CreateEntityWithPicture(
 				"RatCombatGif.gif", 64*8 +32, 64);
 		EntityView monstreview = monstreEntity.getView();
 		MusicComponent.musicPlay("battle");
@@ -52,8 +38,7 @@ public abstract class DisplayCombat extends DisplayBasic {
 		EntityView heroview = hero.getView();
 		heroview.setUserData(hero);
 		heroview.setAccessibleText("hero");
-
-		// Display.mode_combat2(monstreview,a,b,1,heroview);
+		
 		Rectangle border = createBorder(FXGL.getSettings().getWidth(),FXGL.getSettings().getHeight());
 		border.setFill(Color.rgb(0, 0, 0));
 		Entity viewcombat = createRectangleWithBorder(border,
@@ -76,7 +61,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 		av[0] = new Button("attaque");
 		av[1] = new Button("défense");
 		av[2] = new Button("fuir");
-		//av[3] = new Button("skills");
 		av[2].setOnAction(new CombatEventHandler("fuir",viewcombat));
 		int j = 0;
 		
@@ -99,7 +83,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void mode_combat2(Entity viewcombat, Monstre monstre, Point2D posMonstre, int nb_tour) {
 		String text;
-		System.out.println(monstre.getPv()+"/"+RPGApp.hero.getPv());
 		if (nb_tour == 1) {
 			text = "Tu as trouvé " + monstre.getName() + " que veut tu faire ?";
 		} else if (nb_tour == 2) {
@@ -129,7 +112,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 				if (i.getAccessibleText().equals("text")) {
 					((Label) ((Entity) i.getUserData()).getView().getNodes().get(0)).setText(text);
 				} else if (i.getAccessibleText().equals("monstre")&& nb_tour==0) {			
-						//((Entity) i.getUserData()).setViewFromTexture(monstre.getTypeMonstre().name()+"Mort.png");
 						((Entity) i.getUserData()).setViewFromTexture("Victory.gif");
 			
 				}else if (i.getAccessibleText().equals("hero")) {	
@@ -222,17 +204,17 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 					DisplayHero.updateBarreVie(monstre, ((Entity) i.getUserData()), "green");
 				} else if (i.getAccessibleText().equals("border1" + RPGApp.hero.toString()) && barre) {
-					System.out.println("yo1");
+					
 					DisplayHero.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "red");
 				} else if (i.getAccessibleText().equals("border2" + RPGApp.hero.toString()) && barre) {
 					barre=false;
-					System.out.println("yo2");
+					
 					DisplayHero.updateBarreVie(RPGApp.hero, ((Entity) i.getUserData()), "green");
 				}else if (i.getAccessibleText().equals("border1" + RPGApp.hero.toString()) && barre==false) {
-					System.out.println("yo3");
+					
 					DisplayHero.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "red");
 				} else if (i.getAccessibleText().equals("border2" + RPGApp.hero.toString()) && barre==false) {
-					System.out.println("yo4");
+					
 					DisplayHero.updateBarreMana(RPGApp.hero, ((Entity) i.getUserData()), "blue");
 				}
 

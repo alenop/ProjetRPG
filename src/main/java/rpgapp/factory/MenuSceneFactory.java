@@ -3,13 +3,12 @@ package rpgapp.factory;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.scene.FXGLMenu;
 import com.almasb.fxgl.scene.SceneFactory;
-import com.almasb.fxgl.scene.menu.FXGLDefaultMenu;
 import com.almasb.fxgl.scene.menu.MenuType;
 
 import rpgapp.Menu;
 
 public class MenuSceneFactory extends SceneFactory {
-	//private GameApplication app;
+	
 	public MenuSceneFactory() {
 		super();
 	}

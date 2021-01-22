@@ -1,30 +1,23 @@
 package rpgapp.control;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 import com.almasb.fxgl.app.FXGL;
-import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.PositionComponent;
 import com.almasb.fxgl.entity.components.TypeComponent;
-
+import com.almasb.fxgl.ui.Display;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
-import rpgapp.data.character.State;
 import rpgapp.data.character.Monstre;
 import rpgapp.data.character.Monstres;
+import rpgapp.data.character.State;
 import rpgapp.data.elementInteractifs.Indice;
-import rpgapp.data.elementInteractifs.PNJ;
-import rpgapp.data.elementInteractifs.PNJList;
-import rpgapp.view.Display;
 import rpgapp.view.DisplayBasic;
 import rpgapp.view.DisplayCoffre;
 import rpgapp.view.DisplayCombat;
@@ -36,28 +29,6 @@ import rpgapp.view.DisplayQuete;
 public class PlayerComponent extends Component {
 
 	public static PositionComponent position;
-	
-
-	@Override
-	public void onUpdate(double tpf) {
-		
-
-//		try {
-//			Thread.sleep(500);
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
-//		for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).getMonsterList().entrySet()) {
-//			if(DisplayBasic.trouveEntity(i.getKey(),EntityType.Monstre)!=null) {
-//				DisplayBasic.trouveEntity(i.getKey(),EntityType.Monstre).setPosition(i.getKey().add(64, 0));
-//			}
-//			else if(DisplayBasic.trouveEntity(i.getKey().add(64, 0),EntityType.PNJ)!=null) {
-//				DisplayBasic.trouveEntity(i.getKey().add(64, 0),EntityType.PNJ).setPosition(i.getKey());
-//			}
-//		}
-	}
-
-	// Les methodes move ne fonctionnent que si "CanMove" est vérifié
 
 	public void moveRight() {
 		CheckAction(new Point2D(RPGApp.TILE_SIZE, 0),"Droite");
@@ -79,15 +50,7 @@ public class PlayerComponent extends Component {
 
 	private boolean checkEntity(Point2D direction, EntityType a) {
 		// Vérifie que la case n'est pas un EntityType a
-
-//		return FXGL.getApp()
-//				.getGameScene()
-//				.getViewport()
-//				.getVisibleArea()
-//				.contains(direction)
-
-//				&&
-
+		
 		return FXGL.getApp().getGameWorld().getEntitiesAt(direction).stream()
 				.filter(e -> e.hasComponent(TypeComponent.class)).map(e ->
 				e.getComponent(TypeComponent.class))
@@ -97,10 +60,7 @@ public class PlayerComponent extends Component {
 
 	private void CheckAction(Point2D direction, String angle) {
 		if (RPGApp.move) {
-			System.out.println(RPGApp.hero.getCurrentquest());
 		Point2D newPosition = position.getValue().add(direction);
-		System.out.println(newPosition);
-		System.out.println(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));
 		CheckMonsterRange(newPosition);
 		if (RPGApp.notif!=null) {
 			FXGL.getApp().getGameWorld().removeEntity(RPGApp.notif);
@@ -113,21 +73,21 @@ public class PlayerComponent extends Component {
 				&& checkEntity(newPosition, EntityType.PNJ) && checkEntity(newPosition, EntityType.Coffre)) {
 			try {
 				if (checkEntity(new Point2D(position.getX()+3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Inventaire)==false) {
-					Entity i =Display.trouveEntity(new Point2D(position.getX()+3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Inventaire);
+					Entity i =DisplayBasic.trouveEntity(new Point2D(position.getX()+3*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Inventaire);
 					i.translate(direction);
 				}
 				if (checkEntity(new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 						PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2), EntityType.HeroStatus)==false) {
-					Entity i =Display.trouveEntity(new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
+					Entity i =DisplayBasic.trouveEntity(new Point2D(PlayerComponent.position.getX() - FXGL.getSettings().getWidth()/2,
 							PlayerComponent.position.getY() - FXGL.getSettings().getHeight()/2), EntityType.HeroStatus);
 					i.translate(direction);
 				}
 				if (checkEntity(new Point2D(position.getX()-7*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Equipment)==false) {
-					Entity i =Display.trouveEntity(new Point2D(position.getX()-7*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Equipment);
+					Entity i =DisplayBasic.trouveEntity(new Point2D(position.getX()-7*RPGApp.TILE_SIZE,position.getY()+RPGApp.TILE_SIZE-32),EntityType.Equipment);
 					i.translate(direction);
 				}
 				if (checkEntity(new Point2D(position.getX()+3.5*RPGApp.TILE_SIZE,position.getY()-5*RPGApp.TILE_SIZE),EntityType.TableauQuete)==false) {
-					Entity i =Display.trouveEntity(new Point2D(position.getX()+3.5*RPGApp.TILE_SIZE,position.getY()-5*RPGApp.TILE_SIZE),EntityType.TableauQuete);
+					Entity i =DisplayBasic.trouveEntity(new Point2D(position.getX()+3.5*RPGApp.TILE_SIZE,position.getY()-5*RPGApp.TILE_SIZE),EntityType.TableauQuete);
 					i.translate(direction);
 				}
 				
@@ -146,7 +106,6 @@ public class PlayerComponent extends Component {
 				try {
 					Thread.sleep(200);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -236,7 +195,6 @@ public class PlayerComponent extends Component {
 		for (Entity a : mob) {
 			if (a.isType(EntityType.Monstre)) {
 				Monstre monstre= ((Monstre)a.getProperties().getObject("data"));
-				System.out.println(a);
 				if (dir.equals("right")||dir.equals("left")) {
 					if(checkEntity(a.getPosition().add(z, 0), EntityType.BLOC)) {
 						if (RPGApp.MonstreMove && monstre.getState()==State.alive && monstre.getTypeMonstre()!=Monstres.BossRat) {

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public abstract class Character  implements Serializable {
 	private String name;
-	//protected Apparence apparence;
 	private int atk;
 	private int def;
 	protected int Pvmax;
@@ -15,12 +14,10 @@ public abstract class Character  implements Serializable {
 	private int pv;
 	private State state;
 	private int spd;
-	private Faiblesse faiblesses2[];
 	private String weaknesses[];
 	protected int level=1;
 	
 	public Character(String nom, int atk, int def, int pv) {
-		// comment
 		this.setName(nom);
 		this.Pvmax=pv;
 		this.atkmax=atk;
@@ -84,14 +81,7 @@ public abstract class Character  implements Serializable {
 	public void setSpd(int spd) {
 		this.spd = spd;
 	}
-
-	public Faiblesse[] getFaiblesses2() {
-		return faiblesses2;
-	}
-
-	public void setFaiblesses2(Faiblesse faiblesses2[]) {
-		this.faiblesses2 = faiblesses2;
-	}
+	
 	public String[] getWeaknesses() {
 		return weaknesses;
 	}
@@ -111,18 +101,14 @@ public abstract class Character  implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
+	
 	public int getMpMax() {
-		// TODO Auto-generated method stub
 		return MpMax;
 	}
 
 
 
 	public int getMp() {
-		// TODO Auto-generated method stub
 		return Mp;
 	}
 }

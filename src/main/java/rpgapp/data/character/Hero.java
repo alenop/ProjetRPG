@@ -1,27 +1,20 @@
 package rpgapp.data.character;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
-import java.io.Serializable;
-
-
-import rpgapp.system.Quest;
-import rpgapp.system.Systems;
-import rpgapp.view.DisplayBasic;
-import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
-import rpgapp.control.QuestComponent;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
+import rpgapp.system.Quest;
+import rpgapp.system.Systems;
 
 public class Hero extends Character implements Serializable {
 	private transient Item inventory[];
-	// private ArrayList<Item> inventaire = new ArrayList<Item>();
 	private int experience = 0;
 	private int requis = 1000;
 	private transient HashMap<String, Equipment> equipment = new HashMap<String, Equipment>();
@@ -90,7 +83,6 @@ public class Hero extends Character implements Serializable {
 	public void gainLevel(int experience) {
 		if (experience >= this.levels.get(this.level)) {
 			this.level += 1;
-			System.out.println("gain de niveau ! Niveau actuel : " + this.level);
 			setAtk(getAtk() + Atkgrowth);
 			setDef(getDef() + Defgrowth);
 			Mp=MpMax+Mpgrowth;
@@ -128,8 +120,6 @@ public class Hero extends Character implements Serializable {
 	}
 
 	public void equip(Equipment equipment) {
-		System.out.println(equipment);
-		System.out.println(equipment.getName());
 		if (this.equipment.get(equipment.getType()) != null) {
 			unequip(this.equipment.get(equipment.getType()));
 		}
@@ -137,7 +127,6 @@ public class Hero extends Character implements Serializable {
 
 		if (equipment.getType().equals("Arme")) {
 			this.setAtk(this.getAtk() + equipment.getStat());
-			System.out.println("yo");
 		} else if (equipment.getType().equals("Armure")) {
 			this.setDef(this.getDef() + equipment.getStat());
 		}
