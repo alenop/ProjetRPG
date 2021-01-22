@@ -2,10 +2,16 @@ package rpgapp.system;
 
 
 
+import rpgapp.data.character.Attack;
+import rpgapp.data.character.Boost;
 import rpgapp.data.character.Character;
+import rpgapp.data.character.Heal;
 import rpgapp.data.character.State;
+import rpgapp.eventhandler.CombatEventHandler;
 import rpgapp.data.character.Hero;
 import rpgapp.data.character.Monstre;
+import rpgapp.data.character.Skill;
+import rpgapp.data.character.SkillType;
 import rpgapp.RPGApp;
 
 
@@ -31,12 +37,35 @@ public abstract class Systems {
 		}
 
 	}
+	public static void CombatSkill(Hero a, Monstre b, CombatEventHandler combatEventHandler) throws Exception {
+		if (a.getState() == State.dead || b.getState() == State.dead) {
+			throw (new Exception("Erreur l'un des 2 Character est mort"));
+
+		}
+		combatEventHandler.useSkill();
+			if (b.getState() == State.alive) {
+				Combat_attaque(b, a);
+			}
+		
+			else if (b.getState() == State.dead) {		
+			RPGApp.hero.gainExp(b.getGive_experience());
+			if (RPGApp.hero.getCurrentquest()!=null) {
+			if (RPGApp.hero.getCurrentquest().getTypeMonstre() == b.getTypeMonstre()) {
+				RPGApp.hero.getCurrentquest().setKill(RPGApp.hero.getCurrentquest().getKill() + 1);
+			}
+			
+			}
+		}
+	}
 	public static void Combat(Hero a, Monstre b, String x) throws Exception {
 		if (a.getState() == State.dead || b.getState() == State.dead) {
 			throw (new Exception("Erreur l'un des 2 Character est mort"));
 
 		}
-		if (x.equals("attaque")) {
+		if (x.equals("Skill")) {
+			
+		}
+		else if (x.equals("attaque")) {
 			if (a instanceof Hero) {
 				Hero c = (Hero) a;
 				if (c.getEquipement().get("Arme") != null) {

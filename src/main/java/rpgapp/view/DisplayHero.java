@@ -44,7 +44,7 @@ public class DisplayHero extends DisplayBasic {
 	viewstatus.setType(EntityType.HeroStatus);
 	addbarreVie(viewstatus.getView(), RPGApp.hero, 32, 10);
 	addbarreMana(viewstatus.getView(), RPGApp.hero, 32, 30);
-	Text niveau = FXGL.getUIFactory().newText("Niveau : "+RPGApp.hero.getLv(), Color.WHITE, 15.0);
+	Text niveau = FXGL.getUIFactory().newText("Niveau : "+RPGApp.hero.getLv()+"  "+RPGApp.hero.getExperience()+"/"+RPGApp.hero.getExp(RPGApp.hero.getLv()), Color.WHITE, 15.0);
 	Entity niveauview= CreateEntityWithNode(niveau, 256+16, 32);
 	niveauview.getView().setAccessibleText("level");
 	niveauview.getView().setUserData(niveau);
@@ -141,7 +141,7 @@ public class DisplayHero extends DisplayBasic {
 		ArrayList<Skill> liste = new ArrayList<Skill>();
 		
 		for (Skill i : RPGApp.hero.getSkills()) {
-			if(i instanceof SkillOutFight) {
+			if(i.canInFight()==false) {
 				liste.add(i);
 			}
 		} 
@@ -175,7 +175,7 @@ public class DisplayHero extends DisplayBasic {
 			}
 	}}
 	public static void updateLv(Node i) {
-		((Text) i.getUserData()).setText("Niveau : "+RPGApp.hero.getLv());
+		((Text) i.getUserData()).setText("Niveau : "+RPGApp.hero.getLv()+"  "+RPGApp.hero.getExperience()+"/"+RPGApp.hero.getExp(RPGApp.hero.getLv()));
 	}
 	public static void updateLv(Entity viewstatus) {
 		for (Node i : viewstatus.getView().getNodes()) {

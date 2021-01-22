@@ -41,7 +41,6 @@ public abstract class DisplayCombat extends DisplayBasic {
 
 	public static void begin(Monstre monstre, Point2D posMonstre) {
 		RPGApp.move=false;
-		RPGApp.hero.resetTemporaryBonus();
 		Entity monstreEntity = CreateEntityWithPicture(//monstre.getTypeMonstre().name()+
 				"RatCombatGif.gif", 64*8 +32, 64);
 		EntityView monstreview = monstreEntity.getView();
