@@ -324,7 +324,7 @@ public class QuestComponent extends Component{
 				//Spawn du rat de la cave
 				RPGApp.createMonster("mapJardin.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"A la recherche d'un rat, Partie III:",Monstres.BossRat), new Point2D(2752, 448));
 				//Change la quete
-				nouvQ = new Quest("A la recherche d'un rat, Partie III:", 1000, "Tuer", "Rat de la cave", 1, "La cachette du rat est découverte. Éliminez le une bonne fois pour toute ICI", 9);
+				nouvQ = new Quest("A la recherche d'un rat, Partie III:", 1000, "Tuer", "Rat de la cave", 1, "La cachette du rat est découverte. Éliminez le une bonne fois pour toute dans le champ de fleur", 9);
 				break;
 				
 				
