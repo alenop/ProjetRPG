@@ -37,6 +37,9 @@ public class QuestComponent extends Component{
 		String notif= q.getName() +" accomplie !";
 		RPGApp.notif = DisplayBasic.createNotif(notif);
 		FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
+		suiteQuete2(q.getId());
+	}
+	public static void suiteQuete2(int Id) {
 		Quest nouvQ = null;
 		Quest pnjQ = null;
 		PNJ pnj = RPGApp.ListeMaps.get("mapMaison.json").getPNJList().get(new Point2D(1024,960));
@@ -49,7 +52,7 @@ public class QuestComponent extends Component{
 		HashMap<String,HashMap<String,String[]>> nouvConversation3=new HashMap<String,HashMap<String,String[]>>();
 		
 		//Actions selon la quête suivante
-		switch(q.getId()) {
+		switch(Id) {
 			
 			case 0:			//Une fois l'indice de la cave trouvé >> Doit parler au père
 				
@@ -157,6 +160,7 @@ public class QuestComponent extends Component{
 				
 				//Change la quete
 				nouvQ = new Quest("Une Invasion de Rat ? Partie II:", 200, "Parler à", "Père", 1, "Vous avez réussi à vaincre tout les rats. Prevenez votre père de votre exploit.", 4);
+				
 				break;
 				
 				
@@ -188,6 +192,7 @@ public class QuestComponent extends Component{
 				RPGApp.createMonster("mapCave.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"tuer le rat de la cave",Monstres.BossRat), new Point2D(512, 704));
 				//Change la quete
 				nouvQ = new Quest("Une Invasion de Rat ? Partie III:", 800, "Tuer", "Rat de la cave", 1, "Vous avez contré l'invasion mais votre père entends de nouveau le rat de la cave. Débarassez vous en !", 5);
+				
 				break;
 				
 				
@@ -221,6 +226,7 @@ public class QuestComponent extends Component{
 				
 				//Change la quete
 				nouvQ = new Quest("Une Invasion de Rat ? Partie IV:", 200, "Parler à", "Père", 1, "Ce maudit rat vous a échappé. Peut être que votre père sait ou il se cache ?", 6);
+				
 				break;
 				
 				
@@ -269,6 +275,7 @@ public class QuestComponent extends Component{
 				RPGApp.createIndice("mapPnj1.json", new Point2D(1024,768),  new Indice("Pétales rouges", "petales.png"));
 				//Change la quete
 				nouvQ = new Quest("A la recherche d'un rat, Partie I:", 600, "Examiner", "Indice(s) du rat", 4, "Il semblerait que le rat laisse des traces ou il passe. Trouvez ces traces en demandant aux habitants.", 7);
+			
 				break;
 				
 				
@@ -314,6 +321,7 @@ public class QuestComponent extends Component{
 				
 				//Change la quete
 				nouvQ = new Quest("A la recherche d'un rat, Partie II:", 200, "Parler à", "Père", 1, "Vous avez trouvé les traces du rat. Mais que signifient elles ? Votre père le sait sûrement", 8);
+				
 				break;
 				
 				
@@ -325,6 +333,7 @@ public class QuestComponent extends Component{
 				RPGApp.createMonster("mapJardin.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"A la recherche d'un rat, Partie III:",Monstres.BossRat), new Point2D(2752, 448));
 				//Change la quete
 				nouvQ = new Quest("A la recherche d'un rat, Partie III:", 1000, "Tuer", "Rat de la cave", 1, "La cachette du rat est découverte. Éliminez le une bonne fois pour toute ICI", 9);
+				
 				break;
 				
 				
@@ -384,13 +393,14 @@ public class QuestComponent extends Component{
 				pnj1.setQuest(pnjQ, "");
 				pnj3.setQuest(pnjQ, "");
 				pnj2.setQuest(pnjQ, "");
-				
+				RPGApp.hero.setCurrentquest(null);
 				break;
 				
 		}
 		
 		//Attribut la nouvelle quête au héros
 		RPGApp.hero.setCurrentquest(nouvQ);
+		RPGApp.hero.setQueststep(Id);
 		DisplayQuete.updateQuete();
 	}
 

@@ -237,6 +237,9 @@ public class RPGApp extends GameApplication {
 		DisplayInventaire.createInventaire();
 		DisplayQuete.createQuete();
 		DisplayHero.begin();
+		if(save && RPGApp.hero.getCurrentquest()!=null) {
+			QuestComponent.suiteQuete2(hero.getQueststep());
+		}
 		//get
 		
 	}
@@ -409,6 +412,9 @@ public class RPGApp extends GameApplication {
 				load();
 				RPGApp.hero=SaveLoad.load("GameMenu");
 				DisplayMap.chargeMap(RPGApp.hero.getCurrentMap(),RPGApp.hero.getPosition());
+				if(RPGApp.hero.getCurrentquest()!=null) {
+					QuestComponent.suiteQuete2(RPGApp.hero.getQueststep());
+				}
 				load2();
 			}
 		}, KeyCode.L);

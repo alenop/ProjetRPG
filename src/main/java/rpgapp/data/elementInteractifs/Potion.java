@@ -14,7 +14,7 @@ public class Potion extends Consumable {
 
 	@Override
 	public void effect() {
-		RPGApp.hero.restore("hp",50);
+		RPGApp.hero.restore("pv",50);
 		// TODO Auto-generated method stub
 		
 	}

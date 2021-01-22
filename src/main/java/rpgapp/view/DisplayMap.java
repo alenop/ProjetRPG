@@ -127,7 +127,7 @@ public static void chargeMap(String map,Point2D pos) {
 		DisplayInventaire.createInventaire();
 		DisplayEquipment.createEquipment();
 		DisplayQuete.createQuete();
-DisplayHero.begin();
+		DisplayHero.begin();
 
 		if (RPGApp.ListeMaps.get(map) != null) {
 			for (Map.Entry<Point2D, String> i : RPGApp.ListeMaps.get(map).getPortalList().entrySet()) {
@@ -135,8 +135,11 @@ DisplayHero.begin();
 
 			}
 			for (Map.Entry<Point2D, Monstre> i : RPGApp.ListeMaps.get(map).getMonsterList().entrySet()) {
-				if(i.getValue().isUnique() && RPGApp.hero.finishQuest(i.getValue().getQuest())) {
+				if(i.getValue().isUnique() && RPGApp.hero.getCurrentquest().getName().equals(i.getValue().getQuest())==false) {
 			
+				}
+				else if(i.getValue().getState()==State.dead && i.getValue().isUnique()) {
+					
 				}
 				else {
 			

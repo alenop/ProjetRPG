@@ -28,6 +28,7 @@ public class Hero extends Character implements Serializable {
 	private HashMap<Integer, Integer> levels;
 	private HashMap<String, Integer> stats = new HashMap<String,Integer>();
 	private Quest currentquest;
+	private int Queststep;
 	private String currentMap;
 	private transient EntityView view;
 	private ArrayList<String>listFinishQuests=new ArrayList<String>();
@@ -340,6 +341,12 @@ public class Hero extends Character implements Serializable {
 	}
 	public void addBoost(Boost boost) {
 		Boost.add(boost);
+	}
+	public int getQueststep() {
+		return Queststep;
+	}
+	public void setQueststep(int queststep) {
+		Queststep = queststep;
 	}
 	
 	

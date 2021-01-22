@@ -97,6 +97,7 @@ public class PlayerComponent extends Component {
 
 	private void CheckAction(Point2D direction, String angle) {
 		if (RPGApp.move) {
+			System.out.println(RPGApp.hero.getCurrentquest());
 		Point2D newPosition = position.getValue().add(direction);
 		System.out.println(newPosition);
 		System.out.println(FXGL.getApp().getGameWorld().getEntitiesAt(newPosition));

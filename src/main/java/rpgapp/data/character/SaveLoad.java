@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import javafx.geometry.Point2D;
 import rpgapp.RPGApp;
+import rpgapp.control.QuestComponent;
 import rpgapp.data.elementInteractifs.Equipment;
 import rpgapp.data.elementInteractifs.Item;
 import rpgapp.system.SaveMap;
