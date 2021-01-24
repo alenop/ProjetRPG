@@ -214,7 +214,7 @@ public class DisplayHero extends DisplayBasic {
 	public static ComboBox createComboboxSkill(ArrayList<Skill> liste) {
 		ComboBox<String> comboBox = new ComboBox<String>();
 		ArrayList<String> disabledItems = new ArrayList<String>();
-		comboBox.setValue("Skills");
+		comboBox.setValue("Compétences");
 		for (Skill i : liste) {
 			comboBox.getItems().add(i.getName()+" "+i.getCost());
 			if(i.getCost()>RPGApp.hero.getMp()) {
