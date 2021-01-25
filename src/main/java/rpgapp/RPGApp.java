@@ -45,12 +45,11 @@ public class RPGApp extends GameApplication {
 	public static Entity player;
 	private PlayerComponent playerComponent;
 	public static HashMap<String, ModeleMap> ListeMaps = new HashMap<String, ModeleMap>();
-	public static Entity notif = null;
+	
 	public static Music test;
 	public static boolean save=false;
 	public static Entity dialogBox = null;
 	public static boolean move=true;
-	public static boolean MonstreMove=true;
 
 	@Override
 	protected void initSettings(GameSettings settings) {

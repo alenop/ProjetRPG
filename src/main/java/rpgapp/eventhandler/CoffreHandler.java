@@ -49,8 +49,9 @@ public class CoffreHandler implements EventHandler<ActionEvent> {
 						DisplayEquipment.updateEquipment("ajout",  item);
 						RPGApp.hero.equip(item);
 					}else {
-						DisplayEquipment.updateEquipment("ajout",  item);
 						RPGApp.hero.equip(item);
+						DisplayEquipment.updateEquipment("ajout",  item);
+						
 						
 					}}
 					FXGL.getApp().getGameWorld().getEntitiesAt(posChest).get(0).setViewFromTexture("Coffre_Ouvert.png");

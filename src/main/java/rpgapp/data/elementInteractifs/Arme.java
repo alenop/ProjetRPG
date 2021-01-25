@@ -8,6 +8,6 @@ public class Arme extends Equipment implements Serializable{
 		this.type="Arme";
 		this.details=a+" atk : "+b;
 	}
-	
+
 	
 }

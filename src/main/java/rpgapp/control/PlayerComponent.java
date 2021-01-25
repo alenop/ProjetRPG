@@ -8,10 +8,11 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.PositionComponent;
 import com.almasb.fxgl.entity.components.TypeComponent;
-import com.almasb.fxgl.ui.Display;
+import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.text.Text;
 import rpgapp.EntityType;
 import rpgapp.RPGApp;
 import rpgapp.data.character.Monstre;
@@ -62,9 +63,9 @@ public class PlayerComponent extends Component {
 		if (RPGApp.move) {
 		Point2D newPosition = position.getValue().add(direction);
 		CheckMonsterRange(newPosition);
-		if (RPGApp.notif!=null) {
-			FXGL.getApp().getGameWorld().removeEntity(RPGApp.notif);
-			RPGApp.notif=null;
+		if (RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif!=null) {
+			FXGL.getApp().getGameWorld().removeEntity(RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif);
+			RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif=null;
 			}
 		if (checkEntity(newPosition, EntityType.BLOC)==false || checkEntity(newPosition, EntityType.PNJ)==false){
 			RPGApp.player.setViewFromTexture("Heros"+angle+".png");
@@ -161,8 +162,8 @@ public class PlayerComponent extends Component {
 		CheckMonsterRangeWithDir(pos,"right");
 		CheckMonsterRangeWithDir(pos,"down");
 		CheckMonsterRangeWithDir(pos,"up");
-		if (RPGApp.MonstreMove==false) {
-			RPGApp.MonstreMove=true;
+		if (RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).MonstreMove==false) {
+			RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).MonstreMove=true;
 		}
 	}
 	public void CheckMonsterRangeWithDir(Point2D pos, String dir){
@@ -197,18 +198,18 @@ public class PlayerComponent extends Component {
 				Monstre monstre= ((Monstre)a.getProperties().getObject("data"));
 				if (dir.equals("right")||dir.equals("left")) {
 					if(checkEntity(a.getPosition().add(z, 0), EntityType.BLOC)) {
-						if (RPGApp.MonstreMove && monstre.getState()==State.alive && monstre.getTypeMonstre()!=Monstres.BossRat) {
+						if (RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).MonstreMove && monstre.getState()==State.alive && monstre.getTypeMonstre()!=Monstres.BossRat) {
 							a.translateX(z);
-							RPGApp.MonstreMove=false;
+							RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).MonstreMove=false;
 						}
 						
 					}
 					
 				}else
 					if(checkEntity(a.getPosition().add(0, z), EntityType.BLOC)) {
-						if (RPGApp.MonstreMove && monstre.getState()==State.alive && monstre.getTypeMonstre()!=Monstres.BossRat) {
+						if (RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).MonstreMove && monstre.getState()==State.alive && monstre.getTypeMonstre()!=Monstres.BossRat) {
 						a.translateY(z);
-						RPGApp.MonstreMove=false;
+						RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).MonstreMove=false;
 					}}
 			}
 		}
@@ -217,9 +218,14 @@ public class PlayerComponent extends Component {
 
 	public static void levelUp(int level) {
 		
-		String notif="Félicitations tu est maintenant niveau " + level;
-		RPGApp.notif = DisplayBasic.createNotif(notif);
-		FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
+		String notif="Félicitations tu est maintenant niveau " + level+" !";
+		if (RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif!=null) {
+			String textAvant=((Text)((EntityView)RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif.getView().getNodes().get(1)).getNodes().get(0)).getText();
+			DisplayBasic.updateNotif(textAvant+"\n"+notif);
+		}else {
+			RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif = DisplayBasic.createNotif(notif);
+		FXGL.getApp().getGameWorld().addEntity(RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif);
+		}
 		
 	}
 }

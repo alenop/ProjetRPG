@@ -73,7 +73,8 @@ public static void chargeMapProgress(String map,Point2D pos,String mapOf) {
 
 	}
 public static void chargeMap(String map,Point2D pos) {
-	
+		RPGApp.ListeMaps.get(map).MonstreMove=true;
+		RPGApp.ListeMaps.get(map).notif=null;
 		EntityView abcd = null;
 		if (PlayerComponent.position.getEntity() != null) {
 			abcd = PlayerComponent.position.getEntity().getView();

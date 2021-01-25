@@ -3,6 +3,8 @@ package rpgapp.data.map;
 import java.io.Serializable;
 import java.util.HashMap;
 
+import com.almasb.fxgl.entity.Entity;
+
 import javafx.geometry.Point2D;
 import rpgapp.data.character.Monstre;
 import rpgapp.data.elementInteractifs.Chest;
@@ -18,6 +20,8 @@ public class ModeleMap implements Serializable {
 	private HashMap<Point2D,Chest> coffreList;
 	private HashMap<Point2D,PNJ> pNJList;
 	private HashMap<Point2D, Indice> indiceList;
+	public boolean MonstreMove=true; 
+	public Entity notif = null;
 	public ModeleMap() {
 		this.portalList=portalList;
 		this.returnPortalList=returnPortalList;

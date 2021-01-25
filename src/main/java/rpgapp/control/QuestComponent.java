@@ -4,8 +4,10 @@ import java.util.HashMap;
 
 import com.almasb.fxgl.app.FXGL;
 import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.entity.view.EntityView;
 
 import javafx.geometry.Point2D;
+import javafx.scene.text.Text;
 import rpgapp.RPGApp;
 import rpgapp.data.character.Monstre;
 import rpgapp.data.character.Monstres;
@@ -33,8 +35,13 @@ public class QuestComponent extends Component{
 		q.validQuest();
 		MusicComponent.soundPlay("succes");
 		String notif= q.getName() +" accomplie !";
-		RPGApp.notif = DisplayBasic.createNotif(notif);
-		FXGL.getApp().getGameWorld().addEntity(RPGApp.notif);
+		if (RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif!=null) {
+			String textAvant=((Text)((EntityView)RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif.getView().getNodes().get(1)).getNodes().get(0)).getText();
+			DisplayBasic.updateNotif(textAvant+"\n"+notif);
+		}else {
+			RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif = DisplayBasic.createNotif(notif);
+		FXGL.getApp().getGameWorld().addEntity(RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif);
+		}
 		suiteQuete2(q.getId());
 	}
 	public static void suiteQuete2(int Id) {
@@ -187,7 +194,7 @@ public class QuestComponent extends Component{
 				pnj2.setQuest(pnjQ, "");
 				
 				//Spawn du rat de la cave
-				RPGApp.createMonster("mapCave.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"tuer le rat de la cave",Monstres.BossRat), new Point2D(512, 704));
+				RPGApp.createMonster("mapCave.json", new Monstre("le Rat de la Cave", 50, 40, 100,true,"Une Invasion de Rat ? Partie III:",Monstres.BossRat), new Point2D(512, 704));
 				//Change la quete
 				nouvQ = new Quest("Une Invasion de Rat ? Partie III:", 800, "Tuer", "Rat de la cave", 1, "Vous avez contré l'invasion mais votre père entends de nouveau le rat de la cave. Débarassez vous en !", 5);
 				

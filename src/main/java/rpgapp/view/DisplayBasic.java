@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import rpgapp.EntityType;
+import rpgapp.RPGApp;
 import rpgapp.control.PlayerComponent;
 import rpgapp.data.character.Character;
 
@@ -73,7 +74,7 @@ public abstract class DisplayBasic {
 				j++;
 			}}
 		double BG_WIDTH = FXGL.getAppWidth();
-	    double BG_HEIGHT = 50*j;
+	    double BG_HEIGHT = 40*j+6;
 
 	    
 	        Entity notif =createRectangle(BG_WIDTH, BG_HEIGHT,new Point2D(PlayerComponent.position.getX()-FXGL.getAppWidth()/2,PlayerComponent.position.getY()-FXGL.getAppHeight()/2));
@@ -88,6 +89,11 @@ public abstract class DisplayBasic {
 			return notif;
 			
 			
+	}
+	public static void updateNotif(String a) {
+		Entity notif = RPGApp.ListeMaps.get(RPGApp.hero.getCurrentMap()).notif;
+		((Text)((EntityView) notif.getView().getNodes().get(1)).getNodes().get(0)).setText(a);
+		((Rectangle) notif.getView().getNodes().get(0)).setHeight(((Rectangle) notif.getView().getNodes().get(0)).getHeight()+40);
 	}
 	protected static void removeEntity(Point2D a,EntityType b) {
 		Entity i =trouveEntity(a,b);
@@ -107,7 +113,9 @@ public abstract class DisplayBasic {
 		String[] li=a.split("");
 		for (int i=0;i<a.length();i++) {
 			if (li[i].equals("\n")){
-				return a;
+				String first = a.substring(0,i+1);
+				String c = retourLigne(a.substring(i+1),b);
+				return first + c;
 			}
 			if(li[i].equals(" ")|| li[i].equals("!")|| li[i].equals("?")) {
 				e=i+1;
@@ -131,9 +139,10 @@ public abstract class DisplayBasic {
 			String first = a.substring(0,liste.get(i)+i);
 			String second = a.substring(liste.get(i)+i); 
 			a=first+"\n"+second;
-		}
-			return a;
+		}	
+		return a;
 	}
+	
 	public static void addbarre(EntityView i, Character character, double a, double b,double pourcentage2,Color color) {
 		BigDecimal pourcentage3 = new BigDecimal(Double.toString(pourcentage2));
 		double pourcentage = pourcentage3.doubleValue();
