@@ -18,14 +18,25 @@ import rpgapp.view.DisplayBasic;
 
 public class ItemEventHandler extends DisplayBasic implements EventHandler<MouseEvent> {
 	private Item item;
+	private boolean invent;
+	private int positem;
+	private String type;
 	public ItemEventHandler(int positem) {
-		this.item=RPGApp.hero.getInventory()[positem];
+		this.positem=positem;
+		invent=true;
 	}
 	public ItemEventHandler(String type) {
-		this.item=RPGApp.hero.getEquipement().get(type);
+		this.type=type;
+		invent=false;
 	}
 	@Override
 	public void handle(MouseEvent arg0) {
+		if (invent) {
+			this.item=RPGApp.hero.getInventory()[positem];
+		}
+		else {
+			this.item=RPGApp.hero.getEquipement().get(type);
+		}
 		int x=135;
 		int y=64;
 		
