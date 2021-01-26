@@ -96,8 +96,14 @@ public class DisplayPNJ extends DisplayBasic {
 		EntityView afficheText = text3.getView();
 		int j = 0;
 		int a=0;
+		String[] li=text.split("");
+		int g=1;
+		for (int h=0;h<text.length();h++) {
+			if (li[h].equals("\n")){
+				g++;
+			}}
 		for (Button i : av) {
-			Entity Bouton = CreateEntityWithNode(i,FXGL.getSettings().getWidth()/2- 192 + 64 * j+4*a,128);
+			Entity Bouton = CreateEntityWithNode(i,FXGL.getSettings().getWidth()/2- 192 + 64 * j+4*a,20*g+60);
 			a=i.getText().length();
 			Bouton.setProperty("bouton", i);
 			Bouton.getView().setUserData(Bouton);
@@ -123,6 +129,13 @@ public class DisplayPNJ extends DisplayBasic {
 				}
 				if (i.getAccessibleText().equals("bouton")) {
 					Entity a = (Entity) i.getUserData();
+					String[] li=text.split("");
+					int g=1;
+					for (int h=0;h<text.length();h++) {
+						if (li[h].equals("\n")){
+							g++;
+						}}
+					a.setY(g*20+60);
 					if (j<av.length) {
 						if (a.getView().isVisible()==false) {
 							a.getView().setVisible(true);
