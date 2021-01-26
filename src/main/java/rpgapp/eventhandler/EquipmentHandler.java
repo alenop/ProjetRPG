@@ -36,8 +36,10 @@ public class EquipmentHandler implements EventHandler<MouseEvent> {
 			@Override
 			public void handle(ActionEvent ActionEvent) {
 					item.setPosition(RPGApp.hero.getPositionVoid());
-					DisplayInventaire.updateInventaire("ajout",item,RPGApp.hero.getPositionVoid());
+					int pos= RPGApp.hero.getPositionVoid();
 					RPGApp.hero.unequip(item);
+					DisplayInventaire.updateInventaire("ajout",item,pos);
+					
 					DisplayEquipment.updateEquipment("remove",  item);
 					
 				}
