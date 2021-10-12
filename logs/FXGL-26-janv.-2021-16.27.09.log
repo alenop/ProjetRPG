@@ -1,0 +1,1431 @@
+16:26:35.033 [JavaFX Application Thread] DEBUG GameApplication      - Logger initialized
+16:26:35.053 [JavaFX Application Thread] DEBUG GameApplication      - Logging settings
+Title: The RPG
+Version: 0.1
+Width: 960
+Height: 640
+Fullscreen: true
+Intro: false
+Menus: true
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class rpg.factory.MenuSceneFactory
+Dialog Factory: class com.almasb.fxgl.ui.FXGLDialogFactory
+UI Factory: class com.almasb.fxgl.ui.FXGLUIFactory
+Notification Service: class com.almasb.fxgl.gameplay.notification.XboxNotificationView
+Exception Handler: class com.almasb.fxgl.app.FXGLExceptionHandler
+16:26:35.053 [JavaFX Application Thread] DEBUG GameApplication      - Starting FXGL
+16:26:35.067 [JavaFX Application Thread] INFO  FXGL                 - FXGL-0.5.4 on DESKTOP
+16:26:35.068 [JavaFX Application Thread] INFO  FXGL                 - Source code and latest versions at: https://github.com/AlmasB/FXGL
+16:26:35.068 [JavaFX Application Thread] INFO  FXGL                 -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+16:26:35.068 [JavaFX Application Thread] DEBUG FXGL                 - FXGL started
+16:26:35.069 [JavaFX Application Thread] DEBUG FXGL                 - Initializing FXGL
+16:26:35.134 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+16:26:35.203 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:35.867 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+16:26:35.908 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 960.0 x 640.0
+16:26:35.909 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    960.0 x 640.0
+16:26:35.909 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+16:26:35.926 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+16:26:35.935 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/textures/fxgl_icon.png
+16:26:35.958 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+16:26:36.223 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (16.0, 39.0)
+16:26:36.223 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 960.0 x 640.0
+16:26:36.223 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+16:26:36.224 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 960.0 x 640.0
+16:26:36.224 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 976.0 x 679.0
+16:26:36.389 [ForkJoinPool.commonPool-worker-1] DEBUG FS                   - Loaded DesktopFSService
+16:26:36.390 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL                 - Loading FXGL system data
+16:26:36.404 [ForkJoinPool.commonPool-worker-1] DEBUG DesktopFSService     - Reading from: system\fxgl.bundle
+16:26:36.422 [ForkJoinPool.commonPool-worker-1] DEBUG Bundle               - Logging bundle: FXGL
+16:26:36.424 [ForkJoinPool.commonPool-worker-1] DEBUG Bundle               - FXGL.offline.timer.version.check=2021-01-25T11:33:17.387
+16:26:36.425 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL                 - Initializing state machine and application states
+16:26:36.431 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+16:26:36.440 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+16:26:36.456 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.466 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+16:26:36.471 [ForkJoinPool.commonPool-worker-1] DEBUG GameScene            - Game scene initialized: 960x640
+16:26:36.512 [ForkJoinPool.commonPool-worker-1] DEBUG GameWorld            - Game world initialized
+16:26:36.662 [ForkJoinPool.commonPool-worker-1] DEBUG PhysicsWorld         - Physics world initialized: appHeight=640, physics.ppm=50,0
+16:26:36.714 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+16:26:36.721 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/properties/languages/english.properties
+16:26:36.723 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.724 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.724 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.753 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/textures/particles/trace_horizontal.png
+16:26:36.832 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.834 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL.Menu            - createMenuBodyMainMenu()
+16:26:36.847 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.852 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.858 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.859 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.860 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL.Menu            - createOptionsMenu()
+16:26:36.860 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.860 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.863 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.863 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.864 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.865 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.866 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.867 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.868 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.868 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.871 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.872 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.877 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.878 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.879 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.880 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.881 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:36.882 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:36.883 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/textures/particles/smoke.png
+16:26:37.117 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from disk: /assets/ui/cursors/fxgl_default.png
+16:26:37.119 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.119 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.120 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.120 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.124 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/textures/particles/trace_horizontal.png@64.0x64.0
+16:26:37.125 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.126 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL.Menu            - createMenuBodyGameMenu()
+16:26:37.126 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.127 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.128 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.129 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.129 [ForkJoinPool.commonPool-worker-1] DEBUG FXGL.Menu            - createOptionsMenu()
+16:26:37.130 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.131 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.131 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.132 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.133 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.133 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.134 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.134 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.135 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.135 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.136 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.136 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.137 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.138 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.140 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.140 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.142 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.142 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.143 [ForkJoinPool.commonPool-worker-1] DEBUG AssetLoader          - Loading from cache: /assets/textures/particles/smoke.png@128.0x128.0
+16:26:37.244 [JavaFX Application Thread] DEBUG FXGL                 - Running preInit()
+16:26:37.291 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+16:26:37.292 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Dev Options - CTRL+0
+16:26:37.293 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+16:26:37.294 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+16:26:37.294 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Right - D
+16:26:37.295 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Left - Q
+16:26:37.295 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Up - Z
+16:26:37.295 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Move Down - S
+16:26:37.295 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Open Inventory - I
+16:26:37.295 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Open Equipment - E
+16:26:37.296 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Open TabQuest - K
+16:26:37.296 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Analyse - A
+16:26:37.296 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Quete Suivante - B
+16:26:37.296 [JavaFX Application Thread] DEBUG Input                - Registered new binding: see Hero status - H
+16:26:37.296 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Save - M
+16:26:37.297 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Load - L
+16:26:37.298 [JavaFX Application Thread] DEBUG MenuEventHandler     - generateDefaultProfile()
+16:26:37.298 [JavaFX Application Thread] DEBUG MenuEventHandler     - Creating default profile
+16:26:37.299 [JavaFX Application Thread] DEBUG EventBus             - Firing event: SaveEvent
+16:26:37.302 [JavaFX Application Thread] DEBUG AudioPlayer          - Saving data to profile
+16:26:37.302 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: audio
+16:26:37.303 [JavaFX Application Thread] DEBUG Bundle               - audio.musicVolume=0.5
+16:26:37.303 [JavaFX Application Thread] DEBUG Bundle               - audio.soundVolume=0.5
+16:26:37.303 [JavaFX Application Thread] DEBUG Input                - Saving data to profile
+16:26:37.304 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: input
+16:26:37.304 [JavaFX Application Thread] DEBUG Bundle               - input.Move Right=D
+16:26:37.304 [JavaFX Application Thread] DEBUG Bundle               - input.Save=M
+16:26:37.304 [JavaFX Application Thread] DEBUG Bundle               - input.Open Equipment=E
+16:26:37.305 [JavaFX Application Thread] DEBUG Bundle               - input.Restart=CTRL+R
+16:26:37.305 [JavaFX Application Thread] DEBUG Bundle               - input.Move Up=Z
+16:26:37.305 [JavaFX Application Thread] DEBUG Bundle               - input.Dev Options=CTRL+0
+16:26:37.305 [JavaFX Application Thread] DEBUG Bundle               - input.see Hero status=H
+16:26:37.305 [JavaFX Application Thread] DEBUG Bundle               - input.Open TabQuest=K
+16:26:37.305 [JavaFX Application Thread] DEBUG Bundle               - input.Load=L
+16:26:37.305 [JavaFX Application Thread] DEBUG Bundle               - input.Move Left=Q
+16:26:37.306 [JavaFX Application Thread] DEBUG Bundle               - input.Open Inventory=I
+16:26:37.306 [JavaFX Application Thread] DEBUG Bundle               - input.Quete Suivante=B
+16:26:37.306 [JavaFX Application Thread] DEBUG Bundle               - input.Analyse=A
+16:26:37.306 [JavaFX Application Thread] DEBUG Bundle               - input.Screenshot=P
+16:26:37.306 [JavaFX Application Thread] DEBUG Bundle               - input.System info dump=CTRL+9
+16:26:37.306 [JavaFX Application Thread] DEBUG Bundle               - input.Move Down=S
+16:26:37.320 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: gameplayStats
+16:26:37.320 [JavaFX Application Thread] DEBUG Bundle               - gameplayStats.playtime=0
+16:26:37.323 [JavaFX Application Thread] DEBUG AchievementManager   - Saving data to profile
+16:26:37.323 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: achievement
+16:26:37.327 [JavaFX Application Thread] INFO  FXGL                 - FXGL initialization took: 2,258 sec
+16:26:37.327 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+16:26:37.329 [JavaFX Application Thread] DEBUG StartupState         - STARTUP
+16:26:37.330 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:37.332 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+16:26:37.353 [JavaFX Application Thread] DEBUG AppStateMachine      - StartupState -> MainMenuState
+16:26:37.415 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.415 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.415 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.416 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.417 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.417 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.422 [JavaFX Application Thread] DEBUG SaveLoadManager      - Checking profiles dir: profiles/
+16:26:37.423 [JavaFX Application Thread] DEBUG SaveLoadManager      - Loading profile names
+16:26:37.426 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.429 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.430 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.431 [JavaFX Application Thread] DEBUG AppStateMachine      - Push state: DialogSubState
+16:26:37.431 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:37.431 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState -> DialogSubState
+16:26:37.579 [JavaFX Application Thread] DEBUG AppStateMachine      - Pop state: DialogSubState
+16:26:37.579 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:37.580 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState <- DialogSubState
+16:26:37.582 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:37.582 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.583 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:37.584 [JavaFX Application Thread] DEBUG AppStateMachine      - Push state: DialogSubState
+16:26:37.584 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:37.584 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState -> DialogSubState
+16:26:41.086 [JavaFX Application Thread] DEBUG AppStateMachine      - Pop state: DialogSubState
+16:26:41.086 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:41.087 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState <- DialogSubState
+16:26:41.087 [JavaFX Application Thread] DEBUG SaveLoadManager      - Loading profile: op
+16:26:41.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:41.089 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:41.090 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:41.090 [JavaFX Application Thread] DEBUG AppStateMachine      - Push state: DialogSubState
+16:26:41.090 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:41.091 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState -> DialogSubState
+16:26:41.099 [FXGL Background Thread 1 ] DEBUG DesktopFSService     - Reading from: .\profiles\op\user.profile
+16:26:41.115 [JavaFX Application Thread] DEBUG AppStateMachine      - Pop state: DialogSubState
+16:26:41.116 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:41.118 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState <- DialogSubState
+16:26:41.119 [JavaFX Application Thread] DEBUG EventBus             - Firing event: LoadEvent[type=LOAD_PROFILE]
+16:26:41.337 [JavaFX Application Thread] DEBUG AudioPlayer          - Loading data from profile
+16:26:41.337 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: audio
+16:26:41.337 [JavaFX Application Thread] DEBUG Bundle               - audio.musicVolume=0.05
+16:26:41.337 [JavaFX Application Thread] DEBUG Bundle               - audio.soundVolume=0.05
+16:26:41.337 [JavaFX Application Thread] DEBUG Input                - Loading data from profile
+16:26:41.337 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: input
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Move Right=D
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Save=M
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Open Equipment=E
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Restart=CTRL+R
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Move Up=Z
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Dev Options=CTRL+0
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.see Hero status=H
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Open TabQuest=K
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Load=L
+16:26:41.338 [JavaFX Application Thread] DEBUG Bundle               - input.Move Left=Q
+16:26:41.339 [JavaFX Application Thread] DEBUG Bundle               - input.Open Inventory=I
+16:26:41.339 [JavaFX Application Thread] DEBUG Bundle               - input.Quete Suivante=B
+16:26:41.339 [JavaFX Application Thread] DEBUG Bundle               - input.Analyse=A
+16:26:41.339 [JavaFX Application Thread] DEBUG Bundle               - input.Screenshot=P
+16:26:41.339 [JavaFX Application Thread] DEBUG Bundle               - input.System info dump=CTRL+9
+16:26:41.339 [JavaFX Application Thread] DEBUG Bundle               - input.Move Down=S
+16:26:41.340 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: gameplayStats
+16:26:41.340 [JavaFX Application Thread] DEBUG Bundle               - gameplayStats.playtime=44191315349842
+16:26:41.340 [JavaFX Application Thread] DEBUG AchievementManager   - Loading data from profile
+16:26:41.340 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: achievement
+16:26:41.340 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:41.341 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:41.341 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:41.342 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:41.342 [JavaFX Application Thread] DEBUG SaveLoadManager      - Loading last modified save file
+16:26:41.342 [JavaFX Application Thread] DEBUG SaveLoadManager      - Loading save files
+16:26:41.346 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:26:41.346 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:41.347 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:41.347 [JavaFX Application Thread] DEBUG AppStateMachine      - Push state: DialogSubState
+16:26:41.348 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:41.348 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState -> DialogSubState
+16:26:41.372 [JavaFX Application Thread] DEBUG AppStateMachine      - Pop state: DialogSubState
+16:26:41.372 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:41.373 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState <- DialogSubState
+16:26:44.953 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:49.308 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:49.400 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:49.595 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:50.462 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:50.487 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:50.493 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:50.957 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:26:52.475 [JavaFX Application Thread] DEBUG FXGL.Menu            - fireNewGame()
+16:26:52.476 [JavaFX Application Thread] DEBUG GameApplication      - Starting new game
+16:26:52.476 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:52.476 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+16:26:52.495 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState -> LoadingState
+16:26:52.500 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Clearing previous game
+16:26:52.500 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing game world
+16:26:52.501 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Clearing physics world
+16:26:52.503 [FXGL Background Thread 1 ] DEBUG GameScene            - Clearing game scene
+16:26:52.506 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Game
+16:26:52.550 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/json/mapMaison.json
+16:26:53.022 [FXGL Background Thread 1 ] DEBUG GameWorld            - Clearing removable entities
+16:26:53.023 [FXGL Background Thread 1 ] DEBUG GameWorld            - Setting level from map
+16:26:53.053 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/MaisonRPG.png
+16:26:53.075 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.076 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.076 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.076 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.076 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.077 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.077 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.077 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.077 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.077 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.077 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.077 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.078 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.079 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.080 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.081 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.081 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.081 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.081 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.081 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.081 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.082 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.083 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.084 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.084 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.085 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.085 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.086 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.086 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.086 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.086 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.086 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.086 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.087 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.088 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.088 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.088 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.088 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.088 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.088 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.088 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.089 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.089 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.089 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.090 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.091 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.092 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.093 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.094 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.095 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.095 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.095 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.095 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.096 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.098 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.099 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.102 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.103 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.103 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.103 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.103 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.104 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.105 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.106 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.106 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.106 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.106 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.106 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.107 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.108 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.108 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.109 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.110 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.111 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.112 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.113 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.114 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.115 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.115 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.115 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.115 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.115 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.115 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.116 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.117 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.117 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.117 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.117 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.117 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.118 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.118 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.118 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.118 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.118 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.118 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.119 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.120 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.121 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.122 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.123 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.125 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.126 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.127 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.127 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.127 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.127 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.127 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.127 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.128 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.128 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.128 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.128 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.129 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.129 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.129 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.130 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.131 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.132 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.132 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.132 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.132 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.132 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.132 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.133 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.134 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.134 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.134 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.134 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.134 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.135 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.136 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.136 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.136 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.136 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.136 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.136 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.136 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.137 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.138 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.139 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.140 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.141 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.142 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.143 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.144 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.145 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.146 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.147 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.148 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.149 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.150 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.151 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.152 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.153 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.154 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.155 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.156 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.157 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.158 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.159 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.160 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.161 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.162 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.163 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.164 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.165 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.165 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.165 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.165 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.169 [FXGL Background Thread 1 ] DEBUG GameScene            - Creating render group for layer: BACKGROUND(1000)
+16:26:53.174 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.174 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.174 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.174 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.174 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.175 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.175 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.175 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.175 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.175 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.175 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.175 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.176 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.177 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.204 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.205 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.206 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.207 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.208 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.208 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.208 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.208 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.211 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.214 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/MaisonRPG.png
+16:26:53.218 [FXGL Background Thread 1 ] DEBUG GameScene            - Creating render group for layer: DEFAULT(100000)
+16:26:53.287 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/torche.gif
+16:26:53.296 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/torche.gif
+16:26:53.297 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/torche.gif
+16:26:53.298 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/torche.gif
+16:26:53.300 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/torche.gif
+16:26:53.301 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/feu.gif
+16:26:53.356 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/music/inside.mp3
+16:26:53.356 [FXGL Background Thread 1 ] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@6e40cb05
+16:26:53.359 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/Père_Dos.png
+16:26:53.361 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/Père_Face.png
+16:26:53.363 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/Coffre_Ferme.png
+16:26:53.366 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/textures/Coffre_Ferme.png
+16:26:53.367 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/HerosFace.png
+16:26:53.376 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/EquipmentFond.png
+16:26:53.387 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/t-shirt_Inventaire.png
+16:26:53.390 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/t-shirt.png
+16:26:53.393 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/InventaireFond.png
+16:26:53.398 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/potion_de_soin_Inventaire.png
+16:26:53.400 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/potion_de_soin.png
+16:26:53.404 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/potion_de_mana_Inventaire.png
+16:26:53.406 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/potion_de_mana.png
+16:26:53.416 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/QueteFond.png
+16:26:53.421 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.422 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.422 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.422 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.495 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from disk: /assets/textures/perso.png
+16:26:53.503 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.503 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.504 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.504 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.505 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.505 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.506 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.506 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.506 [FXGL Background Thread 1 ] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:26:53.507 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing Physics
+16:26:53.507 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initializing UI
+16:26:53.507 [FXGL Background Thread 1 ] DEBUG InitAppTask          - Initialization Complete
+16:26:53.508 [FXGL Background Thread 1 ] INFO  InitAppTask          - Game initialization took: 1,007 sec
+16:26:53.520 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:26:53.520 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+16:26:53.533 [JavaFX Application Thread] DEBUG AppStateMachine      - LoadingState -> PlayState
+16:27:01.203 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:27:01.203 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from disk: /assets/ui/css/fxgl_dark.css
+16:27:01.214 [JavaFX Application Thread] DEBUG AppStateMachine      - PlayState -> GameMenuState
+16:27:01.230 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:03.483 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:03.646 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:03.772 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:03.884 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:04.342 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:04.863 [JavaFX Application Thread] DEBUG FXGL.Menu            - fireExitToMainMenu()
+16:27:04.863 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:27:04.863 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:27:04.865 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:04.865 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:04.865 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:27:04.866 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:04.866 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:27:04.867 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:04.867 [JavaFX Application Thread] DEBUG AppStateMachine      - Push state: DialogSubState
+16:27:04.867 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:27:04.867 [JavaFX Application Thread] DEBUG AppStateMachine      - GameMenuState -> DialogSubState
+16:27:04.869 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/press.wav
+16:27:05.186 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:05.761 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:06.175 [JavaFX Application Thread] DEBUG AppStateMachine      - Pop state: DialogSubState
+16:27:06.175 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:27:06.175 [JavaFX Application Thread] DEBUG AppStateMachine      - GameMenuState <- DialogSubState
+16:27:06.175 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:27:06.185 [JavaFX Application Thread] DEBUG AppStateMachine      - GameMenuState -> MainMenuState
+16:27:07.777 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:08.240 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:08.521 [JavaFX Application Thread] DEBUG FXGL.Menu            - fireExit()
+16:27:08.522 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:27:08.523 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:08.524 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:08.524 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:27:08.524 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:08.524 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/properties/languages/english.properties
+16:27:08.524 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/ui/fonts/VarelaRound-Regular.ttf
+16:27:08.525 [JavaFX Application Thread] DEBUG AppStateMachine      - Push state: DialogSubState
+16:27:08.525 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:27:08.525 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState -> DialogSubState
+16:27:08.526 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/press.wav
+16:27:08.759 [JavaFX Application Thread] DEBUG AssetLoader          - Loading from cache: /assets/sounds/menu/select.wav
+16:27:09.274 [JavaFX Application Thread] DEBUG AppStateMachine      - Pop state: DialogSubState
+16:27:09.274 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:27:09.274 [JavaFX Application Thread] DEBUG AppStateMachine      - MainMenuState <- DialogSubState
+16:27:09.274 [JavaFX Application Thread] DEBUG FXGL                 - Exiting FXGL
+16:27:09.274 [JavaFX Application Thread] DEBUG MenuEventHandler     - Creating default profile
+16:27:09.274 [JavaFX Application Thread] DEBUG EventBus             - Firing event: SaveEvent
+16:27:09.274 [JavaFX Application Thread] DEBUG AudioPlayer          - Saving data to profile
+16:27:09.274 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: audio
+16:27:09.274 [JavaFX Application Thread] DEBUG Bundle               - audio.musicVolume=0.05
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - audio.soundVolume=0.05
+16:27:09.275 [JavaFX Application Thread] DEBUG Input                - Saving data to profile
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: input
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Move Right=D
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Save=M
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Open Equipment=E
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Restart=CTRL+R
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Move Up=Z
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Dev Options=CTRL+0
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.see Hero status=H
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Open TabQuest=K
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Load=L
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Move Left=Q
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Open Inventory=I
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Quete Suivante=B
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Analyse=A
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Screenshot=P
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.System info dump=CTRL+9
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - input.Move Down=S
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: gameplayStats
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - gameplayStats.playtime=44201215349446
+16:27:09.275 [JavaFX Application Thread] DEBUG AchievementManager   - Saving data to profile
+16:27:09.275 [JavaFX Application Thread] DEBUG Bundle               - Logging bundle: achievement
+16:27:09.275 [JavaFX Application Thread] DEBUG SaveLoadManager      - Saving profile: op
+16:27:09.281 [JavaFX Application Thread] DEBUG DesktopFSService     - Writing to: .\profiles\op\user.profile
+16:27:09.288 [JavaFX Application Thread] DEBUG FXGL                 - Shutting down background threads
+16:27:09.288 [JavaFX Application Thread] DEBUG FXGL                 - Saving FXGL system data
+16:27:09.291 [JavaFX Application Thread] DEBUG DesktopFSService     - Writing to: system\fxgl.bundle
+16:27:09.295 [JavaFX Application Thread] DEBUG FXGL                 - Closing logger and exiting JavaFX
