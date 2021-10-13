@@ -35,9 +35,9 @@ public class DisplayPNJ extends DisplayBasic {
 			
 		}
 	}
-	public static void dialogue2(PNJ pnj,String étape) {
+	public static void dialogue2(PNJ pnj,String step) {
 		Button[]listButton;
-		HashMap<String, String[]> chat =pnj.getListChat().get(étape);
+		HashMap<String, String[]> chat =pnj.getListChat().get(step);
 		String[] textButton =chat.get("answers");
 		listButton = new Button[textButton.length];
 			
