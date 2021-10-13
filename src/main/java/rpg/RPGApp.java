@@ -138,7 +138,7 @@ public class RPGApp extends GameApplication {
 
 		Quest q = new Quest("Contact avec le Rat, Partie I:", 100, "Examiner", "Indice de la cave", 1, "Votre p�re vous demande de vous debarasser du rat de la cave. Trouvez le !");
 		
-		PNJ pere =new PNJ("P�re","Cadre.png",conversationComplete,q,"Oui papa");
+		PNJ pere =new PNJ("Father","Cadre.png",conversationComplete,q,"Oui papa");
 		createPNJ("mapMaison.json",pere, new Point2D(1024,960));
 		String[] answer1A = new String[2];
 		answer1A[0] = "Pourquoi pas.";

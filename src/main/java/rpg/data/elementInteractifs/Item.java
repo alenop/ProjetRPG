@@ -21,7 +21,7 @@ public class Item implements Serializable {
 	}
 	public String getInventaireImage() {
 		String[] a =image.split("\\.");
-		return a[0]+"_Inventaire."+a[1];
+		return a[0]+"_inventaire."+a[1];
 	}
 
 
